@@ -197,8 +197,10 @@
   .hero-home .btn-outline:hover{background:#fff;color:var(--bark)}
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:44px;
     border-top:1px solid rgba(255,255,255,.18);padding-top:28px}
+  .stat{display:block;text-decoration:none}
   .stat strong{display:block;font-size:19px;color:var(--chip);margin-bottom:2px}
   .stat span{font-size:14px;color:#b0b0b0}
+  a.stat:hover strong{text-decoration:underline}
   .svc-tiles{display:grid;grid-template-columns:1fr 1fr;gap:24px}
   @media(max-width:760px){.svc-tiles{grid-template-columns:1fr}}
   .tile{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
@@ -248,7 +250,7 @@
       <div class="stat"><strong>Two specialties</strong><span>Stump grinding and full removal &mdash; that's all we do</span></div>
       <div class="stat"><strong>Written estimates</strong><span>Scope and price in writing before we schedule</span></div>
       <div class="stat"><strong>Clean job sites</strong><span>Blown down and walked with you before we leave</span></div>
-      <div class="stat"><strong>28 communities</strong><span>Across Eastern WA and North Idaho</span></div>
+      <a class="stat" href="about.html#service-area"><strong>28 communities</strong><span>Across Eastern WA and North Idaho</span></a>
     </div>
   </div>
 </div>
