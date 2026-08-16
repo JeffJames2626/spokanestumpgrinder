@@ -120,7 +120,7 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
   Post Falls, Priest Lake, Priest River, Sandpoint).
   Listed on services.html and about.html.
 - Owner: Jeff James, Spokane native, working on properties in the area since
-  2021. about.html previously named Tiffany as a co-founder and described the
+  2023. about.html previously named Tiffany as a co-founder and described the
   business as "husband-and-wife" — both removed at Jeff's request; the team
   section now shows only Jeff plus an open "add team member" placeholder.
   Don't reintroduce Tiffany or the husband-and-wife framing without him
@@ -208,10 +208,10 @@ in-repo, it'll need an explicit `git add -f`.
 
 Jeff's bio (about.html) is filled in: mowing since age 13, ran a local
 maintenance company for 14 years (1 truck to 30 employees), went out on his
-own in 2023, stump grinding grew from a hobby into its own specialty. Note:
-this "2023" doesn't reconcile with "serving the area since 2021" used
-elsewhere on the site (hero copy, credentials table) — flagged to Jeff, not
-resolved. Don't silently pick one date over the other in future edits.
+own in 2023, stump grinding grew from a hobby into its own specialty.
+**Business start year is 2023**, confirmed by Jeff — every "serving since"
+reference sitewide (about.html meta description, hero copy, story section,
+credentials table) was updated from the earlier placeholder 2021 to 2023.
 
 case-studies.html is fully complete: all 3 jobs have real titles, locations,
 dates, service lines, 4 story fields each, Wistia videos, and before/after
