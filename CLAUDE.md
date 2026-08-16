@@ -95,14 +95,23 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
   CTA, and footer of every page. To swap, find-and-replace **both**
   `509-434-9554` (display) and `+15094349554` (tel: hrefs) across all 6 files.
 - Address: **1908 E Mallon Ave, Spokane, WA 99202**. In the footer of every
-  page: a `.footer-addr` link (opens Google Maps directions), an embedded
-  Google Maps iframe (`.footer-map`, no API key — uses the `maps?q=...&output=embed`
-  pattern), and a `.footer-map-link` "Get Directions" fallback below the map.
-  All three targets use the Google-documented universal Maps URL scheme
-  (`google.com/maps/dir/?api=1&destination=...` and
-  `google.com/maps?q=...&output=embed`), URL-encoded
-  (`1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202`). To change the address,
-  find-and-replace that encoded string across all 6 files.
+  page: a `.footer-addr` link (opens Google Maps directions, URL-encoded
+  as `1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202`), an embedded Google Maps
+  iframe (`.footer-map`) pointed at the actual **Google Business Profile
+  listing** (not a plain address search) via its `maps/embed?pb=...` share
+  code — includes the Place ID `0x549e190660699b21:0x6eaa9fed67721e4a` — and
+  a `.footer-map-link` "Get Directions" fallback below the map, which still
+  uses the plain address-based directions URL. To change the address, update
+  the encoded string in the directions links; the map embed itself is tied
+  to the Business Profile listing, not the address, so it won't need to
+  change unless the listing itself moves.
+- Business credentials (about.html credentials table): Business name
+  **Spokane Stump Grinder**, WA contractor license **MARKOS\*778D8**, UBI
+  **601-939-576**. Note the license number contains "MARKOS" — flagged to
+  Jeff since it brushes against the brand-separation rule above, but it's
+  the real license string he supplied, not content we chose. Liability
+  insurance and bonded rows were **removed** from the table at his request
+  (not left as TODOs — he doesn't want those disclosed).
 - Service area: 28 communities, same list as the owners' other company —
   21 in WA (Airway Heights, Chattaroy, Cheney, Chewelah, Colbert, Colville,
   Davenport, Deer Park, Elk, Freeman, Green Bluff, Hangman Valley, Hillyard,
@@ -159,23 +168,28 @@ its own Wistia media ID.
 
 ## Unfinished work
 
-36 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
+31 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
 | case-studies.html | 24 | 3 real jobs: titles, city, month/year, 4 story fields each, videos, before/after photos |
-| about.html | 9 | WA contractor license #, UBI, Idaho registration, insurance carrier + coverage, bond amount, team photos, Jeff's equipment background, Tiffany's last name if public |
+| about.html | 4 | Idaho registration, team photos, Jeff's equipment background, Tiffany's last name if public |
 | booking.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
 
-Also missing sitewide: logo (header uses a plain gold circle), real photography
-(every `.ph` box), analytics.
+Business name, WA contractor license #, and UBI number are filled in on
+about.html (verified facts below). The liability-insurance and bonded rows
+were removed from the credentials table entirely, at Jeff's request — not
+just left blank.
+
+Also missing sitewide: logo (header uses a plain colored circle), real
+photography (every `.ph` box), analytics.
 
 `favicon.svg`, `robots.txt`, and `sitemap.xml` now exist at the project root
 and are linked from all six pages (`<link rel="icon" type="image/svg+xml"
-href="favicon.svg">` in each `<head>`). The favicon is a placeholder — gold
-circle with bark-colored tree rings, matching the header's brand mark — swap
-it if a real logo shows up. `sitemap.xml` hardcodes
-`https://spokanestumpgrinder.com/`; update it if the domain changes.
+href="favicon.svg">` in each `<head>`). The favicon is a placeholder — colored
+circle with dark tree rings, matching the header's brand mark — swap it if a
+real logo shows up. `sitemap.xml` hardcodes `https://spokanestumpgrinder.com/`;
+update it if the domain changes.
 
 ## Open questions for Jeff
 
