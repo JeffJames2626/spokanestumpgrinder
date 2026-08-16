@@ -3,6 +3,33 @@
 Static marketing site for **Spokane Stump Grinder** — stump grinding and stump
 removal/cleanup in Spokane, WA and the Coeur d'Alene region.
 
+## Deployment
+
+Live at **spokanestumpgrinder.com** (and `www.` — both valid). Pipeline:
+
+```
+local files → git push → GitHub → Vercel (auto-deploy) → live site
+```
+
+- **Repo**: https://github.com/JeffJames2626/spokanestumpgrinder, branch `main`.
+  Every push to `main` auto-deploys to production. No staging branch, no CI checks.
+- **Host**: Vercel, zero-config static deploy (no framework, no build command —
+  it just serves the HTML files as-is).
+- **Permanent fallback URL**: spokanestumpgrinder.vercel.app — always resolves
+  even if the custom domain's DNS ever breaks.
+- **Domain DNS**: managed in Squarespace (domain was registered there; the
+  Squarespace *website* product is not used — DNS just points at Vercel).
+  `A` record on `@` → Vercel's IP, `CNAME` on `www` → `cname.vercel-dns.com`.
+- **Rollback**: Vercel dashboard → Deployments → "..." on any past deploy →
+  Promote to Production. Instant, no git operations needed.
+- **Git identity**: this repo's commits use a local-only placeholder author
+  (`Spokane Stump Grinder <noreply@spokanestumpgrinder.com>`), not the global
+  git config — deliberately kept separate from Jeff's other business email
+  per the brand-separation rule below.
+
+To push a change: `git add -A && git commit -m "..." && git push` from this
+folder. Live within ~1 minute.
+
 ## Architecture
 
 Six standalone HTML files. **Every page carries its own inline `<style>` block.**
