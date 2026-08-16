@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Booking &amp; Scheduling | Spokane Stump Grinder</title>
+<meta name="description" content="Book stump grinding in Spokane, WA. Pick a time from our live calendar, see how to prep your yard, and get answers to common scheduling questions.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+:root{
+    --bark:#2f2a24;
+    --bark-2:#453d33;
+    --moss:#3d6b3a;
+    --moss-dark:#2c5029;
+    --chip:#c9a227;
+    --sand:#f6f3ed;
+    --line:#e0d9cc;
+    --text:#2b2823;
+    --muted:#5f594f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:#fff;
+    line-height:1.65;
+  }
+  a{color:var(--moss-dark)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---------- header ---------- */
+  header{
+    background:var(--bark);
+    color:#f4efe6;
+    position:sticky;top:0;z-index:50;
+    border-bottom:3px solid var(--moss);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#f4efe6;font-weight:700;letter-spacing:.2px}
+  .brand .mark{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--chip);color:var(--bark);
+    display:grid;place-items:center;font-size:17px;flex:none;
+  }
+  .brand span small{display:block;font-weight:400;font-size:11px;color:#bdb3a2;letter-spacing:1.4px;text-transform:uppercase}
+  nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+  nav a{color:#ded6c8;text-decoration:none;font-size:15px}
+  nav a:hover{color:#fff}
+  nav a.active{color:#fff;border-bottom:2px solid var(--chip);padding-bottom:2px}
+  .callnow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--chip);color:var(--bark);
+    padding:9px 16px;border-radius:6px;
+    text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap;
+  }
+  .callnow:hover{background:#dcb42f}
+  @media(max-width:900px){.bar{justify-content:center;text-align:center}}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--sand);border-bottom:1px solid var(--line);padding:56px 0 48px}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:2px;font-size:12px;
+    color:var(--moss-dark);font-weight:700;margin:0 0 10px
+  }
+  .hero h1{margin:0 0 14px;font-size:clamp(30px,4.6vw,44px);line-height:1.15;color:var(--bark)}
+  .hero p{margin:0;max-width:620px;font-size:18px;color:var(--muted)}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-block;padding:13px 24px;border-radius:6px;
+    text-decoration:none;font-weight:600;font-size:16px;border:2px solid transparent;
+  }
+  .btn-primary{background:var(--moss);color:#fff}
+  .btn-primary:hover{background:var(--moss-dark)}
+  .btn-outline{border-color:var(--moss);color:var(--moss-dark);background:#fff}
+  .btn-outline:hover{background:var(--moss);color:#fff}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+
+  /* ---------- sections ---------- */
+  section{padding:56px 0}
+  .service{border-top:1px solid var(--line)}
+  .service h2{font-size:clamp(24px,3.2vw,32px);margin:0 0 6px;color:var(--bark)}
+  .tagline{margin:0 0 22px;color:var(--moss-dark);font-weight:600}
+  .lead{font-size:17px;max-width:720px;color:var(--muted);margin:0 0 28px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{
+    background:var(--sand);border:1px solid var(--line);
+    border-radius:8px;padding:22px;
+  }
+  .card h3{margin:0 0 8px;font-size:17px;color:var(--bark)}
+  .card p{margin:0;font-size:15px;color:var(--muted)}
+
+  ul.checks{list-style:none;padding:0;margin:0}
+  ul.checks li{position:relative;padding-left:28px;margin-bottom:10px;color:var(--muted)}
+  ul.checks li::before{
+    content:"";position:absolute;left:4px;top:9px;
+    width:8px;height:8px;border-radius:2px;background:var(--moss);
+  }
+  ul.checks li strong{color:var(--text)}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+  @media(max-width:760px){.split{grid-template-columns:1fr;gap:28px}}
+
+  .note{
+    background:#fffdf4;border-left:4px solid var(--chip);
+    padding:16px 20px;border-radius:0 6px 6px 0;color:var(--muted);font-size:15px;
+  }
+
+  /* ---------- media placeholders (replace with real assets) ---------- */
+  .ph{
+    background:#e4e0d8;border:1px dashed #b4ab99;border-radius:8px;
+    display:grid;place-items:center;text-align:center;
+    color:#7c7365;font-size:13px;letter-spacing:.5px;text-transform:uppercase;
+    padding:16px;
+  }
+  .ph-video{aspect-ratio:16/9;font-size:15px}
+  .ph-wide{aspect-ratio:21/9}
+  .ph-sq{aspect-ratio:4/3}
+  .ph-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:600px){.ph-row{grid-template-columns:1fr}}
+  .ph-cap{font-size:13px;color:var(--muted);margin:8px 0 0;text-align:center}
+
+  /* ---------- pricing factors ---------- */
+  .factors{background:var(--bark);color:#e9e2d5}
+  .factors h2{color:#fff}
+  .factors .lead{color:#c3baa9}
+  .factor{
+    background:var(--bark-2);border-radius:8px;padding:22px;
+    border-top:3px solid var(--chip);
+  }
+  .factor h3{margin:0 0 8px;font-size:16px;color:#fff}
+  .factor p{margin:0;font-size:15px;color:#bfb6a5}
+
+  /* ---------- process ---------- */
+  .steps{counter-reset:step;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  .step{position:relative;padding-top:8px}
+  .step::before{
+    counter-increment:step;content:counter(step);
+    display:grid;place-items:center;
+    width:36px;height:36px;border-radius:50%;
+    background:var(--moss);color:#fff;font-weight:700;margin-bottom:12px;
+  }
+  .step h3{margin:0 0 6px;font-size:16px;color:var(--bark)}
+  .step p{margin:0;font-size:15px;color:var(--muted)}
+
+  /* ---------- cta ---------- */
+  .cta{background:var(--sand);border-top:1px solid var(--line);text-align:center}
+  .cta h2{margin:0 0 10px;font-size:clamp(24px,3.4vw,32px);color:var(--bark)}
+  .cta p{margin:0 auto 8px;max-width:560px;color:var(--muted);font-size:17px}
+  .cta .btn-row{justify-content:center}
+
+  /* ---------- service area ---------- */
+  .area{border-top:1px solid var(--line);background:#fff}
+  .area h2{margin:0 0 10px;font-size:clamp(22px,3vw,28px);color:var(--bark)}
+  .towns{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+    gap:6px 18px;list-style:none;padding:0;margin:22px 0 0;
+  }
+  .towns li{
+    font-size:15px;color:var(--muted);
+    padding:5px 0 5px 18px;position:relative;border-bottom:1px dotted var(--line);
+  }
+  .towns li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--chip)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--bark);color:#a99f8e;padding:34px 0;font-size:14px}
+  footer .cols{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer a{color:#ded6c8;text-decoration:none}
+  footer a:hover{color:#fff}
+  footer ul{list-style:none;padding:0;margin:0}
+  footer li{margin-bottom:6px}
+  .fine{margin-top:26px;border-top:1px solid #4a4238;padding-top:16px}
+  .footer-addr{display:inline-block;margin-top:10px;color:#ded6c8}
+  .footer-addr:hover{color:#fff}
+  .footer-map{margin-top:30px;padding-top:26px;border-top:1px solid #4a4238}
+  .footer-map iframe{width:100%;height:260px;border:0;border-radius:8px;display:block}
+  .footer-map-link{display:inline-block;margin-top:12px;color:var(--chip);font-weight:700;font-size:14px;text-decoration:none}
+  .footer-map-link:hover{text-decoration:underline}
+  /* ---------- booking ---------- */
+  .band{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cal-embed{
+    background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:10px;margin-top:28px;overflow:hidden;
+  }
+  .cal-embed iframe{display:block;width:100%;border-radius:8px}
+  @media(max-width:600px){.cal-embed{padding:4px}}
+  .bookcard{
+    background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:26px;text-align:center;margin-top:20px;
+  }
+  .bookcard h3{margin:0 0 8px;font-size:clamp(21px,2.8vw,26px);color:var(--bark)}
+  .bookcard p{margin:0 auto 22px;max-width:480px;color:var(--muted);font-size:16px}
+  .btn-lg{font-size:18px;padding:16px 34px}
+  .or{
+    display:flex;align-items:center;gap:14px;margin:30px auto 0;max-width:420px;
+    color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:1.4px;font-weight:700;
+  }
+  .or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+  .callline{font-size:24px;font-weight:700;color:var(--moss-dark);text-decoration:none;display:inline-block;margin-top:14px}
+  .callline:hover{text-decoration:underline}
+  table.tbl{width:100%;border-collapse:collapse;margin-top:20px;font-size:15px}
+  table.tbl th,table.tbl td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.tbl th{background:var(--sand);color:var(--bark);font-size:14px;text-transform:uppercase;letter-spacing:.6px}
+  table.tbl td{color:var(--muted)}
+  table.tbl td:first-child{color:var(--text);width:32%}
+  .todo{background:#fff8e1;border:1px dashed #d0a520;color:#7a5c00;
+    padding:3px 8px;border-radius:4px;font-size:13px;font-weight:600;display:inline-block}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html">
+      <span class="mark">&#9679;</span>
+      <span>Spokane Stump Grinder<small>Spokane, WA</small></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a class="active" href="booking.html">Booking</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service-request.html">Request Service</a></li>
+      </ul>
+    </nav>
+    <a class="callnow" href="tel:+15094349554">&#9742; 509-434-9554</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Booking</p>
+    <h1>Getting on the schedule</h1>
+    <p>Stump work gets scheduled after you've approved a written estimate. That way the crew shows up with the right machine, the right amount of time blocked out, and a price you already agreed to.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://calendar.app.google/aTdtZTwUYeFVpjR17" target="_blank" rel="noopener">Book an Appointment</a>
+      <a class="btn btn-outline" href="service-request.html">Request an Estimate First</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SEQUENCE ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The Order of Things</p>
+    <h2 style="margin:0 0 26px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Estimate first, then a date</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Send the request</h3>
+        <p>Photos, rough diameter, and access notes through the service request form. Takes a couple of minutes.</p>
+      </div>
+      <div class="step">
+        <h3>Review the estimate</h3>
+        <p>You get scope and price in writing. Ask questions, change the scope, or approve it as-is.</p>
+      </div>
+      <div class="step">
+        <h3>Claim a date</h3>
+        <p>Once it's approved, pick a slot from the calendar that fits the job and the equipment it needs.</p>
+      </div>
+      <div class="step">
+        <h3>We confirm before we roll</h3>
+        <p>You'll hear from us ahead of the appointment so nobody's guessing about the day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOK ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">Check Availability</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Pick a time that works</h2>
+    <p class="lead">Our live calendar shows what's open. Grab the slot you want and it's yours.</p>
+
+    <div class="cal-embed">
+      <!-- Google Calendar Appointment Scheduling begin -->
+<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Dl20bg0qX3ENa4D2aKHVtvONpk9ahrO8jLHmNbmJBLBapFZIsRN2nm2jLoZY693mm19jywzWl?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+<!-- end Google Calendar Appointment Scheduling -->
+    </div>
+
+    <div class="bookcard">
+      <p style="margin:0 0 4px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;font-weight:700">Calendar not loading?</p>
+      <p style="margin:0 0 18px">Open the booking page directly, or just call us.</p>
+      <a class="btn btn-primary" href="https://calendar.app.google/aTdtZTwUYeFVpjR17" target="_blank" rel="noopener">Open Booking Calendar</a>
+      <div class="or">or</div>
+      <p style="margin:14px 0 0;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;font-weight:700">Call or Text</p>
+      <a class="callline" href="tel:+15094349554">509-434-9554</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PREP ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Before We Arrive</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">How to prep for the appointment</h2>
+    <p class="lead">A few minutes of prep on your end keeps the job moving and keeps the price where we quoted it.</p>
+    <table class="tbl">
+      <thead>
+        <tr><th>What we need</th><th>Why it matters</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Clear path to the stump</strong></td>
+          <td>Move vehicles, trailers, toys, hoses, and patio furniture off the route from the street to the work area.</td>
+        </tr>
+        <tr>
+          <td><strong>Gate unlocked</strong></td>
+          <td>If the stump is in a fenced yard, we need in. Let us know if a gate panel has to come off.</td>
+        </tr>
+        <tr>
+          <td><strong>Pets inside</strong></td>
+          <td>Grinders are loud and throw debris. Keep animals in the house for the duration.</td>
+        </tr>
+        <tr>
+          <td><strong>Sprinkler heads flagged</strong></td>
+          <td>If you know where your irrigation runs near the stump, mark it. We probe, but you know your yard better.</td>
+        </tr>
+        <tr>
+          <td><strong>Utility locates</strong></td>
+          <td>We confirm public locates are in place. Private lines &mdash; gas to a fire pit, low-voltage lighting, invisible fence &mdash; only you know about, so tell us.</td>
+        </tr>
+        <tr>
+          <td><strong>Someone reachable</strong></td>
+          <td>You don't have to be home, but we need to reach you by phone if something on site doesn't match the estimate.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">Good to Know</p>
+    <h2 style="margin:0 0 22px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Scheduling questions we get a lot</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Do I need to be home?</h3>
+        <p>Not usually. As long as we have access and you're reachable by phone, we can grind and send you photos when it's done.</p>
+      </div>
+      <div class="card">
+        <h3>How long does a stump take?</h3>
+        <p>Depends on diameter, root spread, and access. We'll give you a realistic time window with your estimate rather than a generic answer here.</p>
+      </div>
+      <div class="card">
+        <h3>What about weather?</h3>
+        <p>We work through most Inland Northwest weather. Saturated ground or frozen conditions can push a date &mdash; we'll call you, not just no-show.</p>
+      </div>
+      <div class="card">
+        <h3>Can I change the scope on the day?</h3>
+        <p>Often yes, but it may affect price and timing. Better to call ahead so we can bring what the change needs.</p>
+      </div>
+      <div class="card">
+        <h3>Need to reschedule?</h3>
+        <p>Use the link in your Google Calendar confirmation, or call or text us. <span class="todo">CONFIRM NOTICE WINDOW</span> &mdash; how much warning you want.</p>
+      </div>
+      <div class="card">
+        <h3>What payment do you take?</h3>
+        <p><span class="todo">ADD PAYMENT METHODS</span> List what you accept and when payment is due.</p>
+      </div>
+      <div class="card">
+        <h3>Do you do storm or emergency work?</h3>
+        <p><span class="todo">CONFIRM POLICY</span> Say whether you take rush jobs and how someone should reach you for one.</p>
+      </div>
+      <div class="card">
+        <h3>How far out are you booking?</h3>
+        <p>The calendar shows what's actually open, so it's always current. Tight timeline? Call and we'll tell you straight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Ready to lock in a date?</h2>
+    <p>Grab a slot from the calendar, or start with an estimate if you haven't got one yet.</p>
+    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
+      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://calendar.app.google/aTdtZTwUYeFVpjR17" target="_blank" rel="noopener">Book an Appointment</a>
+      <a class="btn btn-outline" href="service-request.html">Request an Estimate</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Spokane Stump Grinder</strong>
+        Stump grinding and stump removal<br>
+        Spokane, WA &mdash; serving the Spokane<br>&amp; Coeur d'Alene region<br>
+        <a href="tel:+15094349554" style="display:inline-block;margin-top:10px;font-size:17px;font-weight:700;color:var(--chip)">509-434-9554</a><br>
+        <a class="footer-addr" href="https://www.google.com/maps/dir/?api=1&amp;destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">1908 E Mallon Ave<br>Spokane, WA 99202</a>
+      </div>
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Services</strong>
+        <ul>
+          <li><a href="services.html">Stump Grinding</a></li>
+          <li><a href="services.html">Stump Removal &amp; Cleanup</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Company</strong>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="service-request.html">Request Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-map">
+      <iframe src="https://www.google.com/maps?q=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202&amp;output=embed" width="100%" height="260" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Spokane Stump Grinder, 1908 E Mallon Ave, Spokane, WA 99202"></iframe>
+      <a class="footer-map-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">Get Directions on Google Maps &rarr;</a>
+    </div>
+
+    <div class="fine">&copy; 2026 Spokane Stump Grinder. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

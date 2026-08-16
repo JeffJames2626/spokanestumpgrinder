@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services | Spokane Stump Grinder</title>
+<meta name="description" content="Stump grinding and full stump removal and cleanup in Spokane, WA. Clean work, hauled debris, and a yard you can actually use again.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+  :root{
+    --bark:#2f2a24;
+    --bark-2:#453d33;
+    --moss:#3d6b3a;
+    --moss-dark:#2c5029;
+    --chip:#c9a227;
+    --sand:#f6f3ed;
+    --line:#e0d9cc;
+    --text:#2b2823;
+    --muted:#5f594f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:#fff;
+    line-height:1.65;
+  }
+  a{color:var(--moss-dark)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---------- header ---------- */
+  header{
+    background:var(--bark);
+    color:#f4efe6;
+    position:sticky;top:0;z-index:50;
+    border-bottom:3px solid var(--moss);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#f4efe6;font-weight:700;letter-spacing:.2px}
+  .brand .mark{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--chip);color:var(--bark);
+    display:grid;place-items:center;font-size:17px;flex:none;
+  }
+  .brand span small{display:block;font-weight:400;font-size:11px;color:#bdb3a2;letter-spacing:1.4px;text-transform:uppercase}
+  nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+  nav a{color:#ded6c8;text-decoration:none;font-size:15px}
+  nav a:hover{color:#fff}
+  nav a.active{color:#fff;border-bottom:2px solid var(--chip);padding-bottom:2px}
+  .callnow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--chip);color:var(--bark);
+    padding:9px 16px;border-radius:6px;
+    text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap;
+  }
+  .callnow:hover{background:#dcb42f}
+  @media(max-width:900px){.bar{justify-content:center;text-align:center}}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--sand);border-bottom:1px solid var(--line);padding:56px 0 48px}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:2px;font-size:12px;
+    color:var(--moss-dark);font-weight:700;margin:0 0 10px
+  }
+  .hero h1{margin:0 0 14px;font-size:clamp(30px,4.6vw,44px);line-height:1.15;color:var(--bark)}
+  .hero p{margin:0;max-width:620px;font-size:18px;color:var(--muted)}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-block;padding:13px 24px;border-radius:6px;
+    text-decoration:none;font-weight:600;font-size:16px;border:2px solid transparent;
+  }
+  .btn-primary{background:var(--moss);color:#fff}
+  .btn-primary:hover{background:var(--moss-dark)}
+  .btn-outline{border-color:var(--moss);color:var(--moss-dark);background:#fff}
+  .btn-outline:hover{background:var(--moss);color:#fff}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+
+  /* ---------- sections ---------- */
+  section{padding:56px 0}
+  .service{border-top:1px solid var(--line)}
+  .service h2{font-size:clamp(24px,3.2vw,32px);margin:0 0 6px;color:var(--bark)}
+  .tagline{margin:0 0 22px;color:var(--moss-dark);font-weight:600}
+  .lead{font-size:17px;max-width:720px;color:var(--muted);margin:0 0 28px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{
+    background:var(--sand);border:1px solid var(--line);
+    border-radius:8px;padding:22px;
+  }
+  .card h3{margin:0 0 8px;font-size:17px;color:var(--bark)}
+  .card p{margin:0;font-size:15px;color:var(--muted)}
+
+  ul.checks{list-style:none;padding:0;margin:0}
+  ul.checks li{position:relative;padding-left:28px;margin-bottom:10px;color:var(--muted)}
+  ul.checks li::before{
+    content:"";position:absolute;left:4px;top:9px;
+    width:8px;height:8px;border-radius:2px;background:var(--moss);
+  }
+  ul.checks li strong{color:var(--text)}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+  @media(max-width:760px){.split{grid-template-columns:1fr;gap:28px}}
+
+  .note{
+    background:#fffdf4;border-left:4px solid var(--chip);
+    padding:16px 20px;border-radius:0 6px 6px 0;color:var(--muted);font-size:15px;
+  }
+
+  /* ---------- media placeholders (replace with real assets) ---------- */
+  .ph{
+    background:#e4e0d8;border:1px dashed #b4ab99;border-radius:8px;
+    display:grid;place-items:center;text-align:center;
+    color:#7c7365;font-size:13px;letter-spacing:.5px;text-transform:uppercase;
+    padding:16px;
+  }
+  .ph-video{aspect-ratio:16/9;font-size:15px}
+  .ph-wide{aspect-ratio:21/9}
+  .ph-sq{aspect-ratio:4/3}
+  .ph-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:600px){.ph-row{grid-template-columns:1fr}}
+  .ph-cap{font-size:13px;color:var(--muted);margin:8px 0 0;text-align:center}
+
+  /* ---------- pricing factors ---------- */
+  .factors{background:var(--bark);color:#e9e2d5}
+  .factors h2{color:#fff}
+  .factors .lead{color:#c3baa9}
+  .factor{
+    background:var(--bark-2);border-radius:8px;padding:22px;
+    border-top:3px solid var(--chip);
+  }
+  .factor h3{margin:0 0 8px;font-size:16px;color:#fff}
+  .factor p{margin:0;font-size:15px;color:#bfb6a5}
+
+  /* ---------- process ---------- */
+  .steps{counter-reset:step;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  .step{position:relative;padding-top:8px}
+  .step::before{
+    counter-increment:step;content:counter(step);
+    display:grid;place-items:center;
+    width:36px;height:36px;border-radius:50%;
+    background:var(--moss);color:#fff;font-weight:700;margin-bottom:12px;
+  }
+  .step h3{margin:0 0 6px;font-size:16px;color:var(--bark)}
+  .step p{margin:0;font-size:15px;color:var(--muted)}
+
+  /* ---------- cta ---------- */
+  .cta{background:var(--sand);border-top:1px solid var(--line);text-align:center}
+  .cta h2{margin:0 0 10px;font-size:clamp(24px,3.4vw,32px);color:var(--bark)}
+  .cta p{margin:0 auto 8px;max-width:560px;color:var(--muted);font-size:17px}
+  .cta .btn-row{justify-content:center}
+
+  /* ---------- service area ---------- */
+  .area{border-top:1px solid var(--line);background:#fff}
+  .area h2{margin:0 0 10px;font-size:clamp(22px,3vw,28px);color:var(--bark)}
+  .towns{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+    gap:6px 18px;list-style:none;padding:0;margin:22px 0 0;
+  }
+  .towns li{
+    font-size:15px;color:var(--muted);
+    padding:5px 0 5px 18px;position:relative;border-bottom:1px dotted var(--line);
+  }
+  .towns li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--chip)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--bark);color:#a99f8e;padding:34px 0;font-size:14px}
+  footer .cols{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer a{color:#ded6c8;text-decoration:none}
+  footer a:hover{color:#fff}
+  footer ul{list-style:none;padding:0;margin:0}
+  footer li{margin-bottom:6px}
+  .fine{margin-top:26px;border-top:1px solid #4a4238;padding-top:16px}
+  .footer-addr{display:inline-block;margin-top:10px;color:#ded6c8}
+  .footer-addr:hover{color:#fff}
+  .footer-map{margin-top:30px;padding-top:26px;border-top:1px solid #4a4238}
+  .footer-map iframe{width:100%;height:260px;border:0;border-radius:8px;display:block}
+  .footer-map-link{display:inline-block;margin-top:12px;color:var(--chip);font-weight:700;font-size:14px;text-decoration:none}
+  .footer-map-link:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html">
+      <span class="mark">&#9679;</span>
+      <span>Spokane Stump Grinder<small>Spokane, WA</small></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="services.html">Services</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service-request.html">Request Service</a></li>
+      </ul>
+    </nav>
+    <a class="callnow" href="tel:+15094349554">&#9742; 509-434-9554</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Our Services</p>
+    <h1>Stumps gone. Yard back.</h1>
+    <p>We do two things and we do them well: grind stumps down below grade, and haul the mess out so you're left with usable ground instead of a crater full of chips. Serving Spokane and the surrounding area.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
+      <a class="btn btn-outline" href="booking.html">Check Availability</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WISTIA VIDEO ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Watch</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(24px,3.2vw,32px);color:var(--bark)">See a stump come out</h2>
+    <p class="lead" style="margin-bottom:24px">A couple of minutes of the machine working beats any description we can write.</p>
+
+    <!--
+      ============================================================
+      WISTIA EMBED SLOT
+      ------------------------------------------------------------
+      Replace the <div class="ph ph-video"> block below with your
+      Wistia embed code. In Wistia: Video > Embed & Share >
+      Inline Embed > Fallback (iframe) or Standard. Paste it here.
+
+      Standard Wistia inline embed looks like this:
+
+      <script src="https://fast.wistia.com/embed/medias/VIDEO_ID.jsonp" async></script>
+      <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+      <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+          <div class="wistia_embed wistia_async_VIDEO_ID videoFoam=true" style="height:100%;position:relative;width:100%;">&nbsp;</div>
+        </div>
+      </div>
+
+      Swap VIDEO_ID (appears 3 times) for your actual Wistia media ID.
+      ============================================================
+    -->
+    <div class="ph ph-video">Wistia video embed goes here</div>
+
+  </div>
+</section>
+
+<!-- ============ SERVICE 1 ============ -->
+<section class="service">
+  <div class="wrap">
+    <h2>Stump Grinding</h2>
+    <p class="tagline">Grind it down, level it off, walk away with a flat yard.</p>
+    <p class="lead">Our grinder chews the stump and the surface roots down below ground level so you can mow over the spot, plant grass, or just stop looking at it. Most single stumps are a same-visit job.</p>
+
+    <div class="split">
+      <div>
+        <h3 style="margin-top:0;color:var(--bark)">What's included</h3>
+        <ul class="checks">
+          <li><strong>Utility-safe setup</strong> — we confirm locates are in place and probe the work area before the wheel turns.</li>
+          <li><strong>Grinding below grade</strong> — standard depth takes the stump under the surrounding soil line so turf and roots can be planted over it.</li>
+          <li><strong>Surface root flare</strong> — the visible roots running out from the base get ground down too, not just the trunk.</li>
+          <li><strong>Chip backfill</strong> — grindings are raked back into the hole and tamped level unless you want them removed.</li>
+          <li><strong>Property protection</strong> — plywood tracking over soft turf, and shielding around siding, fences, and windows.</li>
+          <li><strong>Blow-down cleanup</strong> — walks, drives, and patios cleared before we pull out.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-top:0;color:var(--bark)">Good fit when</h3>
+        <div class="grid" style="grid-template-columns:1fr">
+          <div class="card">
+            <h3>You're replanting grass</h3>
+            <p>Grinding below grade leaves you room for topsoil and seed or sod over the spot.</p>
+          </div>
+          <div class="card">
+            <h3>The stump is a trip or mower hazard</h3>
+            <p>Common with stumps left mid-lawn by a previous owner or a storm removal.</p>
+          </div>
+          <div class="card">
+            <h3>You've got several stumps at once</h3>
+            <p>Multiple stumps on one visit share the mobilization, so they're cheaper per stump than one-offs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHOTO SLOT — grinding before/after -->
+    <div class="ph-row" style="margin-top:30px">
+      <div>
+        <div class="ph ph-sq">Photo &mdash; stump before grinding</div>
+        <p class="ph-cap">Before</p>
+      </div>
+      <div>
+        <div class="ph ph-sq">Photo &mdash; ground flat, chips leveled</div>
+        <p class="ph-cap">After</p>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:30px">
+      <strong>Worth knowing:</strong> grinding removes the stump and the root flare — it doesn't chase the entire root system out of the soil. If you're pouring concrete, setting a post, or planting a new tree in the exact same hole, tell us up front and we'll talk through going deeper or moving to full removal.
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE 2 ============ -->
+<section class="service">
+  <div class="wrap">
+    <h2>Stump Removal &amp; Cleanup</h2>
+    <p class="tagline">Chips hauled off, hole backfilled, ground ready for whatever's next.</p>
+    <p class="lead">Grinding one stump generates a surprising pile of chips — often several times the volume of the stump itself. Removal and cleanup is the option where we take that material with us and leave you clean, compacted soil instead.</p>
+
+    <div class="split">
+      <div>
+        <h3 style="margin-top:0;color:var(--bark)">What's included</h3>
+        <ul class="checks">
+          <li><strong>Everything in stump grinding</strong> — this builds on the grinding service, it doesn't replace it.</li>
+          <li><strong>Chip and debris haul-off</strong> — grindings loaded out and disposed of, not piled at the curb.</li>
+          <li><strong>Root and wood removal</strong> — larger surface roots and trunk chunks pulled rather than left buried.</li>
+          <li><strong>Topsoil backfill</strong> — the void filled with clean soil and tamped so it doesn't sink over the next season.</li>
+          <li><strong>Grade match</strong> — finished level with the surrounding yard, ready for seed, sod, or a new planting.</li>
+          <li><strong>Final walkthrough</strong> — we look at the finished spot with you before we leave.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-top:0;color:var(--bark)">Good fit when</h3>
+        <div class="grid" style="grid-template-columns:1fr">
+          <div class="card">
+            <h3>You're building on the spot</h3>
+            <p>Patios, sheds, fence posts, and footings need soil, not a bed of wood chips that will decompose and settle.</p>
+          </div>
+          <div class="card">
+            <h3>You're planting a replacement tree</h3>
+            <p>New roots do better in clean backfill than in a pocket of decaying grindings.</p>
+          </div>
+          <div class="card">
+            <h3>You want the yard finished, not just cleared</h3>
+            <p>No leftover chip pile for you to deal with on a weekend.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHOTO SLOT — removal before/after -->
+    <div class="ph-row" style="margin-top:30px">
+      <div>
+        <div class="ph ph-sq">Photo &mdash; chip pile / haul-off</div>
+        <p class="ph-cap">Chips loaded out</p>
+      </div>
+      <div>
+        <div class="ph ph-sq">Photo &mdash; topsoil backfill, graded level</div>
+        <p class="ph-cap">Backfilled and graded</p>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:30px">
+      <strong>Add-on option:</strong> if you want the grindings for mulch instead of hauled away, say so when you request the estimate — we'll leave them piled where you want them and adjust the scope accordingly.
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING FACTORS ============ -->
+<section class="factors">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--chip)">What Drives the Price</p>
+    <h2>Every stump prices differently — here's why</h2>
+    <p class="lead">We don't quote stump work off a flat rate, because two stumps the same width can be an hour apart in real work. These are the things we look at when we put a number on your job.</p>
+    <div class="grid">
+      <div class="factor">
+        <h3>Diameter at grade</h3>
+        <p>Measured across the widest point of the stump at ground level, not the tree's old trunk size. This is the single biggest factor.</p>
+      </div>
+      <div class="factor">
+        <h3>Root flare spread</h3>
+        <p>Some species throw wide surface roots that add several feet of grinding beyond the stump itself.</p>
+      </div>
+      <div class="factor">
+        <h3>Grinding depth</h3>
+        <p>Standard below-grade depth costs less than the deeper cut needed for concrete, footings, or a replacement tree.</p>
+      </div>
+      <div class="factor">
+        <h3>Access</h3>
+        <p>Gate width, slope, stairs, and how far the machine has to travel from the truck. Tight backyard access takes a smaller machine and more time.</p>
+      </div>
+      <div class="factor">
+        <h3>Obstacles nearby</h3>
+        <p>Fences, sprinkler heads, utilities, retaining walls, and buried lines all mean slower, more careful work.</p>
+      </div>
+      <div class="factor">
+        <h3>Soil and debris in the stump</h3>
+        <p>Stumps with rock, embedded gravel, or old fill packed into the roots are hard on teeth and slow to cut.</p>
+      </div>
+      <div class="factor">
+        <h3>Stump count</h3>
+        <p>Several stumps on one visit spread the setup and travel across the job, lowering the per-stump cost.</p>
+      </div>
+      <div class="factor">
+        <h3>Cleanup level</h3>
+        <p>Chips raked back in is the base. Haul-off, topsoil backfill, and grade matching add material and disposal.</p>
+      </div>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Get Your Stump Priced</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">How It Works</p>
+    <h2 style="margin:0 0 26px;color:var(--bark)">Four steps, no surprises</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Send us the details</h3>
+        <p>Fill out the service request with a photo, a rough diameter, and a note about access. Photos save everyone a trip.</p>
+      </div>
+      <div class="step">
+        <h3>Get a written estimate</h3>
+        <p>We put the scope and price in writing before anything is scheduled, so you know exactly what's included.</p>
+      </div>
+      <div class="step">
+        <h3>Pick your date</h3>
+        <p>Approve the estimate and book a slot that works for you. We confirm before we roll out.</p>
+      </div>
+      <div class="step">
+        <h3>We grind and clean up</h3>
+        <p>Work gets done, the site gets cleaned, and we walk the finished spot with you if you're home.</p>
+      </div>
+    </div>
+
+    <!-- PHOTO SLOT — wide shot, crew or equipment on site -->
+    <div class="ph ph-wide" style="margin-top:40px">Photo &mdash; wide shot, grinder or crew on a job</div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="wrap">
+    <h2>Ready to get that stump out of your yard?</h2>
+    <p>Send us the details and we'll get you a written estimate. No obligation, no pressure.</p>
+    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
+      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request Service</a>
+      <a class="btn btn-outline" href="booking.html">Book a Time</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREA ============ -->
+<section class="area">
+  <div class="wrap">
+    <p class="eyebrow">Where We Work</p>
+    <h2>Serving the Spokane &amp; Coeur d'Alene region</h2>
+    <p class="lead" style="margin-bottom:0">Based in Spokane and covering communities across Eastern Washington and North Idaho. Don't see your town? Give us a call — if you're near the edge of the map we'll let you know straight.</p>
+    <ul class="towns">
+      <li>Airway Heights, WA</li>
+      <li>Chattaroy, WA</li>
+      <li>Cheney, WA</li>
+      <li>Chewelah, WA</li>
+      <li>Colbert, WA</li>
+      <li>Colville, WA</li>
+      <li>Davenport, WA</li>
+      <li>Deer Park, WA</li>
+      <li>Elk, WA</li>
+      <li>Freeman, WA</li>
+      <li>Green Bluff, WA</li>
+      <li>Hangman Valley, WA</li>
+      <li>Hillyard, WA</li>
+      <li>Liberty Lake, WA</li>
+      <li>Mead, WA</li>
+      <li>Medical Lake, WA</li>
+      <li>Newport, WA</li>
+      <li>Nine Mile Falls, WA</li>
+      <li>Otis Orchards, WA</li>
+      <li>Spokane Valley, WA</li>
+      <li>Veradale, WA</li>
+      <li>Coeur d'Alene, ID</li>
+      <li>Hayden, ID</li>
+      <li>Hayden Lake, ID</li>
+      <li>Post Falls, ID</li>
+      <li>Priest Lake, ID</li>
+      <li>Priest River, ID</li>
+      <li>Sandpoint, ID</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Spokane Stump Grinder</strong>
+        Stump grinding and stump removal<br>
+        Spokane, WA &mdash; serving the Spokane<br>&amp; Coeur d'Alene region<br>
+        <a href="tel:+15094349554" style="display:inline-block;margin-top:10px;font-size:17px;font-weight:700;color:var(--chip)">509-434-9554</a><br>
+        <a class="footer-addr" href="https://www.google.com/maps/dir/?api=1&amp;destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">1908 E Mallon Ave<br>Spokane, WA 99202</a>
+      </div>
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Services</strong>
+        <ul>
+          <li><a href="services.html">Stump Grinding</a></li>
+          <li><a href="services.html">Stump Removal &amp; Cleanup</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Company</strong>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="service-request.html">Request Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-map">
+      <iframe src="https://www.google.com/maps?q=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202&amp;output=embed" width="100%" height="260" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Spokane Stump Grinder, 1908 E Mallon Ave, Spokane, WA 99202"></iframe>
+      <a class="footer-map-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">Get Directions on Google Maps &rarr;</a>
+    </div>
+
+    <div class="fine">&copy; 2026 Spokane Stump Grinder. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

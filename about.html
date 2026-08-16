@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Us | Spokane Stump Grinder</title>
+<meta name="description" content="Spokane natives serving the Spokane and Coeur d'Alene region since 2021. Straightforward stump grinding and removal, written estimates, and no hidden fees.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+:root{
+    --bark:#2f2a24;
+    --bark-2:#453d33;
+    --moss:#3d6b3a;
+    --moss-dark:#2c5029;
+    --chip:#c9a227;
+    --sand:#f6f3ed;
+    --line:#e0d9cc;
+    --text:#2b2823;
+    --muted:#5f594f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:#fff;
+    line-height:1.65;
+  }
+  a{color:var(--moss-dark)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---------- header ---------- */
+  header{
+    background:var(--bark);
+    color:#f4efe6;
+    position:sticky;top:0;z-index:50;
+    border-bottom:3px solid var(--moss);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#f4efe6;font-weight:700;letter-spacing:.2px}
+  .brand .mark{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--chip);color:var(--bark);
+    display:grid;place-items:center;font-size:17px;flex:none;
+  }
+  .brand span small{display:block;font-weight:400;font-size:11px;color:#bdb3a2;letter-spacing:1.4px;text-transform:uppercase}
+  nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+  nav a{color:#ded6c8;text-decoration:none;font-size:15px}
+  nav a:hover{color:#fff}
+  nav a.active{color:#fff;border-bottom:2px solid var(--chip);padding-bottom:2px}
+  .callnow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--chip);color:var(--bark);
+    padding:9px 16px;border-radius:6px;
+    text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap;
+  }
+  .callnow:hover{background:#dcb42f}
+  @media(max-width:900px){.bar{justify-content:center;text-align:center}}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--sand);border-bottom:1px solid var(--line);padding:56px 0 48px}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:2px;font-size:12px;
+    color:var(--moss-dark);font-weight:700;margin:0 0 10px
+  }
+  .hero h1{margin:0 0 14px;font-size:clamp(30px,4.6vw,44px);line-height:1.15;color:var(--bark)}
+  .hero p{margin:0;max-width:620px;font-size:18px;color:var(--muted)}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-block;padding:13px 24px;border-radius:6px;
+    text-decoration:none;font-weight:600;font-size:16px;border:2px solid transparent;
+  }
+  .btn-primary{background:var(--moss);color:#fff}
+  .btn-primary:hover{background:var(--moss-dark)}
+  .btn-outline{border-color:var(--moss);color:var(--moss-dark);background:#fff}
+  .btn-outline:hover{background:var(--moss);color:#fff}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+
+  /* ---------- sections ---------- */
+  section{padding:56px 0}
+  .service{border-top:1px solid var(--line)}
+  .service h2{font-size:clamp(24px,3.2vw,32px);margin:0 0 6px;color:var(--bark)}
+  .tagline{margin:0 0 22px;color:var(--moss-dark);font-weight:600}
+  .lead{font-size:17px;max-width:720px;color:var(--muted);margin:0 0 28px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{
+    background:var(--sand);border:1px solid var(--line);
+    border-radius:8px;padding:22px;
+  }
+  .card h3{margin:0 0 8px;font-size:17px;color:var(--bark)}
+  .card p{margin:0;font-size:15px;color:var(--muted)}
+
+  ul.checks{list-style:none;padding:0;margin:0}
+  ul.checks li{position:relative;padding-left:28px;margin-bottom:10px;color:var(--muted)}
+  ul.checks li::before{
+    content:"";position:absolute;left:4px;top:9px;
+    width:8px;height:8px;border-radius:2px;background:var(--moss);
+  }
+  ul.checks li strong{color:var(--text)}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+  @media(max-width:760px){.split{grid-template-columns:1fr;gap:28px}}
+
+  .note{
+    background:#fffdf4;border-left:4px solid var(--chip);
+    padding:16px 20px;border-radius:0 6px 6px 0;color:var(--muted);font-size:15px;
+  }
+
+  /* ---------- media placeholders (replace with real assets) ---------- */
+  .ph{
+    background:#e4e0d8;border:1px dashed #b4ab99;border-radius:8px;
+    display:grid;place-items:center;text-align:center;
+    color:#7c7365;font-size:13px;letter-spacing:.5px;text-transform:uppercase;
+    padding:16px;
+  }
+  .ph-video{aspect-ratio:16/9;font-size:15px}
+  .ph-wide{aspect-ratio:21/9}
+  .ph-sq{aspect-ratio:4/3}
+  .ph-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:600px){.ph-row{grid-template-columns:1fr}}
+  .ph-cap{font-size:13px;color:var(--muted);margin:8px 0 0;text-align:center}
+
+  /* ---------- pricing factors ---------- */
+  .factors{background:var(--bark);color:#e9e2d5}
+  .factors h2{color:#fff}
+  .factors .lead{color:#c3baa9}
+  .factor{
+    background:var(--bark-2);border-radius:8px;padding:22px;
+    border-top:3px solid var(--chip);
+  }
+  .factor h3{margin:0 0 8px;font-size:16px;color:#fff}
+  .factor p{margin:0;font-size:15px;color:#bfb6a5}
+
+  /* ---------- process ---------- */
+  .steps{counter-reset:step;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  .step{position:relative;padding-top:8px}
+  .step::before{
+    counter-increment:step;content:counter(step);
+    display:grid;place-items:center;
+    width:36px;height:36px;border-radius:50%;
+    background:var(--moss);color:#fff;font-weight:700;margin-bottom:12px;
+  }
+  .step h3{margin:0 0 6px;font-size:16px;color:var(--bark)}
+  .step p{margin:0;font-size:15px;color:var(--muted)}
+
+  /* ---------- cta ---------- */
+  .cta{background:var(--sand);border-top:1px solid var(--line);text-align:center}
+  .cta h2{margin:0 0 10px;font-size:clamp(24px,3.4vw,32px);color:var(--bark)}
+  .cta p{margin:0 auto 8px;max-width:560px;color:var(--muted);font-size:17px}
+  .cta .btn-row{justify-content:center}
+
+  /* ---------- service area ---------- */
+  .area{border-top:1px solid var(--line);background:#fff}
+  .area h2{margin:0 0 10px;font-size:clamp(22px,3vw,28px);color:var(--bark)}
+  .towns{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+    gap:6px 18px;list-style:none;padding:0;margin:22px 0 0;
+  }
+  .towns li{
+    font-size:15px;color:var(--muted);
+    padding:5px 0 5px 18px;position:relative;border-bottom:1px dotted var(--line);
+  }
+  .towns li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--chip)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--bark);color:#a99f8e;padding:34px 0;font-size:14px}
+  footer .cols{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer a{color:#ded6c8;text-decoration:none}
+  footer a:hover{color:#fff}
+  footer ul{list-style:none;padding:0;margin:0}
+  footer li{margin-bottom:6px}
+  .fine{margin-top:26px;border-top:1px solid #4a4238;padding-top:16px}
+  .footer-addr{display:inline-block;margin-top:10px;color:#ded6c8}
+  .footer-addr:hover{color:#fff}
+  .footer-map{margin-top:30px;padding-top:26px;border-top:1px solid #4a4238}
+  .footer-map iframe{width:100%;height:260px;border:0;border-radius:8px;display:block}
+  .footer-map-link{display:inline-block;margin-top:12px;color:var(--chip);font-weight:700;font-size:14px;text-decoration:none}
+  .footer-map-link:hover{text-decoration:underline}
+  /* ---------- about ---------- */
+  .band{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .bio{display:grid;grid-template-columns:200px 1fr;gap:26px;align-items:start;margin-bottom:34px}
+  @media(max-width:640px){.bio{grid-template-columns:1fr}}
+  .bio h3{margin:0 0 3px;font-size:20px;color:var(--bark)}
+  .bio .role{margin:0 0 12px;color:var(--moss-dark);font-weight:600;font-size:15px}
+  .bio p{margin:0 0 12px;color:var(--muted)}
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:26px}
+  .pillar{border-left:3px solid var(--chip);padding-left:18px}
+  .pillar h3{margin:0 0 6px;font-size:17px;color:var(--bark)}
+  .pillar p{margin:0;color:var(--muted);font-size:15px}
+  .quote{
+    border-left:4px solid var(--moss);background:var(--sand);
+    padding:24px 28px;border-radius:0 8px 8px 0;margin:30px 0;
+  }
+  .quote p{margin:0;font-size:19px;line-height:1.55;color:var(--bark);font-style:italic}
+  .quote cite{display:block;margin-top:12px;font-style:normal;font-size:14px;color:var(--muted)}
+  table.tbl{width:100%;border-collapse:collapse;margin-top:20px;font-size:15px}
+  table.tbl td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted)}
+  table.tbl td:first-child{width:38%;color:var(--text)}
+  .todo{background:#fff8e1;border:1px dashed #d0a520;color:#7a5c00;
+    padding:3px 8px;border-radius:4px;font-size:13px;font-weight:600;display:inline-block}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html">
+      <span class="mark">&#9679;</span>
+      <span>Spokane Stump Grinder<small>Spokane, WA</small></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a class="active" href="about.html">About</a></li>
+        <li><a href="service-request.html">Request Service</a></li>
+      </ul>
+    </nav>
+    <a class="callnow" href="tel:+15094349554">&#9742; 509-434-9554</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">About Us</p>
+    <h1>Spokane locals. Straight answers.</h1>
+    <p>We're a husband-and-wife operation that's been taking care of properties around Spokane since 2021. Stump work is what this side of the business does, and it's all it does.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
+      <a class="btn btn-outline" href="services.html">See Our Services</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ STORY ============ -->
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Our Story</p>
+        <h2 style="margin:0 0 16px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Built by people who live here</h2>
+        <p style="color:var(--muted);font-size:17px">
+          Jeff and Tiffany are both Spokane natives. They started working on
+          properties around the area in 2021 with a simple idea: give neighbors
+          straightforward, reliable outdoor care and don't complicate it.
+        </p>
+        <p style="color:var(--muted);font-size:17px">
+          Stump grinding grew out of that work. A stump is the leftover nobody
+          wants to deal with &mdash; it's in the way of the fence you're building,
+          the grass you're trying to grow, or the mower you'd rather not wreck.
+          Getting one out cleanly takes the right machine for the access you've
+          got and somebody who cares what the yard looks like when the trailer
+          pulls away.
+        </p>
+        <p style="color:var(--muted);font-size:17px">
+          So we set this up as its own thing. Same people, same standards, one job.
+        </p>
+      </div>
+      <div>
+        <div class="ph ph-sq">Photo &mdash; Jeff and Tiffany, or the truck and grinder</div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <p>&ldquo;Work hard, tell the truth, do what you say you'll do, and take care of people.&rdquo;</p>
+      <cite>&mdash; how we've run things from day one</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PILLARS ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">What We Stand On</p>
+    <h2 style="margin:0 0 6px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Three things we don't bend on</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Transparency</h3>
+        <p>No hidden fees and no unknowns going into your project. You get the scope and the price in writing, and that's the number.</p>
+      </div>
+      <div class="pillar">
+        <h3>Innovation</h3>
+        <p>We keep looking for better ways to do the work &mdash; the right machine for the access, the right technique for the soil we're in.</p>
+      </div>
+      <div class="pillar">
+        <h3>Professionalism</h3>
+        <p>Uniformed crew, safety and environmental standards followed, and follow-up after the job to make sure the result held up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW WE WORK ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">How We Work</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Look first, then grind</h2>
+    <p class="lead">Our approach on every property has always been the same: find the cause, fix it for good. On stump work that means looking at the actual stump before quoting it.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>We diagnose before we quote</h3>
+        <p>Diameter at grade, root spread, what's buried nearby, and how the machine gets in. Guessing at those is how a job goes sideways halfway through.</p>
+      </div>
+      <div class="card">
+        <h3>The plan fits your property and budget</h3>
+        <p>Grind it and leave the chips, or haul everything and backfill with topsoil. We'll tell you which one your project actually needs.</p>
+      </div>
+      <div class="card">
+        <h3>We prevent the return problem</h3>
+        <p>Grinding deep enough for what's going in that spot, and backfilling so the ground doesn't sink on you next season.</p>
+      </div>
+      <div class="card">
+        <h3>We follow up</h3>
+        <p>A walkthrough at the end if you're home, and a check-in after to make sure the finished grade settled the way it should.</p>
+      </div>
+      <div class="card">
+        <h3>We know the seasons here</h3>
+        <p>Inland Northwest soil, frost timing, and what a basalt shelf under a stump feels like. Local isn't a marketing word for us.</p>
+      </div>
+      <div class="card">
+        <h3>We do what we said</h3>
+        <p>If something on site genuinely changes the job, we stop and call you. You won't get a surprise invoice at the end.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">Who You'll Deal With</p>
+    <h2 style="margin:0 0 28px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">The people on your property</h2>
+
+    <div class="bio">
+      <div class="ph ph-sq">Photo &mdash; Jeff</div>
+      <div>
+        <h3>Jeff James</h3>
+        <p class="role">Owner</p>
+        <p>
+          Spokane native. Runs the business and handles estimates, so the person
+          who quotes your stump is the person accountable for it.
+        </p>
+        <p><span class="todo">ADD</span> A line or two on equipment background and years on machines.</p>
+      </div>
+    </div>
+
+    <div class="bio">
+      <div class="ph ph-sq">Photo &mdash; Tiffany</div>
+      <div>
+        <h3>Tiffany</h3>
+        <p class="role">Co-Founder</p>
+        <p>
+          Spokane native and co-founder. Keeps scheduling, communication, and
+          follow-up running so you're not chasing anybody for an answer.
+        </p>
+        <p><span class="todo">ADD</span> Last name if you want it public, plus anything else worth listing.</p>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);font-size:15px;margin:0">
+      <span class="todo">ADD CREW</span> Duplicate a block above for any operator or tech who works on customer properties.
+    </p>
+  </div>
+</section>
+
+<!-- ============ CREDENTIALS ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The Paperwork</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Licensed, bonded, insured</h2>
+    <p class="lead">Homeowners ask about this before letting a machine into the backyard, and they should. These are left blank rather than guessed &mdash; fill in your real numbers.</p>
+    <table class="tbl">
+      <tbody>
+        <tr><td><strong>Business name</strong></td><td><span class="todo">LEGAL ENTITY NAME</span></td></tr>
+        <tr><td><strong>WA contractor license #</strong></td><td><span class="todo">ADD LICENSE NUMBER</span></td></tr>
+        <tr><td><strong>UBI number</strong></td><td><span class="todo">ADD UBI</span></td></tr>
+        <tr><td><strong>Idaho registration</strong></td><td><span class="todo">ADD IF WORKING IN ID</span> &mdash; required for work across the state line</td></tr>
+        <tr><td><strong>Liability insurance</strong></td><td><span class="todo">CARRIER AND COVERAGE AMOUNT</span></td></tr>
+        <tr><td><strong>Bonded</strong></td><td><span class="todo">BOND AMOUNT</span></td></tr>
+        <tr><td><strong>Serving the area since</strong></td><td>2021</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:14px;color:var(--muted);margin-top:16px">Certificate of insurance available on request.</p>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREA ============ -->
+<section class="area">
+  <div class="wrap">
+    <p class="eyebrow">Where We Work</p>
+    <h2>Serving the Spokane &amp; Coeur d'Alene region</h2>
+    <p class="lead" style="margin-bottom:0">Based in Spokane and covering communities across Eastern Washington and North Idaho. Don't see your town? Give us a call &mdash; if you're near the edge of the map we'll let you know straight.</p>
+    <ul class="towns">
+      <li>Airway Heights, WA</li>
+      <li>Chattaroy, WA</li>
+      <li>Cheney, WA</li>
+      <li>Chewelah, WA</li>
+      <li>Colbert, WA</li>
+      <li>Colville, WA</li>
+      <li>Davenport, WA</li>
+      <li>Deer Park, WA</li>
+      <li>Elk, WA</li>
+      <li>Freeman, WA</li>
+      <li>Green Bluff, WA</li>
+      <li>Hangman Valley, WA</li>
+      <li>Hillyard, WA</li>
+      <li>Liberty Lake, WA</li>
+      <li>Mead, WA</li>
+      <li>Medical Lake, WA</li>
+      <li>Newport, WA</li>
+      <li>Nine Mile Falls, WA</li>
+      <li>Otis Orchards, WA</li>
+      <li>Spokane Valley, WA</li>
+      <li>Veradale, WA</li>
+      <li>Coeur d'Alene, ID</li>
+      <li>Hayden, ID</li>
+      <li>Hayden Lake, ID</li>
+      <li>Post Falls, ID</li>
+      <li>Priest Lake, ID</li>
+      <li>Priest River, ID</li>
+      <li>Sandpoint, ID</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="wrap">
+    <h2>Let's take a look at your stump</h2>
+    <p>Send photos and details, get a written estimate back. Simple as that.</p>
+    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
+      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request Service</a>
+      <a class="btn btn-outline" href="case-studies.html">See Our Work</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Spokane Stump Grinder</strong>
+        Stump grinding and stump removal<br>
+        Spokane, WA &mdash; serving the Spokane<br>&amp; Coeur d'Alene region<br>
+        <a href="tel:+15094349554" style="display:inline-block;margin-top:10px;font-size:17px;font-weight:700;color:var(--chip)">509-434-9554</a><br>
+        <a class="footer-addr" href="https://www.google.com/maps/dir/?api=1&amp;destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">1908 E Mallon Ave<br>Spokane, WA 99202</a>
+      </div>
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Services</strong>
+        <ul>
+          <li><a href="services.html">Stump Grinding</a></li>
+          <li><a href="services.html">Stump Removal &amp; Cleanup</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Company</strong>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="service-request.html">Request Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-map">
+      <iframe src="https://www.google.com/maps?q=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202&amp;output=embed" width="100%" height="260" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Spokane Stump Grinder, 1908 E Mallon Ave, Spokane, WA 99202"></iframe>
+      <a class="footer-map-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">Get Directions on Google Maps &rarr;</a>
+    </div>
+
+    <div class="fine">&copy; 2026 Spokane Stump Grinder. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

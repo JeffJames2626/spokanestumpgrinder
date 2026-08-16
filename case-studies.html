@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Studies | Spokane Stump Grinder</title>
+<meta name="description" content="Stump grinding and removal jobs from around Spokane and Coeur d'Alene — the tricky ones, with video and before/after photos.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+:root{
+    --bark:#2f2a24;
+    --bark-2:#453d33;
+    --moss:#3d6b3a;
+    --moss-dark:#2c5029;
+    --chip:#c9a227;
+    --sand:#f6f3ed;
+    --line:#e0d9cc;
+    --text:#2b2823;
+    --muted:#5f594f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:#fff;
+    line-height:1.65;
+  }
+  a{color:var(--moss-dark)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---------- header ---------- */
+  header{
+    background:var(--bark);
+    color:#f4efe6;
+    position:sticky;top:0;z-index:50;
+    border-bottom:3px solid var(--moss);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#f4efe6;font-weight:700;letter-spacing:.2px}
+  .brand .mark{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--chip);color:var(--bark);
+    display:grid;place-items:center;font-size:17px;flex:none;
+  }
+  .brand span small{display:block;font-weight:400;font-size:11px;color:#bdb3a2;letter-spacing:1.4px;text-transform:uppercase}
+  nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+  nav a{color:#ded6c8;text-decoration:none;font-size:15px}
+  nav a:hover{color:#fff}
+  nav a.active{color:#fff;border-bottom:2px solid var(--chip);padding-bottom:2px}
+  .callnow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--chip);color:var(--bark);
+    padding:9px 16px;border-radius:6px;
+    text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap;
+  }
+  .callnow:hover{background:#dcb42f}
+  @media(max-width:900px){.bar{justify-content:center;text-align:center}}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--sand);border-bottom:1px solid var(--line);padding:56px 0 48px}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:2px;font-size:12px;
+    color:var(--moss-dark);font-weight:700;margin:0 0 10px
+  }
+  .hero h1{margin:0 0 14px;font-size:clamp(30px,4.6vw,44px);line-height:1.15;color:var(--bark)}
+  .hero p{margin:0;max-width:620px;font-size:18px;color:var(--muted)}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-block;padding:13px 24px;border-radius:6px;
+    text-decoration:none;font-weight:600;font-size:16px;border:2px solid transparent;
+  }
+  .btn-primary{background:var(--moss);color:#fff}
+  .btn-primary:hover{background:var(--moss-dark)}
+  .btn-outline{border-color:var(--moss);color:var(--moss-dark);background:#fff}
+  .btn-outline:hover{background:var(--moss);color:#fff}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+
+  /* ---------- sections ---------- */
+  section{padding:56px 0}
+  .service{border-top:1px solid var(--line)}
+  .service h2{font-size:clamp(24px,3.2vw,32px);margin:0 0 6px;color:var(--bark)}
+  .tagline{margin:0 0 22px;color:var(--moss-dark);font-weight:600}
+  .lead{font-size:17px;max-width:720px;color:var(--muted);margin:0 0 28px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{
+    background:var(--sand);border:1px solid var(--line);
+    border-radius:8px;padding:22px;
+  }
+  .card h3{margin:0 0 8px;font-size:17px;color:var(--bark)}
+  .card p{margin:0;font-size:15px;color:var(--muted)}
+
+  ul.checks{list-style:none;padding:0;margin:0}
+  ul.checks li{position:relative;padding-left:28px;margin-bottom:10px;color:var(--muted)}
+  ul.checks li::before{
+    content:"";position:absolute;left:4px;top:9px;
+    width:8px;height:8px;border-radius:2px;background:var(--moss);
+  }
+  ul.checks li strong{color:var(--text)}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+  @media(max-width:760px){.split{grid-template-columns:1fr;gap:28px}}
+
+  .note{
+    background:#fffdf4;border-left:4px solid var(--chip);
+    padding:16px 20px;border-radius:0 6px 6px 0;color:var(--muted);font-size:15px;
+  }
+
+  /* ---------- media placeholders (replace with real assets) ---------- */
+  .ph{
+    background:#e4e0d8;border:1px dashed #b4ab99;border-radius:8px;
+    display:grid;place-items:center;text-align:center;
+    color:#7c7365;font-size:13px;letter-spacing:.5px;text-transform:uppercase;
+    padding:16px;
+  }
+  .ph-video{aspect-ratio:16/9;font-size:15px}
+  .ph-wide{aspect-ratio:21/9}
+  .ph-sq{aspect-ratio:4/3}
+  .ph-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:600px){.ph-row{grid-template-columns:1fr}}
+  .ph-cap{font-size:13px;color:var(--muted);margin:8px 0 0;text-align:center}
+
+  /* ---------- pricing factors ---------- */
+  .factors{background:var(--bark);color:#e9e2d5}
+  .factors h2{color:#fff}
+  .factors .lead{color:#c3baa9}
+  .factor{
+    background:var(--bark-2);border-radius:8px;padding:22px;
+    border-top:3px solid var(--chip);
+  }
+  .factor h3{margin:0 0 8px;font-size:16px;color:#fff}
+  .factor p{margin:0;font-size:15px;color:#bfb6a5}
+
+  /* ---------- process ---------- */
+  .steps{counter-reset:step;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  .step{position:relative;padding-top:8px}
+  .step::before{
+    counter-increment:step;content:counter(step);
+    display:grid;place-items:center;
+    width:36px;height:36px;border-radius:50%;
+    background:var(--moss);color:#fff;font-weight:700;margin-bottom:12px;
+  }
+  .step h3{margin:0 0 6px;font-size:16px;color:var(--bark)}
+  .step p{margin:0;font-size:15px;color:var(--muted)}
+
+  /* ---------- cta ---------- */
+  .cta{background:var(--sand);border-top:1px solid var(--line);text-align:center}
+  .cta h2{margin:0 0 10px;font-size:clamp(24px,3.4vw,32px);color:var(--bark)}
+  .cta p{margin:0 auto 8px;max-width:560px;color:var(--muted);font-size:17px}
+  .cta .btn-row{justify-content:center}
+
+  /* ---------- service area ---------- */
+  .area{border-top:1px solid var(--line);background:#fff}
+  .area h2{margin:0 0 10px;font-size:clamp(22px,3vw,28px);color:var(--bark)}
+  .towns{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+    gap:6px 18px;list-style:none;padding:0;margin:22px 0 0;
+  }
+  .towns li{
+    font-size:15px;color:var(--muted);
+    padding:5px 0 5px 18px;position:relative;border-bottom:1px dotted var(--line);
+  }
+  .towns li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--chip)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--bark);color:#a99f8e;padding:34px 0;font-size:14px}
+  footer .cols{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer a{color:#ded6c8;text-decoration:none}
+  footer a:hover{color:#fff}
+  footer ul{list-style:none;padding:0;margin:0}
+  footer li{margin-bottom:6px}
+  .fine{margin-top:26px;border-top:1px solid #4a4238;padding-top:16px}
+  .footer-addr{display:inline-block;margin-top:10px;color:#ded6c8}
+  .footer-addr:hover{color:#fff}
+  .footer-map{margin-top:30px;padding-top:26px;border-top:1px solid #4a4238}
+  .footer-map iframe{width:100%;height:260px;border:0;border-radius:8px;display:block}
+  .footer-map-link{display:inline-block;margin-top:12px;color:var(--chip);font-weight:700;font-size:14px;text-decoration:none}
+  .footer-map-link:hover{text-decoration:underline}
+  /* ---------- case studies ---------- */
+  .band{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .case{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;margin-bottom:44px}
+  .case-head{background:var(--bark);color:#f4efe6;padding:22px 28px}
+  .case-num{
+    display:inline-block;background:var(--chip);color:var(--bark);
+    font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+    padding:3px 10px;border-radius:4px;margin-bottom:10px;
+  }
+  .case-head h2{margin:0 0 6px;font-size:clamp(20px,2.6vw,26px);color:#fff;line-height:1.25}
+  .case-head .meta{margin:0;font-size:14px;color:#bdb3a2}
+  .case-head .meta span{white-space:nowrap}
+  .case-inner{padding:28px}
+  @media(max-width:600px){.case-inner{padding:18px}.case-head{padding:18px}}
+  .case-sub{
+    font-size:12px;text-transform:uppercase;letter-spacing:1.4px;
+    color:var(--moss-dark);font-weight:700;margin:0 0 12px;
+  }
+  .case-story{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:24px;margin-top:28px}
+  .case-story h3{margin:0 0 7px;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--moss-dark)}
+  .case-story p{margin:0;color:var(--muted);font-size:15px}
+  .ba-label{
+    display:inline-block;background:var(--bark);color:#f4efe6;font-size:11px;
+    font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+    padding:3px 9px;border-radius:3px;margin-bottom:8px;
+  }
+  .divider{height:1px;background:var(--line);margin:28px 0}
+  .todo{background:#fff8e1;border:1px dashed #d0a520;color:#7a5c00;
+    padding:3px 8px;border-radius:4px;font-size:13px;font-weight:600;display:inline-block}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html">
+      <span class="mark">&#9679;</span>
+      <span>Spokane Stump Grinder<small>Spokane, WA</small></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a class="active" href="case-studies.html">Case Studies</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service-request.html">Request Service</a></li>
+      </ul>
+    </nav>
+    <a class="callnow" href="tel:+15094349554">&#9742; 509-434-9554</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Case Studies</p>
+    <h1>Real stumps, real yards</h1>
+    <p>Every stump is a little different. These are jobs from around the Spokane and Coeur d'Alene area &mdash; what made each one tricky, and how it came out.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
+      <a class="btn btn-outline" href="services.html">See Our Services</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+
+    <div class="note" style="margin-bottom:36px">
+      <strong>Note for Jeff &mdash; delete this box before launch.</strong>
+      The three case studies below are empty templates. No customer names, locations,
+      prices, or results were invented. Fill in each yellow marker with details from a real
+      job, drop in the Wistia video and the before/after photos, then delete the markers.
+      Get the customer's OK before naming their street or neighborhood.
+    </div>
+
+    <!-- ============ CASE STUDY 1 ============ -->
+    <div class="case">
+      <div class="case-head">
+        <span class="case-num">Job 01</span>
+        <h2><span class="todo">JOB TITLE</span> &mdash; e.g. &ldquo;Maple stump three feet off the foundation&rdquo;</h2>
+        <p class="meta">
+          <span><span class="todo">CITY / NEIGHBORHOOD</span></span> &nbsp;&middot;&nbsp;
+          <span><span class="todo">MONTH, YEAR</span></span> &nbsp;&middot;&nbsp;
+          <span>Stump Grinding</span>
+        </p>
+      </div>
+
+      <div class="case-inner">
+
+        <p class="case-sub">The Video</p>
+      <!--
+        ============================================================
+        WISTIA VIDEO SLOT
+        ------------------------------------------------------------
+        Replace the <div class="ph ph-video"> below with the Wistia
+        embed for THIS job. In Wistia: Video > Embed & Share >
+        Inline Embed > Standard. Each case study gets its own video ID.
+
+        <script src="https://fast.wistia.com/embed/medias/VIDEO_ID.jsonp" async></script>
+        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+          <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+            <div class="wistia_embed wistia_async_VIDEO_ID videoFoam=true" style="height:100%;position:relative;width:100%;">&nbsp;</div>
+          </div>
+        </div>
+
+        Swap VIDEO_ID (3 places) for this job's Wistia media ID.
+        No video for this job? Delete this whole "The Video" block.
+        ============================================================
+      -->
+        <div class="ph ph-video">Wistia video &mdash; Job 01</div>
+
+        <div class="divider"></div>
+
+        <p class="case-sub">Before &amp; After</p>
+        <div class="ph-row">
+          <div>
+            <span class="ba-label">Before</span>
+            <div class="ph ph-sq">Photo &mdash; stump before grinding, with tape for scale</div>
+          </div>
+          <div>
+            <span class="ba-label">After</span>
+            <div class="ph ph-sq">Photo &mdash; ground flat, chips leveled, same angle</div>
+          </div>
+        </div>
+        <p class="ph-cap" style="text-align:left;margin-top:10px">
+          <span class="todo">TIP</span> Shoot the after photo from the exact spot you shot the before. Matching angles is what sells it.
+        </p>
+
+        <div class="divider"></div>
+
+        <p class="case-sub">The Story</p>
+        <div class="case-story">
+          <div>
+            <h3>The Situation</h3>
+            <p><span class="todo">FILL IN</span> What the customer called about, how long the stump had sat there, and what they wanted the space back for.</p>
+          </div>
+          <div>
+            <h3>The Challenge</h3>
+            <p><span class="todo">FILL IN</span> What made this one harder than average &mdash; how close it sat to the foundation, buried lines, rock in the roots.</p>
+          </div>
+          <div>
+            <h3>What We Did</h3>
+            <p><span class="todo">FILL IN</span> Which machine you used, how you approached it, the depth you reached, and how you shielded the house.</p>
+          </div>
+          <div>
+            <h3>The Result</h3>
+            <p><span class="todo">FILL IN</span> How the spot looked when you left, what the customer did with it, and total time on site.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ CASE STUDY 2 ============ -->
+    <div class="case">
+      <div class="case-head">
+        <span class="case-num">Job 02</span>
+        <h2><span class="todo">JOB TITLE</span> &mdash; e.g. &ldquo;Six stumps cleared for a new fence line&rdquo;</h2>
+        <p class="meta">
+          <span><span class="todo">CITY / NEIGHBORHOOD</span></span> &nbsp;&middot;&nbsp;
+          <span><span class="todo">MONTH, YEAR</span></span> &nbsp;&middot;&nbsp;
+          <span>Stump Removal &amp; Cleanup</span>
+        </p>
+      </div>
+
+      <div class="case-inner">
+
+        <p class="case-sub">The Video</p>
+      <!--
+        ============================================================
+        WISTIA VIDEO SLOT
+        ------------------------------------------------------------
+        Replace the <div class="ph ph-video"> below with the Wistia
+        embed for THIS job. In Wistia: Video > Embed & Share >
+        Inline Embed > Standard. Each case study gets its own video ID.
+
+        <script src="https://fast.wistia.com/embed/medias/VIDEO_ID.jsonp" async></script>
+        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+          <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+            <div class="wistia_embed wistia_async_VIDEO_ID videoFoam=true" style="height:100%;position:relative;width:100%;">&nbsp;</div>
+          </div>
+        </div>
+
+        Swap VIDEO_ID (3 places) for this job's Wistia media ID.
+        No video for this job? Delete this whole "The Video" block.
+        ============================================================
+      -->
+        <div class="ph ph-video">Wistia video &mdash; Job 02</div>
+
+        <div class="divider"></div>
+
+        <p class="case-sub">Before &amp; After</p>
+        <div class="ph-row">
+          <div>
+            <span class="ba-label">Before</span>
+            <div class="ph ph-sq">Photo &mdash; all stumps in frame from the street</div>
+          </div>
+          <div>
+            <span class="ba-label">After</span>
+            <div class="ph ph-sq">Photo &mdash; cleared, backfilled, graded fence line</div>
+          </div>
+        </div>
+        <p class="ph-cap" style="text-align:left;margin-top:10px">
+          <span class="todo">TIP</span> Shoot the after photo from the exact spot you shot the before. Matching angles is what sells it.
+        </p>
+
+        <div class="divider"></div>
+
+        <p class="case-sub">The Story</p>
+        <div class="case-story">
+          <div>
+            <h3>The Situation</h3>
+            <p><span class="todo">FILL IN</span> A multi-stump job works well here &mdash; it shows the per-stump savings you talk about on the services page.</p>
+          </div>
+          <div>
+            <h3>The Challenge</h3>
+            <p><span class="todo">FILL IN</span> Volume of chips generated, staging the haul-off, and working around the existing fence or structures.</p>
+          </div>
+          <div>
+            <h3>What We Did</h3>
+            <p><span class="todo">FILL IN</span> Order you worked the stumps in, how much material came out, and the backfill and grade-matching work.</p>
+          </div>
+          <div>
+            <h3>The Result</h3>
+            <p><span class="todo">FILL IN</span> Ground ready for the fence crew, how many days it took, and what the customer said about the cleanup.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ CASE STUDY 3 ============ -->
+    <div class="case">
+      <div class="case-head">
+        <span class="case-num">Job 03</span>
+        <h2><span class="todo">JOB TITLE</span> &mdash; e.g. &ldquo;Backyard stump behind a 36-inch gate&rdquo;</h2>
+        <p class="meta">
+          <span><span class="todo">CITY / NEIGHBORHOOD</span></span> &nbsp;&middot;&nbsp;
+          <span><span class="todo">MONTH, YEAR</span></span> &nbsp;&middot;&nbsp;
+          <span>Stump Grinding</span>
+        </p>
+      </div>
+
+      <div class="case-inner">
+
+        <p class="case-sub">The Video</p>
+      <!--
+        ============================================================
+        WISTIA VIDEO SLOT
+        ------------------------------------------------------------
+        Replace the <div class="ph ph-video"> below with the Wistia
+        embed for THIS job. In Wistia: Video > Embed & Share >
+        Inline Embed > Standard. Each case study gets its own video ID.
+
+        <script src="https://fast.wistia.com/embed/medias/VIDEO_ID.jsonp" async></script>
+        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+          <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+            <div class="wistia_embed wistia_async_VIDEO_ID videoFoam=true" style="height:100%;position:relative;width:100%;">&nbsp;</div>
+          </div>
+        </div>
+
+        Swap VIDEO_ID (3 places) for this job's Wistia media ID.
+        No video for this job? Delete this whole "The Video" block.
+        ============================================================
+      -->
+        <div class="ph ph-video">Wistia video &mdash; Job 03</div>
+
+        <div class="divider"></div>
+
+        <p class="case-sub">Before &amp; After</p>
+        <div class="ph-row">
+          <div>
+            <span class="ba-label">Before</span>
+            <div class="ph ph-sq">Photo &mdash; the gate and access path, showing the tight spot</div>
+          </div>
+          <div>
+            <span class="ba-label">After</span>
+            <div class="ph ph-sq">Photo &mdash; finished grind plus undamaged access path</div>
+          </div>
+        </div>
+        <p class="ph-cap" style="text-align:left;margin-top:10px">
+          <span class="todo">TIP</span> Shoot the after photo from the exact spot you shot the before. Matching angles is what sells it.
+        </p>
+
+        <div class="divider"></div>
+
+        <p class="case-sub">The Story</p>
+        <div class="case-story">
+          <div>
+            <h3>The Situation</h3>
+            <p><span class="todo">FILL IN</span> A tight-access job shows customers exactly why you ask about gate width before quoting.</p>
+          </div>
+          <div>
+            <h3>The Challenge</h3>
+            <p><span class="todo">FILL IN</span> Getting equipment through the opening, protecting turf along the path in, and working in a confined space.</p>
+          </div>
+          <div>
+            <h3>What We Did</h3>
+            <p><span class="todo">FILL IN</span> Smaller machine, plywood tracking, shielding around the fence and siding, and your cleanup approach.</p>
+          </div>
+          <div>
+            <h3>The Result</h3>
+            <p><span class="todo">FILL IN</span> Finished result and &mdash; just as important &mdash; the condition you left the lawn and access path in.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ WHAT TO CAPTURE ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">For the Crew</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">What to capture on every job</h2>
+    <p class="lead">Case studies only work if somebody grabs the footage. Quick list to keep in the truck &mdash; delete this section before launch if you'd rather it not be public.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Wide before shot</h3>
+        <p>Whole work area from where the truck parks, showing the access path. Take it before anything moves.</p>
+      </div>
+      <div class="card">
+        <h3>Close-up with scale</h3>
+        <p>Stump with a tape measure or a boot beside it, so the diameter reads honestly on camera.</p>
+      </div>
+      <div class="card">
+        <h3>Video of the grind</h3>
+        <p>Thirty to sixty seconds of the wheel working is plenty. Horizontal, phone braced, and stay out of the debris path.</p>
+      </div>
+      <div class="card">
+        <h3>The complication</h3>
+        <p>The fence, the gate, the sprinkler head, the rock. Whatever made the job hard is what makes the story worth telling.</p>
+      </div>
+      <div class="card">
+        <h3>Same-angle after shot</h3>
+        <p>Stand exactly where you took the wide before shot. Matching angles is what makes a before/after land.</p>
+      </div>
+      <div class="card">
+        <h3>Finished grade close-up</h3>
+        <p>Backfilled and leveled &mdash; especially on removal jobs, where the topsoil work is the whole selling point.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Got one like these?</h2>
+    <p>Send us photos and the details and we'll tell you what it takes.</p>
+    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
+      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
+      <a class="btn btn-outline" href="about.html">About Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Spokane Stump Grinder</strong>
+        Stump grinding and stump removal<br>
+        Spokane, WA &mdash; serving the Spokane<br>&amp; Coeur d'Alene region<br>
+        <a href="tel:+15094349554" style="display:inline-block;margin-top:10px;font-size:17px;font-weight:700;color:var(--chip)">509-434-9554</a><br>
+        <a class="footer-addr" href="https://www.google.com/maps/dir/?api=1&amp;destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">1908 E Mallon Ave<br>Spokane, WA 99202</a>
+      </div>
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Services</strong>
+        <ul>
+          <li><a href="services.html">Stump Grinding</a></li>
+          <li><a href="services.html">Stump Removal &amp; Cleanup</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong style="color:#f4efe6;display:block;margin-bottom:8px">Company</strong>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="service-request.html">Request Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-map">
+      <iframe src="https://www.google.com/maps?q=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202&amp;output=embed" width="100%" height="260" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Spokane Stump Grinder, 1908 E Mallon Ave, Spokane, WA 99202"></iframe>
+      <a class="footer-map-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">Get Directions on Google Maps &rarr;</a>
+    </div>
+
+    <div class="fine">&copy; 2026 Spokane Stump Grinder. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
