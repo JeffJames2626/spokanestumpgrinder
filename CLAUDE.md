@@ -168,18 +168,20 @@ its own Wistia media ID.
 
 ## Unfinished work
 
-31 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
+30 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
 | case-studies.html | 24 | 3 real jobs: titles, city, month/year, 4 story fields each, videos, before/after photos |
-| about.html | 4 | Idaho registration, team photos, Jeff's equipment background, Tiffany's last name if public |
+| about.html | 3 | Team photos, Jeff's equipment background, Tiffany's last name if public |
 | booking.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
 
-Business name, WA contractor license #, and UBI number are filled in on
-about.html (verified facts below). The liability-insurance and bonded rows
-were removed from the credentials table entirely, at Jeff's request — not
-just left blank.
+The credentials table on about.html is fully filled in: business name, WA
+contractor license #, and UBI number are real values (verified facts below).
+The liability-insurance, bonded, and Idaho-registration rows were removed
+from the table entirely, at Jeff's request — not just left blank. The
+"these are left blank" lead-in sentence above the table was removed too,
+since nothing in it is blank anymore.
 
 Also missing sitewide: logo (header uses a plain colored circle), real
 photography (every `.ph` box), analytics.
