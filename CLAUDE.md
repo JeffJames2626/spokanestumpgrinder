@@ -119,8 +119,12 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
   Spokane Valley, Veradale) and 7 in ID (Coeur d'Alene, Hayden, Hayden Lake,
   Post Falls, Priest Lake, Priest River, Sandpoint).
   Listed on services.html and about.html.
-- Owners: Jeff James (owner) and Tiffany (co-founder), both Spokane natives,
-  working on properties in the area since 2021.
+- Owner: Jeff James, Spokane native, working on properties in the area since
+  2021. about.html previously named Tiffany as a co-founder and described the
+  business as "husband-and-wife" — both removed at Jeff's request; the team
+  section now shows only Jeff plus an open "add team member" placeholder.
+  Don't reintroduce Tiffany or the husband-and-wife framing without him
+  asking for it again.
 - Values line used as a pull quote on about.html: "Work hard, tell the truth,
   do what you say you'll do, and take care of people."
 - Three pillars: Transparency, Innovation, Professionalism.
@@ -195,11 +199,11 @@ in-repo, it'll need an explicit `git add -f`.
 
 ## Unfinished work
 
-6 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
+5 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
-| about.html | 3 | Team photos, Jeff's equipment background, Tiffany's last name if public |
+| about.html | 2 | Jeff's equipment background/years on machines, and an open team-member slot (photo/bio) if another operator ever gets added |
 | booking.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
 
 case-studies.html is fully complete: all 3 jobs have real titles, locations,

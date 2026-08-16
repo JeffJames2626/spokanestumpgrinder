@@ -34,7 +34,7 @@ every page links to the others by exact filename.
 ## Unfinished
 
 Anything not filled in is marked in yellow on the page. Search for
-`class="todo"` — 6 markers, all in `about.html` (3) and `booking.html` (3).
+`class="todo"` — 5 markers, in `about.html` (2) and `booking.html` (3).
 `case-studies.html` is fully complete — all 3 case studies real. Grey dashed boxes are photo/video placeholders.
 
 Also missing: a real logo (favicon is a placeholder red circle with tree
