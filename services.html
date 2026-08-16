@@ -228,20 +228,19 @@
       WISTIA EMBED SLOT
       ------------------------------------------------------------
       Replace the <div class="ph ph-video"> block below with your
-      Wistia embed code. In Wistia: Video > Embed & Share >
-      Inline Embed > Fallback (iframe) or Standard. Paste it here.
+      Wistia Player embed code. In Wistia: Video > Embed & Share >
+      Copy embed code. Paste it here.
 
-      Standard Wistia inline embed looks like this:
+      Wistia Player embed looks like this:
 
-      <script src="https://fast.wistia.com/embed/medias/VIDEO_ID.jsonp" async></script>
-      <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
-      <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-          <div class="wistia_embed wistia_async_VIDEO_ID videoFoam=true" style="height:100%;position:relative;width:100%;">&nbsp;</div>
-        </div>
-      </div>
+      <script src="https://fast.wistia.com/player.js" async></script>
+      <script src="https://fast.wistia.com/embed/VIDEO_ID.js" async type="module"></script>
+      <style>wistia-player[media-id='VIDEO_ID']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/VIDEO_ID/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+      <wistia-player media-id="VIDEO_ID" aspect="1.7778"></wistia-player>
 
-      Swap VIDEO_ID (appears 3 times) for your actual Wistia media ID.
+      Swap VIDEO_ID (4 places) for your actual Wistia media ID. Use the
+      exact "aspect" value and padding-top percentage Wistia gives you for
+      THIS video — the ones above are just a placeholder for horizontal 16:9.
       ============================================================
     -->
     <div class="ph ph-video">Wistia video embed goes here</div>
