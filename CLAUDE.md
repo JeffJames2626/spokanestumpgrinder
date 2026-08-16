@@ -162,17 +162,44 @@ Google's `calendar.google.com/calendar/appointments/schedules/<ID>?gv=true` URL.
 
 ### Wistia video slots
 
-services.html has 1, case-studies.html has 3. Each is a grey `.ph.ph-video` box
-with full paste-in instructions in an HTML comment directly above it. Each needs
-its own Wistia media ID.
+services.html has 1, case-studies.html has 3 (jobs 1 and 2 filled in, job 3
+still a grey `.ph.ph-video` box). Uses Wistia's newer `<wistia-player>`
+web-component embed (not the older jsonp/responsive-padding style) — full
+paste-in instructions live in an HTML comment above each remaining empty
+slot. Each video needs its own media ID **and** its own `aspect` value —
+check what Wistia's embed code gives you per video, vertical phone footage
+(`aspect="0.5625"`) looks nothing like horizontal (`aspect="1.7778"`).
+
+### Photos — images/ folder
+
+Real photos go in `images/`, named `case-study-N-before.jpg` /
+`case-study-N-after.jpg` (or similar descriptive names for about.html
+team photos, etc.) — no spaces, git tracks them normally. In the page,
+swap the placeholder `<div class="ph ph-sq">...</div>` for
+`<div class="ph-sq"><img class="photo" src="images/...jpg" alt="..."></div>`
+— the `.photo` class (object-fit:cover + rounded corners) is already
+defined on every page that has photo placeholders.
+
+**Chat-pasted photos don't reliably land on disk.** Sometimes they show up
+in the project folder automatically (mechanism unclear), sometimes not —
+don't assume, always check `images/` before asking Jeff to re-send. When
+they do land, they can arrive as originals (`IMG_1234.jpg`) sitting loose
+in `images/` rather than pre-named — rename with `git mv` before wiring
+them in. One raw phone video (`.MOV`, ~19MB) landed in `images/` alongside
+real photos once and got pushed to the repo by mistake before anyone
+caught it — removed after the fact, but it's still sitting in git history
+since rewriting history means a force-push, which wasn't worth the risk
+for one oversized file. `.gitignore` now blocks `*.mov`/`*.mp4`/`*.m4v` so
+it can't happen again silently; if a real video file is ever needed
+in-repo, it'll need an explicit `git add -f`.
 
 ## Unfinished work
 
-22 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
+21 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
-| case-studies.html | 16 | Jobs 2 & 3: titles, city, month/year, 4 story fields each, videos, before/after photos |
+| case-studies.html | 15 | Job 2: title, city, month/year, 4 story fields. Job 3: everything (title, city, month/year, 4 story fields, video, before/after photos) |
 | about.html | 3 | Team photos, Jeff's equipment background, Tiffany's last name if public |
 | booking.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
 

@@ -4,3 +4,11 @@ Thumbs.db
 node_modules/
 .vscode/
 .idea/
+
+# Raw video files -- videos live on Wistia, never in the repo.
+# If a phone video lands in images/ by accident, this keeps it from
+# getting swept into a commit (they're 10-100x larger than a photo).
+*.mov
+*.MOV
+*.mp4
+*.m4v
