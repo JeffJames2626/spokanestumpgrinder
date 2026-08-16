@@ -199,12 +199,19 @@ in-repo, it'll need an explicit `git add -f`.
 
 ## Unfinished work
 
-5 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
+4 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
-| about.html | 2 | Jeff's equipment background/years on machines, and an open team-member slot (photo/bio) if another operator ever gets added |
+| about.html | 1 | Open team-member slot (photo/bio) if another operator ever gets added |
 | booking.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
+
+Jeff's bio (about.html) is filled in: mowing since age 13, ran a local
+maintenance company for 14 years (1 truck to 30 employees), went out on his
+own in 2023, stump grinding grew from a hobby into its own specialty. Note:
+this "2023" doesn't reconcile with "serving the area since 2021" used
+elsewhere on the site (hero copy, credentials table) — flagged to Jeff, not
+resolved. Don't silently pick one date over the other in future edits.
 
 case-studies.html is fully complete: all 3 jobs have real titles, locations,
 dates, service lines, 4 story fields each, Wistia videos, and before/after
