@@ -195,13 +195,16 @@ in-repo, it'll need an explicit `git add -f`.
 
 ## Unfinished work
 
-13 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
+6 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
-| case-studies.html | 7 | Job 3: title, city, month/year, 4 story fields (photos done, no video sent yet) |
 | about.html | 3 | Team photos, Jeff's equipment background, Tiffany's last name if public |
 | booking.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
+
+case-studies.html is fully complete: all 3 jobs have real titles, locations,
+dates, service lines, 4 story fields each, Wistia videos, and before/after
+photos. No markers left on that page.
 
 Job 01 on case-studies.html is fully real and fully clean: title "Backyard
 Stump Removal & Lawn Restoration," South Hill/Spokane, Spring 2024, all 4
