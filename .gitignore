@@ -12,3 +12,8 @@ node_modules/
 *.MOV
 *.mp4
 *.m4v
+
+# Raw HEIC photos -- most browsers can't render HEIC at all. Convert to
+# JPEG first (see CLAUDE.md), then the JPEG gets committed, not this.
+*.heic
+*.HEIC
