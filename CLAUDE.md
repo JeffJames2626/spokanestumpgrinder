@@ -168,13 +168,19 @@ its own Wistia media ID.
 
 ## Unfinished work
 
-30 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
+23 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
-| case-studies.html | 24 | 3 real jobs: titles, city, month/year, 4 story fields each, videos, before/after photos |
+| case-studies.html | 17 | Jobs 2 & 3: titles, city, month/year, 4 story fields each, videos, before/after photos |
 | about.html | 3 | Team photos, Jeff's equipment background, Tiffany's last name if public |
 | booking.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
+
+Job 01 on case-studies.html is fully real: title "Backyard Stump Removal &
+Lawn Restoration," South Hill/Spokane, Spring 2024, all 4 story fields,
+video, and before/after photos. The one remaining `.todo` there is the
+generic "shoot the after photo from the same spot" crew tip, which isn't
+job-specific — left as-is since it wasn't part of what Jeff asked to fill in.
 
 The credentials table on about.html is fully filled in: business name, WA
 contractor license #, and UBI number are real values (verified facts below).
