@@ -83,9 +83,16 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
    known.
 2. **No pricing figures anywhere.** Stump work is quoted per job. services.html
    explains the 8 cost factors instead of listing dollar amounts. Keep it that way.
-3. **Never mention "Automated Lawn & Pest" or "Marko's Sprinklers."** Same
-   owners, deliberately separate brand. The Service Autopilot form arrived with
-   an ALP header `<h1>` in it — it was removed and must stay removed.
+3. **Never mention "Automated Lawn & Pest" or "Marko's Sprinklers" by name.**
+   Same owners, deliberately separate brand. The Service Autopilot form arrived
+   with an ALP header `<h1>` in it — it was removed and must stay removed.
+   Exception, deliberately carved out by Jeff: the footer copyright line reads
+   "&copy; 2026 Spokane Stump Grinder. All rights reserved. &middot; An
+   Automated Company" on all six pages — a generic ownership-group credit, no
+   link, no specific company named. This is the start of a standard footer
+   credit Jeff wants across every site he onboards going forward. Don't treat
+   it as a slip to "fix" — it's intentional and should stay. Still don't
+   spell out "Automated Lawn & Pest" or "Marko's Sprinklers" anywhere.
 4. **One `<h1>` per page**, no heading-level skips.
 5. Nav is identical on all six pages; the current page gets `class="active"`.
 
