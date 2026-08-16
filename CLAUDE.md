@@ -206,11 +206,11 @@ in-repo, it'll need an explicit `git add -f`.
 
 ## Unfinished work
 
-4 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
+3 markers, all `<span class="todo">`, all in booking.html. Search the
+folder for `class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
-| about.html | 1 | Open team-member slot (photo/bio) if another operator ever gets added |
 | booking.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
 
 Jeff's bio (about.html) is filled in: mowing since age 13, ran a local
