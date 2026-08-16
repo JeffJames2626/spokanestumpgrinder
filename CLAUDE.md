@@ -195,11 +195,11 @@ in-repo, it'll need an explicit `git add -f`.
 
 ## Unfinished work
 
-14 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
+13 markers, all `<span class="todo">`. Search the folder for `class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
-| case-studies.html | 8 | Job 3 only: everything (title, city, month/year, 4 story fields, video, before/after photos) |
+| case-studies.html | 7 | Job 3: title, city, month/year, 4 story fields (photos done, no video sent yet) |
 | about.html | 3 | Team photos, Jeff's equipment background, Tiffany's last name if public |
 | booking.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
 
