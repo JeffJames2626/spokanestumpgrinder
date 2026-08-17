@@ -44,7 +44,7 @@ case-studies.html     3 real case studies (video + before/after each)
 about.html            Story, 3 pillars, how-we-work, team, credentials, service area
 faq.html              Pricing, the work itself, scheduling, getting started
 contact.html          Call/text/email cards, map embed, links to booking + request form
-service-request.html  Service Autopilot request form (inline HTML)
+service-request.html  Service Autopilot request form (v3/ViewForm iframe)
 ```
 
 ### Do not refactor into a shared stylesheet
@@ -144,16 +144,31 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
 
 ### Service Autopilot form — service-request.html
 
-Inline HTML version. Form ID `968e21cf-2114-493e-aa17-4397e0df47df`, posts to
-`https://my.serviceautopilot.com/ProcessForm.aspx`.
+**Current (as of 2026-08-16): `v3/ViewForm` iframe embed**, replacing the old
+inline HTML form. Embed:
 
-Two earlier approaches **failed and must not be reintroduced**: the
-`BacktellForms.js` script embed and the `viewform.html` iframe. Both depended on
-my.serviceautopilot.com responding. The inline version has no external
-dependency at render time.
+```html
+<div class="sa-form-wrap">
+  <iframe id="saFormsIframe" src="https://my.serviceautopilot.com/v3/ViewForm?id=0295df95-a5cd-4785-b854-2b6d3120ff44&websiteHost=1" width="100%" height="786" scrolling="auto" frameborder="0" style="overflow-y:visible;"></iframe>
+</div>
+```
 
-Five defects in Service Autopilot's generated code were fixed in our copy. If
-the form is ever regenerated from SA, re-apply all five:
+An earlier iframe attempt at a *different* URL pattern (plain `viewform.html`,
+not SA's `v3/ViewForm`) failed years ago, which is why the inline version was
+built and why CLAUDE.md carried a standing warning against iframes here. That
+warning is now **superseded** — this `v3/ViewForm` URL was tested directly
+(loads a fuller field set: adds Contact Email, "How Did You Hear About Us?",
+and file/photo attachment) and confirmed working embedded in
+service-request.html (iframe reports the correct src/size and throws a
+cross-origin security error on `contentDocument` access — proof it actually
+navigated to and loaded the real SA page, not a blocked/blank frame). If this
+form ever stops loading, that's a live regression to investigate, not an
+expected limitation.
+
+The old inline form (form ID `968e21cf-2114-493e-aa17-4397e0df47df`, posting to
+`https://my.serviceautopilot.com/ProcessForm.aspx`) and the `BacktellForms.js`
+script embed are both retired. Their defect list is kept below only in case SA
+inline forms are ever reintroduced:
 
 1. Removed the `Automated Lawn & Pest - Marko's Sprinklers` `<h1>` (branding).
 2. Removed `{ credit - card - logic }` — an unsubstituted template placeholder

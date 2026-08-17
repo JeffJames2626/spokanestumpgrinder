@@ -54,7 +54,7 @@ Find and replace **both** across all eight files:
 ## Notes
 
 `CLAUDE.md` holds the full project context — architecture rules, design tokens,
-integration details, and the five defects fixed in the Service Autopilot form.
+and integration details (including the Service Autopilot form's history).
 Read it before making changes.
 
 The form and calendar load from the internet. Offline, those two areas render

@@ -194,11 +194,8 @@
   .callbox .num{display:inline-block;font-size:28px;font-weight:700;color:var(--moss-dark);
     text-decoration:none;margin:6px 0 2px}
   .callbox .num:hover{text-decoration:underline}
-  /* keep the embedded form's own inputs from inheriting page form styles */
-  #MainDivDomID input[type=text], #MainDivDomID textarea{
-    font:inherit;font-size:15px;padding:7px 9px;border-radius:4px;box-sizing:border-box;
-  }
-  #MainDivDomID{margin-bottom:8px}
+  .sa-form-wrap{max-width:640px;width:100%;margin:0 auto}
+  .sa-form-wrap iframe{display:block;width:100%;border:0}
 </style>
 </head>
 <body>
@@ -270,160 +267,10 @@
     <p class="lead">We'll follow up with a written scope and price. No obligation.</p>
 
     <div class="form-wrap">
-<!-- ===== Service Autopilot form (inline) ===== -->
-<div id="MainDivDomID" style="max-width:640px; width:100%; margin-right:auto; margin-left:auto;"><div class="formHeaderClass"><h2 class="formHeaderTitleText">Stump Grinding Request</h2><h3 class="formHeaderDescriptionText"></h3></div><form id="BacktellForm0231943" action="https://my.serviceautopilot.com/ProcessForm.aspx" enctype="multipart/form-data" data-ajax="false" method="post" onsubmit="return Validate()" style="background-color: white;"><input type="hidden" name="InputIframeID22" value="" \><input type="hidden" name="Source" value="web" /><input type="hidden" name="FormID" value="968e21cf-2114-493e-aa17-4397e0df47df" /><table class="formTableClass"><tr ><td class="formLeftColumnContent"><label class="formLabelClass">Client Name<span style="color:red;">*</span></label><br /><label style="width:26%; float:left;" class="boldNameClass labelMarginLeft">First</label><label class="boldNameClass">Last</label><div style="clear:both"></div><input name="ca0beeb7-9fdc-481d-b426-de9005b0fef4_First" type="text" class="requiredInput labelMarginLeft" style="width:25%;" value="" /><input name="ca0beeb7-9fdc-481d-b426-de9005b0fef4_Last" type="text" class="requiredInput labelMarginLeft" style="width:25%; display: inline-block; margin-left:3px;" value="" /></td></tr><tr ><td class="formLeftColumnContent"><label class="formLabelClass">Phone Number<span style="color:red;">*</span></label><br /><input name="3052cdbd-1cc5-442c-95f7-b8e9fb134cc9" type="text" class="requiredInput labelMarginLeft" style="width:50%" placeholder="###-###-####" /><br /></td></tr><tr ><td class="formLeftColumnContent"><label class="formLabelClass">Service Address<span style="color:red;">*</span></label><br /><span style="font-size:14px; width: 100%; " class="boldAddressClass labelMarginLeft" >Address Line 1</span><br /><input name="24bf1aac-8aaa-4849-bc80-10679564986d_Address" type="text" class="requiredInput labelMarginLeft" style="width:98%" value="" /><br /><span style="font-size:14px; width: 100%; " class="boldAddressClass labelMarginLeft" >Address Line 2</span><br /><input name="24bf1aac-8aaa-4849-bc80-10679564986d_AddressTwo" type="text" class="requiredInput labelMarginLeft" style="width:98%" value="" /><br /><label style="font-size:14px; width: 52%; float: left; " class="boldAddressClass labelMarginLeft" >City</label><label style="font-size:14px; width: 21%; float: left; " class="boldAddressClass" >State</label><label style="font-size:12px; width: 22%; float: left; " class="boldAddressClass" >Postal Code</label><br /><input name="24bf1aac-8aaa-4849-bc80-10679564986d_City" type="text" class="requiredInput labelMarginLeft" style="width:50%" value="" /><input name="24bf1aac-8aaa-4849-bc80-10679564986d_State" type="text" class="requiredInput" style="width:21%; display: inline-block; margin-left:5px; " value="" /><input name="24bf1aac-8aaa-4849-bc80-10679564986d_Zip" type="text" class="requiredInput" style="width:21%; display: inline-block; margin-left:5px;" value="" /></td></tr><tr ><td class="formLeftColumnContent"><label class="formLabelClass labelMarginLeft">Service Requested</label><br /><input type="checkbox" name="e1785077-7007-404f-8adf-42ba0d83b56f" value="Stump Grinding Only" class="labelMarginLeft" /> Stump Grinding Only <br /><input type="checkbox" name="e1785077-7007-404f-8adf-42ba0d83b56f" value="Stump Grinding and cleanup" class="labelMarginLeft" /> Stump Grinding and cleanup <br /><input type="checkbox" name="e1785077-7007-404f-8adf-42ba0d83b56f" value="Stump Grinding, cleanup, and lawn repair." class="labelMarginLeft" /> Stump Grinding, cleanup, and lawn repair. <br /></td></tr><tr ><td class="formLeftColumnContent"><label class="formLabelClass">How soon would you like this work to be completed by?<span style="color:red;">*</span></label><br /><label class="labelMarginLeft">MM/DD/YYYY</label></br><input name="d85ddb93-1f3e-427e-946c-a2abb5d502e9_Month" type="text" class="requiredInput labelMarginLeft" style="width:10%" value="" /><label style="margin-right:5px; margin-left:5px;"> / </label><input name="d85ddb93-1f3e-427e-946c-a2abb5d502e9_Day" type="text" class="requiredInput" style="width:10%" value="" /><label style="margin-right:5px; margin-left:5px;"> / </label><input name="d85ddb93-1f3e-427e-946c-a2abb5d502e9_Year" type="text" class="requiredInput" style="width:15%" value="" /></td></tr><tr ><td class="formLeftColumnContent"><label class="formLabelClass labelMarginLeft">Notes/Instructions</label><br /><textarea name="69d042b7-da8a-4fcf-b113-9dba2c8cf633" maxlength="255"style="resize:none; width:95%; margin-left:10px; height: 65px;" ></textarea></td></tr><tr class="trFormFooterClass"><td class="formLeftFooterClassBottom"><input class='sa-ohnohoney' autocomplete='somethingAutofillDoesntKnow' id='customers-first-name' type='text' /><input class='sa-ohnohoney' autocomplete='somethingAutofillDoesntKnow' id='customers-email' type='text' /><div id="BackFormSubmitButtonDomID" class="sabutton" onclick="Validate()" >Submit</div></td></tr></table></form></div><script type="text/javascript">function RemoveClass(elem, name) {
-    elem.className = elem.className.replace(name, '');
-}
-function AddClass(elem, name) {
-    if (elem.className.indexOf(name) == -1) {
-        elem.className += (' ' + name);
-    }
-}
-function MarkInvalidElement(el) {
-    RemoveClass(el, "requiredInput");
-    AddClass(el, "requiredRedInput");
-    el.onkeydown = function () {
-        RemoveClass(el, "requiredRedInput");
-        AddClass(el, "requiredInput");
-    };
-}
-function CheckHoneyPot()
-{
-    var isRobot = false;
-    const honeypot = document.querySelectorAll(".sa-ohnohoney");
-    for (let i = 0; i < honeypot.length; i++)
-    {
-        if (honeypot[i].value !== '')
-        {
-            isRobot = true;
-            break;
-        }
-    }
-    if (isRobot == false)
-    {
-        isRobot = CheckKeywordBlacklist();
-    }
-    return isRobot;
-}
-function CheckKeywordBlacklist()
-{
-    var hasKeywordBlacklist = false;
-    var keywords = '';
-    if (keywords.length === 0)
-    {
-        return hasKeywordBlacklist;
-    }
-    var blacklist = keywords.split(",");
-    var inputs = document.querySelectorAll('input[type=text]');
-    for (var i = 0; i < inputs.length; i++)
-    {
-        var value = inputs[i].value.toLowerCase();
-        if (blacklist.some(v => value.includes(v)))
-        {
-            hasKeywordBlacklist = true;
-            break;
-        }
-    }
-    return hasKeywordBlacklist;
-}
-function Validate() {
-    var IsValidated = true;
-    var Found = false;
-    /* required validation */
-var fca0beeb79fdc481db426de9005b0fef4_FirstEl = document.getElementsByName('ca0beeb7-9fdc-481d-b426-de9005b0fef4_First')[0];
-var fca0beeb79fdc481db426de9005b0fef4_FirstVal = fca0beeb79fdc481db426de9005b0fef4_FirstEl.value.trim();
-if (fca0beeb79fdc481db426de9005b0fef4_FirstVal == "") {
-    IsValidated = false;
-    MarkInvalidElement(fca0beeb79fdc481db426de9005b0fef4_FirstEl);
-}/* required validation */
-var fca0beeb79fdc481db426de9005b0fef4_LastEl = document.getElementsByName('ca0beeb7-9fdc-481d-b426-de9005b0fef4_Last')[0];
-var fca0beeb79fdc481db426de9005b0fef4_LastVal = fca0beeb79fdc481db426de9005b0fef4_LastEl.value.trim();
-if (fca0beeb79fdc481db426de9005b0fef4_LastVal == "") {
-    IsValidated = false;
-    MarkInvalidElement(fca0beeb79fdc481db426de9005b0fef4_LastEl);
-}/* required validation */
-var f3052cdbd1cc5442c95f7b8e9fb134cc9El = document.getElementsByName('3052cdbd-1cc5-442c-95f7-b8e9fb134cc9')[0];
-var f3052cdbd1cc5442c95f7b8e9fb134cc9Val = f3052cdbd1cc5442c95f7b8e9fb134cc9El.value.trim();
-if (f3052cdbd1cc5442c95f7b8e9fb134cc9Val == "") {
-    IsValidated = false;
-    MarkInvalidElement(f3052cdbd1cc5442c95f7b8e9fb134cc9El);
-}/* required validation */
-var f24bf1aac8aaa4849bc8010679564986d_AddressEl = document.getElementsByName('24bf1aac-8aaa-4849-bc80-10679564986d_Address')[0];
-var f24bf1aac8aaa4849bc8010679564986d_AddressVal = f24bf1aac8aaa4849bc8010679564986d_AddressEl.value.trim();
-if (f24bf1aac8aaa4849bc8010679564986d_AddressVal == "") {
-    IsValidated = false;
-    MarkInvalidElement(f24bf1aac8aaa4849bc8010679564986d_AddressEl);
-}/* required validation */
-var f24bf1aac8aaa4849bc8010679564986d_CityEl = document.getElementsByName('24bf1aac-8aaa-4849-bc80-10679564986d_City')[0];
-var f24bf1aac8aaa4849bc8010679564986d_CityVal = f24bf1aac8aaa4849bc8010679564986d_CityEl.value.trim();
-if (f24bf1aac8aaa4849bc8010679564986d_CityVal == "") {
-    IsValidated = false;
-    MarkInvalidElement(f24bf1aac8aaa4849bc8010679564986d_CityEl);
-}/* required validation */
-var f24bf1aac8aaa4849bc8010679564986d_StateEl = document.getElementsByName('24bf1aac-8aaa-4849-bc80-10679564986d_State')[0];
-var f24bf1aac8aaa4849bc8010679564986d_StateVal = f24bf1aac8aaa4849bc8010679564986d_StateEl.value.trim();
-if (f24bf1aac8aaa4849bc8010679564986d_StateVal == "") {
-    IsValidated = false;
-    MarkInvalidElement(f24bf1aac8aaa4849bc8010679564986d_StateEl);
-}/* required validation */
-var f24bf1aac8aaa4849bc8010679564986d_ZipEl = document.getElementsByName('24bf1aac-8aaa-4849-bc80-10679564986d_Zip')[0];
-var f24bf1aac8aaa4849bc8010679564986d_ZipVal = f24bf1aac8aaa4849bc8010679564986d_ZipEl.value.trim();
-if (f24bf1aac8aaa4849bc8010679564986d_ZipVal == "") {
-    IsValidated = false;
-    MarkInvalidElement(f24bf1aac8aaa4849bc8010679564986d_ZipEl);
-}/* required validation */
-var fd85ddb931f3e427e946ca2abb5d502e9_MonthEl = document.getElementsByName('d85ddb93-1f3e-427e-946c-a2abb5d502e9_Month')[0];
-var fd85ddb931f3e427e946ca2abb5d502e9_MonthVal = fd85ddb931f3e427e946ca2abb5d502e9_MonthEl.value.trim();
-if (fd85ddb931f3e427e946ca2abb5d502e9_MonthVal == "") {
-    IsValidated = false;
-    MarkInvalidElement(fd85ddb931f3e427e946ca2abb5d502e9_MonthEl);
-}/* required validation */
-var fd85ddb931f3e427e946ca2abb5d502e9_DayEl = document.getElementsByName('d85ddb93-1f3e-427e-946c-a2abb5d502e9_Day')[0];
-var fd85ddb931f3e427e946ca2abb5d502e9_DayVal = fd85ddb931f3e427e946ca2abb5d502e9_DayEl.value.trim();
-if (fd85ddb931f3e427e946ca2abb5d502e9_DayVal == "") {
-    IsValidated = false;
-    MarkInvalidElement(fd85ddb931f3e427e946ca2abb5d502e9_DayEl);
-}/* required validation */
-var fd85ddb931f3e427e946ca2abb5d502e9_YearEl = document.getElementsByName('d85ddb93-1f3e-427e-946c-a2abb5d502e9_Year')[0];
-var fd85ddb931f3e427e946ca2abb5d502e9_YearVal = fd85ddb931f3e427e946ca2abb5d502e9_YearEl.value.trim();
-if (fd85ddb931f3e427e946ca2abb5d502e9_YearVal == "") {
-    IsValidated = false;
-    MarkInvalidElement(fd85ddb931f3e427e946ca2abb5d502e9_YearEl);
-}
-    var isHoney = CheckHoneyPot();
-    var submitBtn = document.getElementById("BackFormSubmitButtonDomID");
-    // Disable the "button" immediately
-    if (submitBtn) {
-        submitBtn.style.pointerEvents = "none"; // prevents clicks
-        submitBtn.style.opacity = "0.6";        // visual feedback
-        submitBtn.style.cursor = "not-allowed"; // show disabled cursor
-    }
-    if (isHoney == true)
-    {
-        var id = $.getUrlVars('rk')['rk'];
-        location.href = '/html/FormConfirmation.html?rk=' + id;
-        // Re-enable if redirect doesn’t occur
-        if (submitBtn) submitBtn.disabled = false;
-    }
-    else if (IsValidated == true)
-    {
-        document.getElementById("BacktellForm0231943").submit();
-    }
-    else
-    {
-        alert("Please fill out all required fields.");
-        // Re-enable if validation fails
-        if (submitBtn) {
-            submitBtn.style.pointerEvents = "auto";
-            submitBtn.style.opacity = "1";
-            submitBtn.style.cursor = "pointer";
-        }
-    }
-}
-function CreateEntity() {
-    document.getElementById("submitButtonText").value = "create";
-    Validate();
-}</script><style type="text/css">.formTableClass {width:98%;border-spacing: 0;}.formHeaderClass {background-color: #F7F7F7;border-top-left-radius:25px;border-top-right-radius:25px;border: 1px solid #CCCCCC;width: 97.6%;}.formLabelClass {font-size:14px;font-weight:bold;padding:0 0 3px 0;display: inline-block;margin-left:10px;}.formHeaderTitleText {font-family:Arial;font-size:x-large;padding-left: 15px;padding-top: 10px;color:#000000;}.formHeaderDescriptionText {font-family:Arial;font-size:large;padding-left: 15px;padding-bottom: 10px;color:#000000;}.formLeftColumnContent {border-right: 1px solid #CCCCCC;vertical-align:top;border-left: 1px solid #CCCCCC;padding-bottom:20px;background-color:#FCFCFC;}.formRightColumnContent {width:48%;vertical-align:top;border-right: 1px solid #CCCCCC;padding-bottom:20px;background-color:#FCFCFC;}.formHelpTextDisplay {margin:5px 15px 0 0;width:80%;padding:8px 10px 10px 8px;border:1px solid #F93A3A;float:right;font-size:14px;background-color:#EFEFEF;}.requiredInput {border: 2px groove #F93A3A;}.labelMarginLeft {margin-left:10px;}.requiredRedInput {background-color: #FFD9DA;border: 1px solid Red;}.trFormFooterClass {background-color:#E6E6E6;}.formLeftFooterClassTop {width:50%;vertical-align:top;padding-bottom:20px;border-left: 1px solid #CCCCCC;border-right: 1px solid #CCCCCC;}.formLeftFooterClassBottom {width:50%;vertical-align:top;padding-bottom:20px;border-left: 1px solid #CCCCCC;border-bottom: 1px solid #CCCCCC;border-bottom-left-radius: 25px;padding-top: 20px;border-right: 1px solid #CCCCCC;border-bottom-right-radius: 25px;}.formRightFooterClassBottom {width:50%;vertical-align:top;padding-bottom:20px;padding-top: 20px;border-right: 1px solid #CCCCCC;border-bottom: 1px solid #CCCCCC;border-bottom-right-radius: 25px;}.sabutton {margin: 0 10px 0 16px;color: #fff;text-decoration: none;font-weight: bold;font-family: "Segoe UI", Arial, Times New Roman;display: inline-block;float: none;padding: 0 19px;border-radius: 5px;font-size: 16px;height: 40px;line-height: 38px;background-color: #575757;border: 1px solid #EFEFEF;text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);cursor: pointer;}.sabutton:hover {background-color: #000000;color: #fff;}.backtellActionButton {margin: 0 0 0 6px;color: #fff;text-decoration: none;font-weight: bold;font-family: "Segoe UI", Arial, Times New Roman;display: inline-block;float: none;border-radius: 5px;font-size: 12px;height: 20px;line-height: 19px;padding: 5px 15px;background-color: #BCDB77;border: 1px solid #89A07D;box-shadow: 0 1px 0 #89A07D inset;text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);cursor: pointer;}.backtellActionButton:hover {background-color: #472856;color: #fff;}.star-rating {margin-left:10px;white-space:nowrap;display: block;width: 80px;height: 16px;position: relative;background:  url(../images/stars.png) 0 -17px repeat-x;}.star-rating i {opacity: 0;position: absolute;left: 0;top: 0;height: 100%;width: 20%;z-index: 1;background: url(../images/stars.png) 0 0px repeat-x;}.star-rating input {-moz-appearance: none;-webkit-appearance: none;opacity: 0;display: inline-block;width: 20%;height: 100%;margin: 0;padding: 0;z-index: 2;position: relative;}.star-rating input:hover + i,.star-rating input:checked +i { opacity: 1; }.star-rating i ~i { width: 40%; }.star-rating i ~i ~i { width: 60%; }.star-rating i ~i ~i ~i { width: 80%; }.star-rating i ~i ~i ~i ~i { width: 100%; }canvas { pointer-events:none; }.captchaBlock { padding: 10px; }.sa-ohnohoney {opacity: 0; position: absolute; top: 0;  left: 0;  height: 0;  width: 0;  z-index: -1;}.sa-invalid-honey-label { color: red;}</style>
+<!-- ===== Service Autopilot form (iframe) ===== -->
+<div class="sa-form-wrap">
+  <iframe id="saFormsIframe" src="https://my.serviceautopilot.com/v3/ViewForm?id=0295df95-a5cd-4785-b854-2b6d3120ff44&amp;websiteHost=1" width="100%" height="786" scrolling="auto" frameborder="0" style="overflow-y:visible;"></iframe>
+</div>
 <!-- ===== end Service Autopilot form ===== -->
     </div>
 
