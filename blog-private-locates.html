@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog | Spokane Stump Grinder</title>
-<meta name="description" content="Stump grinding and yard-cleanup guides from Spokane Stump Grinder — serving Spokane, WA and the Coeur d'Alene region.">
+<title>Private Utility Locates: What They Cost | Spokane Stump Grinder Blog</title>
+<meta name="description" content="811 only covers utility-owned lines. Here's what a private locate covers, when you actually need one, and what drives the cost.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
 :root{
@@ -77,8 +77,9 @@
     text-transform:uppercase;letter-spacing:2px;font-size:12px;
     color:var(--moss-dark);font-weight:700;margin:0 0 10px
   }
-  .hero h1{margin:0 0 14px;font-size:clamp(30px,4.6vw,44px);line-height:1.15;color:var(--bark)}
-  .hero p{margin:0;max-width:620px;font-size:18px;color:var(--muted)}
+  .hero h1{margin:0 0 14px;font-size:clamp(28px,4.2vw,42px);line-height:1.18;color:var(--bark)}
+  .hero p{margin:0;max-width:680px;font-size:18px;color:var(--muted)}
+  .post-meta{color:var(--muted);font-size:14px;margin:14px 0 0;text-transform:uppercase;letter-spacing:1px;font-weight:700}
 
   /* ---------- buttons ---------- */
   .btn{
@@ -92,31 +93,35 @@
   .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
 
   /* ---------- sections ---------- */
-  section{padding:56px 0}
-  @media(max-width:600px){section{padding:36px 0}}
+  section{padding:48px 0}
+  @media(max-width:600px){section{padding:32px 0}}
   .lead{font-size:17px;max-width:720px;color:var(--muted);margin:0 0 28px}
   .band{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-  .card{
-    background:var(--sand);border:1px solid var(--line);
-    border-radius:8px;padding:24px;
-  }
-  .card h3{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--moss-dark);font-weight:700}
-  .card .big{display:inline-block;font-size:20px;font-weight:700;color:var(--bark);margin-bottom:8px}
-  .card .big:hover{color:var(--moss-dark)}
-  .card p{margin:0;font-size:15px;color:var(--muted)}
-  .post-date{
-    text-transform:uppercase;letter-spacing:1px;font-size:12px;
-    color:var(--muted);font-weight:700;margin:0 0 8px;
-  }
+  /* ---------- article body ---------- */
+  .article{max-width:720px}
+  .article h2{font-size:clamp(22px,3vw,28px);color:var(--bark);margin:0 0 14px}
+  .article h2:not(:first-child){margin-top:8px}
+  .article p{margin:0 0 18px;font-size:17px;color:var(--text)}
+  .article ul{margin:0 0 20px;padding-left:22px}
+  .article li{margin-bottom:8px;font-size:16px;color:var(--text)}
+  .article .muted-note{color:var(--muted);font-size:15px}
 
-  /* ---------- empty state ---------- */
-  .empty-state{
-    background:var(--sand);border:1px dashed var(--line);border-radius:10px;
-    padding:36px 28px;text-align:center;
+  .callout{
+    background:var(--sand);border-left:4px solid var(--moss);
+    border-radius:6px;padding:18px 22px;margin:0 0 24px;
   }
-  .empty-state p{margin:0 0 6px;color:var(--muted);font-size:16px}
+  .callout p{margin:0;font-size:16px;color:var(--text)}
+  .callout p + p{margin-top:10px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0 0 24px}
+  .chip-card{
+    background:var(--sand);border:1px solid var(--line);border-radius:8px;
+    padding:14px 16px;font-size:15px;
+  }
+  .chip-card strong{display:block;color:var(--bark);margin-bottom:2px}
+  .chip-card span{color:var(--muted);font-size:13px}
+
   .todo{background:#fff8e1;border:1px dashed #d0a520;color:#7a5c00;
     padding:3px 8px;border-radius:4px;font-size:13px;font-weight:600;display:inline-block}
 
@@ -125,6 +130,8 @@
   .cta h2{margin:0 0 10px;font-size:clamp(24px,3.4vw,32px);color:var(--bark)}
   .cta p{margin:0 auto 8px;max-width:560px;color:var(--muted);font-size:17px}
   .cta .btn-row{justify-content:center}
+
+  .back-link{display:inline-block;margin-top:36px;font-weight:600;color:var(--moss-dark)}
 
   /* ---------- footer ---------- */
   footer{background:var(--bark);color:#999999;padding:34px 0;font-size:14px}
@@ -172,50 +179,76 @@
 <div class="hero">
   <div class="wrap">
     <p class="eyebrow">Blog</p>
-    <h1>Stump grinding guides &amp; updates</h1>
-    <p>Notes on stump removal, yard prep, and what to expect from a grinding job. Posts go up here as we write them.</p>
+    <h1>Private utility locates: what they cost and when you need one</h1>
+    <p>811 covers utility-owned lines up to your meter, and stops there. Here's what a private locate covers instead, when it's actually worth calling one, and what drives the cost.</p>
+    <p class="post-meta">August 2026</p>
   </div>
 </div>
 
-<!-- ============ POST LIST ============
-     Add a card for each published post inside the .grid below, using this
-     structure, then remove the .empty-state block once at least one post
-     exists:
-
-     <div class="card">
-       <p class="post-date">Month Year</p>
-       <a class="big" href="blog-post-file-name.html">Post Title</a>
-       <p>One or two sentence summary of the post.</p>
-     </div>
--->
 <section>
-  <div class="wrap">
-    <p class="eyebrow">Latest Posts</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">From the field</h2>
-    <p class="lead">Links to individual posts will show up here as they're published.</p>
+  <div class="wrap article">
 
+    <h2>Where 811 stops</h2>
+    <p>We covered the basics of <a href="blog-811-locates.html">calling 811 before you dig</a> in an earlier post — it's free, and it covers the utility-owned lines running to your property: gas, electric, water, sewer, cable, internet. What it doesn't cover is anything on the private side of the meter: your own sprinkler system, low-voltage landscape lighting, invisible pet fence, or septic lines. That's where a private locate comes in.</p>
+
+    <h2>What a private locate actually is</h2>
+    <p>A private locate is a paid, independently arranged service — not part of the free 811 ticket. A locator comes out and traces the lines you actually own, using the same kind of electromagnetic locating equipment utility locators use for metal or tracer-wire lines, and sometimes ground-penetrating radar (GPR) for non-metallic pipe — like plain PVC irrigation line or older septic pipe — that a standard locator can't pick up.</p>
+
+    <h2>When you'd actually need one</h2>
     <div class="grid">
-      <div class="card">
-        <p class="post-date">August 2026</p>
-        <a class="big" href="blog-private-locates.html">Private Utility Locates: What They Cost and When You Need One</a>
-        <p>811 only covers utility-owned lines. Here's what a private locate covers, when it's worth calling one, and what drives the cost.</p>
+      <div class="chip-card">
+        <strong>Full removal jobs</strong>
+        <span>Digging out a root ball goes wider and deeper than grinding alone</span>
       </div>
-      <div class="card">
-        <p class="post-date">August 2026</p>
-        <a class="big" href="blog-811-locates.html">Call 811 Before You Dig: What It Means for Your Stump Job</a>
-        <p>Why calling 811 before a stump grinding or removal job matters, what's typically buried in a yard, and how the locate process works.</p>
+      <div class="chip-card">
+        <strong>Unknown irrigation</strong>
+        <span>Older property, no as-built plans, or zones added without records</span>
+      </div>
+      <div class="chip-card">
+        <strong>Invisible pet fence</strong>
+        <span>Boundary wire with an unclear or forgotten layout</span>
+      </div>
+      <div class="chip-card">
+        <strong>Septic systems</strong>
+        <span>No accurate map of tank or line locations on file</span>
       </div>
     </div>
+
+    <div class="callout">
+      <p><strong>Worth knowing:</strong> an 811 ticket coming back "clear" only means there's nothing utility-owned in the way. It says nothing about what's on your side of the meter.</p>
+    </div>
+
+    <h2>Who provides them</h2>
+    <p>Independent utility-locating companies handle most private locates. Some irrigation or landscape contractors can trace their own systems directly. For non-metallic lines that standard equipment can't detect, look specifically for a provider that offers GPR — not every locator does.</p>
+
+    <h2>What drives the cost</h2>
+    <p>Pricing varies by provider and job, but the factors that move it are consistent:</p>
+    <ul>
+      <li>How much ground has to be searched</li>
+      <li>How many separate systems need tracing — irrigation, lighting, fence, and septic are usually priced as separate lines of work</li>
+      <li>Line material — metal or tracer-wire lines are faster and cheaper to trace than plain non-metallic pipe that needs GPR</li>
+      <li>Site access and how built-up or obstructed the yard is</li>
+      <li>Turnaround time — a rush request typically costs more than standard scheduling</li>
+    </ul>
+    <p><span class="todo">Add a typical price range here once we have real numbers from a locator we've worked with — no figure until then, per house style.</span></p>
+
+    <h2>Who arranges it for your job</h2>
+    <p><span class="todo">Confirm: does Spokane Stump Grinder arrange or recommend a specific private locator as part of scheduling, or is that on the homeowner to set up separately before the job?</span></p>
+
+    <h2>Bottom line</h2>
+    <p>If your yard has irrigation, landscape lighting, an invisible fence, or a septic system and you don't have solid documentation of where the lines run, a private locate before a big removal job is cheap insurance against hitting something expensive to fix.</p>
+
+    <a class="back-link" href="blog.html">&larr; Back to all posts</a>
   </div>
 </section>
 
 <section class="cta">
   <div class="wrap">
-    <h2>Have a question about your stump?</h2>
-    <p>No need to wait for a post — call, text, or send us the details and we'll get you a straight answer.</p>
+    <h2>Getting a stump ground or removed?</h2>
+    <p>Tell us about the job and anything you know is buried nearby — we'll take it from there.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="contact.html">Contact Us</a>
+      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
     </div>
   </div>
 </section>

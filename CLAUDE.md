@@ -39,16 +39,17 @@ dependencies. Pages link to each other by bare filename and work opened
 directly from disk (`file://`).
 
 ```
-index.html            Homepage — hero, 2 service tiles, why-us, process, pricing band, CTA
-services.html         Grinding + removal/cleanup, 8 pricing factors, service area
-booking.html          On-Site Consultation (OSC) calendar embed, prep table
-case-studies.html     3 real case studies (video + before/after each)
-about.html            Story, 3 pillars, how-we-work, team, credentials, service area
-faq.html              Pricing, the work itself, scheduling, getting started
-blog.html             Blog index — links to blog-*.html posts (see below)
-blog-811-locates.html First blog post — calling 811 before stump work
-contact.html          Call/text/email cards, map embed, links to booking + request form
-service-request.html  Service Autopilot request form (v3/ViewForm, inline)
+index.html                  Homepage — hero, 2 service tiles, why-us, process, pricing band, CTA
+services.html               Grinding + removal/cleanup, 8 pricing factors, service area
+booking.html                On-Site Consultation (OSC) calendar embed, prep table
+case-studies.html           3 real case studies (video + before/after each)
+about.html                  Story, 3 pillars, how-we-work, team, credentials, service area
+faq.html                    Pricing, the work itself, scheduling, getting started
+blog.html                   Blog index — links to blog-*.html posts (see below)
+blog-811-locates.html       Blog post — calling 811 before stump work
+blog-private-locates.html   Blog post — private locates, what they cost
+contact.html                Call/text/email cards, map embed, links to booking + request form
+service-request.html        Service Autopilot request form (v3/ViewForm, inline)
 ```
 
 ### Do not refactor into a shared stylesheet
@@ -73,7 +74,10 @@ information (e.g. "call 811 before you dig") — never invented specifics about
 this business's own history, jobs, or policies. Where a post needs a real
 company-specific fact (a policy, a number, who does what), leave a
 `<span class="todo">` marker in the post body instead of guessing, same as
-everywhere else on the site.
+everywhere else on the site. This includes pricing — hard rule #2 ("no
+pricing figures anywhere") applies to blog posts too, so cost-related posts
+describe the *factors* that drive price (like services.html does for SSG's
+own work), never a dollar figure, invented or otherwise.
 
 Posts published:
 - `blog-811-locates.html` (Aug 2026) — why to call 811 before stump work,
@@ -81,6 +85,12 @@ Posts published:
   locate process works, and who requests it (confirmed with Jeff: Spokane
   Stump Grinder submits the 811 request as part of scheduling — homeowner
   doesn't need to). No open `.todo`s.
+- `blog-private-locates.html` (Aug 2026) — what a private locate is and why
+  811 doesn't cover it, when you'd need one, who provides them, and the
+  factors that drive cost (no dollar figures — see above). Two open
+  `.todo`s: a real price range if/when we have one from a locator we've
+  worked with, and whether SSG arranges a private locator as part of
+  scheduling or that's left to the homeowner. Confirm both with Jeff.
 
 ### Design tokens
 
