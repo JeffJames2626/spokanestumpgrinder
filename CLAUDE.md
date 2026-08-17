@@ -44,7 +44,7 @@ case-studies.html     3 real case studies (video + before/after each)
 about.html            Story, 3 pillars, how-we-work, team, credentials, service area
 faq.html              Pricing, the work itself, scheduling, getting started
 contact.html          Call/text/email cards, map embed, links to booking + request form
-service-request.html  Service Autopilot request form (v3/ViewForm iframe)
+service-request.html  Service Autopilot request form (v3/ViewForm, inline)
 ```
 
 ### Do not refactor into a shared stylesheet
@@ -144,41 +144,55 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
 
 ### Service Autopilot form — service-request.html
 
-**Current (as of 2026-08-16): `v3/ViewForm` iframe embed**, replacing the old
-inline HTML form. Embed:
+**Current (as of 2026-08-16): inline embed of SA's `v3/ViewForm` markup**
+(form template id `882db8ac-f062-4378-bba4-2796ed2c2d4e`, view id
+`0295df95-a5cd-4785-b854-2b6d3120ff44`), replacing the older, outdated inline
+form. This is the *newer* SA form generator's actual output pasted in
+directly — not an iframe — so the page still renders with zero external
+dependency; only the Submit click (and the Google Fonts `Lato` stylesheet
+link) touch the network. Adds Contact Email, "How Did You Hear About Us?",
+and file/photo attachment fields versus the old form.
 
-```html
-<div class="sa-form-wrap">
-  <iframe id="saFormsIframe" src="https://my.serviceautopilot.com/v3/ViewForm?id=0295df95-a5cd-4785-b854-2b6d3120ff44&websiteHost=1" width="100%" height="786" scrolling="auto" frameborder="0" style="overflow-y:visible;"></iframe>
-</div>
-```
+A same-URL iframe embed (`<iframe src=".../v3/ViewForm?id=...">`) was tried
+first and confirmed to actually load, but was replaced with this true inline
+version to restore the original architecture's guarantee — page render never
+depends on my.serviceautopilot.com responding — matching the reasoning that
+originally ruled out iframes here. Submission itself still POSTs to
+`my.serviceautopilot.com/MarketingBFF/Form/SubmitForm` client-side, so SA must
+be reachable at *submit* time regardless of embed method; that's unavoidable
+either way.
 
-An earlier iframe attempt at a *different* URL pattern (plain `viewform.html`,
-not SA's `v3/ViewForm`) failed years ago, which is why the inline version was
-built and why CLAUDE.md carried a standing warning against iframes here. That
-warning is now **superseded** — this `v3/ViewForm` URL was tested directly
-(loads a fuller field set: adds Contact Email, "How Did You Hear About Us?",
-and file/photo attachment) and confirmed working embedded in
-service-request.html (iframe reports the correct src/size and throws a
-cross-origin security error on `contentDocument` access — proof it actually
-navigated to and loaded the real SA page, not a blocked/blank frame). If this
-form ever stops loading, that's a live regression to investigate, not an
-expected limitation.
+**If this form is ever regenerated from SA, re-apply these fixes** (found by
+diffing SA's raw generated output against a working page):
 
-The old inline form (form ID `968e21cf-2114-493e-aa17-4397e0df47df`, posting to
-`https://my.serviceautopilot.com/ProcessForm.aspx`) and the `BacktellForms.js`
-script embed are both retired. Their defect list is kept below only in case SA
-inline forms are ever reintroduced:
+1. The `body{font-family:'Lato',sans-serif}` rule in SA's `<style>` block
+   clobbers the whole site's font if pasted verbatim — rescope it to
+   `.sa-form-wrap, .sa-form-wrap *{...}` instead.
+2. The hidden "Submitting Form" progress-overlay title is generated as an
+   `<h1>` — change it to a `<p>` (or any non-heading tag) to keep the page at
+   one real `<h1>`.
+3. The "How Did You Hear About Us?" dropdown ships with `style="width:20%"`,
+   unusably narrow — override to a real width (currently `100%;max-width:320px`).
+4. The confirmation message's two `<p>` tags use **unquoted** attribute values
+   containing a space (`style=text-align: center;`) — the browser silently
+   truncates the value at the first space, so centering never applies. Quote
+   every attribute on those two tags.
+5. Google Fonts `<link>` href has a doubled `&amp;amp;` — collapse to a single
+   `&`.
+6. DOMPurify's `ATTR_WHITESPACE` regex character class (inside the embedded
+   DOMPurify 3.0.9 bundle) sometimes pastes as **raw control/format
+   characters** — including a literal NUL byte — instead of `\uXXXX` escapes,
+   which corrupts the file's text encoding. Re-encode that character class using `\uXXXX` escapes (`\u0000-\u0020\u00A0`,
+   `\u1680`, `\u180E`, `\u2000-\u2029`, `\u205F`, `\u3000`) if this happens
+   again; `tidy`/`grep` flagging the file as "binary" is the tell.
 
-1. Removed the `Automated Lawn & Pest - Marko's Sprinklers` `<h1>` (branding).
-2. Removed `{ credit - card - logic }` — an unsubstituted template placeholder
-   in their JS. It threw `ReferenceError: credit is not defined` on failed
-   validation, killing the function before the re-enable code ran and leaving
-   Submit permanently dead until page reload.
-3. `.saButton` → `.sabutton` — CSS is case-sensitive and the element uses
-   `class="sabutton"`, so the button rendered completely unstyled.
-4. Removed one stray unmatched `</div>`.
-5. `width:640px` → `max-width:640px` for mobile.
+Retired: the old inline form (form ID `968e21cf-2114-493e-aa17-4397e0df47df`,
+posting to `https://my.serviceautopilot.com/ProcessForm.aspx`), the
+`BacktellForms.js` script embed, and the `v3/ViewForm` iframe embed. That old
+form's own defect list (`Automated Lawn & Pest` branding `<h1>`, the
+`{ credit - card - logic }` template placeholder, `.saButton` casing, a stray
+`</div>`, `width:640px`) no longer applies since that markup is gone, but is
+preserved in git history if that exact form is ever regenerated.
 
 Left as-is (harmless): a `value="" \>` backslash typo; `$.getUrlVars` requiring
 jQuery (only reachable on the honeypot/bot path).
