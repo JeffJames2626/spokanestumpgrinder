@@ -246,6 +246,18 @@ distinction), nothing invented. booking.html's CTA now links to faq.html
 for visitors with non-scheduling questions, since the full FAQ section no
 longer lives there.
 
+### "OSC" terminology
+
+"On-Site Consultation," abbreviated **OSC**, is Jeff's chosen term for the
+free calendar-booked visit (both in-house and customer-facing — this isn't
+internal jargon we're hiding from visitors). Used throughout booking.html
+and faq.html, both plain "on-site consultation" spelled out on first mention
+per page and "OSC" afterward. Don't revert to generic "consultation" or
+"appointment" in this context — it's a deliberate, consistent choice, not
+interchangeable wording. If a page introduces the free-visit concept for
+the first time, spell it out once ("on-site consultation (OSC)") before
+shortening to OSC, same pattern used on both existing pages.
+
 The credentials table on about.html is fully filled in: business name, WA
 contractor license #, and UBI number are real values (verified facts below).
 The liability-insurance, bonded, and Idaho-registration rows were removed
