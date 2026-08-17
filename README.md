@@ -35,7 +35,7 @@ every page links to the others by exact filename.
 ## Unfinished
 
 Anything not filled in is marked in yellow on the page. Search for
-`class="todo"` — 3 markers, all in `faq.html` (moved there from `booking.html`
+`class="todo"` — 2 markers, both in `faq.html` (moved there from `booking.html`
 along with the rest of the scheduling FAQ). Every other page is fully
 complete. Grey dashed boxes are photo/video placeholders.
 
