@@ -207,17 +207,18 @@ in-repo, it'll need an explicit `git add -f`.
 
 ## Unfinished work
 
-2 markers, both `<span class="todo">`, both in faq.html (moved there from
-booking.html — see "FAQ page" section below). Search the folder for
-`class="todo"`.
+1 marker, `<span class="todo">`, in faq.html (moved there from booking.html —
+see "FAQ page" section below). Search the folder for `class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
-| faq.html | 2 | Payment methods, reschedule notice window |
+| faq.html | 1 | Payment methods |
 
 The "Do you do storm or emergency work?" card was removed entirely at
 Jeff's request, not left as a TODO — he doesn't want rush/emergency work
-addressed on the site at all right now.
+addressed on the site at all right now. The reschedule-notice-window TODO
+is resolved: "Things happen — just give us as much notice as possible,"
+no specific window promised.
 
 Jeff's bio (about.html) is filled in: mowing since age 13, ran a local
 maintenance company for 14 years (1 truck to 30 employees), went out on his
