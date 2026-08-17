@@ -1,6 +1,7 @@
 # Spokane Stump Grinder — Website
 
-Static 9-page marketing site. No build step, no dependencies.
+Static 9-page marketing site, plus a growing set of blog post pages. No build
+step, no dependencies.
 
 ## Preview
 
@@ -30,15 +31,16 @@ every page links to the others by exact filename.
 | `case-studies.html` | Case studies (3 real jobs) |
 | `about.html` | About us |
 | `faq.html` | FAQ — pricing, the work, scheduling, getting started |
-| `blog.html` | Blog index — no posts yet, just the page links will live on |
+| `blog.html` | Blog index — links to each post below |
+| `blog-811-locates.html` | Blog post — calling 811 before stump work |
 | `contact.html` | Contact — call/text/email, request form, map |
 | `service-request.html` | Request form (Service Autopilot) |
 
 ## Status
 
-All content is filled in — zero `class="todo"` markers left anywhere on the
-site (search the folder for `class="todo"` to confirm; should return
-nothing).
+Core 9 pages are fully filled in. One open `class="todo"` marker exists on
+`blog-811-locates.html` (a company-policy detail to confirm with Jeff) —
+search the folder for `class="todo"` to find it.
 
 Still missing: a real logo (favicon is a placeholder red circle with tree
 rings), and analytics.

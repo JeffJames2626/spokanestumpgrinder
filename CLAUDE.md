@@ -32,9 +32,11 @@ folder. Live within ~1 minute.
 
 ## Architecture
 
-Nine standalone HTML files. **Every page carries its own inline `<style>` block.**
-No shared stylesheet, no JS bundle, no build step, no dependencies. Pages link to
-each other by bare filename and work opened directly from disk (`file://`).
+Nine core standalone HTML files, plus one blog post so far (more will be added
+over time — see the Blog section below). **Every page carries its own inline
+`<style>` block.** No shared stylesheet, no JS bundle, no build step, no
+dependencies. Pages link to each other by bare filename and work opened
+directly from disk (`file://`).
 
 ```
 index.html            Homepage — hero, 2 service tiles, why-us, process, pricing band, CTA
@@ -43,7 +45,8 @@ booking.html          On-Site Consultation (OSC) calendar embed, prep table
 case-studies.html     3 real case studies (video + before/after each)
 about.html            Story, 3 pillars, how-we-work, team, credentials, service area
 faq.html              Pricing, the work itself, scheduling, getting started
-blog.html             Blog index — empty, no posts written yet (see below)
+blog.html             Blog index — links to blog-*.html posts (see below)
+blog-811-locates.html First blog post — calling 811 before stump work
 contact.html          Call/text/email cards, map embed, links to booking + request form
 service-request.html  Service Autopilot request form (v3/ViewForm, inline)
 ```
@@ -53,25 +56,31 @@ service-request.html  Service Autopilot request form (v3/ViewForm, inline)
 This was tried and rejected. Each page must stay self-contained so it can be
 opened, edited, or replaced on its own. Duplicated CSS across files is the
 intended tradeoff. If you change a shared component (header, nav, footer,
-button styles), apply it to all nine files.
+button styles), apply it to all nine core files **and every blog post file**
+— blog posts carry the identical header/nav/footer markup too.
 
-### Blog — blog.html
+### Blog — blog.html + blog-*.html
 
-Index/landing page only, built 2026-08-16. Deliberately has **zero posts** —
-no post was invented for it, per the "never invent facts" rule below, which
-extends to blog content (fake post titles/topics are still fabricated facts).
+blog.html is the index; each post is its own standalone file
+(`blog-<slug>.html`) using the same template pattern as the other pages —
+inline `<style>`, same nav/footer, one `<h1>`. Post pages are **not** added to
+the site-wide nav or footer — only `blog.html` itself is linked from there.
+Each post gets a card on blog.html (inside `.grid`, using the structure
+documented in the HTML comment above it) and an entry in `sitemap.xml`.
 
-To add a real post:
-1. Write it as its own standalone HTML file (same template pattern as the
-   other pages — inline `<style>`, same nav/footer, one `<h1>`), and add it
-   to `sitemap.xml`.
-2. On blog.html, add a card inside the empty `<div class="grid">` using the
-   structure documented in the HTML comment directly above it, then remove
-   the `.empty-state` "No posts published yet" block once at least one real
-   post exists.
-3. Add the new post's `<li>` to the nav and footer "Company" list on all
-   nine pages, the same way blog.html itself was added — do not add post
-   pages to the main nav/footer, only blog.html links there.
+Post topics must stay to general, verifiable how-it-works/industry-standard
+information (e.g. "call 811 before you dig") — never invented specifics about
+this business's own history, jobs, or policies. Where a post needs a real
+company-specific fact (a policy, a number, who does what), leave a
+`<span class="todo">` marker in the post body instead of guessing, same as
+everywhere else on the site.
+
+Posts published:
+- `blog-811-locates.html` (Aug 2026) — why to call 811 before stump work,
+  what's typically buried in a yard vs. what 811 actually covers, how the
+  locate process works. Has one open `.todo`: whether Spokane Stump Grinder
+  requests the 811 locate as part of scheduling, or whether that's on the
+  homeowner — confirm with Jeff and resolve before this is a big traffic page.
 
 ### Design tokens
 

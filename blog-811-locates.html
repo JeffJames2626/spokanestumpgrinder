@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog | Spokane Stump Grinder</title>
-<meta name="description" content="Stump grinding and yard-cleanup guides from Spokane Stump Grinder — serving Spokane, WA and the Coeur d'Alene region.">
+<title>Call 811 Before You Dig | Spokane Stump Grinder Blog</title>
+<meta name="description" content="Why calling 811 before a stump grinding or removal job matters, what's typically buried in a yard, and how the locate process works.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
 :root{
@@ -77,8 +77,9 @@
     text-transform:uppercase;letter-spacing:2px;font-size:12px;
     color:var(--moss-dark);font-weight:700;margin:0 0 10px
   }
-  .hero h1{margin:0 0 14px;font-size:clamp(30px,4.6vw,44px);line-height:1.15;color:var(--bark)}
-  .hero p{margin:0;max-width:620px;font-size:18px;color:var(--muted)}
+  .hero h1{margin:0 0 14px;font-size:clamp(28px,4.2vw,42px);line-height:1.18;color:var(--bark)}
+  .hero p{margin:0;max-width:680px;font-size:18px;color:var(--muted)}
+  .post-meta{color:var(--muted);font-size:14px;margin:14px 0 0;text-transform:uppercase;letter-spacing:1px;font-weight:700}
 
   /* ---------- buttons ---------- */
   .btn{
@@ -92,31 +93,35 @@
   .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
 
   /* ---------- sections ---------- */
-  section{padding:56px 0}
-  @media(max-width:600px){section{padding:36px 0}}
+  section{padding:48px 0}
+  @media(max-width:600px){section{padding:32px 0}}
   .lead{font-size:17px;max-width:720px;color:var(--muted);margin:0 0 28px}
   .band{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-  .card{
-    background:var(--sand);border:1px solid var(--line);
-    border-radius:8px;padding:24px;
-  }
-  .card h3{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--moss-dark);font-weight:700}
-  .card .big{display:inline-block;font-size:20px;font-weight:700;color:var(--bark);margin-bottom:8px}
-  .card .big:hover{color:var(--moss-dark)}
-  .card p{margin:0;font-size:15px;color:var(--muted)}
-  .post-date{
-    text-transform:uppercase;letter-spacing:1px;font-size:12px;
-    color:var(--muted);font-weight:700;margin:0 0 8px;
-  }
+  /* ---------- article body ---------- */
+  .article{max-width:720px}
+  .article h2{font-size:clamp(22px,3vw,28px);color:var(--bark);margin:0 0 14px}
+  .article h2:not(:first-child){margin-top:8px}
+  .article p{margin:0 0 18px;font-size:17px;color:var(--text)}
+  .article ul{margin:0 0 20px;padding-left:22px}
+  .article li{margin-bottom:8px;font-size:16px;color:var(--text)}
+  .article .muted-note{color:var(--muted);font-size:15px}
 
-  /* ---------- empty state ---------- */
-  .empty-state{
-    background:var(--sand);border:1px dashed var(--line);border-radius:10px;
-    padding:36px 28px;text-align:center;
+  .callout{
+    background:var(--sand);border-left:4px solid var(--moss);
+    border-radius:6px;padding:18px 22px;margin:0 0 24px;
   }
-  .empty-state p{margin:0 0 6px;color:var(--muted);font-size:16px}
+  .callout p{margin:0;font-size:16px;color:var(--text)}
+  .callout p + p{margin-top:10px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0 0 24px}
+  .chip-card{
+    background:var(--sand);border:1px solid var(--line);border-radius:8px;
+    padding:14px 16px;font-size:15px;
+  }
+  .chip-card strong{display:block;color:var(--bark);margin-bottom:2px}
+  .chip-card span{color:var(--muted);font-size:13px}
+
   .todo{background:#fff8e1;border:1px dashed #d0a520;color:#7a5c00;
     padding:3px 8px;border-radius:4px;font-size:13px;font-weight:600;display:inline-block}
 
@@ -125,6 +130,8 @@
   .cta h2{margin:0 0 10px;font-size:clamp(24px,3.4vw,32px);color:var(--bark)}
   .cta p{margin:0 auto 8px;max-width:560px;color:var(--muted);font-size:17px}
   .cta .btn-row{justify-content:center}
+
+  .back-link{display:inline-block;margin-top:36px;font-weight:600;color:var(--moss-dark)}
 
   /* ---------- footer ---------- */
   footer{background:var(--bark);color:#999999;padding:34px 0;font-size:14px}
@@ -172,45 +179,83 @@
 <div class="hero">
   <div class="wrap">
     <p class="eyebrow">Blog</p>
-    <h1>Stump grinding guides &amp; updates</h1>
-    <p>Notes on stump removal, yard prep, and what to expect from a grinding job. Posts go up here as we write them.</p>
+    <h1>Call 811 before you dig: what it means for your stump job</h1>
+    <p>Grinding a stump — and especially pulling the root ball for a full removal — goes deeper into the yard than almost any other project. Here's what 811 actually covers, and what it doesn't.</p>
+    <p class="post-meta">August 2026</p>
   </div>
 </div>
 
-<!-- ============ POST LIST ============
-     Add a card for each published post inside the .grid below, using this
-     structure, then remove the .empty-state block once at least one post
-     exists:
-
-     <div class="card">
-       <p class="post-date">Month Year</p>
-       <a class="big" href="blog-post-file-name.html">Post Title</a>
-       <p>One or two sentence summary of the post.</p>
-     </div>
--->
 <section>
-  <div class="wrap">
-    <p class="eyebrow">Latest Posts</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">From the field</h2>
-    <p class="lead">Links to individual posts will show up here as they're published.</p>
+  <div class="wrap article">
 
+    <h2>What 811 actually is</h2>
+    <p>811 is the national "call before you dig" number. Dialing it (or filing a request online) connects you to your state's one-call center — Washington 811 or Idaho 811, depending on where the job is — which notifies the utility companies with lines near your address. It's a free service; there's no charge to request a locate.</p>
+
+    <h2>Why it matters more for stump work than most yard projects</h2>
+    <p>A mower or an edger never leaves the top inch or two of soil. Grinding a stump goes well below that, and digging out a root ball for a full removal goes deeper still — right into the zone where sprinkler lines, low-voltage lighting, invisible fence wire, and utility lines often sit. Most of that is invisible until someone hits it.</p>
+
+    <h2>What's usually down there</h2>
     <div class="grid">
-      <div class="card">
-        <p class="post-date">August 2026</p>
-        <a class="big" href="blog-811-locates.html">Call 811 Before You Dig: What It Means for Your Stump Job</a>
-        <p>Why calling 811 before a stump grinding or removal job matters, what's typically buried in a yard, and how the locate process works.</p>
+      <div class="chip-card">
+        <strong>Gas, electric, water &amp; sewer</strong>
+        <span>Utility-owned — covered by an 811 locate</span>
+      </div>
+      <div class="chip-card">
+        <strong>Cable &amp; internet</strong>
+        <span>Utility-owned — covered by an 811 locate</span>
+      </div>
+      <div class="chip-card">
+        <strong>Sprinkler / irrigation lines</strong>
+        <span>Usually private — often not covered</span>
+      </div>
+      <div class="chip-card">
+        <strong>Low-voltage landscape lighting</strong>
+        <span>Usually private — often not covered</span>
+      </div>
+      <div class="chip-card">
+        <strong>Invisible pet fence wire</strong>
+        <span>Usually private — often not covered</span>
+      </div>
+      <div class="chip-card">
+        <strong>Septic lines &amp; tanks</strong>
+        <span>Usually private — often not covered</span>
       </div>
     </div>
+
+    <div class="callout">
+      <p><strong>The important nuance:</strong> 811 locates mark utility-owned lines up to the meter or connection point. Anything on your side of that — your own sprinkler system, landscape lighting, or invisible fence — is usually not covered by the free locate. That part relies on what you know about your own yard.</p>
+    </div>
+
+    <h2>How the process works</h2>
+    <p>In broad strokes:</p>
+    <ul>
+      <li>A locate request goes in with the address and a description of the work area.</li>
+      <li>Utilities are notified and typically have a couple of business days to respond by marking their lines — flags or spray paint, color-coded by utility type (the industry-standard colors: red for electric, yellow for gas, orange for communications, blue for water, green for sewer).</li>
+      <li>Once everything's marked, or the ticket clears with no conflicts nearby, the locate is good for a set window before it expires and needs to be refreshed.</li>
+    </ul>
+    <p class="muted-note">Exact wait times and ticket validity windows are set by each state's one-call center, not by us — if timing matters for your project, confirm current numbers with Washington 811 or Idaho 811 directly.</p>
+
+    <h2>Who requests the locate</h2>
+    <p><span class="todo">Confirm: does Spokane Stump Grinder submit the 811 request as part of scheduling, or is that on the homeowner?</span></p>
+
+    <h2>What you can do to help</h2>
+    <ul>
+      <li>Flag or mark anything you know is private — sprinkler heads, low-voltage wire, invisible fence — since the utility locate won't catch those.</li>
+      <li>Keep the marked area accessible until the work is done: no parking over flags, no fresh mulch or mowing over paint marks.</li>
+      <li>Mention any known buried lines in the notes box when you <a href="service-request.html">request service</a> — it's the same thing we ask about on that form.</li>
+    </ul>
+
+    <a class="back-link" href="blog.html">&larr; Back to all posts</a>
   </div>
 </section>
 
 <section class="cta">
   <div class="wrap">
-    <h2>Have a question about your stump?</h2>
-    <p>No need to wait for a post — call, text, or send us the details and we'll get you a straight answer.</p>
+    <h2>Getting a stump ground or removed?</h2>
+    <p>Tell us about the job and anything you know is buried nearby — we'll take it from there.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="contact.html">Contact Us</a>
+      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
     </div>
   </div>
 </section>
