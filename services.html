@@ -57,17 +57,20 @@
     text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap;
   }
   .callnow:hover{background:#c9c9c9}
+  .callnow-short{display:none}
   .nav-toggle-input{display:none}
   .nav-toggle-btn{display:none;font-size:26px;line-height:1;color:#fff;cursor:pointer;padding:4px 2px;order:2}
   @media(max-width:820px){
-    .bar{flex-wrap:wrap}
+    .bar{flex-wrap:wrap;justify-content:flex-start}
     .brand{order:1}
-    .nav-toggle-btn{display:block;order:2}
-    .callnow{order:3;padding:8px 12px;font-size:14px}
+    .callnow{order:2;margin-left:auto;padding:8px 12px;font-size:14px}
+    .nav-toggle-btn{display:block;order:3}
     nav{order:4;flex-basis:100%;max-height:0;overflow:hidden;transition:max-height .25s ease}
     nav ul{flex-direction:column;gap:0;padding:8px 0 6px}
-    nav a{display:block;padding:12px 4px;font-size:16px;border-bottom:1px solid rgba(255,255,255,.1)}
+    nav a{display:block;padding:12px 4px;font-size:16px;border-bottom:1px solid rgba(255,255,255,.1);text-align:right}
     .nav-toggle-input:checked ~ nav{max-height:400px}
+    .callnow-full{display:none}
+    .callnow-short{display:inline}
   }
 
   /* ---------- hero ---------- */
@@ -227,7 +230,7 @@
         <li><a href="service-request.html">Request Service</a></li>
       </ul>
     </nav>
-    <a class="callnow" href="tel:+15094349554">&#9742; 509-434-9554</a>
+    <a class="callnow" href="tel:+15094349554">&#9742; <span class="callnow-full">509-434-9554</span><span class="callnow-short">Call</span></a>
   </div>
 </header>
 
