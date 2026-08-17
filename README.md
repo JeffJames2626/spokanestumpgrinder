@@ -32,14 +32,14 @@ every page links to the others by exact filename.
 | `faq.html` | FAQ — pricing, the work, scheduling, getting started |
 | `service-request.html` | Request form (Service Autopilot) |
 
-## Unfinished
+## Status
 
-Anything not filled in is marked in yellow on the page. Search for
-`class="todo"` — 1 marker, in `faq.html` (payment methods). Every other page is fully
-complete. Grey dashed boxes are photo/video placeholders.
+All content is filled in — zero `class="todo"` markers left anywhere on the
+site (search the folder for `class="todo"` to confirm; should return
+nothing).
 
-Also missing: a real logo (favicon is a placeholder red circle with tree
-rings), real photography, and analytics.
+Still missing: a real logo (favicon is a placeholder red circle with tree
+rings), and analytics.
 
 ## Changing the phone number
 

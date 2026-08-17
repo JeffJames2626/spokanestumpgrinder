@@ -205,20 +205,22 @@ for one oversized file. `.gitignore` now blocks `*.mov`/`*.mp4`/`*.m4v` so
 it can't happen again silently; if a real video file is ever needed
 in-repo, it'll need an explicit `git add -f`.
 
-## Unfinished work
+## Status: content complete
 
-1 marker, `<span class="todo">`, in faq.html (moved there from booking.html —
-see "FAQ page" section below). Search the folder for `class="todo"`.
+Zero `<span class="todo">` markers left anywhere on the site, and zero
+unfilled `.ph` placeholder boxes — every photo/video slot has real content.
+Confirm with `grep -rc 'class="todo"' *.html` (should return nothing) or
+`grep -n 'class="ph '` (same). If you're picking this project back up after
+a gap, don't assume there's leftover placeholder work to find — there isn't,
+as of this note.
 
-| File | Count | Needs |
-|---|---|---|
-| faq.html | 1 | Payment methods |
-
-The "Do you do storm or emergency work?" card was removed entirely at
-Jeff's request, not left as a TODO — he doesn't want rush/emergency work
-addressed on the site at all right now. The reschedule-notice-window TODO
-is resolved: "Things happen — just give us as much notice as possible,"
-no specific window promised.
+Payment methods (the last TODO, on faq.html) resolved to: cash, check, ACH,
+credit card, PayPal, Venmo, or crypto — timing confirmed with the written
+estimate. The "Do you do storm or emergency work?" card was removed
+entirely at Jeff's request, not left as a TODO — he doesn't want rush/
+emergency work addressed on the site at all right now. The
+reschedule-notice-window TODO resolved to "give us as much notice as
+possible," no specific window promised.
 
 Jeff's bio (about.html) is filled in: mowing since age 13, ran a local
 maintenance company for 14 years (1 truck to 30 employees), went out on his
@@ -270,8 +272,9 @@ from the table entirely, at Jeff's request — not just left blank. The
 "these are left blank" lead-in sentence above the table was removed too,
 since nothing in it is blank anymore.
 
-Also missing sitewide: logo (header uses a plain colored circle), real
-photography (every `.ph` box), analytics.
+Also missing sitewide: a real logo (header uses a plain colored circle) and
+analytics. Real photography is done — every `.ph` box across the site has
+been replaced with an actual photo or video.
 
 `favicon.svg`, `robots.txt`, and `sitemap.xml` now exist at the project root
 and are linked from all seven pages (`<link rel="icon" type="image/svg+xml"
