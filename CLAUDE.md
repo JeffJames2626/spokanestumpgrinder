@@ -32,7 +32,7 @@ folder. Live within ~1 minute.
 
 ## Architecture
 
-Eight standalone HTML files. **Every page carries its own inline `<style>` block.**
+Nine standalone HTML files. **Every page carries its own inline `<style>` block.**
 No shared stylesheet, no JS bundle, no build step, no dependencies. Pages link to
 each other by bare filename and work opened directly from disk (`file://`).
 
@@ -43,6 +43,7 @@ booking.html          On-Site Consultation (OSC) calendar embed, prep table
 case-studies.html     3 real case studies (video + before/after each)
 about.html            Story, 3 pillars, how-we-work, team, credentials, service area
 faq.html              Pricing, the work itself, scheduling, getting started
+blog.html             Blog index — empty, no posts written yet (see below)
 contact.html          Call/text/email cards, map embed, links to booking + request form
 service-request.html  Service Autopilot request form (v3/ViewForm, inline)
 ```
@@ -52,7 +53,25 @@ service-request.html  Service Autopilot request form (v3/ViewForm, inline)
 This was tried and rejected. Each page must stay self-contained so it can be
 opened, edited, or replaced on its own. Duplicated CSS across files is the
 intended tradeoff. If you change a shared component (header, nav, footer,
-button styles), apply it to all eight files.
+button styles), apply it to all nine files.
+
+### Blog — blog.html
+
+Index/landing page only, built 2026-08-16. Deliberately has **zero posts** —
+no post was invented for it, per the "never invent facts" rule below, which
+extends to blog content (fake post titles/topics are still fabricated facts).
+
+To add a real post:
+1. Write it as its own standalone HTML file (same template pattern as the
+   other pages — inline `<style>`, same nav/footer, one `<h1>`), and add it
+   to `sitemap.xml`.
+2. On blog.html, add a card inside the empty `<div class="grid">` using the
+   structure documented in the HTML comment directly above it, then remove
+   the `.empty-state` "No posts published yet" block once at least one real
+   post exists.
+3. Add the new post's `<li>` to the nav and footer "Company" list on all
+   nine pages, the same way blog.html itself was added — do not add post
+   pages to the main nav/footer, only blog.html links there.
 
 ### Design tokens
 
@@ -74,7 +93,7 @@ Shared classes: `.wrap` (1080px container), `.btn` / `.btn-primary` /
 `.btn-outline`, `.eyebrow`, `.lead`, `.grid` + `.card`, `.steps` + `.step`,
 `.cta`, `.note`, `.band`, `.towns` (service-area list), `.ph` (media
 placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
-`.footer-map-link` + `.footer-addr` (footer address/map block, all eight pages).
+`.footer-map-link` + `.footer-addr` (footer address/map block, all nine pages).
 
 ## Hard rules
 
@@ -90,19 +109,19 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
    with an ALP header `<h1>` in it — it was removed and must stay removed.
    Exception, deliberately carved out by Jeff: the footer copyright line reads
    "&copy; 2026 Spokane Stump Grinder. All rights reserved. &middot; An
-   Automated Company" on all eight pages — a generic ownership-group credit, no
+   Automated Company" on all nine pages — a generic ownership-group credit, no
    link, no specific company named. This is the start of a standard footer
    credit Jeff wants across every site he onboards going forward. Don't treat
    it as a slip to "fix" — it's intentional and should stay. Still don't
    spell out "Automated Lawn & Pest" or "Marko's Sprinklers" anywhere.
 4. **One `<h1>` per page**, no heading-level skips.
-5. Nav is identical on all eight pages; the current page gets `class="active"`.
+5. Nav is identical on all nine pages; the current page gets `class="active"`.
 
 ## Content facts (verified, safe to reuse)
 
 - Phone: **509-434-9554** — temporary, Jeff will change it. Appears in header,
   CTA, and footer of every page. To swap, find-and-replace **both**
-  `509-434-9554` (display) and `+15094349554` (tel: hrefs) across all 7 files.
+  `509-434-9554` (display) and `+15094349554` (tel: hrefs) across all nine files.
 - Email: **info@spokanestumpgrinder.com** — footer of every page, `mailto:`
   link, between the phone number and address.
 - Address: **1908 E Mallon Ave, Spokane, WA 99202**. In the footer of every
@@ -307,7 +326,7 @@ Us Directly" (call/text, email, request-form cards), "Where We're Based"
 plus a link to about.html's full service-area town list rather than
 duplicating it), then a closing CTA. Both primary actions (Request an
 Estimate, Book an OSC) appear in the hero and the closing CTA. Nav and
-footer updated on all eight pages to include it.
+footer updated on all nine pages to include it.
 
 The credentials table on about.html is fully filled in: business name, WA
 contractor license #, and UBI number are real values (verified facts below).
@@ -321,7 +340,7 @@ analytics. Real photography is done — every `.ph` box across the site has
 been replaced with an actual photo or video.
 
 `favicon.svg`, `robots.txt`, and `sitemap.xml` now exist at the project root
-and are linked from all eight pages (`<link rel="icon" type="image/svg+xml"
+and are linked from all nine pages (`<link rel="icon" type="image/svg+xml"
 href="favicon.svg">` in each `<head>`). The favicon is a placeholder — colored
 circle with dark tree rings, matching the header's brand mark — swap it if a
 real logo shows up. `sitemap.xml` hardcodes `https://spokanestumpgrinder.com/`;
@@ -348,7 +367,7 @@ No test suite. After edits, confirm:
 tidy -q -e *.html
 
 # no dead links, all pages paint (needs python)
-python -m http.server 8000    # then click through all eight pages
+python -m http.server 8000    # then click through all nine pages
 ```
 
 Manual checklist: one `<h1>` per page, no heading skips, nav `active` matches
