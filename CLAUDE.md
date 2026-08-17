@@ -74,10 +74,14 @@ information (e.g. "call 811 before you dig") — never invented specifics about
 this business's own history, jobs, or policies. Where a post needs a real
 company-specific fact (a policy, a number, who does what), leave a
 `<span class="todo">` marker in the post body instead of guessing, same as
-everywhere else on the site. This includes pricing — hard rule #2 ("no
-pricing figures anywhere") applies to blog posts too, so cost-related posts
-describe the *factors* that drive price (like services.html does for SSG's
-own work), never a dollar figure, invented or otherwise.
+everywhere else on the site.
+
+Pricing needs care: hard rule #2 ("no pricing figures anywhere") is about
+**SSG's own stump work**, which is quoted per job and must never get a dollar
+figure. Real, Jeff-confirmed pricing for a *third-party* service (like what a
+private locator charges) is fine to state directly once supplied — it isn't
+SSG's own pricing and isn't an invented number. Still never guess a figure
+for either case; leave a `.todo` until a real number is confirmed.
 
 Posts published:
 - `blog-811-locates.html` (Aug 2026) — why to call 811 before stump work,
@@ -86,11 +90,10 @@ Posts published:
   Stump Grinder submits the 811 request as part of scheduling — homeowner
   doesn't need to). No open `.todo`s.
 - `blog-private-locates.html` (Aug 2026) — what a private locate is and why
-  811 doesn't cover it, when you'd need one, who provides them, and the
-  factors that drive cost (no dollar figures — see above). Two open
-  `.todo`s: a real price range if/when we have one from a locator we've
-  worked with, and whether SSG arranges a private locator as part of
-  scheduling or that's left to the homeowner. Confirm both with Jeff.
+  811 doesn't cover it, when you'd need one, who provides them, and what it
+  costs (confirmed with Jeff: private locators typically run $185–$200/hr,
+  and SSG will flag the need and point homeowners to a trusted locator when
+  it comes up — not common, not rare). No open `.todo`s.
 
 ### Design tokens
 

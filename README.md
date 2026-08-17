@@ -39,9 +39,9 @@ every page links to the others by exact filename.
 
 ## Status
 
-Core 9 pages are fully filled in. Two open `class="todo"` markers exist on
-`blog-private-locates.html` (a price range and a company-policy detail to
-confirm with Jeff) — search the folder for `class="todo"` to find them.
+All content is filled in — zero `class="todo"` markers left anywhere on the
+site (search the folder for `class="todo"` to confirm; should return
+nothing).
 
 Still missing: a real logo (favicon is a placeholder red circle with tree
 rings), and analytics.
