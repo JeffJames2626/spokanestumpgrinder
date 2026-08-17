@@ -67,8 +67,9 @@
     .nav-toggle-btn{display:block;order:3}
     nav{order:4;flex-basis:100%;max-height:0;overflow:hidden;transition:max-height .25s ease}
     nav ul{flex-direction:column;gap:0;padding:8px 0 6px}
-    nav a{display:block;padding:12px 4px;font-size:16px;border-bottom:1px solid rgba(255,255,255,.1);text-align:right}
-    .nav-toggle-input:checked ~ nav{max-height:400px}
+    nav a{display:block;padding:14px 4px;font-size:20px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center}
+    nav a .ficon{display:inline-block;width:26px;font-size:20px;margin-right:6px}
+    .nav-toggle-input:checked ~ nav{max-height:700px}
     .callnow-full{display:none}
     .callnow-short{display:inline}
   }
@@ -180,6 +181,7 @@
   .footer-addr{display:inline-block;margin-top:10px;color:#d6d6d6}
   .footer-addr:hover{color:#fff}
   .ficon{display:inline-block;width:20px;text-align:center;margin-right:4px}
+  nav .ficon{display:none}
   .footer-addr-map{display:flex;align-items:flex-start}
   .footer-addr-map .ficon{margin-top:3px;flex:none}
   .footer-col-map{flex:1 1 260px;max-width:300px}
@@ -220,15 +222,15 @@
     <label for="nav-toggle" class="nav-toggle-btn" aria-label="Menu">&#9776;</label>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="booking.html">Booking</a></li>
-        <li><a href="case-studies.html">Case Studies</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a class="active" href="service-request.html">Request Service</a></li>
+        <li><a href="index.html"><span class="ficon">&#8962;</span>Home</a></li>
+        <li><a href="services.html"><span class="ficon">&#9881;</span>Services</a></li>
+        <li><a href="booking.html"><span class="ficon">&#9638;</span>Booking</a></li>
+        <li><a href="case-studies.html"><span class="ficon">&#9636;</span>Case Studies</a></li>
+        <li><a href="about.html"><span class="ficon">&#8505;</span>About</a></li>
+        <li><a href="faq.html"><span class="ficon">?</span>FAQ</a></li>
+        <li><a href="blog.html"><span class="ficon">&#9998;</span>Blog</a></li>
+        <li><a href="contact.html"><span class="ficon">&#9993;</span>Contact</a></li>
+        <li><a class="active" href="service-request.html"><span class="ficon">&#10003;</span>Request Service</a></li>
       </ul>
     </nav>
     <a class="callnow" href="tel:+15094349554">&#9742; <span class="callnow-full">509-434-9554</span><span class="callnow-short">Call</span></a>
