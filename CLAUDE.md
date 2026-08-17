@@ -132,8 +132,8 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
   section now shows only Jeff plus an open "add team member" placeholder.
   Don't reintroduce Tiffany or the husband-and-wife framing without him
   asking for it again.
-- Values line used as a pull quote on about.html: "Work hard, tell the truth,
-  do what you say you'll do, and take care of people."
+- Values line used as a pull quote on about.html: "Do good work. Be straight
+  with people. Leave things better than you found them."
 - Three pillars: Transparency, Innovation, Professionalism.
 
 ## Integrations
