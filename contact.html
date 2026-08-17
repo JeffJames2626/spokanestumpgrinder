@@ -103,8 +103,15 @@
     border-radius:8px;padding:24px;
   }
   .band .card{background:#fff}
+  .card .icon{
+    display:flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;
+    background:var(--moss);color:#fff;font-size:17px;
+    margin-bottom:12px;
+  }
   .card h3{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--moss-dark);font-weight:700}
   .card .big{display:inline-block;font-size:22px;font-weight:700;color:var(--bark);margin-bottom:8px;word-break:break-word;text-decoration:none}
+  .card a.big[href^="mailto:"]{font-size:18px}
   .card .big:hover{color:var(--moss-dark)}
   .card p{margin:0;font-size:15px;color:var(--muted)}
 
@@ -185,16 +192,19 @@
     <p class="lead">Pick whichever's easiest &mdash; we watch all three.</p>
     <div class="grid">
       <div class="card">
+        <div class="icon">&#9742;</div>
         <h3>Call or Text</h3>
         <a class="big" href="tel:+15094349554">509-434-9554</a>
         <p>Fastest way to reach us for a quick question or a straight answer.</p>
       </div>
       <div class="card">
+        <div class="icon">&#9993;</div>
         <h3>Email</h3>
-        <a class="big" href="mailto:info@spokanestumpgrinder.com">info@spokanestumpgrinder.com</a>
+        <a class="big" href="mailto:info@spokanestumpgrinder.com">info@<wbr>spokanestumpgrinder.com</a>
         <p>Good for sending photos, details, or anything easier to explain in writing.</p>
       </div>
       <div class="card">
+        <div class="icon">&#9998;</div>
         <h3>Request Form</h3>
         <a class="big" href="service-request.html">Send Details &rarr;</a>
         <p>Give us the specifics up front and we'll follow up with a written estimate.</p>
