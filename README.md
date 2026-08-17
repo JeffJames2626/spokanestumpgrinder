@@ -38,9 +38,9 @@ every page links to the others by exact filename.
 
 ## Status
 
-Core 9 pages are fully filled in. One open `class="todo"` marker exists on
-`blog-811-locates.html` (a company-policy detail to confirm with Jeff) —
-search the folder for `class="todo"` to find it.
+All content is filled in — zero `class="todo"` markers left anywhere on the
+site (search the folder for `class="todo"` to confirm; should return
+nothing).
 
 Still missing: a real logo (favicon is a placeholder red circle with tree
 rings), and analytics.

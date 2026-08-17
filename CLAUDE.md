@@ -78,9 +78,9 @@ everywhere else on the site.
 Posts published:
 - `blog-811-locates.html` (Aug 2026) — why to call 811 before stump work,
   what's typically buried in a yard vs. what 811 actually covers, how the
-  locate process works. Has one open `.todo`: whether Spokane Stump Grinder
-  requests the 811 locate as part of scheduling, or whether that's on the
-  homeowner — confirm with Jeff and resolve before this is a big traffic page.
+  locate process works, and who requests it (confirmed with Jeff: Spokane
+  Stump Grinder submits the 811 request as part of scheduling — homeowner
+  doesn't need to). No open `.todo`s.
 
 ### Design tokens
 
