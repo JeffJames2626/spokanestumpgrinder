@@ -101,7 +101,9 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
 
 - Phone: **509-434-9554** — temporary, Jeff will change it. Appears in header,
   CTA, and footer of every page. To swap, find-and-replace **both**
-  `509-434-9554` (display) and `+15094349554` (tel: hrefs) across all 6 files.
+  `509-434-9554` (display) and `+15094349554` (tel: hrefs) across all 7 files.
+- Email: **info@spokanestumpgrinder.com** — footer of every page, `mailto:`
+  link, between the phone number and address.
 - Address: **1908 E Mallon Ave, Spokane, WA 99202**. In the footer of every
   page: a `.footer-addr` link (opens Google Maps directions, URL-encoded
   as `1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202`), an embedded Google Maps
