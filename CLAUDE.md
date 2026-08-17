@@ -32,16 +32,17 @@ folder. Live within ~1 minute.
 
 ## Architecture
 
-Six standalone HTML files. **Every page carries its own inline `<style>` block.**
+Seven standalone HTML files. **Every page carries its own inline `<style>` block.**
 No shared stylesheet, no JS bundle, no build step, no dependencies. Pages link to
 each other by bare filename and work opened directly from disk (`file://`).
 
 ```
 index.html            Homepage — hero, 2 service tiles, why-us, process, pricing band, CTA
 services.html         Grinding + removal/cleanup, 8 pricing factors, service area
-booking.html          Google Calendar appointment embed, prep table, scheduling FAQ
-case-studies.html     3 case-study templates (video + before/after each)
+booking.html          Free-consultation calendar embed, prep table
+case-studies.html     3 real case studies (video + before/after each)
 about.html            Story, 3 pillars, how-we-work, team, credentials, service area
+faq.html              Pricing, the work itself, scheduling, getting started
 service-request.html  Service Autopilot request form (inline HTML)
 ```
 
@@ -50,7 +51,7 @@ service-request.html  Service Autopilot request form (inline HTML)
 This was tried and rejected. Each page must stay self-contained so it can be
 opened, edited, or replaced on its own. Duplicated CSS across files is the
 intended tradeoff. If you change a shared component (header, nav, footer,
-button styles), apply it to all six files.
+button styles), apply it to all seven files.
 
 ### Design tokens
 
@@ -72,7 +73,7 @@ Shared classes: `.wrap` (1080px container), `.btn` / `.btn-primary` /
 `.btn-outline`, `.eyebrow`, `.lead`, `.grid` + `.card`, `.steps` + `.step`,
 `.cta`, `.note`, `.band`, `.towns` (service-area list), `.ph` (media
 placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
-`.footer-map-link` + `.footer-addr` (footer address/map block, all six pages).
+`.footer-map-link` + `.footer-addr` (footer address/map block, all seven pages).
 
 ## Hard rules
 
@@ -88,13 +89,13 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
    with an ALP header `<h1>` in it — it was removed and must stay removed.
    Exception, deliberately carved out by Jeff: the footer copyright line reads
    "&copy; 2026 Spokane Stump Grinder. All rights reserved. &middot; An
-   Automated Company" on all six pages — a generic ownership-group credit, no
+   Automated Company" on all seven pages — a generic ownership-group credit, no
    link, no specific company named. This is the start of a standard footer
    credit Jeff wants across every site he onboards going forward. Don't treat
    it as a slip to "fix" — it's intentional and should stay. Still don't
    spell out "Automated Lawn & Pest" or "Marko's Sprinklers" anywhere.
 4. **One `<h1>` per page**, no heading-level skips.
-5. Nav is identical on all six pages; the current page gets `class="active"`.
+5. Nav is identical on all seven pages; the current page gets `class="active"`.
 
 ## Content facts (verified, safe to reuse)
 
@@ -206,12 +207,13 @@ in-repo, it'll need an explicit `git add -f`.
 
 ## Unfinished work
 
-3 markers, all `<span class="todo">`, all in booking.html. Search the
-folder for `class="todo"`.
+3 markers, all `<span class="todo">`, all in faq.html (moved there from
+booking.html — see "FAQ page" section below). Search the folder for
+`class="todo"`.
 
 | File | Count | Needs |
 |---|---|---|
-| booking.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
+| faq.html | 3 | Payment methods, reschedule notice window, storm/emergency policy |
 
 Jeff's bio (about.html) is filled in: mowing since age 13, ran a local
 maintenance company for 14 years (1 truck to 30 employees), went out on his
@@ -224,13 +226,25 @@ case-studies.html is fully complete: all 3 jobs have real titles, locations,
 dates, service lines, 4 story fields each, Wistia videos, and before/after
 photos. No markers left on that page.
 
-Job 01 on case-studies.html is fully real and fully clean: title "Backyard
-Stump Removal & Lawn Restoration," South Hill/Spokane, Spring 2024, all 4
-story fields, video, before/after photos, no leftover markers. The
-"Note for Jeff" launch-prep box at the top of the page is also gone —
-removed at Jeff's request, not just for Job 01. The photo-angle-matching
-TIP was removed from Job 01 only (real photos already taken there); Jobs 2
-and 3 still show it since those photos haven't been shot yet.
+The "Note for Jeff" launch-prep box that used to sit at the top of
+case-studies.html is gone too — removed at Jeff's request once all 3 jobs
+were filled in, not just a temporary hide.
+
+### FAQ page
+
+faq.html is a 7th page added after the original 6-page build. Structure:
+Pricing & Estimates, The Work Itself, Scheduling & Booking, Getting Started,
+then a closing CTA — same `.eyebrow`/`.grid`/`.card` pattern as every other
+page, alternating plain/`.band` sections. The Scheduling & Booking section
+is the old "Good to Know" FAQ that used to live on booking.html, moved here
+verbatim (including its 3 `.todo` markers) rather than duplicated. The
+other three sections are new content Jeff asked for ("in addition to
+anything else you want to add") — all of it traceable to facts already
+established elsewhere on the site (services.html's pricing factors,
+service-request.html's "what to include," the grinding-vs-removal
+distinction), nothing invented. booking.html's CTA now links to faq.html
+for visitors with non-scheduling questions, since the full FAQ section no
+longer lives there.
 
 The credentials table on about.html is fully filled in: business name, WA
 contractor license #, and UBI number are real values (verified facts below).
@@ -243,11 +257,13 @@ Also missing sitewide: logo (header uses a plain colored circle), real
 photography (every `.ph` box), analytics.
 
 `favicon.svg`, `robots.txt`, and `sitemap.xml` now exist at the project root
-and are linked from all six pages (`<link rel="icon" type="image/svg+xml"
+and are linked from all seven pages (`<link rel="icon" type="image/svg+xml"
 href="favicon.svg">` in each `<head>`). The favicon is a placeholder — colored
 circle with dark tree rings, matching the header's brand mark — swap it if a
 real logo shows up. `sitemap.xml` hardcodes `https://spokanestumpgrinder.com/`;
-update it if the domain changes.
+update it if the domain changes, and remember to add/remove `<url>` entries
+if a page is ever added or removed (faq.html's entry was added by hand when
+that page was created — it's not auto-generated).
 
 ## Open questions for Jeff
 
@@ -268,7 +284,7 @@ No test suite. After edits, confirm:
 tidy -q -e *.html
 
 # no dead links, all pages paint (needs python)
-python -m http.server 8000    # then click through all six pages
+python -m http.server 8000    # then click through all seven pages
 ```
 
 Manual checklist: one `<h1>` per page, no heading skips, nav `active` matches

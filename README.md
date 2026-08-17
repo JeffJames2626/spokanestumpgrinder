@@ -1,6 +1,6 @@
 # Spokane Stump Grinder — Website
 
-Static 6-page marketing site. No build step, no dependencies.
+Static 7-page marketing site. No build step, no dependencies.
 
 ## Preview
 
@@ -16,7 +16,7 @@ python -m http.server 8000
 
 ## Deploy
 
-Upload all six `.html` files into the same folder on the web host.
+Upload all seven `.html` files into the same folder on the web host.
 `index.html` must be at the top level. **Do not rename any file** — the nav on
 every page links to the others by exact filename.
 
@@ -26,23 +26,25 @@ every page links to the others by exact filename.
 |---|---|
 | `index.html` | Homepage |
 | `services.html` | Stump grinding + removal/cleanup |
-| `booking.html` | Booking / Google Calendar |
-| `case-studies.html` | Case studies (3 templates) |
+| `booking.html` | Booking / free consultation / Google Calendar |
+| `case-studies.html` | Case studies (3 real jobs) |
 | `about.html` | About us |
+| `faq.html` | FAQ — pricing, the work, scheduling, getting started |
 | `service-request.html` | Request form (Service Autopilot) |
 
 ## Unfinished
 
 Anything not filled in is marked in yellow on the page. Search for
-`class="todo"` — 3 markers, all in `booking.html`. `about.html` and
-`case-studies.html` are both fully complete. Grey dashed boxes are photo/video placeholders.
+`class="todo"` — 3 markers, all in `faq.html` (moved there from `booking.html`
+along with the rest of the scheduling FAQ). Every other page is fully
+complete. Grey dashed boxes are photo/video placeholders.
 
 Also missing: a real logo (favicon is a placeholder red circle with tree
 rings), real photography, and analytics.
 
 ## Changing the phone number
 
-Find and replace **both** across all six files:
+Find and replace **both** across all seven files:
 
 ```
 509-434-9554     the visible number
