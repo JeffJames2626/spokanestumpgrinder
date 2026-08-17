@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FAQ | Spokane Stump Grinder</title>
-<meta name="description" content="Answers to the questions homeowners ask most about stump grinding and removal in Spokane, WA — pricing, scheduling, and how the work actually happens.">
+<title>Contact Us | Spokane Stump Grinder</title>
+<meta name="description" content="Call, text, or email Spokane Stump Grinder — stump grinding and removal in Spokane, WA and the Coeur d'Alene region. 1908 E Mallon Ave, Spokane, WA 99202.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
 :root{
@@ -28,7 +28,7 @@
     line-height:1.65;
   }
   a{color:var(--moss-dark)}
-  a[href^="tel:"]{text-decoration:none}
+  a[href^="tel:"],a[href^="mailto:"]{text-decoration:none}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
 
   /* ---------- header ---------- */
@@ -46,7 +46,7 @@
     display:grid;place-items:center;font-size:17px;flex:none;
   }
   .brand span small{display:block;font-weight:400;font-size:11px;color:#adadad;letter-spacing:1.4px;text-transform:uppercase}
-  nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+  nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
   nav a{color:#d6d6d6;text-decoration:none;font-size:15px}
   nav a:hover{color:#fff}
   nav a.active{color:#fff;border-bottom:2px solid var(--chip);padding-bottom:2px}
@@ -67,7 +67,7 @@
     nav{order:4;flex-basis:100%;max-height:0;overflow:hidden;transition:max-height .25s ease}
     nav ul{flex-direction:column;gap:0;padding:8px 0 6px}
     nav a{display:block;padding:12px 4px;font-size:16px;border-bottom:1px solid rgba(255,255,255,.1)}
-    .nav-toggle-input:checked ~ nav{max-height:400px}
+    .nav-toggle-input:checked ~ nav{max-height:440px}
   }
 
   /* ---------- hero ---------- */
@@ -97,14 +97,24 @@
   .lead{font-size:17px;max-width:720px;color:var(--muted);margin:0 0 28px}
   .band{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
   .card{
     background:var(--sand);border:1px solid var(--line);
-    border-radius:8px;padding:22px;
+    border-radius:8px;padding:24px;
   }
   .band .card{background:#fff}
-  .card h3{margin:0 0 8px;font-size:17px;color:var(--bark)}
+  .card h3{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--moss-dark);font-weight:700}
+  .card .big{display:inline-block;font-size:22px;font-weight:700;color:var(--bark);margin-bottom:8px;word-break:break-word}
+  .card .big:hover{color:var(--moss-dark)}
   .card p{margin:0;font-size:15px;color:var(--muted)}
+
+  /* ---------- map embed ---------- */
+  .map-embed{
+    background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:10px;margin-top:28px;overflow:hidden;
+  }
+  .map-embed iframe{display:block;width:100%;height:340px;border:0;border-radius:8px}
+  .map-link{display:inline-block;margin-top:16px;font-weight:700;color:var(--moss-dark)}
 
   /* ---------- cta ---------- */
   .cta{background:var(--sand);border-top:1px solid var(--line);text-align:center}
@@ -126,8 +136,6 @@
   .footer-map iframe{width:100%;height:260px;border:0;border-radius:8px;display:block}
   .footer-map-link{display:inline-block;margin-top:12px;color:var(--chip);font-weight:700;font-size:14px;text-decoration:none}
   .footer-map-link:hover{text-decoration:underline}
-  .todo{background:#fff8e1;border:1px dashed #d0a520;color:#7a5c00;
-    padding:3px 8px;border-radius:4px;font-size:13px;font-weight:600;display:inline-block}
 </style>
 </head>
 <body>
@@ -147,8 +155,8 @@
         <li><a href="booking.html">Booking</a></li>
         <li><a href="case-studies.html">Case Studies</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a class="active" href="faq.html">FAQ</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a class="active" href="contact.html">Contact</a></li>
         <li><a href="service-request.html">Request Service</a></li>
       </ul>
     </nav>
@@ -158,9 +166,9 @@
 
 <div class="hero">
   <div class="wrap">
-    <p class="eyebrow">FAQ</p>
-    <h1>Questions we get a lot</h1>
-    <p>Pricing, scheduling, and how the work actually happens &mdash; the questions homeowners ask most, answered straight.</p>
+    <p class="eyebrow">Contact</p>
+    <h1>Get in touch</h1>
+    <p>Call, text, email, or send us the details through the form &mdash; whatever's easiest. We're straightforward to reach and quick to respond.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
       <a class="btn btn-outline" href="booking.html">Book an OSC</a>
@@ -168,126 +176,55 @@
   </div>
 </div>
 
-<!-- ============ PRICING ============ -->
+<!-- ============ REACH US ============ -->
 <section>
   <div class="wrap">
-    <p class="eyebrow">Pricing &amp; Estimates</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">What things cost, and why</h2>
-    <p class="lead">Stump work is quoted per job, not off a price list. Here's what actually moves the number.</p>
+    <p class="eyebrow">Reach Us Directly</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Three ways to get ahold of us</h2>
+    <p class="lead">Pick whichever's easiest &mdash; we watch all three.</p>
     <div class="grid">
       <div class="card">
-        <h3>Why don't you post flat-rate pricing?</h3>
-        <p>Two stumps the same width across can be an hour apart in real work. Diameter at grade, root spread, depth needed, and access all move the number, so we look at your actual stump before quoting it.</p>
+        <h3>Call or Text</h3>
+        <a class="big" href="tel:+15094349554">509-434-9554</a>
+        <p>Fastest way to reach us for a quick question or a straight answer.</p>
       </div>
       <div class="card">
-        <h3>What actually affects the price?</h3>
-        <p>Diameter at grade, root flare spread, grinding depth, access, nearby obstacles, soil conditions, how many stumps, and the cleanup level you want. Full breakdown is on our <a href="services.html">Services page</a>.</p>
+        <h3>Email</h3>
+        <a class="big" href="mailto:info@spokanestumpgrinder.com">info@spokanestumpgrinder.com</a>
+        <p>Good for sending photos, details, or anything easier to explain in writing.</p>
       </div>
       <div class="card">
-        <h3>Do multiple stumps cost less each?</h3>
-        <p>Yes. Setup and travel get shared across the visit, so the per-stump cost drops when you get several done at once.</p>
-      </div>
-      <div class="card">
-        <h3>Is the on-site consultation (OSC) really free?</h3>
-        <p>Yes &mdash; no cost, no obligation. An OSC is us coming out to look at the job in person before anything's written up. You get a written estimate afterward and decide from there.</p>
+        <h3>Request Form</h3>
+        <a class="big" href="service-request.html">Send Details &rarr;</a>
+        <p>Give us the specifics up front and we'll follow up with a written estimate.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ THE WORK ============ -->
+<!-- ============ LOCATION ============ -->
 <section class="band">
   <div class="wrap">
-    <p class="eyebrow">The Work Itself</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">What actually happens to your stump</h2>
-    <p class="lead">The mechanics of grinding and removal, in plain terms.</p>
-    <div class="grid">
-      <div class="card">
-        <h3>What's the difference between grinding and removal?</h3>
-        <p>Grinding takes the stump below grade and rakes the chips back into the hole. Removal &amp; Cleanup builds on that &mdash; we haul the chips off and backfill with clean topsoil instead.</p>
-      </div>
-      <div class="card">
-        <h3>How deep do you grind?</h3>
-        <p>Standard depth takes the stump under the surrounding soil line so grass or new roots can go in over it. Pouring concrete or planting a tree in the exact spot? Tell us up front and we'll price it deeper.</p>
-      </div>
-      <div class="card">
-        <h3>Will grinding get every root out?</h3>
-        <p>No &mdash; grinding removes the stump and the root flare, not the entire root system. If you're building or planting right in that spot, mention it and we'll talk through going deeper or a full removal instead.</p>
-      </div>
-      <div class="card">
-        <h3>Do you protect the yard while you work?</h3>
-        <p>Plywood tracking over soft turf, shielding around fences, siding, and windows. We also confirm utility locates and probe the area before the wheel turns.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <p class="eyebrow">Where We're Based</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Serving Spokane &amp; the Coeur d'Alene region</h2>
+    <p class="lead" style="margin-bottom:0">Based at 1908 E Mallon Ave, Spokane, WA 99202, covering communities across Eastern Washington and North Idaho. See the full <a href="about.html#service-area">list of towns we serve</a> on our About page.</p>
 
-<!-- ============ SCHEDULING ============ -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Scheduling &amp; Booking</p>
-    <h2 style="margin:0 0 22px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Booking and what to expect</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Do I need to be home for the OSC?</h3>
-        <p>Not usually. As long as we have access to the stump and you're reachable by phone, we can take a look and follow up with your estimate.</p>
-      </div>
-      <div class="card">
-        <h3>How long does a stump take?</h3>
-        <p>Depends on diameter, root spread, and access. We'll give you a realistic time window with your estimate rather than a generic answer here.</p>
-      </div>
-      <div class="card">
-        <h3>What about weather?</h3>
-        <p>We work through most Inland Northwest weather. Saturated ground or frozen conditions can push a date &mdash; we'll call you, not just no-show.</p>
-      </div>
-      <div class="card">
-        <h3>Can I change the scope on the day?</h3>
-        <p>Often yes, but it may affect price and timing. Better to call ahead so we can bring what the change needs.</p>
-      </div>
-      <div class="card">
-        <h3>Need to reschedule?</h3>
-        <p>Use the link in your Google Calendar confirmation, or call or text us. Things happen &mdash; just give us as much notice as possible.</p>
-      </div>
-      <div class="card">
-        <h3>What payment do you take?</h3>
-        <p>Cash, check, ACH bank transfer, credit card, PayPal, Venmo, or select cryptocurrency &mdash; whatever's easiest for you. Payment timing is confirmed along with your written estimate.</p>
-      </div>
+    <div class="map-embed">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21494.43968369514!2d-117.3950103810845!3d47.66878523117889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549e190660699b21%3A0x6eaa9fed67721e4a!2sSpokane%20Stump%20Grinder!5e0!3m2!1sen!2sus!4v1786907828703!5m2!1sen!2sus" loading="lazy" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin" title="Spokane Stump Grinder on Google Maps"></iframe>
     </div>
-  </div>
-</section>
-
-<!-- ============ GETTING STARTED ============ -->
-<section class="band">
-  <div class="wrap">
-    <p class="eyebrow">Getting Started</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Before you reach out</h2>
-    <p class="lead">A little detail up front saves a round of back-and-forth.</p>
-    <div class="grid">
-      <div class="card">
-        <h3>What should I include when I request an estimate?</h3>
-        <p>Rough diameter at ground level, how we get to the stump (through a gate? down a slope?), what's going in that spot afterward, and anything buried nearby you know about.</p>
-      </div>
-      <div class="card">
-        <h3>What happens after I submit a request?</h3>
-        <p>We review the details, send you scope and price in writing, you pick a date once you approve it, and we grind and clean up on the day.</p>
-      </div>
-      <div class="card">
-        <h3>Do I have to book an OSC, or can I just send photos?</h3>
-        <p>Either works. Send photos and details through the <a href="service-request.html">request form</a>, or grab a free slot on the <a href="booking.html">OSC calendar</a> if you'd rather we take a look in person.</p>
-      </div>
-    </div>
+    <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">Get Directions on Google Maps &rarr;</a>
   </div>
 </section>
 
 <section class="cta">
   <div class="wrap">
-    <h2>Still have a question?</h2>
-    <p>Send us the details and we'll get you a straight answer, no obligation.</p>
+    <h2>Ready to talk about your stump?</h2>
+    <p>Send us the details and we'll get you a written estimate. No obligation, no pressure.</p>
     <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
       Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
     </p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
+      <a class="btn btn-primary" href="service-request.html">Request Service</a>
       <a class="btn btn-outline" href="booking.html">Book an OSC</a>
     </div>
   </div>

@@ -1,6 +1,6 @@
 # Spokane Stump Grinder — Website
 
-Static 7-page marketing site. No build step, no dependencies.
+Static 8-page marketing site. No build step, no dependencies.
 
 ## Preview
 
@@ -16,7 +16,7 @@ python -m http.server 8000
 
 ## Deploy
 
-Upload all seven `.html` files into the same folder on the web host.
+Upload all eight `.html` files into the same folder on the web host.
 `index.html` must be at the top level. **Do not rename any file** — the nav on
 every page links to the others by exact filename.
 
@@ -30,6 +30,7 @@ every page links to the others by exact filename.
 | `case-studies.html` | Case studies (3 real jobs) |
 | `about.html` | About us |
 | `faq.html` | FAQ — pricing, the work, scheduling, getting started |
+| `contact.html` | Contact — call/text/email, request form, map |
 | `service-request.html` | Request form (Service Autopilot) |
 
 ## Status
@@ -43,7 +44,7 @@ rings), and analytics.
 
 ## Changing the phone number
 
-Find and replace **both** across all seven files:
+Find and replace **both** across all eight files:
 
 ```
 509-434-9554     the visible number

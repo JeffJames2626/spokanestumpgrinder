@@ -32,17 +32,18 @@ folder. Live within ~1 minute.
 
 ## Architecture
 
-Seven standalone HTML files. **Every page carries its own inline `<style>` block.**
+Eight standalone HTML files. **Every page carries its own inline `<style>` block.**
 No shared stylesheet, no JS bundle, no build step, no dependencies. Pages link to
 each other by bare filename and work opened directly from disk (`file://`).
 
 ```
 index.html            Homepage — hero, 2 service tiles, why-us, process, pricing band, CTA
 services.html         Grinding + removal/cleanup, 8 pricing factors, service area
-booking.html          Free-consultation calendar embed, prep table
+booking.html          On-Site Consultation (OSC) calendar embed, prep table
 case-studies.html     3 real case studies (video + before/after each)
 about.html            Story, 3 pillars, how-we-work, team, credentials, service area
 faq.html              Pricing, the work itself, scheduling, getting started
+contact.html          Call/text/email cards, map embed, links to booking + request form
 service-request.html  Service Autopilot request form (inline HTML)
 ```
 
@@ -51,7 +52,7 @@ service-request.html  Service Autopilot request form (inline HTML)
 This was tried and rejected. Each page must stay self-contained so it can be
 opened, edited, or replaced on its own. Duplicated CSS across files is the
 intended tradeoff. If you change a shared component (header, nav, footer,
-button styles), apply it to all seven files.
+button styles), apply it to all eight files.
 
 ### Design tokens
 
@@ -73,7 +74,7 @@ Shared classes: `.wrap` (1080px container), `.btn` / `.btn-primary` /
 `.btn-outline`, `.eyebrow`, `.lead`, `.grid` + `.card`, `.steps` + `.step`,
 `.cta`, `.note`, `.band`, `.towns` (service-area list), `.ph` (media
 placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
-`.footer-map-link` + `.footer-addr` (footer address/map block, all seven pages).
+`.footer-map-link` + `.footer-addr` (footer address/map block, all eight pages).
 
 ## Hard rules
 
@@ -89,13 +90,13 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
    with an ALP header `<h1>` in it — it was removed and must stay removed.
    Exception, deliberately carved out by Jeff: the footer copyright line reads
    "&copy; 2026 Spokane Stump Grinder. All rights reserved. &middot; An
-   Automated Company" on all seven pages — a generic ownership-group credit, no
+   Automated Company" on all eight pages — a generic ownership-group credit, no
    link, no specific company named. This is the start of a standard footer
    credit Jeff wants across every site he onboards going forward. Don't treat
    it as a slip to "fix" — it's intentional and should stay. Still don't
    spell out "Automated Lawn & Pest" or "Marko's Sprinklers" anywhere.
 4. **One `<h1>` per page**, no heading-level skips.
-5. Nav is identical on all seven pages; the current page gets `class="active"`.
+5. Nav is identical on all eight pages; the current page gets `class="active"`.
 
 ## Content facts (verified, safe to reuse)
 
@@ -261,11 +262,23 @@ longer lives there.
 free calendar-booked visit (both in-house and customer-facing — this isn't
 internal jargon we're hiding from visitors). Used throughout booking.html
 and faq.html, both plain "on-site consultation" spelled out on first mention
-per page and "OSC" afterward. Don't revert to generic "consultation" or
-"appointment" in this context — it's a deliberate, consistent choice, not
-interchangeable wording. If a page introduces the free-visit concept for
-the first time, spell it out once ("on-site consultation (OSC)") before
-shortening to OSC, same pattern used on both existing pages.
+per page and "OSC" afterward. contact.html uses the short form ("Book an
+OSC") without re-spelling it out, since it's a secondary mention on a page
+that isn't introducing the concept. Don't revert to generic "consultation"
+or "appointment" in this context — it's a deliberate, consistent choice,
+not interchangeable wording. If a page introduces the free-visit concept
+for the first time, spell it out once ("on-site consultation (OSC)")
+before shortening to OSC.
+
+### Contact page
+
+contact.html is an 8th page, added after faq.html. Three sections: "Reach
+Us Directly" (call/text, email, request-form cards), "Where We're Based"
+(address + the same Google Business Profile map embed used in the footer,
+plus a link to about.html's full service-area town list rather than
+duplicating it), then a closing CTA. Both primary actions (Request an
+Estimate, Book an OSC) appear in the hero and the closing CTA. Nav and
+footer updated on all eight pages to include it.
 
 The credentials table on about.html is fully filled in: business name, WA
 contractor license #, and UBI number are real values (verified facts below).
@@ -279,7 +292,7 @@ analytics. Real photography is done — every `.ph` box across the site has
 been replaced with an actual photo or video.
 
 `favicon.svg`, `robots.txt`, and `sitemap.xml` now exist at the project root
-and are linked from all seven pages (`<link rel="icon" type="image/svg+xml"
+and are linked from all eight pages (`<link rel="icon" type="image/svg+xml"
 href="favicon.svg">` in each `<head>`). The favicon is a placeholder — colored
 circle with dark tree rings, matching the header's brand mark — swap it if a
 real logo shows up. `sitemap.xml` hardcodes `https://spokanestumpgrinder.com/`;
@@ -306,7 +319,7 @@ No test suite. After edits, confirm:
 tidy -q -e *.html
 
 # no dead links, all pages paint (needs python)
-python -m http.server 8000    # then click through all seven pages
+python -m http.server 8000    # then click through all eight pages
 ```
 
 Manual checklist: one `<h1>` per page, no heading skips, nav `active` matches
