@@ -17,3 +17,10 @@ node_modules/
 # JPEG first (see CLAUDE.md), then the JPEG gets committed, not this.
 *.heic
 *.HEIC
+
+# Design-source logo files -- not web formats, never linked from HTML.
+# The web-ready exports (favicon.png, images/logo.png, images/logo-mark.png,
+# images/logo-white-bg.jpg) are the ones that get committed.
+*.eps
+*.ai
+images/logo/
