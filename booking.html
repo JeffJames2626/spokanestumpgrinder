@@ -59,9 +59,9 @@
   .nav-toggle-btn{display:none;font-size:26px;line-height:1;color:#fff;cursor:pointer;padding:4px 2px;order:2}
   @media(max-width:820px){
     .bar{flex-wrap:wrap;justify-content:flex-start}
-    .brand{order:1}
-    .callnow{order:2;margin-left:auto;padding:8px 12px;font-size:14px}
-    .nav-toggle-btn{display:block;order:3}
+    .nav-toggle-btn{display:block;order:1;flex:1;text-align:left;padding-right:14px}
+    .brand{order:2;flex:0 0 auto}
+    .callnow{order:3;flex:1;justify-content:flex-end;padding:8px 8px;font-size:14px}
     nav{order:4;flex-basis:100%;max-height:0;overflow:hidden;transition:max-height .25s ease}
     nav ul{flex-direction:column;gap:0;padding:8px 0 6px}
     nav a{display:block;padding:14px 4px;font-size:20px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center}
