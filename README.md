@@ -43,8 +43,7 @@ All content is filled in — zero `class="todo"` markers left anywhere on the
 site (search the folder for `class="todo"` to confirm; should return
 nothing).
 
-Still missing: a real logo (favicon is a placeholder red circle with tree
-rings), and analytics.
+Still missing: analytics. The real logo is in (header mark + favicon).
 
 ## Changing the phone number
 
