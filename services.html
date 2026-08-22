@@ -51,16 +51,8 @@
   nav a:hover{color:var(--moss);font-weight:700}
   nav a:active{color:var(--moss-dark);transform:scale(.95)}
   nav a.active{color:#fff;border-bottom:2px solid var(--chip);padding-bottom:2px}
-  .callnow{
-    display:inline-flex;align-items:center;gap:8px;
-    background:var(--chip);color:var(--bark);
-    padding:9px 16px;border-radius:6px;
-    text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap;
-  }
-  .callnow:hover{background:#c9c9c9}
-  .callnow-short{display:none}
   .schedule-btn{
-    display:none;align-items:center;
+    display:inline-flex;align-items:center;
     background:var(--moss);color:#fff;
     padding:9px 18px;border-radius:6px;
     text-decoration:none;font-weight:400;font-size:14px;
@@ -68,20 +60,21 @@
     transition:background-color .18s ease;
   }
   .schedule-btn:hover{background:var(--moss-dark)}
+  .sched-short{display:none}
   .nav-toggle-input{display:none}
   .nav-toggle-btn{display:none;font-size:26px;line-height:1;color:#fff;cursor:pointer;padding:4px 2px;order:2}
   @media(max-width:820px){
     .bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
     .nav-toggle-btn{display:block;grid-column:1;grid-row:1;justify-self:start}
     .brand{grid-column:2;grid-row:1;justify-self:center}
-    .callnow{grid-column:3;grid-row:1;justify-self:end;padding:8px 12px;font-size:14px}
+    .schedule-btn{grid-column:3;grid-row:1;justify-self:end;padding:8px 12px;font-size:13px}
     nav{grid-column:1/-1;grid-row:2;max-height:0;overflow:hidden;transition:max-height .25s ease}
     nav ul{flex-direction:column;gap:0;padding:8px 0 6px}
     nav a{display:block;padding:14px 4px;font-size:20px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center}
     nav a .ficon{display:inline-block;width:26px;font-size:20px;margin-right:6px}
     .nav-toggle-input:checked ~ nav{max-height:700px}
-    .callnow-full{display:none}
-    .callnow-short{display:inline}
+    .sched-full{display:none}
+    .sched-short{display:inline}
   }
   @media(min-width:821px){
     header{background:transparent}
@@ -90,8 +83,6 @@
     nav a.active{color:#000}
     .nav-booking{display:none}
     .brand .mark{height:52.5px}
-    .callnow{display:none}
-    .schedule-btn{display:inline-flex}
   }
 
   /* ---------- hero ---------- */
@@ -253,8 +244,7 @@
         <li><a href="service-request.html"><span class="ficon">&#10003;</span>Request Service</a></li>
       </ul>
     </nav>
-    <a class="callnow" href="tel:+15094349554">&#9742; <span class="callnow-full">509-434-9554</span><span class="callnow-short">Call</span></a>
-    <a class="schedule-btn" href="booking.html">Schedule Consultation</a>
+    <a class="schedule-btn" href="booking.html"><span class="sched-full">Schedule Consultation</span><span class="sched-short">Schedule</span></a>
   </div>
 </header>
 
