@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<script>
+(function(){try{var t=localStorage.getItem('ssg-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+</script>
 <style>
 :root{
     --bark:#161616;
@@ -85,6 +88,8 @@
     nav a.active{color:#000}
     .nav-booking{display:none}
     .brand .mark{height:52.5px}
+    .bar{padding:8px 0}
+    .brand{background:linear-gradient(135deg,#2e2e2e 0%,#161616 55%,#050505 100%);padding:6px 14px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
   }
 
   /* ---------- hero ---------- */
@@ -178,6 +183,109 @@
   .footer-map-link:hover{text-decoration:underline}
   .footer-logo{text-align:center;margin-top:30px;padding-top:26px;border-top:1px solid #3a3a3a}
   .footer-logo img{height:56px;width:auto}
+
+  /* ====== THEME (light / dark) ====== */
+  /* Identical on every page. Light = the site's existing palette.
+     Dark re-points shared tokens: --bark becomes light heading text and
+     --moss-dark becomes light link text. Surfaces that must stay dark in
+     BOTH themes (mobile header bar, footer, dark bands) are pinned to --ink
+     below so they don't flip. Default follows the device setting; the
+     toggle button stores an explicit choice in localStorage ('ssg-theme'). */
+  :root{
+    --ink:#161616;
+    --ink-2:#2b2b2b;
+    --accent-dark:#8f1c22;
+    --bg:#ffffff;
+    --surface:#ffffff;
+    --note-bg:#f5f5f5;
+    --ph-bg:#e6e6e6;
+    --ph-line:#adadad;
+    --ph-text:#6b6b6b;
+    --heading:var(--bark);
+    --link:var(--moss-dark);
+    --nav-desktop:#000000;
+    --nav-hover:var(--moss);
+    --stat-num:var(--moss);
+    --shadow:0 1px 2px rgba(0,0,0,.04),0 6px 18px rgba(0,0,0,.06);
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bark:#f3f1ee;
+      --moss-dark:#ff8a8f;
+      --sand:#18191c;
+      --line:#2e3034;
+      --text:#e7e5e2;
+      --muted:#a9a6a1;
+      --bg:#121315;
+      --surface:#212327;
+      --note-bg:#1e2023;
+      --ph-bg:#24262a;
+      --ph-line:#45484e;
+      --ph-text:#a9a6a1;
+      --nav-desktop:#ececec;
+      --nav-hover:#ff6b70;
+      --stat-num:#ff6b70;
+      --shadow:0 1px 2px rgba(0,0,0,.5);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+      --bark:#f3f1ee;
+      --moss-dark:#ff8a8f;
+      --sand:#18191c;
+      --line:#2e3034;
+      --text:#e7e5e2;
+      --muted:#a9a6a1;
+      --bg:#121315;
+      --surface:#212327;
+      --note-bg:#1e2023;
+      --ph-bg:#24262a;
+      --ph-line:#45484e;
+      --ph-text:#a9a6a1;
+      --nav-desktop:#ececec;
+      --nav-hover:#ff6b70;
+      --stat-num:#ff6b70;
+      --shadow:0 1px 2px rgba(0,0,0,.5);
+      color-scheme:dark;
+  }
+
+  body{background:var(--bg)}
+  @media(max-width:820px){header{background:var(--ink)}}
+  @media(min-width:821px){
+    nav a,nav a.active{color:var(--nav-desktop)}
+    nav a:hover{color:var(--nav-hover)}
+  }
+  footer{background:var(--ink);border-top:1px solid var(--line)}
+  .factors{background:var(--ink)}
+  .factor{background:var(--ink-2)}
+  .case-head,.ba-label{background:var(--ink)}
+  .case-num,.hero-home .btn-outline:hover{color:var(--ink)}
+  .btn-primary:hover,.schedule-btn:hover{background:var(--accent-dark)}
+  .area,.tile,.case,.bookcard,.cal-embed,.map-embed,.band .card,.btn-outline{background:var(--surface)}
+  .note{background:var(--note-bg)}
+  .ph{background:var(--ph-bg);border-color:var(--ph-line);color:var(--ph-text)}
+  .sa-form{color:#1a1a1a;color-scheme:light;border-radius:8px}
+  body,.hero,.cta,.band,.card,.area,.tile,.case,.note,.callout,.chip-card,.bookcard,.quote,.glance,.toc,.model,.stat,.faq details{
+    transition:background-color .25s ease,border-color .25s ease,color .25s ease;
+  }
+  @media (prefers-reduced-motion: reduce){
+    body,.hero,.cta,.band,.card,.area,.tile,.case,.note,.callout,.chip-card,.bookcard,.quote,.glance,.toc,.model,.stat,.faq details{transition:none}
+  }
+
+  .theme-toggle{position:fixed;right:18px;bottom:18px;z-index:60;display:inline-flex;align-items:center;gap:8px;
+    height:46px;padding:0 16px;border-radius:999px;cursor:pointer;
+    background:var(--surface);color:var(--text);border:1px solid var(--line);
+    box-shadow:0 4px 16px rgba(0,0,0,.18);font:700 13px/1 "Montserrat","Segoe UI",sans-serif;
+    letter-spacing:1px;text-transform:uppercase}
+  .theme-toggle:hover{border-color:var(--moss)}
+  .theme-toggle:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+  .theme-toggle svg{width:18px;height:18px;flex:none}
+  .theme-toggle.is-dark .icon-moon,.theme-toggle:not(.is-dark) .icon-sun{display:none}
+  @media(max-width:600px){
+    .theme-toggle{width:46px;padding:0;justify-content:center;right:16px;bottom:16px}
+    .theme-toggle .theme-label{display:none}
+  }
 </style>
 </head>
 <body>
@@ -336,6 +444,34 @@
     <div class="fine">&copy; 2026 Spokane Stump Grinder. All rights reserved.<br>An Automated Company &#9881;&#65039;</div>
   </div>
 </footer>
+
+<button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Switch to dark theme">
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  <span class="theme-label">Dark</span>
+</button>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme-toggle'),
+      mq=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
+  function current(){var t=root.getAttribute('data-theme');return t||(mq&&mq.matches?'dark':'light');}
+  function sync(){
+    var dark=current()==='dark';
+    btn.classList.toggle('is-dark',dark);
+    btn.setAttribute('aria-pressed',dark?'true':'false');
+    btn.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');
+    btn.querySelector('.theme-label').textContent=dark?'Light':'Dark';
+  }
+  btn.addEventListener('click',function(){
+    var next=current()==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('ssg-theme',next);}catch(e){}
+    sync();
+  });
+  if(mq&&mq.addEventListener){mq.addEventListener('change',sync);}
+  sync();
+})();
+</script>
 
 </body>
 </html>
