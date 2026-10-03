@@ -246,6 +246,36 @@
   .band{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .home-logo{background:#000;border-radius:8px;margin:36px 0;overflow:hidden}
   .home-logo img{width:100%;height:auto;display:block}
+  /* ---------- latest blog post: hero pill + feature card ---------- */
+  .news-pill{display:inline-flex;align-items:center;gap:10px;max-width:100%;margin:0 0 20px;padding:5px 14px 5px 5px;
+    border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.06);
+    color:#f0f0f0;font-size:14px;line-height:1.35;text-decoration:none;transition:border-color .18s ease,background-color .18s ease}
+  .news-pill:hover{border-color:var(--moss);background:rgba(184,39,45,.18)}
+  .news-pill .tag{flex:none;background:var(--moss);color:#fff;font:700 11px/1 "Montserrat","Segoe UI",sans-serif;
+    letter-spacing:1px;text-transform:uppercase;padding:6px 9px;border-radius:999px}
+  .news-pill .arrow{flex:none;transition:transform .18s ease}
+  .news-pill:hover .arrow{transform:translateX(3px)}
+  .feature-post{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:32px;align-items:stretch;
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    text-decoration:none;color:var(--text);box-shadow:var(--shadow);
+    transition:border-color .18s ease,transform .18s ease}
+  .feature-post:hover{border-color:var(--moss);transform:translateY(-2px)}
+  .feature-post img{width:100%;height:100%;min-height:240px;object-fit:cover;display:block}
+  .feature-body{align-self:center;padding:30px 34px 30px 0}
+  .feature-body .eyebrow{margin:0 0 10px;color:var(--moss-dark)}
+  .feature-body h2{margin:0 0 12px;font-size:clamp(24px,3.2vw,32px);line-height:1.2;color:var(--bark);text-wrap:balance}
+  .feature-body p{margin:0 0 18px;max-width:560px;font-size:17px;color:var(--muted)}
+  .read-more{font-weight:700;color:var(--moss-dark)}
+  .feature-post:hover .read-more{text-decoration:underline}
+  @media(max-width:700px){
+    .feature-post{grid-template-columns:1fr;gap:0}
+    .feature-post img{height:220px;min-height:0}
+    .feature-body{padding:22px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .news-pill,.news-pill .arrow,.feature-post{transition:none}
+    .news-pill:hover .arrow,.feature-post:hover{transform:none}
+  }
 
   /* ====== THEME (light / dark) ====== */
   /* Identical on every page. Light = the site's existing palette.
@@ -379,6 +409,7 @@
 
 <div class="hero-home">
   <div class="wrap">
+    <a class="news-pill" href="blog-one-stump-or-three.html"><span class="tag">New</span><span>Fresh from the field: is this one stump or three?</span><span class="arrow" aria-hidden="true">&rarr;</span></a>
     <p class="eyebrow">Spokane &amp; Coeur d'Alene Region</p>
     <h1>That stump has been there long enough.</h1>
     <p>We grind stumps down below grade and haul the mess out, so you get back a yard you can mow, plant, build on, or just stop tripping over. Written estimates before any work starts.</p>
@@ -513,6 +544,23 @@
     <div class="btn-row">
       <a class="btn btn-primary" href="services.html">See What Drives the Price</a>
     </div>
+  </div>
+</section>
+
+<!-- ============ LATEST FROM THE BLOG ============
+     Points at the newest post. When a new post goes up, swap the href,
+     image, eyebrow, headline, and summary below (and the hero .news-pill). -->
+<section>
+  <div class="wrap">
+    <a class="feature-post" href="blog-one-stump-or-three.html">
+      <img src="images/deer-park-multi-trunk-stump.jpg" width="683" height="911" loading="lazy" alt="Multi-trunk tree stump with several cut faces sharing one root mass, Deer Park, WA">
+      <div class="feature-body">
+        <p class="eyebrow">Case in Point &middot; Deer Park, WA</p>
+        <h2>We quoted 11 stumps. We found 18.</h2>
+        <p>A tree crew's count, a quote we didn't double-check, and why we honored it anyway &mdash; plus what makes stump counts go sideways and how chasing roots turns a small job into a big one.</p>
+        <span class="read-more">Read the full story <span aria-hidden="true">&rarr;</span></span>
+      </div>
+    </a>
   </div>
 </section>
 
