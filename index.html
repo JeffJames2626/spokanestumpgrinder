@@ -199,7 +199,14 @@
     transform:none;
     pointer-events:auto;
     background:transparent;
-    box-shadow:0 0 28px rgba(184,39,45,.7)
+    box-shadow:none;
+    text-decoration:none
+  }
+  .hero-home .pop-cell:hover > .stat strong,
+  .hero-home a.stat:hover strong{
+    text-decoration:none;
+    color:#fff;
+    text-shadow:0 0 6px rgba(255,59,66,1),0 0 14px rgba(184,39,45,.95),0 0 28px rgba(184,39,45,.7)
   }
 
 
@@ -313,6 +320,7 @@
   .stat strong{display:block;font-size:19px;color:var(--chip);margin-bottom:2px}
   .stat span{font-size:14px;color:#b0b0b0}
   a.stat:hover strong{text-decoration:underline}
+  .hero-home a.stat:hover,.hero-home a.stat:hover strong{text-decoration:none}
   .svc-tiles{display:grid;grid-template-columns:1fr 1fr;gap:24px}
   @media(max-width:760px){.svc-tiles{grid-template-columns:1fr}}
   .tile{border:1px solid var(--line);border-radius:10px;overflow:visible;background:#fff;display:flex;flex-direction:column}
