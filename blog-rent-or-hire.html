@@ -349,6 +349,34 @@
   .toc a:hover{color:var(--link)}
   .article h2{scroll-margin-top:100px}
 
+  /* ---------- teeth check: hover glow on all four panes ---------- */
+  .teeth-call{margin:16px 0 28px;display:grid;gap:12px;scroll-margin-top:100px}
+  .teeth-call:focus,.teeth-call:focus-visible{outline:none}
+  .teeth-call .teeth-pane{
+    margin:0;padding:16px 18px;border:1px solid var(--line);border-radius:10px;
+    background:var(--surface);box-shadow:var(--shadow);
+    transition:border-color .22s ease,box-shadow .22s ease,background-color .22s ease
+  }
+  .teeth-call h2.teeth-pane{
+    font-size:clamp(22px,3vw,28px);color:var(--bark);margin:0
+  }
+  .teeth-call:hover .teeth-pane,
+  .teeth-call:focus-within .teeth-pane{
+    border-color:var(--moss);
+    background:color-mix(in srgb,var(--moss) 6%,var(--surface));
+    animation:teeth-glow 1.2s ease-in-out infinite
+  }
+  .teeth-call:hover .teeth-pane:nth-child(2),
+  .teeth-call:focus-within .teeth-pane:nth-child(2){animation-delay:.08s}
+  .teeth-call:hover .teeth-pane:nth-child(3),
+  .teeth-call:focus-within .teeth-pane:nth-child(3){animation-delay:.16s}
+  .teeth-call:hover .teeth-pane:nth-child(4),
+  .teeth-call:focus-within .teeth-pane:nth-child(4){animation-delay:.24s}
+  @keyframes teeth-glow{
+    0%,100%{box-shadow:0 0 0 2px var(--moss),0 0 12px rgba(184,39,45,.4)}
+    50%{box-shadow:0 0 0 3px var(--moss),0 0 28px rgba(184,39,45,.72)}
+  }
+
   /* ---------- article figures ---------- */
   .post-figure{margin:0 0 28px}
   .post-figure img{width:100%;height:auto;border-radius:8px;display:block}
@@ -477,7 +505,8 @@
     transition:background-color .25s ease,border-color .25s ease,color .25s ease;
   }
   @media (prefers-reduced-motion: reduce){
-    body,.hero,.cta,.band,.card,.area,.tile,.case,.note,.callout,.chip-card,.bookcard,.quote,.glance,.toc,.model,.stat,.faq details{transition:none}
+    body,.hero,.cta,.band,.card,.area,.tile,.case,.note,.callout,.chip-card,.bookcard,.quote,.glance,.toc,.model,.stat,.faq details,.teeth-call .teeth-pane{transition:none}
+    .teeth-call:hover .teeth-pane,.teeth-call:focus-within .teeth-pane{animation:none;box-shadow:0 0 0 1px var(--moss)}
   }
 
   .theme-toggle{position:fixed;right:18px;bottom:18px;z-index:60;display:inline-flex;align-items:center;gap:8px;
@@ -584,10 +613,12 @@
         <li><strong>Rocks</strong> are the thing. A grinder tooth that finds a rock in the root ball stops being a tooth. Teeth aren't usually covered by the damage waiver, and the yard counts them when you bring the machine back.</li>
       </ul>
 
-      <h2 id="teeth">Check the teeth before you leave the yard</h2>
-      <p>This is the one thing on this page we'd put in bold if we had to pick. Before the trailer leaves the lot, get down and look at the teeth on the wheel. Rental yards don't tend to worry much about them. The machine starts, the wheel spins, it goes out. Whether the teeth on it are sharp is your problem the moment you sign.</p>
-      <p>On a low-horsepower machine, sharp teeth will literally make or break your day. A 12 hp engine doesn't have the power to bully a dull tooth through hardwood the way a big commercial grinder can. Sharp, it bites and throws chips. Dull, it polishes the stump, bogs the engine, heats up, and turns a two-hour job into a six-hour one that may not finish.</p>
-      <p>Here's how to tell. A fresh carbide tooth comes to a defined edge. As it wears, that edge rounds over. Once the tip is rounded to about a 1/16-inch radius, the tooth is done. It'll still look like a tooth, and it'll still spin, but it isn't cutting anymore. If most of the wheel looks like that, ask the counter to swap or sharpen them before you go, or ask for a different machine. It's a lot easier to have that conversation in the yard than from your driveway at noon.</p>
+      <div class="teeth-call" id="teeth" tabindex="0">
+        <h2 class="teeth-pane">Check the teeth before you leave the yard</h2>
+        <p class="teeth-pane">This is the one thing on this page we'd put in bold if we had to pick. Before the trailer leaves the lot, <strong>get down and look at the teeth on the wheel</strong>. Rental yards don't tend to worry much about them. The machine starts, the wheel spins, it goes out. <strong>Whether the teeth on it are sharp is your problem the moment you sign.</strong></p>
+        <p class="teeth-pane">On a low-horsepower machine, <strong>sharp teeth will literally make or break your day</strong>. A 12 hp engine doesn't have the power to bully a dull tooth through hardwood the way a big commercial grinder can. Sharp, it bites and throws chips. Dull, it polishes the stump, bogs the engine, heats up, and turns a two-hour job into a six-hour one that may not finish.</p>
+        <p class="teeth-pane">Here's how to tell. A fresh carbide tooth comes to a defined edge. As it wears, that edge rounds over. <strong>Once the tip is rounded to about a 1/16-inch radius, the tooth is done.</strong> It'll still look like a tooth, and it'll still spin, but it isn't cutting anymore. If most of the wheel looks like that, <strong>ask the counter to swap or sharpen them before you go, or ask for a different machine</strong>. It's a lot easier to have that conversation in the yard than from your driveway at noon.</p>
+      </div>
 
       <h2 id="day">What the rental day actually looks like</h2>
       <p>The rental rate buys you the machine from open to close. Here's where the hours go.</p>
