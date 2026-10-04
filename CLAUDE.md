@@ -118,7 +118,10 @@ Posts published:
   M–F 7–5) quote-only, written around. Tooth charge cited from a WA yard
   renting the same tracked model ($20.95/tooth, industry $15–$40); damage
   waiver stated as a typical 10–15% with Lake City's amount unpublished.
-  Idaho 6% / Spokane ~9% sales tax. Cross-links 811, private-locates
+  Idaho 6% / Spokane ~9% sales tax. "Check the teeth" section (#teeth) is
+  Jeff-supplied: rental yards pay little attention to tooth sharpness, on
+  a low-hp machine sharp teeth make or break the day, and a tooth rounded
+  to about a 1/16" radius is done. Cross-links 811, private-locates
   ($185–$200/hr, confirmed), one-stump-or-three, and the north Spokane
   $1,000 post. No `.todo`s, no SSG price. One soft commitment Jeff should
   OK: "if it's a stump a rental machine can handle, we'll say so" (lede
