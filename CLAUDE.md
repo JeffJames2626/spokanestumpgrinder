@@ -48,6 +48,7 @@ faq.html                    Pricing, the work itself, scheduling, getting starte
 blog.html                   Blog index — links to blog-*.html posts (see below)
 blog-811-locates.html       Blog post — calling 811 before stump work
 blog-private-locates.html   Blog post — private locates, what they cost
+blog-north-spokane-bid-we-didnt-get.html   Blog post — case study: a $1,000 quote for a roadside stump we didn't win
 contact.html                Call/text/email cards, map embed, links to booking + request form
 service-request.html        Service Autopilot request form (v3/ViewForm, inline)
 ```
@@ -94,6 +95,12 @@ Posts published:
   costs (confirmed with Jeff: private locators typically run $185–$200/hr,
   and SSG will flag the need and point homeowners to a trusted locator when
   it comes up — not common, not rare). No open `.todo`s.
+- `blog-north-spokane-bid-we-didnt-get.html` (Oct 2026) — case study: a $1,000
+  written quote for a large old stump on a busy north Spokane arterial that the
+  homeowner passed on as too high. Covers what a roadside stump adds (unloading,
+  chip control, spotter, traffic control and permits, utilities along streets,
+  right-of-way strips), how the 8 pricing factors applied, and questions to ask
+  when bids differ. No open `.todo`s.
 
 ### Design tokens
 
@@ -126,6 +133,10 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
    known.
 2. **No pricing figures anywhere.** Stump work is quoted per job. services.html
    explains the 8 cost factors instead of listing dollar amounts. Keep it that way.
+   Exception approved by Jeff on 2026-10-04: the $1,000 figure in
+   blog-north-spokane-bid-we-didnt-get.html is a real quote he supplied and
+   stays. It is a one-off case-study figure, not a price list. Do not add
+   other SSG prices.
 3. **Never mention "Automated Lawn & Pest" or "Marko's Sprinklers" by name.**
    Same owners, deliberately separate brand. The Service Autopilot form arrived
    with an ALP header `<h1>` in it — it was removed and must stay removed.
