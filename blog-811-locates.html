@@ -164,7 +164,8 @@
   .pop-cell > .step,
   .pop-cell > .factor,
   .pop-cell > .pillar,
-  .pop-cell > .chip-card{
+  .pop-cell > .chip-card,
+  .pop-cell > .stat{
     height:100%;
     transform:translateZ(0);
     transition:transform .36s cubic-bezier(.22,1,.36,1),
@@ -187,18 +188,20 @@
   .pop-cell:hover > .step,
   .pop-cell:hover > .factor,
   .pop-cell:hover > .pillar,
-  .pop-cell:hover > .chip-card{
+  .pop-cell:hover > .chip-card,
+  .pop-cell:hover > .stat{
     transform:scale(1.5);
     box-shadow:0 0 0 3px var(--moss),0 0 32px rgba(184,39,45,.6),0 16px 36px rgba(184,39,45,.28);
     pointer-events:none
   }
-  .pop-cell:hover > * a{pointer-events:auto}
+  .pop-cell:hover > * a,.pop-cell:hover > a{pointer-events:auto}
   @media(max-width:700px){
     .pop-cell:hover > .card,
     .pop-cell:hover > .step,
     .pop-cell:hover > .factor,
     .pop-cell:hover > .pillar,
-    .pop-cell:hover > .chip-card{transform:scale(1.12);pointer-events:auto}
+    .pop-cell:hover > .chip-card,
+    .pop-cell:hover > .stat{transform:scale(1.12);pointer-events:auto}
   }
 
   .chip-card{
@@ -333,7 +336,7 @@
   }
   @media (prefers-reduced-motion: reduce){
     body,.hero,.cta,.band,.card,.area,.tile,.case,.note,.callout,.chip-card,.bookcard,.quote,.glance,.toc,.model,.stat,.faq details,.btn,.schedule-btn{transition:none}
-    .pop-cell > .card,.pop-cell > .step,.pop-cell > .factor,.pop-cell > .pillar,.pop-cell > .chip-card,.pop-cell:hover > .card,.pop-cell:hover > .step,.pop-cell:hover > .factor,.pop-cell:hover > .pillar,.pop-cell:hover > .chip-card{transform:none;box-shadow:none;transition:none}
+    .pop-cell > .card,.pop-cell > .step,.pop-cell > .factor,.pop-cell > .pillar,.pop-cell > .chip-card,.pop-cell > .stat,.pop-cell:hover > .card,.pop-cell:hover > .step,.pop-cell:hover > .factor,.pop-cell:hover > .pillar,.pop-cell:hover > .chip-card,.pop-cell:hover > .stat{transform:none;box-shadow:none;transition:none}
     .btn:hover,.btn:focus-visible,.schedule-btn:hover,.schedule-btn:focus-visible{transform:none;filter:none;box-shadow:none}
   }
 
@@ -533,7 +536,7 @@
     sync();
   });
   if(mq&&mq.addEventListener){mq.addEventListener('change',sync);}
-  document.querySelectorAll('.grid > .card, .steps > .step, .grid > .factor, .pillars > .pillar, .grid > .chip-card').forEach(function(el){
+  document.querySelectorAll('.grid > .card, .steps > .step, .grid > .factor, .pillars > .pillar, .grid > .chip-card, .stats > .stat').forEach(function(el){
     var w=document.createElement('div');
     w.className='pop-cell';
     el.parentNode.classList.add('pop-grid');
