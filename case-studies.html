@@ -69,31 +69,88 @@
   }
   .sched-short{display:none}
   .nav-toggle-input{display:none}
-  .nav-toggle-btn{display:none;cursor:pointer;padding:4px 2px;order:2}
-  .hbar{display:block;height:3px;border-radius:2px;background:#fff}
+  .nav-toggle-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:28px;cursor:pointer;padding:8px 6px;border-radius:8px;position:relative}
+  .hbar{display:block;height:3px;border-radius:2px;background:#fff;transition:opacity .2s ease}
   .hbar-top,.hbar-bottom{background:var(--moss)}
+  @keyframes ssg-gear-spin{to{transform:rotate(360deg)}}
+  .nav-toggle-btn::before{
+    content:"\2699\FE0F";
+    position:absolute;left:50%;top:50%;
+    width:1.15em;height:1.15em;margin:-.575em 0 0 -.575em;
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;line-height:1;
+    opacity:0;pointer-events:none;
+    transform-origin:center center
+  }
+  .nav-toggle-input:checked ~ .nav-toggle-btn .hbar,
+  .nav-toggle-btn:hover .hbar,
+  .bar:has(nav:hover) .nav-toggle-btn .hbar{opacity:0}
+  .nav-toggle-input:checked ~ .nav-toggle-btn::before,
+  .nav-toggle-btn:hover::before,
+  .bar:has(nav:hover) .nav-toggle-btn::before{
+    opacity:1;animation:ssg-gear-spin .85s linear infinite
+  }
+  @media(prefers-reduced-motion:reduce){
+    .nav-toggle-btn::before{animation:none}
+  }
+  nav{width:100%;max-height:0;overflow:hidden;transition:max-height .25s ease}
+  nav ul{flex-direction:column;gap:0;padding:8px 0 6px}
+  nav a{display:block;padding:14px 4px;font-size:20px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center;font-family:"Montserrat",sans-serif;text-transform:uppercase}
+  nav a .ficon{display:inline-block;width:26px;font-size:20px;margin-right:6px}
+  .nav-toggle-input:checked ~ nav{max-height:700px}
   @media(max-width:820px){
     .bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 15px}
-    .nav-toggle-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:26px;transform:scale(1.05);grid-column:1;grid-row:1;justify-self:start}
+    .nav-toggle-btn{transform:scale(1.05);grid-column:1;grid-row:1;justify-self:start}
     .brand{grid-column:2;grid-row:1;justify-self:center}
     .schedule-btn{grid-column:3;grid-row:1;justify-self:end;padding:8px 12px;font-size:13px;font-family:"Montserrat",sans-serif}
-    nav{grid-column:1/-1;grid-row:2;max-height:0;overflow:hidden;transition:max-height .25s ease}
-    nav ul{flex-direction:column;gap:0;padding:8px 0 6px}
-    nav a{display:block;padding:14px 4px;font-size:20px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center;font-family:"Montserrat",sans-serif;text-transform:uppercase}
-    nav a .ficon{display:inline-block;width:26px;font-size:20px;margin-right:6px}
-    .nav-toggle-input:checked ~ nav{max-height:700px}
+    nav{grid-column:1/-1;grid-row:2}
     .sched-full{display:none}
     .sched-short{display:inline}
   }
   @media(min-width:821px){
-    header{background:transparent}
-    nav ul{gap:10px}
-    nav a{color:#000;font-weight:700;font-family:"Montserrat",sans-serif;text-transform:uppercase;font-size:14px}
-    nav a.active{color:#000}
-    .nav-booking{display:none}
+    header{background:transparent;overflow:visible}
+    .bar{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:8px 0;position:relative}
+    .brand{grid-column:1;grid-row:1;justify-self:start;background:linear-gradient(135deg,#2e2e2e 0%,#161616 55%,#050505 100%);padding:6px 14px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
     .brand .mark{height:52.5px}
-    .bar{padding:8px 0}
-    .brand{background:linear-gradient(135deg,#2e2e2e 0%,#161616 55%,#050505 100%);padding:6px 14px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+    .schedule-btn{grid-column:2;grid-row:1;justify-self:end}
+    .nav-toggle-btn{grid-column:3;grid-row:1;justify-self:end;position:relative;background:linear-gradient(135deg,#2e2e2e 0%,#161616 55%,#050505 100%);box-shadow:0 2px 8px rgba(0,0,0,.18)}
+    .nav-toggle-btn:hover{box-shadow:0 0 0 2px rgba(184,39,45,.45),0 2px 8px rgba(0,0,0,.18)}
+    .nav-toggle-btn::after{content:"";position:absolute;left:-10px;right:-10px;top:100%;height:18px}
+    nav{
+      position:absolute;top:calc(100% + 10px);right:0;left:auto;
+      width:252px;grid-column:auto;grid-row:auto;margin:0;
+      background:linear-gradient(180deg,#1d1d1d 0%,#141414 100%);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      box-shadow:0 18px 40px rgba(0,0,0,.32);
+      padding:0 6px;
+      max-height:0;opacity:0;transform:translateY(-8px);
+      pointer-events:none;
+      overflow:hidden;
+      transition:max-height .32s cubic-bezier(.22,1,.36,1),opacity .22s ease,transform .22s ease,padding .22s ease
+    }
+    .nav-toggle-btn:hover ~ nav,
+    .nav-toggle-input:checked ~ nav,
+    nav:hover{
+      max-height:440px;opacity:1;transform:translateY(0);
+      pointer-events:auto;padding:8px 6px
+    }
+    nav ul{padding:0;gap:2px}
+    nav a,nav a.active{
+      color:#e8e8e8;
+      font-size:13px;font-weight:700;letter-spacing:.35px;line-height:1.2;
+      padding:9px 12px;text-align:left;border:0;border-radius:8px;
+      transition:background-color .18s ease,color .18s ease
+    }
+    nav a .ficon{width:20px;font-size:14px;margin-right:8px;opacity:.8}
+    nav a:hover,nav a:focus-visible{
+      background:rgba(255,255,255,.08);color:#fff;font-weight:700
+    }
+    nav a.active{
+      background:rgba(184,39,45,.22);color:#fff;
+      box-shadow:inset 3px 0 0 var(--moss)
+    }
+    nav a:active{transform:scale(.98)}
   }
 
   /* ---------- hero ---------- */
@@ -307,7 +364,7 @@
   .footer-map-link{display:inline-block;margin-top:12px;color:var(--chip);font-weight:700;font-size:14px;text-decoration:none}
   .footer-map-link:hover{text-decoration:underline}
   .footer-logo{text-align:center;margin-top:30px;padding-top:26px;border-top:1px solid #3a3a3a}
-  .footer-logo img{height:56px;width:auto}
+  .footer-logo img{display:block;margin:0 auto;height:auto;width:auto;max-width:100%;max-height:56px}
   /* ---------- case studies ---------- */
   .band{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .case{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;margin-bottom:44px}
@@ -406,10 +463,6 @@
 
   body{background:var(--bg)}
   @media(max-width:820px){header{background:var(--ink)}}
-  @media(min-width:821px){
-    nav a,nav a.active{color:var(--nav-desktop)}
-    nav a:hover{color:var(--nav-hover)}
-  }
   footer{background:var(--ink);border-top:1px solid var(--line)}
   .factors{background:var(--ink)}
   .factor{background:var(--ink-2)}
@@ -719,7 +772,7 @@
     </div>
 
     <div class="footer-logo">
-      <img src="images/logo-full.png" alt="Spokane Stump Grinder">
+      <img src="images/logo-words.png" alt="Spokane Stump Grinder">
     </div>
 
     <div class="fine">&copy; 2026 Spokane Stump Grinder. All rights reserved.<br>An Automated Company &#9881;&#65039;</div>
