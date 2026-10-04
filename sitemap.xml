@@ -50,9 +50,15 @@
   </url>
   <url>
     <loc>https://spokanestumpgrinder.com/blog.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-10-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://spokanestumpgrinder.com/blog-rent-or-hire.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://spokanestumpgrinder.com/blog-811-locates.html</loc>

@@ -95,6 +95,28 @@ Posts published:
   costs (confirmed with Jeff: private locators typically run $185–$200/hr,
   and SSG will flag the need and point homeowners to a trusted locator when
   it comes up — not common, not rare). No open `.todo`s.
+- `blog-rent-or-hire.html` (Oct 2026) — guide:
+  renting a stump grinder versus hiring it out. Built on the case-study
+  template (hero stats, glance + toc sidebar, `.models`, `.chain`,
+  `.checklist`, FAQ accordions) with an added `.article h3` rule for the
+  per-yard subheads. All figures are third-party published rates read
+  2026-10-04, never SSG's: Lake City Rental (Hayden 208-762-1175, CdA
+  208-666-5591; M–F 7–5, Sat 8–5, closed Sun) towable 12 hp $88/4 hr,
+  $122/day, $364/wk and tracked 25 hp w/ trailer $197/4 hr, $263/day,
+  $788/wk, tax + waiver extra and unpublished; Home Depot (N Newport Hwy,
+  E Sprague, S Regal, open weekends) prices store-by-store — post gives
+  the range seen at other stores ($219–$239/4 hr, $299–$319/day) and says
+  to call; Load 'N Go truck $19/75 min, $129/day, $150 deposit, hitch only
+  with HD's own towable gear; United Rentals (204 S Fancher, 509-532-1235,
+  M–F 7–5) quote-only, written around. Tooth charge cited from a WA yard
+  renting the same tracked model ($20.95/tooth, industry $15–$40); damage
+  waiver stated as a typical 10–15% with Lake City's amount unpublished.
+  Idaho 6% / Spokane ~9% sales tax. Cross-links 811, private-locates
+  ($185–$200/hr, confirmed), one-stump-or-three, and the north Spokane
+  $1,000 post. No `.todo`s, no SSG price. One soft commitment Jeff should
+  OK: "if it's a stump a rental machine can handle, we'll say so" (lede
+  checklist, FAQ 5, CTA). Homepage feature still points at the north
+  Spokane bid post until Jeff says to swap it.
 - `blog-north-spokane-bid-we-didnt-get.html` (Oct 2026) — case study: a $1,000
   written quote for a large old stump on a busy north Spokane arterial that the
   homeowner passed on as too high. Covers what a roadside stump adds (unloading,
