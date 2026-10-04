@@ -70,6 +70,13 @@ the site-wide nav or footer — only `blog.html` itself is linked from there.
 Each post gets a card on blog.html (inside `.grid`, using the structure
 documented in the HTML comment above it) and an entry in `sitemap.xml`.
 
+**The newest post or case study always gets the homepage spotlight** (Jeff's
+standing rule, 2026-10-04). index.html has two spots to swap every time a
+post goes up: the hero `.news-pill` (href + one-line teaser) and the
+"Latest from the blog" `.feature-post` card (href, 683×911 portrait image,
+eyebrow, h2, summary, read-more label). If the post has no photo of its
+own, reuse a real site photo that fits the topic — never a stock image.
+
 Post topics must stay to general, verifiable how-it-works/industry-standard
 information (e.g. "call 811 before you dig") — never invented specifics about
 this business's own history, jobs, or policies. Where a post needs a real
@@ -115,8 +122,7 @@ Posts published:
   ($185–$200/hr, confirmed), one-stump-or-three, and the north Spokane
   $1,000 post. No `.todo`s, no SSG price. One soft commitment Jeff should
   OK: "if it's a stump a rental machine can handle, we'll say so" (lede
-  checklist, FAQ 5, CTA). Homepage feature still points at the north
-  Spokane bid post until Jeff says to swap it.
+  checklist, FAQ 5, CTA). Currently featured on the homepage.
 - `blog-north-spokane-bid-we-didnt-get.html` (Oct 2026) — case study: a $1,000
   written quote for a large old stump on a busy north Spokane arterial that the
   homeowner passed on as too high. Covers what a roadside stump adds (unloading,
