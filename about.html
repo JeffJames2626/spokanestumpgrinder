@@ -394,7 +394,7 @@
      --moss-dark becomes light link text. Surfaces that must stay dark in
      BOTH themes (mobile header bar, footer, dark bands) are pinned to --ink
      below so they don't flip. Default follows the device setting; the
-     toggle button stores an explicit choice in localStorage ('ssg-theme'). */
+     toggle cycles System / Light / Dark in localStorage ('ssg-theme'). */
   :root{
     --ink:#161616;
     --ink-2:#2b2b2b;
@@ -483,7 +483,10 @@
   .theme-toggle:hover{border-color:var(--moss)}
   .theme-toggle:focus-visible{outline:3px solid var(--link);outline-offset:2px}
   .theme-toggle svg{width:18px;height:18px;flex:none}
-  .theme-toggle.is-dark .icon-moon,.theme-toggle:not(.is-dark) .icon-sun{display:none}
+  .theme-toggle .icon-sun,.theme-toggle .icon-moon,.theme-toggle .icon-system{display:none}
+  .theme-toggle[data-mode="light"] .icon-sun{display:block}
+  .theme-toggle[data-mode="dark"] .icon-moon{display:block}
+  .theme-toggle[data-mode="system"] .icon-system{display:block}
   @media(max-width:600px){
     .theme-toggle{width:46px;padding:0;justify-content:center;right:16px;bottom:16px}
     .theme-toggle .theme-label{display:none}
@@ -786,30 +789,37 @@
   </div>
 </footer>
 
-<button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Switch to dark theme">
-  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+<button type="button" class="theme-toggle" id="theme-toggle" data-mode="system" aria-pressed="false" aria-label="Theme: System. Click for Light">
   <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-  <span class="theme-label">Dark</span>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  <svg class="icon-system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
+  <span class="theme-label">System</span>
 </button>
 <script>
 (function(){
   var root=document.documentElement, btn=document.getElementById('theme-toggle'),
       mq=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
-  function current(){var t=root.getAttribute('data-theme');return t||(mq&&mq.matches?'dark':'light');}
+  function stored(){try{return localStorage.getItem('ssg-theme');}catch(e){return null;}}
+  function mode(){var t=stored();return (t==='light'||t==='dark')?t:'system';}
+  function apply(m){
+    if(m==='light'||m==='dark'){root.setAttribute('data-theme',m);try{localStorage.setItem('ssg-theme',m);}catch(e){}}
+    else{root.removeAttribute('data-theme');try{localStorage.setItem('ssg-theme','system');}catch(e){}}
+    sync();
+  }
   function sync(){
-    var dark=current()==='dark';
-    btn.classList.toggle('is-dark',dark);
-    btn.setAttribute('aria-pressed',dark?'true':'false');
-    btn.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');
-    btn.querySelector('.theme-label').textContent=dark?'Light':'Dark';
+    var m=mode(), next=m==='system'?'light':(m==='light'?'dark':'system');
+    var labels={system:'System',light:'Light',dark:'Dark'};
+    btn.setAttribute('data-mode',m);
+    btn.classList.toggle('is-dark',m==='dark'||(m==='system'&&mq&&mq.matches));
+    btn.setAttribute('aria-pressed',m==='system'?'false':'true');
+    btn.setAttribute('aria-label','Theme: '+labels[m]+'. Click for '+labels[next]);
+    btn.querySelector('.theme-label').textContent=labels[m];
   }
   btn.addEventListener('click',function(){
-    var next=current()==='dark'?'light':'dark';
-    root.setAttribute('data-theme',next);
-    try{localStorage.setItem('ssg-theme',next);}catch(e){}
-    sync();
+    var m=mode();
+    apply(m==='system'?'light':(m==='light'?'dark':'system'));
   });
-  if(mq&&mq.addEventListener){mq.addEventListener('change',sync);}
+  if(mq&&mq.addEventListener){mq.addEventListener('change',function(){if(mode()==='system')sync();});}
   document.querySelectorAll('.grid > .card, .steps > .step, .grid > .factor, .pillars > .pillar, .grid > .chip-card, .stats > .stat, .models > .model').forEach(function(el){
     var w=document.createElement('div');
     w.className='pop-cell';
