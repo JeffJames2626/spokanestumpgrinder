@@ -143,6 +143,54 @@
   .card h3{margin:0 0 8px;font-size:17px;color:var(--bark)}
   .card p{margin:0;font-size:15px;color:var(--muted)}
 
+  html{overflow-x:clip}
+  .pop-grid{gap:0}
+  .pop-cell{padding:10px;min-width:0;position:relative;z-index:1}
+  .pop-cell > .step{
+    background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px 20px
+  }
+  .pop-cell > .card,
+  .pop-cell > .step,
+  .pop-cell > .factor,
+  .pop-cell > .pillar,
+  .pop-cell > .chip-card{
+    height:100%;
+    transform:translateZ(0);
+    transition:transform .36s cubic-bezier(.22,1,.36,1),
+      background-color .36s cubic-bezier(.22,1,.36,1),
+      color .36s cubic-bezier(.22,1,.36,1),
+      box-shadow .36s cubic-bezier(.22,1,.36,1),
+      border-color .36s cubic-bezier(.22,1,.36,1)
+  }
+  @media(min-width:1001px){
+    .pop-grid > .pop-cell:nth-child(3n+1) > *{transform-origin:left center}
+    .pop-grid > .pop-cell:nth-child(3n+2) > *{transform-origin:center center}
+    .pop-grid > .pop-cell:nth-child(3n) > *{transform-origin:right center}
+  }
+  @media(min-width:701px) and (max-width:1000px){
+    .pop-grid > .pop-cell:nth-child(odd) > *{transform-origin:left center}
+    .pop-grid > .pop-cell:nth-child(even) > *{transform-origin:right center}
+  }
+  .pop-cell:hover{z-index:8}
+  .pop-cell:hover > .card,
+  .pop-cell:hover > .step,
+  .pop-cell:hover > .factor,
+  .pop-cell:hover > .pillar,
+  .pop-cell:hover > .chip-card{
+    transform:scale(1.5);
+    box-shadow:0 0 0 3px var(--moss),0 0 32px rgba(184,39,45,.6),0 16px 36px rgba(184,39,45,.28);
+    pointer-events:none
+  }
+  .pop-cell:hover > * a{pointer-events:auto}
+  @media(max-width:700px){
+    .pop-cell:hover > .card,
+    .pop-cell:hover > .step,
+    .pop-cell:hover > .factor,
+    .pop-cell:hover > .pillar,
+    .pop-cell:hover > .chip-card{transform:scale(1.12);pointer-events:auto}
+  }
+
+
   ul.checks{list-style:none;padding:0;margin:0}
   ul.checks li{position:relative;padding-left:28px;margin-bottom:10px;color:var(--muted)}
   ul.checks li::before{
@@ -330,6 +378,7 @@
   }
   @media (prefers-reduced-motion: reduce){
     body,.hero,.cta,.band,.card,.area,.tile,.case,.note,.callout,.chip-card,.bookcard,.quote,.glance,.toc,.model,.stat,.faq details,.btn,.schedule-btn{transition:none}
+    .pop-cell > .card,.pop-cell > .step,.pop-cell > .factor,.pop-cell > .pillar,.pop-cell > .chip-card,.pop-cell:hover > .card,.pop-cell:hover > .step,.pop-cell:hover > .factor,.pop-cell:hover > .pillar,.pop-cell:hover > .chip-card{transform:none;box-shadow:none;transition:none}
     .btn:hover,.btn:focus-visible,.schedule-btn:hover,.schedule-btn:focus-visible{transform:none;filter:none;box-shadow:none}
   }
 
@@ -547,6 +596,13 @@
     sync();
   });
   if(mq&&mq.addEventListener){mq.addEventListener('change',sync);}
+  document.querySelectorAll('.grid > .card, .steps > .step, .grid > .factor, .pillars > .pillar, .grid > .chip-card').forEach(function(el){
+    var w=document.createElement('div');
+    w.className='pop-cell';
+    el.parentNode.classList.add('pop-grid');
+    el.parentNode.insertBefore(w,el);
+    w.appendChild(el);
+  });
   sync();
 })();
 </script>
