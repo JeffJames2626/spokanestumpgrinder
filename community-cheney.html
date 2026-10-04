@@ -3,9 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Services | Spokane Stump Grinder</title>
-<meta name="description" content="Stump grinding and full stump removal and cleanup in Spokane, WA. Clean work, hauled debris, and a yard you can actually use again.">
+<title>Stump Grinding &amp; Yard Cleanup in Cheney, WA | Spokane Stump Grinder</title>
+<meta name="description" content="Stump grinding and yard cleanup in Cheney, WA. Yards by Eastern Washington University and downtown. Chips hauled and the hole backfilled when you want the lawn back. Written estimates.">
 <link rel="icon" type="image/png" href="favicon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"Stump grinding and yard cleanup in Cheney, WA","serviceType":"Stump grinding","areaServed":{"@type":"City","name":"Cheney","containedInPlace":{"@type":"State","name":"Washington"}},"provider":{"@type":"LocalBusiness","name":"Spokane Stump Grinder","telephone":"+1-509-434-9554","email":"info@spokanestumpgrinder.com","address":{"@type":"PostalAddress","streetAddress":"1908 E Mallon Ave","addressLocality":"Spokane","addressRegion":"WA","postalCode":"99202"},"areaServed":"Cheney, WA"}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -13,7 +16,7 @@
 (function(){try{var t=localStorage.getItem('ssg-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
 </script>
 <style>
-  :root{
+:root{
     --bark:#161616;
     --bark-2:#2b2b2b;
     --moss:#b8272d;
@@ -34,7 +37,7 @@
     line-height:1.65;
   }
   a{color:var(--moss-dark);text-decoration:none}
-  a[href^="tel:"]{text-decoration:none}
+  a[href^="tel:"],a[href^="mailto:"]{text-decoration:none}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
 
   /* ---------- header ---------- */
@@ -49,7 +52,7 @@
   .brand .mark{
     height:42px;width:auto;flex:none;object-fit:contain;display:block;
   }
-  nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+  nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
   nav a{color:#d6d6d6;text-decoration:none;font-size:15px;font-weight:400;transition:color .18s ease}
   nav a:hover{color:var(--moss);font-weight:700}
   nav a:active{color:var(--moss-dark);transform:scale(.95)}
@@ -187,17 +190,25 @@
   /* ---------- sections ---------- */
   section{padding:56px 0}
   @media(max-width:600px){section{padding:36px 0}}
-  .service{border-top:1px solid var(--line)}
-  .service h2{font-size:clamp(24px,3.2vw,32px);margin:0 0 6px;color:var(--bark)}
-  .tagline{margin:0 0 22px;color:var(--moss-dark);font-weight:600}
   .lead{font-size:17px;max-width:720px;color:var(--muted);margin:0 0 28px}
+  .band{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
   .card{
     background:var(--sand);border:1px solid var(--line);
-    border-radius:8px;padding:22px;
+    border-radius:8px;padding:24px;
   }
-  .card h3{margin:0 0 8px;font-size:17px;color:var(--bark)}
+  .band .card{background:#fff}
+  .card .icon{
+    display:flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;
+    background:var(--moss);color:#fff;font-size:17px;
+    margin-bottom:12px;
+  }
+  .card h3{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--moss-dark);font-weight:700}
+  .card .big{display:inline-block;font-size:22px;font-weight:700;color:var(--bark);margin-bottom:8px;word-break:break-word;text-decoration:none}
+  .card a.big[href^="mailto:"]{font-size:18px}
+  .card .big:hover{color:var(--moss-dark)}
   .card p{margin:0;font-size:15px;color:var(--muted)}
 
   html{overflow-x:clip}
@@ -267,78 +278,20 @@
   }
 
 
-  ul.checks{list-style:none;padding:0;margin:0}
-  ul.checks li{position:relative;padding-left:28px;margin-bottom:10px;color:var(--muted)}
-  ul.checks li::before{
-    content:"";position:absolute;left:4px;top:9px;
-    width:8px;height:8px;border-radius:2px;background:var(--moss);
+  /* ---------- map embed ---------- */
+  .map-embed{
+    background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:10px;margin-top:28px;overflow:hidden;
   }
-  ul.checks li strong{color:var(--text)}
-
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
-  @media(max-width:760px){.split{grid-template-columns:1fr;gap:28px}}
-
-  .note{
-    background:#f5f5f5;border-left:4px solid var(--chip);
-    padding:16px 20px;border-radius:0 6px 6px 0;color:var(--muted);font-size:15px;
-  }
-
-  /* ---------- media placeholders (replace with real assets) ---------- */
-  .ph{
-    background:#e6e6e6;border:1px dashed #adadad;border-radius:8px;
-    display:grid;place-items:center;text-align:center;
-    color:#6b6b6b;font-size:13px;letter-spacing:.5px;text-transform:uppercase;
-    padding:16px;
-  }
-  .ph-video{aspect-ratio:16/9;font-size:15px}
-  .ph-wide{aspect-ratio:21/9}
-  .ph-sq{aspect-ratio:4/3}
-  .ph-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  @media(max-width:600px){.ph-row{grid-template-columns:1fr}}
-  .ph-cap{font-size:13px;color:var(--muted);margin:8px 0 0;text-align:center}
-  .photo{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block}
-
-  /* ---------- pricing factors ---------- */
-  .factors{background:var(--bark);color:#e6e6e6}
-  .factors h2{color:#fff}
-  .factors .lead{color:#b0b0b0}
-  .factor{
-    background:var(--bark-2);border-radius:8px;padding:22px;
-    border-top:3px solid var(--chip);
-  }
-  .factor h3{margin:0 0 8px;font-size:16px;color:#fff}
-  .factor p{margin:0;font-size:15px;color:#b5b5b5}
-
-  /* ---------- process ---------- */
-  .steps{counter-reset:step;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-  .step{position:relative;padding-top:8px}
-  .step::before{
-    counter-increment:step;content:counter(step);
-    display:grid;place-items:center;
-    width:36px;height:36px;border-radius:50%;
-    background:var(--moss);color:#fff;font-weight:700;margin-bottom:12px;
-  }
-  .step h3{margin:0 0 6px;font-size:16px;color:var(--bark)}
-  .step p{margin:0;font-size:15px;color:var(--muted)}
+  .map-embed iframe{display:block;width:100%;height:340px;border:0;border-radius:8px}
+  .map-link{display:inline-block;margin-top:16px;font-weight:700;color:var(--moss-dark);text-decoration:none}
+  .map-link:hover{text-decoration:underline}
 
   /* ---------- cta ---------- */
   .cta{background:var(--sand);border-top:1px solid var(--line);text-align:center}
   .cta h2{margin:0 0 10px;font-size:clamp(24px,3.4vw,32px);color:var(--bark)}
   .cta p{margin:0 auto 8px;max-width:560px;color:var(--muted);font-size:17px}
   .cta .btn-row{justify-content:center}
-
-  /* ---------- service area ---------- */
-  .area{border-top:1px solid var(--line);background:#fff}
-  .area h2{margin:0 0 10px;font-size:clamp(22px,3vw,28px);color:var(--bark)}
-  .towns{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
-    gap:6px 18px;list-style:none;padding:0;margin:22px 0 0;
-  }
-  .towns li{
-    font-size:15px;color:var(--muted);
-    padding:5px 0 5px 18px;position:relative;border-bottom:1px dotted var(--line);
-  }
-  .towns li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--chip)}
 
   /* ---------- footer ---------- */
   footer{background:var(--bark);color:#999999;padding:34px 0;font-size:14px}
@@ -469,6 +422,40 @@
     .theme-toggle{width:46px;padding:0;justify-content:center;right:16px;bottom:16px}
     .theme-toggle .theme-label{display:none}
   }
+
+  /* ---------- community page ---------- */
+  .local-hero{background:var(--ink);color:#f0f0f0;padding:52px 0 40px;border-bottom:3px solid var(--moss)}
+  .local-hero h1{margin:0 0 14px;font-size:clamp(32px,4.8vw,48px);line-height:1.12;color:#fff;max-width:820px}
+  .local-hero .lead{margin:0;max-width:680px;font-size:18px;color:#cfcfcf}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+  .fact{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:14px 16px}
+  .fact strong{display:block;color:#fff;font-size:18px;line-height:1.3}
+  .fact span{display:block;color:#bdbdbd;font-size:13px;line-height:1.4;margin-top:3px}
+  .split{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
+  @media(max-width:800px){.split{grid-template-columns:1fr}}
+  .rule{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--moss);border-radius:0 8px 8px 0;padding:14px 16px;margin:0 0 12px}
+  .rule h3{margin:0 0 6px;font-size:16px;color:var(--bark)}
+  .rule p{margin:0;color:var(--muted);font-size:15px}
+  .src{font-size:14px;color:var(--muted)}
+  .src a{font-weight:600}
+  details.q{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:0 0 10px}
+  details.q summary{cursor:pointer;font-weight:700;color:var(--bark)}
+  details.q p{margin:10px 0 0;color:var(--muted)}
+  .weekend{display:grid;grid-template-columns:repeat(3,1fr);gap:2px 28px;margin:6px 0 8px;padding:0;list-style:none}
+  .weekend li{position:relative;padding:7px 0 7px 18px;font-size:17px;line-height:1.4;color:var(--text)}
+  .weekend li::before{content:"";position:absolute;left:0;top:14px;width:7px;height:7px;border-radius:50%;background:var(--moss)}
+  @media(max-width:800px){.weekend{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.weekend{grid-template-columns:1fr}}
+  .why{list-style:none;margin:0;padding:0}
+  .why li{position:relative;padding:4px 0 4px 16px;font-size:15px;line-height:1.4;color:var(--muted)}
+  .why li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--moss)}
+  .do{list-style:none;margin:8px 0 0;padding:0}
+  .do li{position:relative;padding:6px 0 6px 18px;font-size:16px;line-height:1.4}
+  .do li::before{content:"";position:absolute;left:0;top:13px;width:7px;height:7px;border-radius:50%;background:var(--moss)}
+  .reasons{display:grid;grid-template-columns:1fr 1fr;gap:0 36px;margin:12px 0 0;padding:0;list-style:none}
+  .reasons li{position:relative;padding:6px 0 6px 18px;font-size:16px;line-height:1.4}
+  .reasons li::before{content:"";position:absolute;left:0;top:13px;width:7px;height:7px;border-radius:50%;background:var(--moss)}
+  @media(max-width:700px){.reasons{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -483,7 +470,7 @@
     <nav>
       <ul>
         <li><a href="index.html"><span class="ficon">&#8962;</span>Home</a></li>
-        <li><a class="active" href="services.html"><span class="ficon">&#9881;</span>Services</a></li>
+        <li><a href="services.html"><span class="ficon">&#9881;</span>Services</a></li>
         <li class="nav-booking"><a href="booking.html"><span class="ficon">&#9638;</span>Booking</a></li>
         <li><a href="case-studies.html"><span class="ficon">&#9636;</span>Case Studies</a></li>
         <li><a href="about.html"><span class="ficon">&#8505;</span>About</a></li>
@@ -497,276 +484,145 @@
   </div>
 </header>
 
-<div class="hero">
+<!--
+  COMMUNITY PAGE — Cheney
+  Different shape from the earlier town pages.
+  Homeowner page. No census, no hiring list.
+  Go Eags is Eastern Washington University, not Cheney High.
+-->
+
+<div class="local-hero">
   <div class="wrap">
-    <p class="eyebrow">Our Services</p>
-    <h1>Stumps gone. Yard back.</h1>
-    <p>We do two things and we do them well: grind stumps down below grade, and haul the mess out so you're left with usable ground instead of a crater full of chips. Serving Spokane and the surrounding area.</p>
+    <p class="eyebrow" style="color:var(--chip)">Cheney, WA</p>
+    <h1>Stump grinding and yard cleanup in Cheney.</h1>
+    <p class="lead">We grind the stump below grade. If you want the lawn back where the tree was, we haul the chips and backfill the hole. Scope and price go in writing before anything is scheduled, or you can book a free on-site consultation (OSC).</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
-      <a class="btn btn-outline" href="booking.html">Check Availability</a>
+      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
     </div>
   </div>
 </div>
 
-<!-- ============ WISTIA VIDEO ============ -->
 <section>
   <div class="wrap">
-    <p class="eyebrow">Watch</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(24px,3.2vw,32px);color:var(--bark)">Our biggest machine at work</h2>
-    <p class="lead" style="margin-bottom:24px">A short clip of the machine we bring out for the toughest stumps.</p>
-
-    <script src="https://fast.wistia.com/player.js" async></script>
-    <script src="https://fast.wistia.com/embed/1ney7dzfis.js" async type="module"></script>
-    <style>wistia-player[media-id='1ney7dzfis']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/1ney7dzfis/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
-    <wistia-player media-id="1ney7dzfis" aspect="0.5625"></wistia-player>
-
+    <p class="eyebrow">Instead</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Go Eags</h2>
+    <p class="lead">Born and raised in Spokane, Jeff brings more than 14 years of hands-on and management experience in home services, including four years as a business owner. Cheney sits southwest on Highway 904, with Eastern in the middle of town and Go Eags on the red turf at Roos Field&mdash;a familiar part of the region he calls home.</p>
+    <ul class="reasons">
+      <li>Yell Go Eags on the red turf at Roos Field</li>
+      <li>Walk the old campus, the pillars and Showalter Hall</li>
+      <li>Reserve the shelter at Sutton Park</li>
+      <li>Hit the swings and the playground there</li>
+      <li>Cook at Salnave, Centennial, or Hagelin</li>
+      <li>Play tennis or volleyball on Cedar Street</li>
+    </ul>
+    <p class="src" style="margin-top:14px">Roos Field is at 1136 Washington Street. The red turf is Eastern's. Parks and shelter reservations are the <a href="https://www.cityofcheney.org/460/Parks" target="_blank" rel="noopener">city's parks page</a>.</p>
   </div>
 </section>
 
-<!-- ============ SERVICE 1 ============ -->
-<section class="service">
+<section class="band">
   <div class="wrap">
-    <h2>Stump Grinding</h2>
-    <p class="tagline">Grind it down, level it off, walk away with a flat yard.</p>
-    <p class="lead">Our grinder chews the stump and the surface roots down below ground level so you can mow over the spot, plant grass, or just stop looking at it. Most single stumps are a same-visit job.</p>
+    <p class="eyebrow">Skip the tow</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">A rental grinder does not belong on game day</h2>
+    <p class="lead">The grinders we found for rent are in Spokane, or over in Hayden and Coeur d'Alene. You'd tow one down Highway 904, through town, into a driveway, grind, hose it off, and beat the lock on the rental gate. That's a Saturday you could have spent at Roos Field.</p>
+    <ul class="reasons">
+      <li>A tracked rental is about 35 inches wide</li>
+      <li>A 36-inch gate is the whole plan</li>
+      <li>Tighter than that, it sits in the alley</li>
+      <li>Tracks print the yard on the way in</li>
+      <li>A tooth rounded to about 1/16 inch just polishes the wood</li>
+      <li>The trailer leaves and the chips stay</li>
+      <li>Chips left in the hole sink later</li>
+      <li>Want grass? We haul the chips and backfill</li>
+      <li>We don't sell the seed and we don't lay the sod</li>
+      <li>A stump in the street or the alley needs a city permit the counter will not file</li>
+      <li>If a rental machine can make this one, we'll say so</li>
+      <li>The yards' rates are on the <a href="blog-rent-or-hire.html">rent-or-hire guide</a></li>
+    </ul>
+  </div>
+</section>
 
-    <div class="split">
-      <div>
-        <h3 style="margin-top:0;color:var(--bark)">What's included</h3>
-        <ul class="checks">
-          <li><strong>Utility-safe setup</strong> — we confirm locates are in place and probe the work area before the wheel turns.</li>
-          <li><strong>Grinding below grade</strong> — standard depth takes the stump under the surrounding soil line so turf and roots can be planted over it.</li>
-          <li><strong>Surface root flare</strong> — the visible roots running out from the base get ground down too, not just the trunk.</li>
-          <li><strong>Chip backfill</strong> — grindings are raked back into the hole and tamped level unless you want them removed.</li>
-          <li><strong>Property protection</strong> — plywood tracking over soft turf, and shielding around siding, fences, and windows.</li>
-          <li><strong>Blow-down cleanup</strong> — walks, drives, and patios cleared before we pull out.</li>
-        </ul>
-      </div>
-      <div>
-        <h3 style="margin-top:0;color:var(--bark)">Good fit when</h3>
-        <div class="grid" style="grid-template-columns:1fr">
-          <div class="card">
-            <h3>You're replanting grass</h3>
-            <p>Grinding below grade leaves you room for topsoil and seed or sod over the spot.</p>
-          </div>
-          <div class="card">
-            <h3>The stump is a trip or mower hazard</h3>
-            <p>Common with stumps left mid-lawn by a previous owner or a storm removal.</p>
-          </div>
-          <div class="card">
-            <h3>You've got several stumps at once</h3>
-            <p>Multiple stumps on one visit share the mobilization, so they're cheaper per stump than one-offs.</p>
-          </div>
-        </div>
-      </div>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">City rules</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Cheney is a city. The street is theirs.</h2>
+    <p class="lead">A backyard and a city street are different jobs. These are the city's own pages.</p>
+    <div class="rule">
+      <h3>Digging a street or an alley needs a permit first</h3>
+      <p>Cheney public works says any construction in the city right-of-way needs a permit, and no one may dig or excavate a city roadway or alley without a <a href="https://www.cityofcheney.org/203/Public-Works-Permits" target="_blank" rel="noopener">right-of-way excavation permit</a>. That is Washington Street, 2nd, the alleys behind the older blocks, and the planting strip. It is not the middle of a fenced yard. The rental counter does not pull that permit.</p>
     </div>
-
-    <div class="ph-row" style="margin-top:30px">
-      <div>
-        <div class="ph-sq"><img class="photo" src="images/case-study-1-before.jpg" alt="Backyard before stump grinding, dead grass patch with the stump remnant near the shed"></div>
-        <p class="ph-cap">Before</p>
-      </div>
-      <div>
-        <div class="ph-sq"><img class="photo" src="images/case-study-2-after.jpg" alt="Ground level, cleared and freshly watered after grinding"></div>
-        <p class="ph-cap">After</p>
-      </div>
+    <div class="rule">
+      <h3>Don't leave the chips in the street</h3>
+      <p>The city code treats tree trimmings, dirt, and yard debris dropped in a street, alley, or park as an obstruction. Chips stay in the hole, or we haul them. They do not go in the gutter.</p>
     </div>
-
-    <div class="note" style="margin-top:30px">
-      <strong>Worth knowing:</strong> grinding removes the stump and the root flare — it doesn't chase the entire root system out of the soil. If you're pouring concrete, setting a post, or planting a new tree in the exact same hole, tell us up front and we'll talk through going deeper or moving to full removal.
+    <div class="rule">
+      <h3>We file the 811 locate</h3>
+      <p>Utilities get marked before the wheel turns. Spokane Stump Grinder submits the 811 request as part of scheduling. 811 does not mark private lines such as sprinklers, and Cheney's own light department has a say when a tree is close to their lines. When either one is in the way, we flag it. Read the <a href="blog-811-locates.html">811 post</a> and the <a href="blog-private-locates.html">private-locate post</a>.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ SERVICE 2 ============ -->
-<section class="service" id="removal-cleanup" style="scroll-margin-top:90px">
+<section class="band">
   <div class="wrap">
-    <h2>Stump Removal &amp; Cleanup</h2>
-    <p class="tagline">Chips hauled off, hole backfilled, ground ready for whatever's next.</p>
-    <p class="lead">Grinding one stump generates a surprising pile of chips — often several times the volume of the stump itself. Removal and cleanup is the option where we take that material with us and leave you clean, compacted soil instead.</p>
-
-    <div class="split">
-      <div>
-        <h3 style="margin-top:0;color:var(--bark)">What's included</h3>
-        <ul class="checks">
-          <li><strong>Everything in stump grinding</strong> — this builds on the grinding service, it doesn't replace it.</li>
-          <li><strong>Chip and debris haul-off</strong> — grindings loaded out and disposed of, not piled at the curb.</li>
-          <li><strong>Root and wood removal</strong> — larger surface roots and trunk chunks pulled rather than left buried.</li>
-          <li><strong>Topsoil backfill</strong> — the void filled with clean soil and tamped so it doesn't sink over the next season.</li>
-          <li><strong>Grade match</strong> — finished level with the surrounding yard, ready for seed, sod, or a new planting.</li>
-          <li><strong>Final walkthrough</strong> — we look at the finished spot with you before we leave.</li>
-        </ul>
-      </div>
-      <div>
-        <h3 style="margin-top:0;color:var(--bark)">Good fit when</h3>
-        <div class="grid" style="grid-template-columns:1fr">
-          <div class="card">
-            <h3>You're building on the spot</h3>
-            <p>Patios, sheds, fence posts, and footings need soil, not a bed of wood chips that will decompose and settle.</p>
-          </div>
-          <div class="card">
-            <h3>You're planting a replacement tree</h3>
-            <p>New roots do better in clean backfill than in a pocket of decaying grindings.</p>
-          </div>
-          <div class="card">
-            <h3>You want the yard finished, not just cleared</h3>
-            <p>No leftover chip pile for you to deal with on a weekend.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PHOTO SLOT — removal before/after -->
-    <div class="ph-row" style="margin-top:30px">
-      <div>
-        <div class="ph-sq"><img class="photo" src="images/services-chip-pile-haul-off.jpg" alt="Chip pile with the stump grinder and crew working in the background"></div>
-        <p class="ph-cap">Chips loaded out</p>
-      </div>
-      <div>
-        <div class="ph-sq"><img class="photo" src="images/services-topsoil-backfill-graded.jpg" alt="Ground leveled and graded after stump removal, ready for topsoil"></div>
-        <p class="ph-cap">Backfilled and graded</p>
-      </div>
-    </div>
-
-    <div class="note" style="margin-top:30px">
-      <strong>Add-on option:</strong> if you want the grindings for mulch instead of hauled away, say so when you request the estimate — we'll leave them piled where you want them and adjust the scope accordingly.
-    </div>
-  </div>
-</section>
-
-<!-- ============ PRICING FACTORS ============ -->
-<section class="factors">
-  <div class="wrap">
-    <p class="eyebrow" style="color:var(--chip)">What Drives the Price</p>
-    <h2>Every stump prices differently — here's why</h2>
-    <p class="lead">We don't quote stump work off a flat rate, because two stumps the same width can be an hour apart in real work. These are the things we look at when we put a number on your job.</p>
+    <p class="eyebrow">The work</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Grind it, or haul the chips</h2>
+    <p class="lead">Two services. No price on this page. A stump behind a rental on College Street is not the same job as one in an open yard off 904.</p>
     <div class="grid">
-      <div class="factor">
-        <h3>Diameter at grade</h3>
-        <p>Measured across the widest point of the stump at ground level, not the tree's old trunk size. This is the single biggest factor.</p>
+      <div class="card">
+        <h3>Stump grinding</h3>
+        <p>The stump and the surface roots come down below grade. Chips go back in the hole and get tamped level. You can mow it. Most single stumps are a same-visit job. <a href="services.html">What's included</a>.</p>
       </div>
-      <div class="factor">
-        <h3>Root flare spread</h3>
-        <p>Some species throw wide surface roots that add several feet of grinding beyond the stump itself.</p>
-      </div>
-      <div class="factor">
-        <h3>Grinding depth</h3>
-        <p>Standard below-grade depth costs less than the deeper cut needed for concrete, footings, or a replacement tree.</p>
-      </div>
-      <div class="factor">
-        <h3>Access</h3>
-        <p>Gate width, slope, stairs, and how far the machine has to travel from the truck. Tight backyard access takes a smaller machine and more time.</p>
-      </div>
-      <div class="factor">
-        <h3>Obstacles nearby</h3>
-        <p>Fences, sprinkler heads, utilities, retaining walls, and buried lines all mean slower, more careful work.</p>
-      </div>
-      <div class="factor">
-        <h3>Soil and debris in the stump</h3>
-        <p>Stumps with rock, embedded gravel, or old fill packed into the roots are hard on teeth and slow to cut.</p>
-      </div>
-      <div class="factor">
-        <h3>Stump count</h3>
-        <p>Several stumps on one visit spread the setup and travel across the job, lowering the per-stump cost.</p>
-      </div>
-      <div class="factor">
-        <h3>Cleanup level</h3>
-        <p>Chips raked back in is the base. Haul-off, topsoil backfill, and grade matching add material and disposal.</p>
+      <div class="card">
+        <h3>Removal and cleanup</h3>
+        <p>Everything in grinding, plus we haul the chips off and backfill with clean topsoil so the spot is level with the yard. This is the one when something is going back in that spot, including grass. We don't sell the seed and we don't lay the sod.</p>
       </div>
     </div>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Get Your Stump Priced</a>
-    </div>
+    <p class="src" style="margin-top:18px">What moves the number is on the <a href="services.html">services page</a>: diameter, roots, depth, access, obstacles, what's in the wood, how many stumps, and whether the chips stay. A photo on the <a href="service-request.html">service request</a> helps.</p>
   </div>
 </section>
 
-<!-- ============ PROCESS ============ -->
 <section>
   <div class="wrap">
-    <p class="eyebrow">How It Works</p>
-    <h2 style="margin:0 0 26px;color:var(--bark)">Four steps, no surprises</h2>
-    <div class="steps">
-      <div class="step">
-        <h3>Send us the details</h3>
-        <p>Fill out the service request with a photo, a rough diameter, and a note about access. Photos save everyone a trip.</p>
-      </div>
-      <div class="step">
-        <h3>Get a written estimate</h3>
-        <p>We put the scope and price in writing before anything is scheduled, so you know exactly what's included.</p>
-      </div>
-      <div class="step">
-        <h3>Pick your date</h3>
-        <p>Approve the estimate and book a slot that works for you. We confirm before we roll out.</p>
-      </div>
-      <div class="step">
-        <h3>We grind and clean up</h3>
-        <p>Work gets done, the site gets cleaned, and we walk the finished spot with you if you're home.</p>
-      </div>
-    </div>
-
-    <div class="ph-wide" style="margin-top:40px"><img class="photo" src="images/services-wide-shot-crew.jpg" alt="Crew running the stump grinder on a job site"></div>
-
-    <script src="https://fast.wistia.com/player.js" async></script>
-    <script src="https://fast.wistia.com/embed/1b5nf9f3r8.js" async type="module"></script>
-    <style>wistia-player[media-id='1b5nf9f3r8']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/1b5nf9f3r8/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style>
-    <div style="margin-top:30px">
-      <wistia-player media-id="1b5nf9f3r8" aspect="0.5625"></wistia-player>
-    </div>
+    <p class="eyebrow">Questions</p>
+    <h2 style="margin:0 0 18px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Cheney stump questions</h2>
+    <details class="q">
+      <summary>Do you take stump jobs in Cheney?</summary>
+      <p>Yes. Cheney is on the service-area list. Call or text 509-434-9554, or send the details through the request form.</p>
+    </details>
+    <details class="q">
+      <summary>Does my backyard stump need a city permit?</summary>
+      <p>Usually the permit is about the street or the alley, not the middle of the yard. Excavating a city roadway or alley needs a right-of-way excavation permit from Cheney public works. We will tell you if the stump looks like it sits in that strip.</p>
+    </details>
+    <details class="q">
+      <summary>The house is by campus. Does that change the job?</summary>
+      <p>Tell us the street and the access. Washington Street, an alley, a tight gate, and a driveway off 904 are different days. If the stump is on the way to Roos Field, say so.</p>
+    </details>
+    <details class="q">
+      <summary>Can you leave the spot ready to seed or sod?</summary>
+      <p>Yes, if you choose removal and cleanup. Grinding leaves the chips in the hole, raked and tamped. Cleanup hauls the chips and backfills with topsoil, finished level with the yard. That is the setup for repairing the lawn. We don't install the seed or the sod.</p>
+    </details>
+    <details class="q">
+      <summary>Who calls 811?</summary>
+      <p>We do. The locate request is part of scheduling. You don't have to file it yourself. Private lines, including irrigation, are not part of an 811 locate.</p>
+    </details>
+    <details class="q">
+      <summary>Why won't you list a price for a Cheney stump?</summary>
+      <p>Two stumps the same width can be an hour apart once you add the roots, the gate, the alley, and whether the machine can reach the backyard. You get a written estimate for your stump before we schedule. Nothing on this page is a rate.</p>
+    </details>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
 <section class="cta">
   <div class="wrap">
-    <h2>Ready to get that stump out of your yard?</h2>
-    <p>Send us the details and we'll get you a written estimate. No obligation, no pressure.</p>
+    <h2>Got a stump in Cheney?</h2>
+    <p>Send a photo, a rough diameter, and a note about the street. We'll answer with a written estimate.</p>
     <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
       Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
     </p>
     <div class="btn-row">
       <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="booking.html">Book a Time</a>
+      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
     </div>
-  </div>
-</section>
-
-<!-- ============ SERVICE AREA ============ -->
-<section class="area">
-  <div class="wrap">
-    <p class="eyebrow">Where We Work</p>
-    <h2>Serving the Spokane &amp; Coeur d'Alene region</h2>
-    <p class="lead" style="margin-bottom:0">Based in Spokane and covering communities across Eastern Washington and North Idaho. Don't see your town? Give us a call — if you're near the edge of the map we'll let you know straight.</p>
-    <ul class="towns">
-      <li><a href="community-airway-heights.html">Airway Heights, WA</a></li>
-      <li><a href="community-chattaroy.html">Chattaroy, WA</a></li>
-      <li><a href="community-cheney.html">Cheney, WA</a></li>
-      <li>Chewelah, WA</li>
-      <li>Colbert, WA</li>
-      <li>Colville, WA</li>
-      <li>Davenport, WA</li>
-      <li>Deer Park, WA</li>
-      <li>Elk, WA</li>
-      <li>Freeman, WA</li>
-      <li>Green Bluff, WA</li>
-      <li>Hangman Valley, WA</li>
-      <li>Hillyard, WA</li>
-      <li>Liberty Lake, WA</li>
-      <li>Mead, WA</li>
-      <li>Medical Lake, WA</li>
-      <li>Newport, WA</li>
-      <li>Nine Mile Falls, WA</li>
-      <li>Otis Orchards, WA</li>
-      <li>Spokane Valley, WA</li>
-      <li>Veradale, WA</li>
-      <li>Coeur d'Alene, ID</li>
-      <li>Hayden, ID</li>
-      <li>Hayden Lake, ID</li>
-      <li>Post Falls, ID</li>
-      <li>Priest Lake, ID</li>
-      <li>Priest River, ID</li>
-      <li>Sandpoint, ID</li>
-    </ul>
   </div>
 </section>
 
