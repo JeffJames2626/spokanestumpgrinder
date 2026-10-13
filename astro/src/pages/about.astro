@@ -1,235 +1,215 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/about.css';
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages/about-v2.css';
+import Icon from '../components/v2/Icon.astro';
+import Img from '../components/v2/Img.astro';
+import { hero, facts, story, pillars, how, team, credentials, closing } from '../data/about';
+import { towns } from '../data/home';
+import { business } from '../data/site';
+
+const SITE = 'https://spokanestumpgrinder.com/';
+const aboutLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': SITE + 'about.html',
+  url: SITE + 'about.html',
+  name: 'About Spokane Stump Grinder',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    '@id': SITE + '#business',
+    name: business.name,
+    url: SITE,
+    telephone: '+1-509-434-9554',
+    email: business.email,
+    address: { '@type': 'PostalAddress', streetAddress: business.street, addressLocality: 'Spokane', addressRegion: 'WA', postalCode: '99202', addressCountry: 'US' },
+    areaServed: towns.map((t) => ({ '@type': 'City', name: t.name })),
+    founder: { '@type': 'Person', name: 'Jeff James', jobTitle: 'Owner', image: SITE + 'images/jeff-james-headshot.png' },
+  },
+};
 
 const meta = {
-  title: "About Us | Spokane Stump Grinder",
+  title: 'About Us | Spokane Stump Grinder',
   description: "Spokane natives serving the Spokane and Coeur d'Alene region since 2023. Straightforward stump grinding and removal, written estimates, and no hidden fees.",
-  active: "about.html",
+  canonical: SITE + 'about.html',
+  og: { type: 'website', title: 'About Us | Spokane Stump Grinder', description: "Spokane natives serving the Spokane and Coeur d'Alene region since 2023. Straightforward stump grinding and removal, written estimates, and no hidden fees.", url: SITE + 'about.html', image: SITE + 'images/about-stump-profile.jpg', site_name: business.name },
+  twitterCard: 'summary_large_image',
+  jsonld: [JSON.stringify(aboutLd, null, 2)],
+  active: 'about.html',
 };
 ---
-<Base {...meta}>
-<div class="hero">
-  <div class="wrap">
-    <p class="eyebrow">About Us</p>
-    <h1>Spokane locals. Straight answers.</h1>
-    <p>Born and raised in Spokane, Jeff brings more than 14 years of hands-on and management experience in home services, including four years as a business owner. The Spokane and Coeur d'Alene region is home, and stump work is what this side of the business does.</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
-      <a class="btn btn-outline" href="services.html">See Our Services</a>
-    </div>
-  </div>
-</div>
+<Site {...meta}>
 
-<!-- ============ STORY ============ -->
-<section>
-  <div class="wrap">
-    <div class="split">
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="container about-hero-grid">
       <div>
-        <p class="eyebrow">Our Story</p>
-        <h2 style="margin:0 0 16px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Built on years of doing the work</h2>
-        <p style="color:var(--muted);font-size:17px">
-          Spokane Stump Grinder might be a newer name, but the experience
-          behind it isn't.
-        </p>
-        <p style="color:var(--muted);font-size:17px">
-          Jeff grew up in Spokane and has spent most of his working life
-          taking care of properties here. He started behind a mower at 13
-          and eventually helped build a local property maintenance company
-          from one truck into a 30-person operation. After years of managing
-          crews, customers, equipment, and everything that comes with a
-          growing service business, he wanted to get back to something
-          simpler.
-        </p>
-        <p style="color:var(--muted);font-size:17px">
-          Stump grinding was a natural fit.
-        </p>
-        <p style="color:var(--muted);font-size:17px">
-          It's a specific problem with a clear result. The stump is either
-          gone or it isn't. The yard is either treated carefully or it isn't.
-          And when the job is finished, the customer should know exactly
-          what they paid for and shouldn't be left cleaning up after us.
-        </p>
-        <p style="color:var(--muted);font-size:17px">
-          So we built Spokane Stump Grinder around that idea: specialize in
-          one thing, invest in the right equipment, communicate clearly, and
-          do the work properly.
-        </p>
-        <p style="color:var(--muted);font-size:17px">
-          We're local, we know the properties and neighborhoods around
-          Spokane and North Idaho, and we're building this business for the
-          long haul.
-        </p>
-        <p style="color:var(--muted);font-size:17px">
-          No big promises. Just good work, straight answers, and one less
-          stump in your yard.
-        </p>
+        <p class="eyebrow">{hero.eyebrow}</p>
+        <h1>{hero.h1}</h1>
+        <p class="lede">{hero.lede}</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href={hero.primary.href}>{hero.primary.label} <Icon name="arrow-right" size={18} /></a>
+          <a class="btn btn-outline btn-lg" href={hero.secondary.href}>{hero.secondary.label}</a>
+        </div>
       </div>
-      <div>
-        <div class="ph-sq"><img class="photo" src="images/about-stump-profile.jpg" alt="Freshly cut stump with the grinder in the background"></div>
+      <div class="portrait">
+        <Img file={hero.portrait.file} alt={hero.portrait.alt} widths={[480, 800, 1045]} sizes="(max-width: 64rem) 100vw, 420px" loading="eager" fetchpriority="high" />
+        <div class="portrait-chip"><span class="icon-chip"><Icon name="user" size={18} /></span><span><strong>Jeff James</strong> Owner</span></div>
       </div>
     </div>
+  </section>
 
-    <div class="quote">
-      <p>&ldquo;Do good work. Be straight with people. Leave things better than you found them.&rdquo;</p>
-      <cite>&mdash; how we've run things from day one</cite>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PILLARS ============ -->
-<section class="band">
-  <div class="wrap">
-    <p class="eyebrow">What We Stand On</p>
-    <h2 style="margin:0 0 6px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Three things we don't bend on</h2>
-    <div class="pillars">
-      <div class="pillar">
-        <h3>Transparency</h3>
-        <p>No hidden fees and no unknowns going into your project. You get the scope and the price in writing, and that's the number.</p>
-      </div>
-      <div class="pillar">
-        <h3>Innovation</h3>
-        <p>We keep looking for better ways to do the work &mdash; the right machine for the access, the right technique for the soil we're in.</p>
-      </div>
-      <div class="pillar">
-        <h3>Professionalism</h3>
-        <p>Uniformed crew, safety and environmental standards followed, and follow-up after the job to make sure the result held up.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ HOW WE WORK ============ -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">How We Work</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Look first, then grind</h2>
-    <p class="lead">Our approach on every property has always been the same: find the cause, fix it for good. On stump work that means looking at the actual stump before quoting it.</p>
-    <div class="grid">
-      <div class="card">
-        <h3>We diagnose before we quote</h3>
-        <p>Diameter at grade, root spread, what's buried nearby, and how the machine gets in. Guessing at those is how a job goes sideways halfway through.</p>
-      </div>
-      <div class="card">
-        <h3>The plan fits your property and budget</h3>
-        <p>Grind it and leave the chips, or haul everything and backfill with topsoil. We'll tell you which one your project actually needs.</p>
-      </div>
-      <div class="card">
-        <h3>We prevent the return problem</h3>
-        <p>Grinding deep enough for what's going in that spot, and backfilling so the ground doesn't sink on you next season.</p>
-      </div>
-      <div class="card">
-        <h3>We follow up</h3>
-        <p>A walkthrough at the end if you're home, and a check-in after to make sure the finished grade settled the way it should.</p>
-      </div>
-      <div class="card">
-        <h3>We know the seasons here</h3>
-        <p>Inland Northwest soil, frost timing, and what a basalt shelf under a stump feels like. Local isn't a marketing word for us.</p>
-      </div>
-      <div class="card">
-        <h3>We do what we said</h3>
-        <p>If something on site genuinely changes the job, we stop and call you. You won't get a surprise invoice at the end.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TEAM ============ -->
-<section class="band">
-  <div class="wrap">
-    <p class="eyebrow">Who You'll Deal With</p>
-    <h2 style="margin:0 0 28px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">The people on your property</h2>
-
-    <div class="bio">
-      <div class="ph-sq"><img class="photo" src="images/jeff-james-headshot.png" alt="Jeff James, owner of Spokane Stump Grinder"></div>
-      <div>
-        <h3>Jeff James</h3>
-        <p class="role">Owner</p>
-        <p>
-          Jeff is a Spokane native and the owner of Spokane Stump Grinder.
-          He handles the estimates and oversees the work, so the person you
-          talk to is the person accountable for the job.
-        </p>
-        <p>
-          He&rsquo;s spent more than 14 years in the property service
-          business and knows what it takes to do good work without making
-          things complicated.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CREDENTIALS ============ -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">The Paperwork</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Licensed, bonded, insured</h2>
-    <p class="lead">Homeowners ask about this before letting a machine into the backyard, and they should.</p>
-    <table class="tbl">
-      <tbody>
-        <tr><td><strong>Business name</strong></td><td>Spokane Stump Grinder</td></tr>
-        <tr><td><strong>WA contractor license #</strong></td><td>MARKOS*778D8</td></tr>
-        <tr><td><strong>UBI number</strong></td><td>601-939-576</td></tr>
-        <tr><td><strong>Serving the area since</strong></td><td>2023</td></tr>
-      </tbody>
-    </table>
-    <p style="font-size:14px;color:var(--muted);margin-top:16px">Certificate of insurance available on request.</p>
-  </div>
-</section>
-
-<!-- ============ SERVICE AREA ============ -->
-<section class="area" id="service-area" style="scroll-margin-top:90px">
-  <div class="wrap">
-    <p class="eyebrow">Where We Work</p>
-    <h2>Serving the Spokane &amp; Coeur d'Alene region</h2>
-    <p class="lead" style="margin-bottom:0">Based in Spokane and covering communities across Eastern Washington and North Idaho. Don't see your town? Give us a call &mdash; if you're near the edge of the map we'll let you know straight.</p>
-    <ul class="towns">
-      <li><a href="community-airway-heights.html">Airway Heights, WA</a></li>
-      <li><a href="community-chattaroy.html">Chattaroy, WA</a></li>
-      <li><a href="community-cheney.html">Cheney, WA</a></li>
-      <li>Chewelah, WA</li>
-      <li>Colbert, WA</li>
-      <li>Colville, WA</li>
-      <li>Davenport, WA</li>
-      <li>Deer Park, WA</li>
-      <li>Elk, WA</li>
-      <li>Freeman, WA</li>
-      <li>Green Bluff, WA</li>
-      <li>Hangman Valley, WA</li>
-      <li>Hillyard, WA</li>
-      <li>Liberty Lake, WA</li>
-      <li>Mead, WA</li>
-      <li>Medical Lake, WA</li>
-      <li>Newport, WA</li>
-      <li>Nine Mile Falls, WA</li>
-      <li>Otis Orchards, WA</li>
-      <li>Spokane Valley, WA</li>
-      <li>Veradale, WA</li>
-      <li>Coeur d'Alene, ID</li>
-      <li>Hayden, ID</li>
-      <li>Hayden Lake, ID</li>
-      <li>Post Falls, ID</li>
-      <li>Priest Lake, ID</li>
-      <li>Priest River, ID</li>
-      <li>Sandpoint, ID</li>
+  <!-- QUICK FACTS -->
+  <div class="container">
+    <ul class="facts" aria-label="Quick facts">
+      {facts.map((f) => (
+        <li><span class="icon-chip"><Icon name={f.icon} size={20} /></span><div><strong>{f.value}</strong><span>{f.label}</span></div></li>
+      ))}
     </ul>
   </div>
-</section>
 
-<!-- ============ CTA ============ -->
-<section class="cta">
-  <div class="wrap">
-    <h2>Let's take a look at your stump</h2>
-    <p>Send photos and details, get a written estimate back. Simple as that.</p>
-    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
-      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
-    </p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="case-studies.html">See Our Work</a>
+  <!-- STORY -->
+  <section class="section section-muted" id="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text">
+          <p class="eyebrow">{story.eyebrow}</p>
+          <h2>{story.h2}</h2>
+          <p class="lede">{story.lead}</p>
+          {story.paragraphs.map((p) => <p>{p}</p>)}
+        </div>
+        <div class="story-side">
+          <figure class="story-photo">
+            <Img file={story.photo.file} alt={story.photo.alt} widths={[480, 800, 1200]} sizes="(max-width: 64rem) 100vw, 440px" />
+          </figure>
+          <blockquote class="card quote">
+            <Icon name="quote" size={28} />
+            <p>{story.quote.text}</p>
+            <cite>&mdash; {story.quote.cite}</cite>
+          </blockquote>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
-</Base>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="section" id="values">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{pillars.eyebrow}</p>
+        <h2>{pillars.h2}</h2>
+      </div>
+      <div class="pillars">
+        {pillars.items.map((p) => (
+          <article class="card pillar">
+            <span class="icon-chip"><Icon name={p.icon} size={22} /></span>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="section section-ink" id="how-we-work">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{how.eyebrow}</p>
+        <h2>{how.h2}</h2>
+        <p class="lede">{how.lede}</p>
+      </div>
+      <div class="how-grid">
+        {how.items.map((h) => (
+          <article class="how">
+            <span class="icon-chip on-ink"><Icon name={h.icon} size={20} /></span>
+            <h3>{h.title}</h3>
+            <p>{h.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" id="team">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{team.eyebrow}</p>
+        <h2>{team.h2}</h2>
+      </div>
+      {team.members.map((m) => (
+        <article class="card bio">
+          <div class="bio-photo"><Img file={m.photo.file} alt={m.photo.alt} widths={[480, 800, 1045]} sizes="(max-width: 48rem) 100vw, 300px" /></div>
+          <div class="bio-text">
+            <h3>{m.name}</h3>
+            <p class="role"><span class="badge badge-red">{m.role}</span></p>
+            {m.paragraphs.map((p) => <p>{p}</p>)}
+            <div class="btn-row bio-cta">
+              <a class="btn btn-outline" href={`tel:${business.phoneHref}`}><Icon name="phone" size={18} /> Call or text {business.phoneDisplay}</a>
+              <a class="btn btn-outline" href="contact.html"><Icon name="message-circle" size={18} /> Contact</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section class="section section-muted" id="credentials">
+    <div class="container cred-grid">
+      <div class="section-head">
+        <p class="eyebrow">{credentials.eyebrow}</p>
+        <h2>{credentials.h2}</h2>
+        <p class="lede">{credentials.lede}</p>
+        <ul class="checks cred-checks">
+          <li><Icon name="shield-check" size={18} />Licensed</li>
+          <li><Icon name="shield-check" size={18} />Bonded</li>
+          <li><Icon name="shield-check" size={18} />Insured</li>
+        </ul>
+      </div>
+      <div class="card cred-card">
+        <dl class="cred">
+          {credentials.rows.map((r) => (
+            <div class="cred-row">
+              <span class="icon-chip"><Icon name={r.icon} size={18} /></span>
+              <dt>{r.label}</dt>
+              <dd>{r.value}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="cred-note"><Icon name="file-check" size={16} /> {credentials.note}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="section" id="service-area">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Where we work</p>
+        <h2>Serving the Spokane &amp; Coeur d'Alene region</h2>
+        <p class="lede">Based in Spokane and covering communities across Eastern Washington and North Idaho.</p>
+      </div>
+      <div class="towns">
+        {towns.map((t) => t.href ? (<a class="badge has-page" href={t.href}><Icon name="map-pin" size={14} />{t.name}</a>) : (<span class="badge">{t.name}</span>))}
+      </div>
+      <p class="area-note">Don't see your town? Give us a call &mdash; if you're near the edge of the map we'll let you know straight.</p>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="section" style="padding-top: 0">
+    <div class="container">
+      <div class="card closing">
+        <h2>{closing.h2}</h2>
+        <p class="lede">{closing.text}</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href="service-request.html">Request service</a>
+          <a class="btn btn-outline btn-lg" href={`tel:${business.phoneHref}`}><Icon name="phone" size={18} /> Call or text {business.phoneDisplay}</a>
+          <a class="btn btn-outline btn-lg" href="case-studies.html">See our work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Site>
