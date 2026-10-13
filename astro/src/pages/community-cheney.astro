@@ -1,7 +1,7 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/community-cheney.css';
-import Base from '../layouts/Base.astro';
+import '../styles/pages/community.css';
+import Icon from '../components/v2/Icon.astro';
+import Site from '../layouts/Site.astro';
 import ld1 from '../data/jsonld/community-cheney-1.json?raw';
 
 const meta = {
@@ -11,7 +11,7 @@ const meta = {
   active: null,
 };
 ---
-<Base {...meta}>
+<Site {...meta}>
 <!--
   COMMUNITY PAGE — Cheney
   Different shape from the earlier town pages.
@@ -19,22 +19,22 @@ const meta = {
   Go Eags is Eastern Washington University, not Cheney High.
 -->
 
-<div class="local-hero">
-  <div class="wrap">
-    <p class="eyebrow" style="color:var(--chip)">Cheney, WA</p>
+<section class="section-ink local-hero">
+  <div class="container">
+    <p class="eyebrow">Cheney, WA</p>
     <h1>Stump grinding and yard cleanup in Cheney.</h1>
     <p class="lead">We grind the stump below grade. If you want the lawn back where the tree was, we haul the chips and backfill the hole. Scope and price go in writing before anything is scheduled, or you can book a free on-site consultation (OSC).</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
-      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+      <a class="btn btn-primary btn-lg" href="service-request.html#request" data-open-form>Request an Estimate <Icon name="arrow-right" size={18} /></a>
+      <a class="btn btn-outline btn-lg" href="booking.html"><Icon name="calendar-check" size={18} /> Book an OSC</a>
     </div>
   </div>
-</div>
+</section>
 
-<section>
-  <div class="wrap">
+<section class="section">
+  <div class="container">
     <p class="eyebrow">Instead</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Go Eags</h2>
+    <h2>Go Eags</h2>
     <p class="lead">Born and raised in Spokane, Jeff brings more than 14 years of hands-on and management experience in home services, including four years as a business owner. Cheney sits southwest on Highway 904, with Eastern in the middle of town and Go Eags on the red turf at Roos Field&mdash;a familiar part of the region he calls home.</p>
     <ul class="reasons">
       <li>Yell Go Eags on the red turf at Roos Field</li>
@@ -44,14 +44,14 @@ const meta = {
       <li>Cook at Salnave, Centennial, or Hagelin</li>
       <li>Play tennis or volleyball on Cedar Street</li>
     </ul>
-    <p class="src" style="margin-top:14px">Roos Field is at 1136 Washington Street. The red turf is Eastern's. Parks and shelter reservations are the <a href="https://www.cityofcheney.org/460/Parks" target="_blank" rel="noopener">city's parks page</a>.</p>
+    <p class="src">Roos Field is at 1136 Washington Street. The red turf is Eastern's. Parks and shelter reservations are the <a href="https://www.cityofcheney.org/460/Parks" target="_blank" rel="noopener">city's parks page</a>.</p>
   </div>
 </section>
 
-<section class="band">
-  <div class="wrap">
+<section class="section section-muted">
+  <div class="container">
     <p class="eyebrow">Skip the tow</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">A rental grinder does not belong on game day</h2>
+    <h2>A rental grinder does not belong on game day</h2>
     <p class="lead">The grinders we found for rent are in Spokane, or over in Hayden and Coeur d'Alene. You'd tow one down Highway 904, through town, into a driveway, grind, hose it off, and beat the lock on the rental gate. That's a Saturday you could have spent at Roos Field.</p>
     <ul class="reasons">
       <li>A tracked rental is about 35 inches wide</li>
@@ -70,11 +70,12 @@ const meta = {
   </div>
 </section>
 
-<section>
-  <div class="wrap">
+<section class="section">
+  <div class="container">
     <p class="eyebrow">City rules</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Cheney is a city. The street is theirs.</h2>
+    <h2>Cheney is a city. The street is theirs.</h2>
     <p class="lead">A backyard and a city street are different jobs. These are the city's own pages.</p>
+    <div class="rules">
     <div class="rule">
       <h3>Digging a street or an alley needs a permit first</h3>
       <p>Cheney public works says any construction in the city right-of-way needs a permit, and no one may dig or excavate a city roadway or alley without a <a href="https://www.cityofcheney.org/203/Public-Works-Permits" target="_blank" rel="noopener">right-of-way excavation permit</a>. That is Washington Street, 2nd, the alleys behind the older blocks, and the planting strip. It is not the middle of a fenced yard. The rental counter does not pull that permit.</p>
@@ -87,13 +88,14 @@ const meta = {
       <h3>We file the 811 locate</h3>
       <p>Utilities get marked before the wheel turns. Spokane Stump Grinder submits the 811 request as part of scheduling. 811 does not mark private lines such as sprinklers, and Cheney's own light department has a say when a tree is close to their lines. When either one is in the way, we flag it. Read the <a href="blog-811-locates.html">811 post</a> and the <a href="blog-private-locates.html">private-locate post</a>.</p>
     </div>
+    </div>
   </div>
 </section>
 
-<section class="band">
-  <div class="wrap">
+<section class="section section-muted">
+  <div class="container">
     <p class="eyebrow">The work</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Grind it, or haul the chips</h2>
+    <h2>Grind it, or haul the chips</h2>
     <p class="lead">Two services. No price on this page. A stump behind a rental on College Street is not the same job as one in an open yard off 904.</p>
     <div class="grid">
       <div class="card">
@@ -105,14 +107,14 @@ const meta = {
         <p>Everything in grinding, plus we haul the chips off and backfill with clean topsoil so the spot is level with the yard. This is the one when something is going back in that spot, including grass. We don't sell the seed and we don't lay the sod.</p>
       </div>
     </div>
-    <p class="src" style="margin-top:18px">What moves the number is on the <a href="services.html">services page</a>: diameter, roots, depth, access, obstacles, what's in the wood, how many stumps, and whether the chips stay. A photo on the <a href="service-request.html">service request</a> helps.</p>
+    <p class="src">What moves the number is on the <a href="services.html">services page</a>: diameter, roots, depth, access, obstacles, what's in the wood, how many stumps, and whether the chips stay. A photo on the <a href="service-request.html">service request</a> helps.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
+<section class="section">
+  <div class="container">
     <p class="eyebrow">Questions</p>
-    <h2 style="margin:0 0 18px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Cheney stump questions</h2>
+    <h2>Cheney stump questions</h2>
     <details class="q">
       <summary>Do you take stump jobs in Cheney?</summary>
       <p>Yes. Cheney is on the service-area list. Call or text 509-434-9554, or send the details through the request form.</p>
@@ -140,17 +142,17 @@ const meta = {
   </div>
 </section>
 
-<section class="cta">
-  <div class="wrap">
+<section class="section" style="padding-top: 0">
+  <div class="container">
+  <div class="card closing">
     <h2>Got a stump in Cheney?</h2>
     <p>Send a photo, a rough diameter, and a note about the street. We'll answer with a written estimate.</p>
-    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
-      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
-    </p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+      <a class="btn btn-primary btn-lg" href="service-request.html#request" data-open-form>Request Service</a>
+      <a class="btn btn-outline btn-lg" href="tel:+15094349554"><Icon name="phone" size={18} /> Call or text 509-434-9554</a>
+      <a class="btn btn-outline btn-lg" href="booking.html">Book an OSC</a>
     </div>
   </div>
+  </div>
 </section>
-</Base>
+</Site>
