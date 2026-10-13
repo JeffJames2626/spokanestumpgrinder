@@ -247,7 +247,37 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
 
 ## Integrations
 
-### Service Autopilot form — service-request.html
+### Intake form (FormSubmit) — service-request.html
+
+**Current (redesign branch, 2026-10-12): our own form, delivered by FormSubmit.**
+Markup lives in `astro/src/pages/service-request.astro`; copy, field options and
+the delivery config in `astro/src/data/service-request.ts`; form primitives
+(`.field`, `.input`, `.select`, `.textarea`, `.choice`, `.form-grid`,
+`.form-section`) in `astro/src/styles/base.css`.
+
+How it works: the browser POSTs `multipart/form-data` straight to
+`https://formsubmit.co/info@spokanestumpgrinder.com`; FormSubmit emails the
+submission (photos attached, customer email as reply-to) and 302s back to
+`_next` = `service-request.html?sent=1`, which the page's inline script turns
+into the "Got it — thanks" card. Hidden fields: `_subject`, `_template=table`,
+`_captcha=false`, `_autoresponse` (thank-you reply to the customer), `_honey`
+(honeypot). No JS is required to submit; the script only rewrites `_next` to
+the current origin (so localhost previews redirect back to localhost), shows
+the success card, and disables double-submits.
+
+Things to know:
+- **Activation:** the first real submission makes FormSubmit send a one-time
+  activation email to info@. Nothing is delivered until that link is clicked.
+- After activation FormSubmit shows a random alias string — swap it into
+  `form.action` so the raw address isn't in the page source.
+- If `form.action` is emptied the page renders a "delivery not set up" notice
+  and disables Submit rather than failing silently.
+- `ssg-redesign-tools/intake-runtime.mjs` tests the submit flow against a
+  faked formsubmit.co (no real email is ever sent from the test).
+- Leads no longer auto-create in Service Autopilot. The SA notes below are
+  kept for history and in case the embed is ever wanted back.
+
+### Service Autopilot form — service-request.html (replaced on the redesign branch)
 
 **Current (as of 2026-08-16): inline embed of SA's `v3/ViewForm` markup**
 (form template id `882db8ac-f062-4378-bba4-2796ed2c2d4e`, view id

@@ -1,15 +1,24 @@
 // Service request page content + the intake form's options. Page copy is the live service-request.html copy.
 // The form itself is ours (replaces the Service Autopilot embed on this branch).
 //
-// DELIVERY IS NOT CONFIGURED YET. `form.action` is empty on purpose — Jeff picks how submissions reach
-// info@spokanestumpgrinder.com (see the "Intake form" note in CLAUDE.md once decided). While it is empty the
-// page shows a "delivery not set up" notice and the submit button is disabled, so nothing is silently lost.
+// DELIVERY: FormSubmit (chosen by Jeff 2026-10-12). The browser POSTs the form straight to formsubmit.co,
+// which emails it to the address in `action`, then redirects back to `_next` (?sent=1 = success card).
+// No account or API key. The FIRST submission triggers a one-time activation email to info@ — nothing is
+// delivered until that link is clicked. After activation FormSubmit offers a random alias string that can
+// replace the address in `action` so it isn't readable in the page source. If `action` is ever emptied the
+// page shows a "delivery not set up" notice and disables the submit button, so nothing is silently lost.
+// Docs: https://formsubmit.co/documentation
 
 export const form = {
-  action: '',                 // POST endpoint that emails the submission. Empty = not configured.
+  action: 'https://formsubmit.co/info@spokanestumpgrinder.com',
   method: 'POST',
-  hidden: {} as Record<string, string>, // provider-specific hidden fields (subject, redirect, template…)
-  honeypot: 'website',        // hidden anti-bot field name; rename to the provider's expected name if it has one
+  hidden: {
+    _subject: 'New estimate request — spokanestumpgrinder.com',
+    _template: 'table',      // one row per field in the email
+    _captcha: 'false',       // skip FormSubmit's interstitial captcha page; the honeypot below still filters bots
+    _autoresponse: "Thanks — we got your request. We'll look it over and follow up with a written estimate. If it's urgent, call or text 509-434-9554.",
+  } as Record<string, string>,
+  honeypot: '_honey',        // FormSubmit drops any submission where this hidden field is filled in
   nextDefault: 'https://spokanestumpgrinder.com/service-request.html?sent=1',
 };
 
