@@ -1,0 +1,39 @@
+/* FAQ page layout (v2). Accordion primitive (.faq) lives in base.css; tokens in tokens.css. */
+
+/* hero */
+.faq-hero { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem); }
+.faq-hero h1 { margin: var(--space-2) 0 var(--space-5); max-width: 16ch; }
+.faq-hero .lede { font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem); }
+.faq-hero .btn-row { margin-top: var(--space-8); }
+.jump { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6); }
+.jump a.badge { gap: var(--space-2); }
+.jump a.badge:hover { text-decoration: none; border-color: color-mix(in oklch, var(--brand-red) 45%, var(--border)); color: var(--brand-red-text); }
+.jump .count { display: inline-grid; place-items: center; min-width: 1.375rem; height: 1.375rem; padding-inline: 0.375rem; border-radius: var(--radius-full); background: var(--brand-red-soft); color: var(--brand-red-text); font-size: 0.75rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* groups: sticky heading column + accordion column */
+.faq-group { scroll-margin-top: 5rem; }
+.faq-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.faq-head { position: sticky; top: 6rem; }
+.faq-head .icon-chip { width: 3.25rem; height: 3.25rem; margin-bottom: var(--space-5); }
+.faq-head h2 { margin-bottom: var(--space-3); }
+.faq-head .lede { font-size: 1.0625rem; }
+@media (max-width: 56rem) {
+  .faq-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  .faq-head { position: static; }
+  .faq-head .icon-chip { margin-bottom: var(--space-4); }
+}
+
+/* accordion refinements on top of base.css */
+.faq summary h3 { font-size: inherit; font-weight: inherit; line-height: 1.3; margin: 0; }
+.faq details[open] summary { color: var(--brand-red-text); }
+.faq details[open] summary svg { color: var(--brand-red-text); }
+.faq details p a { color: var(--brand-red-text); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+.faq details p a:hover { text-decoration-color: currentColor; }
+@media (max-width: 36rem) { .faq summary { font-size: 1.0625rem; padding: 1rem 1.125rem; } .faq details p { padding-inline: 1.125rem; } }
+
+/* closing */
+.closing { padding: clamp(2.5rem, 6vw, 4.5rem); text-align: center; background: linear-gradient(180deg, var(--card), var(--muted)); }
+.closing .eyebrow { justify-content: center; }
+.closing h2 { margin-bottom: var(--space-3); }
+.closing .lede { margin-inline: auto; }
+.closing .btn-row { justify-content: center; margin-top: var(--space-8); }
