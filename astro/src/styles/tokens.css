@@ -1,0 +1,173 @@
+/* ============================================================================
+   DESIGN TOKENS — shadcn preset b7Pv8qNNp5 (style luma, base stone, radius large,
+   fonts IBM Plex Sans + Source Sans 3, icons lucide) with the brand re-map.
+
+   RULE: brand black / red / white are the identity. The preset's primary (cyan)
+   is replaced by the red sampled from images/logo-full.png:
+     logo average red   #ba0000  = oklch(0.495 0.203 29.23)   -> --primary (light)
+     logo bright red    #e80000  = oklch(0.585 0.240 29.23)   -> gradients / emphasis
+     logo deep red      #880202  = oklch(0.395 0.160 29.03)   -> pressed / gradients
+     brand black        #161616  = oklch(0.200 0 0)           -> --ink (nav, footer, dark bands)
+   Dark-mode red TEXT uses the same hue/chroma lifted to L 0.70 (#ff614f, 6.7:1 on the
+   dark background) because #ba0000 only reaches 2.7:1 on near-black.
+   Everything neutral / supporting is the preset's stone scale, unchanged.
+   ========================================================================== */
+:root {
+  /* --- preset (stone) neutrals, light --- */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.147 0.004 49.25);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.147 0.004 49.25);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.147 0.004 49.25);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.97 0.001 106.424);
+  --muted-foreground: oklch(0.5 0.013 58.071); /* preset: 0.553 — darkened for 4.5:1 on --muted */
+  --accent: oklch(0.97 0.001 106.424);
+  --accent-foreground: oklch(0.216 0.006 56.043);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.923 0.003 48.717);
+  --input: oklch(0.923 0.003 48.717);
+  --ring: oklch(0.709 0.01 56.259);
+  --chart-1: oklch(0.869 0.005 56.366);
+  --chart-2: oklch(0.553 0.013 58.071);
+  --chart-3: oklch(0.444 0.011 73.639);
+  --chart-4: oklch(0.374 0.01 67.558);
+  --chart-5: oklch(0.268 0.007 34.298);
+  --sidebar: oklch(0.985 0.001 106.423);
+  --sidebar-foreground: oklch(0.147 0.004 49.25);
+  --sidebar-accent: oklch(0.97 0.001 106.424);
+  --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
+  --sidebar-border: oklch(0.923 0.003 48.717);
+  --sidebar-ring: oklch(0.709 0.01 56.259);
+
+  /* --- brand re-map (was cyan) --- */
+  --primary: oklch(0.495 0.203 29.23);
+  --primary-foreground: oklch(1 0 0);
+  --primary-hover: oklch(0.455 0.19 29.23);
+  --primary-active: oklch(0.395 0.16 29.03);
+  --sidebar-primary: oklch(0.495 0.203 29.23);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --brand-red: oklch(0.495 0.203 29.23);
+  --brand-red-bright: oklch(0.585 0.24 29.23);
+  --brand-red-deep: oklch(0.395 0.16 29.03);
+  --brand-red-text: oklch(0.495 0.203 29.23);       /* links / accents on light surfaces */
+  --brand-red-soft: oklch(0.495 0.203 29.23 / 0.1); /* tints behind icons, hover washes */
+  --ink: oklch(0.2 0 0);                              /* brand black surfaces */
+  --ink-2: oklch(0.27 0.003 49);                      /* raised surface on ink */
+  --ink-foreground: oklch(0.985 0.001 106.423);
+  --ink-muted: oklch(0.75 0.006 56);
+  --ink-border: oklch(1 0 0 / 12%);
+  --link: var(--brand-red-text);
+
+  /* --- preset radius: large --- */
+  --radius: 0.875rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-full: 9999px;                              /* luma: pill controls */
+
+  /* --- preset fonts --- */
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-heading: "Source Sans 3", "Source Sans Pro", var(--font-sans);
+
+  /* --- luma: soft shadows --- */
+  --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 0.08), 0 1px 2px -1px oklch(0 0 0 / 0.06);
+  --shadow-md: 0 8px 24px -8px oklch(0 0 0 / 0.14), 0 2px 6px -2px oklch(0 0 0 / 0.06);
+  --shadow-lg: 0 24px 48px -16px oklch(0 0 0 / 0.22), 0 6px 14px -6px oklch(0 0 0 / 0.08);
+
+  /* --- spacing scale (luma: generous) --- */
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem;
+  --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+  --section-y: clamp(3.5rem, 7vw, 6rem);
+  --container: 72rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  color-scheme: light;
+}
+
+/* Dark mode: the preset's .dark values, keyed to this site's existing theme mechanism
+   (data-theme attribute set by the toggle; falls back to the OS setting). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: oklch(0.147 0.004 49.25);
+    --foreground: oklch(0.985 0.001 106.423);
+    --card: oklch(0.216 0.006 56.043);
+    --card-foreground: oklch(0.985 0.001 106.423);
+    --popover: oklch(0.216 0.006 56.043);
+    --popover-foreground: oklch(0.985 0.001 106.423);
+    --secondary: oklch(0.274 0.006 286.033);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.268 0.007 34.298);
+    --muted-foreground: oklch(0.709 0.01 56.259);
+    --accent: oklch(0.268 0.007 34.298);
+    --accent-foreground: oklch(0.985 0.001 106.423);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.553 0.013 58.071);
+    --sidebar: oklch(0.216 0.006 56.043);
+    --sidebar-foreground: oklch(0.985 0.001 106.423);
+    --sidebar-accent: oklch(0.268 0.007 34.298);
+    --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.553 0.013 58.071);
+    --primary: oklch(0.54 0.22 29.23);
+    --primary-foreground: oklch(1 0 0);
+    --primary-hover: oklch(0.585 0.24 29.23);
+    --primary-active: oklch(0.495 0.203 29.23);
+    --sidebar-primary: oklch(0.54 0.22 29.23);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --brand-red-text: oklch(0.7 0.2 29.23);
+    --brand-red-soft: oklch(0.7 0.2 29.23 / 0.14);
+    --ink: oklch(0.12 0.003 49);
+    --ink-2: oklch(0.2 0.004 49);
+    --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 0.4);
+    --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 0.5), 0 1px 2px -1px oklch(0 0 0 / 0.4);
+    --shadow-md: 0 8px 24px -8px oklch(0 0 0 / 0.6), 0 2px 6px -2px oklch(0 0 0 / 0.4);
+    --shadow-lg: 0 24px 48px -16px oklch(0 0 0 / 0.7), 0 6px 14px -6px oklch(0 0 0 / 0.4);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --background: oklch(0.147 0.004 49.25);
+  --foreground: oklch(0.985 0.001 106.423);
+  --card: oklch(0.216 0.006 56.043);
+  --card-foreground: oklch(0.985 0.001 106.423);
+  --popover: oklch(0.216 0.006 56.043);
+  --popover-foreground: oklch(0.985 0.001 106.423);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.268 0.007 34.298);
+  --muted-foreground: oklch(0.709 0.01 56.259);
+  --accent: oklch(0.268 0.007 34.298);
+  --accent-foreground: oklch(0.985 0.001 106.423);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.553 0.013 58.071);
+  --sidebar: oklch(0.216 0.006 56.043);
+  --sidebar-foreground: oklch(0.985 0.001 106.423);
+  --sidebar-accent: oklch(0.268 0.007 34.298);
+  --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.553 0.013 58.071);
+  --primary: oklch(0.54 0.22 29.23);
+  --primary-foreground: oklch(1 0 0);
+  --primary-hover: oklch(0.585 0.24 29.23);
+  --primary-active: oklch(0.495 0.203 29.23);
+  --sidebar-primary: oklch(0.54 0.22 29.23);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --brand-red-text: oklch(0.7 0.2 29.23);
+  --brand-red-soft: oklch(0.7 0.2 29.23 / 0.14);
+  --ink: oklch(0.12 0.003 49);
+  --ink-2: oklch(0.2 0.004 49);
+  --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 0.4);
+  --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 0.5), 0 1px 2px -1px oklch(0 0 0 / 0.4);
+  --shadow-md: 0 8px 24px -8px oklch(0 0 0 / 0.6), 0 2px 6px -2px oklch(0 0 0 / 0.4);
+  --shadow-lg: 0 24px 48px -16px oklch(0 0 0 / 0.7), 0 6px 14px -6px oklch(0 0 0 / 0.4);
+  color-scheme: dark;
+}

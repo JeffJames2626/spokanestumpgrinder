@@ -1,0 +1,19 @@
+{
+  "name": "ssg-astro-poc",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Local proof of concept: Spokane Stump Grinder on Astro (static output, .html URLs preserved). NOT deployed.",
+  "scripts": {
+    "sync": "node scripts/sync-assets.mjs",
+    "dev": "npm run sync && astro dev",
+    "build": "npm run sync && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^7.3.8"
+  },
+  "devDependencies": {
+    "lucide-static": "^1.55.0"
+  }
+}

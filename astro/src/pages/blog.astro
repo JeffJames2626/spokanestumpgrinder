@@ -1,0 +1,56 @@
+---
+import '../styles/shared.css';
+import '../styles/pages/blog.css';
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import { posts } from '../data/posts';
+
+const meta = {
+  title: "Blog | Spokane Stump Grinder",
+  description: "Stump grinding and yard-cleanup guides from Spokane Stump Grinder — serving Spokane, WA and the Coeur d'Alene region.",
+  active: "blog.html",
+};
+---
+<Base {...meta}>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Blog</p>
+    <h1>Stump grinding guides &amp; updates</h1>
+    <p>Notes on stump removal, yard prep, and what to expect from a grinding job. Posts go up here as we write them.</p>
+  </div>
+</div>
+
+<!-- ============ POST LIST ============
+     Add a card for each published post inside the .grid below, using this
+     structure, then remove the .empty-state block once at least one post
+     exists:
+
+     <div class="card">
+       <p class="post-date">Month Year</p>
+       <a class="big" href="blog-post-file-name.html">Post Title</a>
+       <p>One or two sentence summary of the post.</p>
+     </div>
+-->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Latest Posts</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">From the field</h2>
+    <p class="lead">Links to individual posts will show up here as they're published.</p>
+
+    <div class="grid">
+            {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Have a question about your stump?</h2>
+    <p>No need to wait for a post — call, text, or send us the details and we'll get you a straight answer.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request Service</a>
+      <a class="btn btn-outline" href="contact.html">Contact Us</a>
+    </div>
+  </div>
+</section>
+</Base>

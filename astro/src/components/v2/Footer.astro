@@ -1,0 +1,55 @@
+---
+import { footerServices, footerCompany, business } from '../../data/site';
+import Icon from './Icon.astro';
+import { Image } from 'astro:assets';
+import wordmark from '../../../../images/logo-words.png';
+const directions = 'https://www.google.com/maps/dir/?api=1&destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202';
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <Image src={wordmark} width={278} height={24} densities={[1, 2]} format="webp" alt="Spokane Stump Grinder" class="footer-wordmark" loading="lazy" />
+        <p>Stump grinding and stump removal. Based in Spokane, WA, serving the Spokane &amp; Coeur d'Alene region.</p>
+        <ul class="footer-contact">
+          <li><Icon name="phone" size={18} /><a href={`tel:${business.phoneHref}`}>{business.phoneDisplay}</a></li>
+          <li><Icon name="mail" size={18} /><a href={`mailto:${business.email}`}>{business.email}</a></li>
+          <li><Icon name="map-pin" size={18} /><a href={directions} target="_blank" rel="noopener">{business.street}<br>{business.cityStateZip}</a></li>
+        </ul>
+      </div>
+      <nav aria-label="Services">
+        <h3>Services</h3>
+        <ul>{footerServices.map((i) => (<li><a href={i.href}><Fragment set:html={i.label} /></a></li>))}</ul>
+      </nav>
+      <nav aria-label="Company">
+        <h3>Company</h3>
+        <ul>{footerCompany.map((i) => (<li><a href={i.href}>{i.label}</a></li>))}</ul>
+      </nav>
+      <div class="footer-map">
+        <h3>Find us</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21494.43968369514!2d-117.3950103810845!3d47.66878523117889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549e190660699b21%3A0x6eaa9fed67721e4a!2sSpokane%20Stump%20Grinder!5e0!3m2!1sen!2sus!4v1786907828703!5m2!1sen!2sus" loading="lazy" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin" title="Spokane Stump Grinder on Google Maps"></iframe>
+        <a class="footer-dir" href={directions} target="_blank" rel="noopener">Get directions <Icon name="arrow-right" size={16} /></a>
+      </div>
+    </div>
+    <div class="footer-fine">&copy; 2026 Spokane Stump Grinder. All rights reserved. &middot; An Automated Company &#9881;&#65039;</div>
+  </div>
+</footer>
+<style>
+  .site-footer { background: var(--ink); color: var(--ink-muted); padding: var(--space-16) 0 calc(var(--space-10) + 4.5rem); font-size: 0.9375rem; border-top: 1px solid var(--ink-border); }
+  @media (min-width: 64rem) { .site-footer { padding-bottom: var(--space-10); } }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.3fr; gap: var(--space-10); }
+  @media (max-width: 63.999rem) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 40rem) { .footer-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
+  .footer-wordmark { height: 1.5rem; width: auto; margin-bottom: var(--space-4); }
+  .footer-brand p { max-width: 36ch; }
+  .site-footer h3 { color: var(--ink-foreground); font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: var(--space-4); }
+  .site-footer ul { list-style: none; display: grid; gap: var(--space-2); }
+  .site-footer a { color: var(--ink-foreground); }
+  .site-footer a:hover { color: oklch(0.82 0.16 29); }
+  .footer-contact { margin-top: var(--space-5); }
+  .footer-contact li { display: flex; gap: var(--space-3); align-items: flex-start; }
+  .footer-contact svg { flex: none; margin-top: 0.2em; color: oklch(0.7 0.2 29.23); }
+  .footer-map iframe { width: 100%; height: 11rem; border: 0; border-radius: var(--radius-xl); display: block; }
+  .footer-dir { display: inline-flex; align-items: center; gap: var(--space-2); margin-top: var(--space-3); font-weight: 600; }
+  .footer-fine { margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid var(--ink-border); font-size: 0.875rem; text-align: center; }
+</style>

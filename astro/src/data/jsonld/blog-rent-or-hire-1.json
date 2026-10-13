@@ -1,0 +1,112 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Rent a Stump Grinder or Hire It Out? The Real Math in Spokane",
+    "description": "Which Spokane-area yards actually rent stump grinders, what the day really costs once you add the truck, trailer, waiver, and teeth, what a rental machine can handle, and an honest take on when renting beats hiring.",
+    "image": [
+      "https://spokanestumpgrinder.com/images/logo-full.png"
+    ],
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "mainEntityOfPage": "https://spokanestumpgrinder.com/blog-rent-or-hire.html",
+    "author": {
+      "@type": "Organization",
+      "name": "Spokane Stump Grinder",
+      "url": "https://spokanestumpgrinder.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Spokane Stump Grinder",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://spokanestumpgrinder.com/images/logo-full.png"
+      }
+    },
+    "about": [
+      "Stump grinding",
+      "Stump grinding cost",
+      "Roadside stump removal"
+    ],
+    "contentLocation": {
+      "@type": "Place",
+      "name": "North Spokane, Washington",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Spokane",
+        "addressRegion": "WA",
+        "addressCountry": "US"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I rent a stump grinder in Spokane?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, from a short list of yards. Lake City Rental in Hayden and Coeur d'Alene publishes rates for a small towable grinder and a tracked grinder that comes on its own trailer. The three Spokane Home Depot stores rent a towable grinder through their tool rental desks, priced store by store. United Rentals on Fancher Road lists stump grinders but quotes the rate by phone. Most other tool counters in the area don't carry one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does it cost to rent a stump grinder near Spokane?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As of October 2026, Lake City Rental lists its small towable grinder at $88 for four hours, $122 a day, and $364 a week, and its tracked grinder with trailer at $197 for four hours, $263 a day, and $788 a week. Sales tax and a damage waiver are added at the counter, and broken teeth are usually billed separately. Home Depot and United Rentals set their Spokane rates locally, so call the desk. Those are the yards' prices, not ours. We quote stump work in writing after we've seen the stump."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What size stump can a rental stump grinder handle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The small 12-horsepower towable units are built for stumps roughly a foot across in ordinary soil, and they slow down fast on anything bigger, older, or rockier. The 25-horsepower tracked rental grinds about 12 inches below grade and will take on a larger stump, but a big old stump with a wide root flare can still eat most of a day and a lot of teeth. Anything over about two feet across, or more than a couple of stumps, is usually where hiring starts to make more sense."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to call 811 before grinding a stump myself?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Washington and Idaho both require a utility locate request at least two business days before you dig, and a stump grinder goes well past the shallow-digging exemption in Washington law. The request is free. Call 811 or file online, wait for the marks, and remember that 811 only marks utility-owned lines. Sprinklers, landscape lighting, and private gas or power runs need a private locator."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it cheaper to rent a stump grinder or hire someone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For one small stump in an open yard, renting is often cheaper on paper if you already own a truck that can tow. Once you add tax, the damage waiver, broken teeth, fuel, a truck rental if you need one, and a full day of your time, the gap closes, and for a large or old stump it usually disappears. We put the price in writing for every stump, and it costs nothing to ask. If the photo shows a stump a rental machine can handle, we'll tell you that."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://spokanestumpgrinder.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://spokanestumpgrinder.com/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Rent or Hire?",
+        "item": "https://spokanestumpgrinder.com/blog-rent-or-hire.html"
+      }
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+---
+import { feature, posts } from '../../data/posts';
+import Img from './Img.astro';
+import Icon from './Icon.astro';
+const file = feature.image.replace(/^images\//, '');
+---
+<a class="latest card card-link" href={feature.file}>
+  <div class="latest-media"><Img file={file} alt={feature.imageAlt} widths={[480, 800]} sizes="(max-width: 48rem) 100vw, 360px" /></div>
+  <div class="latest-body">
+    <p class="eyebrow">{feature.eyebrow}</p>
+    <h3>{feature.headline}</h3>
+    <p>{feature.summary}</p>
+    <span class="latest-cta">{feature.cta} <Icon name="arrow-right" size={18} /></span>
+    <p class="latest-meta">{posts.length} posts on the blog</p>
+  </div>
+</a>
+<style>
+  .latest { display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: var(--space-8); padding: 0; overflow: hidden; align-items: stretch; }
+  .latest-media { min-height: 240px; }
+  .latest-media :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .latest-body { padding: var(--space-8) var(--space-8) var(--space-8) 0; align-self: center; }
+  .latest h3 { font-size: clamp(1.4rem, 1rem + 1.4vw, 1.9rem); }
+  .latest-cta { display: inline-flex; align-items: center; gap: var(--space-2); margin-top: var(--space-5); font-weight: 600; color: var(--brand-red-text); }
+  .latest:hover .latest-cta { text-decoration: underline; }
+  .latest-meta { margin-top: var(--space-3); font-size: 0.875rem; }
+  @media (max-width: 48rem) { .latest { grid-template-columns: 1fr; gap: 0; } .latest-media { min-height: 0; } .latest-media :global(img) { height: 220px; } .latest-body { padding: var(--space-6); } }
+</style>

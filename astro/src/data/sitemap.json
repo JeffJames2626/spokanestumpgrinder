@@ -1,0 +1,74 @@
+[
+  {
+    "loc": "https://spokanestumpgrinder.com/",
+    "lastmod": "2026-08-15",
+    "changefreq": "weekly",
+    "priority": "1.0"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/services.html",
+    "lastmod": "2026-08-15",
+    "changefreq": "monthly",
+    "priority": "0.9"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/service-request.html",
+    "lastmod": "2026-08-15",
+    "changefreq": "monthly",
+    "priority": "0.9"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/booking.html",
+    "lastmod": "2026-08-15",
+    "changefreq": "monthly",
+    "priority": "0.8"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/case-studies.html",
+    "lastmod": "2026-08-15",
+    "changefreq": "monthly",
+    "priority": "0.7"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/about.html",
+    "lastmod": "2026-08-15",
+    "changefreq": "monthly",
+    "priority": "0.6"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/faq.html",
+    "lastmod": "2026-08-16",
+    "changefreq": "monthly",
+    "priority": "0.7"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/contact.html",
+    "lastmod": "2026-08-16",
+    "changefreq": "monthly",
+    "priority": "0.8"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/blog.html",
+    "lastmod": "2026-10-04",
+    "changefreq": "weekly",
+    "priority": "0.6"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/community-airway-heights.html",
+    "lastmod": "2026-10-04",
+    "changefreq": "monthly",
+    "priority": "0.6"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/community-chattaroy.html",
+    "lastmod": "2026-10-04",
+    "changefreq": "monthly",
+    "priority": "0.6"
+  },
+  {
+    "loc": "https://spokanestumpgrinder.com/community-cheney.html",
+    "lastmod": "2026-10-04",
+    "changefreq": "monthly",
+    "priority": "0.6"
+  }
+]

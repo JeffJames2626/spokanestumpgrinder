@@ -1,0 +1,149 @@
+---
+import '../styles/shared.css';
+import '../styles/pages/faq.css';
+import Base from '../layouts/Base.astro';
+
+const meta = {
+  title: "FAQ | Spokane Stump Grinder",
+  description: "Answers to the questions homeowners ask most about stump grinding and removal in Spokane, WA — pricing, scheduling, and how the work actually happens.",
+  active: "faq.html",
+};
+---
+<Base {...meta}>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">FAQ</p>
+    <h1>Questions we get a lot</h1>
+    <p>Pricing, scheduling, and how the work actually happens &mdash; the questions homeowners ask most, answered straight.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
+      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PRICING ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Pricing &amp; Estimates</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">What things cost, and why</h2>
+    <p class="lead">Stump work is quoted per job, not off a price list. Here's what actually moves the number.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Why don't you post flat-rate pricing?</h3>
+        <p>Two stumps the same width across can be an hour apart in real work. Diameter at grade, root spread, depth needed, and access all move the number, so we look at your actual stump before quoting it.</p>
+      </div>
+      <div class="card">
+        <h3>What actually affects the price?</h3>
+        <p>Diameter at grade, root flare spread, grinding depth, access, nearby obstacles, soil conditions, how many stumps, and the cleanup level you want. Full breakdown is on our <a href="services.html">Services page</a>.</p>
+      </div>
+      <div class="card">
+        <h3>Do multiple stumps cost less each?</h3>
+        <p>Yes. Setup and travel get shared across the visit, so the per-stump cost drops when you get several done at once.</p>
+      </div>
+      <div class="card">
+        <h3>Is the on-site consultation (OSC) really free?</h3>
+        <p>Yes &mdash; no cost, no obligation. An OSC is us coming out to look at the job in person before anything's written up. You get a written estimate afterward and decide from there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE WORK ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">The Work Itself</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">What actually happens to your stump</h2>
+    <p class="lead">The mechanics of grinding and removal, in plain terms.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>What's the difference between grinding and removal?</h3>
+        <p>Grinding takes the stump below grade and rakes the chips back into the hole. Removal &amp; Cleanup builds on that &mdash; we haul the chips off and backfill with clean topsoil instead.</p>
+      </div>
+      <div class="card">
+        <h3>How deep do you grind?</h3>
+        <p>Standard depth takes the stump under the surrounding soil line so grass or new roots can go in over it. Pouring concrete or planting a tree in the exact spot? Tell us up front and we'll price it deeper.</p>
+      </div>
+      <div class="card">
+        <h3>Will grinding get every root out?</h3>
+        <p>No &mdash; grinding removes the stump and the root flare, not the entire root system. If you're building or planting right in that spot, mention it and we'll talk through going deeper or a full removal instead.</p>
+      </div>
+      <div class="card">
+        <h3>Do you protect the yard while you work?</h3>
+        <p>Plywood tracking over soft turf, shielding around fences, siding, and windows. We also confirm utility locates and probe the area before the wheel turns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCHEDULING ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Scheduling &amp; Booking</p>
+    <h2 style="margin:0 0 22px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Booking and what to expect</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Do I need to be home for the OSC?</h3>
+        <p>Not usually. As long as we have access to the stump and you're reachable by phone, we can take a look and follow up with your estimate.</p>
+      </div>
+      <div class="card">
+        <h3>How long does a stump take?</h3>
+        <p>Depends on diameter, root spread, and access. We'll give you a realistic time window with your estimate rather than a generic answer here.</p>
+      </div>
+      <div class="card">
+        <h3>What about weather?</h3>
+        <p>We work through most Inland Northwest weather. Saturated ground or frozen conditions can push a date &mdash; we'll call you, not just no-show.</p>
+      </div>
+      <div class="card">
+        <h3>Can I change the scope on the day?</h3>
+        <p>Often yes, but it may affect price and timing. Better to call ahead so we can bring what the change needs.</p>
+      </div>
+      <div class="card">
+        <h3>Need to reschedule?</h3>
+        <p>Use the link in your Google Calendar confirmation, or call or text us. Things happen &mdash; just give us as much notice as possible.</p>
+      </div>
+      <div class="card">
+        <h3>What payment do you take?</h3>
+        <p>Cash, check, ACH bank transfer, credit card, PayPal, Venmo, or select cryptocurrency &mdash; whatever's easiest for you. Payment timing is confirmed along with your written estimate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GETTING STARTED ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">Getting Started</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Before you reach out</h2>
+    <p class="lead">A little detail up front saves a round of back-and-forth.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>What should I include when I request an estimate?</h3>
+        <p>Rough diameter at ground level, how we get to the stump (through a gate? down a slope?), what's going in that spot afterward, and anything buried nearby you know about.</p>
+      </div>
+      <div class="card">
+        <h3>What happens after I submit a request?</h3>
+        <p>We review the details, send you scope and price in writing, you pick a date once you approve it, and we grind and clean up on the day.</p>
+      </div>
+      <div class="card">
+        <h3>Do I have to book an OSC, or can I just send photos?</h3>
+        <p>Either works. Send photos and details through the <a href="service-request.html">request form</a>, or grab a free slot on the <a href="booking.html">OSC calendar</a> if you'd rather we take a look in person.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Still have a question?</h2>
+    <p>Send us the details and we'll get you a straight answer, no obligation.</p>
+    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
+      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
+      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+    </div>
+  </div>
+</section>
+</Base>

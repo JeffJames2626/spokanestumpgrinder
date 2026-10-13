@@ -1,0 +1,225 @@
+---
+import Site from '../layouts/Site.astro';
+import '../styles/pages/home.css';
+import Icon from '../components/v2/Icon.astro';
+import Img from '../components/v2/Img.astro';
+import LatestPost from '../components/v2/LatestPost.astro';
+import { hero, proof, services, beforeAfter, whyUs, steps, pricing, faq, towns, closing } from '../data/home';
+import { business } from '../data/site';
+
+const SITE = 'https://spokanestumpgrinder.com/'; // same host the live canonicals + sitemap use (host decision pending)
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': SITE + '#business',
+  name: business.name,
+  url: SITE,
+  telephone: '+1-509-434-9554',
+  email: business.email,
+  image: SITE + 'images/logo-full.png',
+  logo: SITE + 'images/logo-full.png',
+  address: { '@type': 'PostalAddress', streetAddress: business.street, addressLocality: 'Spokane', addressRegion: 'WA', postalCode: '99202', addressCountry: 'US' },
+  areaServed: towns.map((t) => ({ '@type': 'City', name: t.name })),
+  hasMap: 'https://www.google.com/maps/dir/?api=1&destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202',
+};
+
+const meta = {
+  title: 'Stump Grinding &amp; Removal in Spokane, WA | Spokane Stump Grinder',
+  description: "Stump grinding and stump removal in Spokane, WA and the Coeur d'Alene region. Ground below grade, chips hauled, written estimates before we start.",
+  canonical: SITE,
+  og: { type: 'website', title: 'Stump Grinding & Removal in Spokane, WA | Spokane Stump Grinder', description: "Stump grinding and stump removal in Spokane, WA and the Coeur d'Alene region. Ground below grade, chips hauled, written estimates before we start.", url: SITE, image: SITE + 'images/about-stump-profile.jpg', site_name: business.name },
+  twitterCard: 'summary_large_image',
+  jsonld: [JSON.stringify(localBusiness, null, 2)],
+  active: 'index.html',
+};
+---
+<Site {...meta}>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">{hero.eyebrow}</p>
+        <h1>{hero.h1}</h1>
+        <p class="lede">{hero.lede}</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href={hero.primary.href}>{hero.primary.label} <Icon name="arrow-right" size={18} /></a>
+          <a class="btn btn-outline btn-lg" href={hero.secondary.href}><Icon name="calendar-check" size={18} /> {hero.secondary.label}</a>
+        </div>
+        <p class="hero-call">Prefer to talk? Call or text <a href={`tel:${business.phoneHref}`}>{business.phoneDisplay}</a>.</p>
+      </div>
+      <div class="hero-media">
+        <Img file="about-stump-profile.jpg" alt={hero.photoAlt} widths={[480, 800, 1200, 1600]} sizes="(max-width: 64rem) 100vw, 46vw" loading="eager" fetchpriority="high" />
+        <div class="hero-chip"><span class="icon-chip"><Icon name="file-text" size={18} /></span>Written estimate before any work starts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF STRIP -->
+  <div class="container">
+    <ul class="proof" aria-label="What to expect">
+      {proof.map((p) => (
+        <li><a href={p.href}><span class="icon-chip"><Icon name={p.icon} size={20} /></span><div><strong>{p.title}</strong><span>{p.text}</span></div></a></li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section section-muted" id="services">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">What we do</p>
+        <h2>Two services, done properly</h2>
+        <p class="lede">Some jobs just need the stump gone. Others need the ground ready for concrete, a fence post, or a new tree. Here's the difference.</p>
+      </div>
+      <div class="services-grid">
+        {services.map((s) => (
+          <article class="card service">
+            <span class="icon-chip"><Icon name={s.icon} size={22} /></span>
+            <h3>{s.name}</h3>
+            <p>{s.summary}</p>
+            <ul class="checks">{s.bullets.map((b) => (<li><Icon name="check" size={18} />{b}</li>))}</ul>
+            <a class="svc-cta" href={s.href}>{s.cta} <Icon name="arrow-right" size={18} /></a>
+          </article>
+        ))}
+      </div>
+      <figure class="services-photo">
+        <Img file="services-wide-shot-crew.jpg" alt="Our tracked stump grinder parked on a frosty lawn between pines, ready to grind" widths={[640, 1000, 1400, 2000]} sizes="(max-width: 72rem) 100vw, 1152px" />
+        <figcaption>Our tracked stump grinder on a job site</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Real jobs</p>
+        <h2>Before and after</h2>
+        <p class="lede">Three South Hill jobs from our case studies. Same yards, same angles, after the stump came out and the ground was put back right.</p>
+      </div>
+      <div class="ba-grid">
+        {beforeAfter.map((j) => (
+          <article class="card ba">
+            <div class="ba-pair">
+              <div class="ba-shot"><Img file={j.before.file} alt={j.before.alt} widths={[320, 480, 640]} sizes="(max-width: 64rem) 50vw, 180px" /><span>Before</span></div>
+              <div class="ba-shot after"><Img file={j.after.file} alt={j.after.alt} widths={[320, 480, 640]} sizes="(max-width: 64rem) 50vw, 180px" /><span>After</span></div>
+            </div>
+            <h3>{j.title}</h3>
+            <p class="place">{j.place}</p>
+            <a class="ba-more" href={j.href}>Read the case study <Icon name="arrow-right" size={16} /></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Why homeowners call us</p>
+        <h2>No guesswork, no mess left behind</h2>
+      </div>
+      <div class="why-grid">
+        {whyUs.map((w) => (
+          <article class="card why">
+            <span class="icon-chip"><Icon name={w.icon} size={20} /></span>
+            <h3>{w.title}</h3>
+            <p>{w.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Four steps, no surprises</h2>
+      </div>
+      <ol class="steps">
+        {steps.map((s) => (<li class="card step"><h3>{s.title}</h3><p>{s.text}</p></li>))}
+      </ol>
+      <div class="btn-row steps-cta">
+        <a class="btn btn-primary" href="service-request.html">Start with a free estimate</a>
+        <a class="btn btn-outline" href="booking.html">Check availability</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section section-ink pricing">
+    <div class="container pricing-grid">
+      <div>
+        <p class="eyebrow">{pricing.eyebrow}</p>
+        <h2>{pricing.h2}</h2>
+        <p>{pricing.text}</p>
+        <div class="btn-row"><a class="btn btn-primary" href={pricing.cta.href}>{pricing.cta.label} <Icon name="arrow-right" size={18} /></a></div>
+      </div>
+      <ul class="factors" aria-label="What moves the number">
+        <li><Icon name="ruler" size={20} /> Diameter at grade</li>
+        <li><Icon name="trees" size={20} /> Root spread</li>
+        <li><Icon name="move-vertical" size={20} /> How deep it needs to go</li>
+        <li><Icon name="truck" size={20} /> Whether the machine can reach it</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- LATEST FROM THE FIELD -->
+  <section class="section">
+    <div class="container">
+      <div class="latest-head">
+        <div class="section-head"><p class="eyebrow">From the field</p><h2>Latest post</h2></div>
+        <a class="btn btn-outline" href="blog.html">All posts</a>
+      </div>
+      <LatestPost />
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="section section-muted" id="service-area">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Where we work</p>
+        <h2>Serving the Spokane &amp; Coeur d'Alene region</h2>
+        <p class="lede">Based in Spokane and covering 28 communities across Eastern Washington and North Idaho.</p>
+      </div>
+      <div class="towns">
+        {towns.map((t) => t.href ? (<a class="badge has-page" href={t.href}><Icon name="map-pin" size={14} />{t.name}</a>) : (<span class="badge">{t.name}</span>))}
+      </div>
+      <p class="area-note">Don't see your town? Give us a call &mdash; if you're near the edge of the map we'll let you know straight. <a href="about.html#service-area">More about where we work</a>.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Common questions</p>
+        <h2>Straight answers</h2>
+      </div>
+      <div class="faq">
+        {faq.map((f) => (<details><summary>{f.q}<Icon name="chevron-down" size={20} /></summary><p>{f.a}</p></details>))}
+      </div>
+      <p style="margin-top: var(--space-6)"><a href="faq.html">More questions answered on the FAQ page <Icon name="arrow-right" size={16} /></a></p>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="section" style="padding-top: 0">
+    <div class="container">
+      <div class="card closing">
+        <h2>{closing.h2}</h2>
+        <p class="lede">{closing.text}</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href="service-request.html">Request a free estimate</a>
+          <a class="btn btn-outline btn-lg" href={`tel:${business.phoneHref}`}><Icon name="phone" size={18} /> Call or text {business.phoneDisplay}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Site>

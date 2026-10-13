@@ -1,0 +1,15 @@
+---
+// Responsive, build-time optimized image (AVIF + WebP + JPEG fallback) from the repo's images/ folder,
+// referenced by file name so content data files stay plain strings.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props { file: string; alt: string; widths?: number[]; sizes: string; loading?: 'lazy' | 'eager'; class?: string; fetchpriority?: 'high' | 'low' | 'auto' }
+const { file, alt, widths = [480, 800, 1200], sizes, loading = 'lazy', class: cls, fetchpriority } = Astro.props;
+
+const all = import.meta.glob<{ default: ImageMetadata }>('../../../../images/*.{jpg,jpeg,png}', { eager: true });
+const hit = Object.entries(all).find(([k]) => k.endsWith('/' + file));
+if (!hit) throw new Error(`Img: images/${file} not found`);
+const src = hit[1].default;
+---
+<Picture src={src} widths={widths.filter((w) => w <= src.width)} sizes={sizes} formats={['avif', 'webp']} alt={alt} loading={loading} decoding={loading === 'eager' ? 'sync' : 'async'} fetchpriority={fetchpriority} class={cls} />

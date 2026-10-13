@@ -1,0 +1,15 @@
+---
+import '../styles/shared.css';
+import '../styles/pages/service-request.css';
+import Base from '../layouts/Base.astro';
+import main from '../fragments/service-request-main.html?raw';
+
+const meta = {
+  title: "Request Service | Spokane Stump Grinder",
+  description: "Tell us about your stump and get a written estimate. Stump grinding and removal in Spokane, WA and the Coeur d'Alene region.",
+  active: "service-request.html",
+};
+---
+<Base {...meta}>
+  <Fragment set:html={main} />
+</Base>

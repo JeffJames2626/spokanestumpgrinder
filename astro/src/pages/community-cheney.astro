@@ -1,0 +1,156 @@
+---
+import '../styles/shared.css';
+import '../styles/pages/community-cheney.css';
+import Base from '../layouts/Base.astro';
+import ld1 from '../data/jsonld/community-cheney-1.json?raw';
+
+const meta = {
+  title: "Stump Grinding &amp; Yard Cleanup in Cheney, WA | Spokane Stump Grinder",
+  description: "Stump grinding and yard cleanup in Cheney, WA. Yards by Eastern Washington University and downtown. Chips hauled and the hole backfilled when you want the lawn back. Written estimates.",
+  jsonld: [ld1],
+  active: null,
+};
+---
+<Base {...meta}>
+<!--
+  COMMUNITY PAGE — Cheney
+  Different shape from the earlier town pages.
+  Homeowner page. No census, no hiring list.
+  Go Eags is Eastern Washington University, not Cheney High.
+-->
+
+<div class="local-hero">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--chip)">Cheney, WA</p>
+    <h1>Stump grinding and yard cleanup in Cheney.</h1>
+    <p class="lead">We grind the stump below grade. If you want the lawn back where the tree was, we haul the chips and backfill the hole. Scope and price go in writing before anything is scheduled, or you can book a free on-site consultation (OSC).</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
+      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Instead</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Go Eags</h2>
+    <p class="lead">Born and raised in Spokane, Jeff brings more than 14 years of hands-on and management experience in home services, including four years as a business owner. Cheney sits southwest on Highway 904, with Eastern in the middle of town and Go Eags on the red turf at Roos Field&mdash;a familiar part of the region he calls home.</p>
+    <ul class="reasons">
+      <li>Yell Go Eags on the red turf at Roos Field</li>
+      <li>Walk the old campus, the pillars and Showalter Hall</li>
+      <li>Reserve the shelter at Sutton Park</li>
+      <li>Hit the swings and the playground there</li>
+      <li>Cook at Salnave, Centennial, or Hagelin</li>
+      <li>Play tennis or volleyball on Cedar Street</li>
+    </ul>
+    <p class="src" style="margin-top:14px">Roos Field is at 1136 Washington Street. The red turf is Eastern's. Parks and shelter reservations are the <a href="https://www.cityofcheney.org/460/Parks" target="_blank" rel="noopener">city's parks page</a>.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">Skip the tow</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">A rental grinder does not belong on game day</h2>
+    <p class="lead">The grinders we found for rent are in Spokane, or over in Hayden and Coeur d'Alene. You'd tow one down Highway 904, through town, into a driveway, grind, hose it off, and beat the lock on the rental gate. That's a Saturday you could have spent at Roos Field.</p>
+    <ul class="reasons">
+      <li>A tracked rental is about 35 inches wide</li>
+      <li>A 36-inch gate is the whole plan</li>
+      <li>Tighter than that, it sits in the alley</li>
+      <li>Tracks print the yard on the way in</li>
+      <li>A tooth rounded to about 1/16 inch just polishes the wood</li>
+      <li>The trailer leaves and the chips stay</li>
+      <li>Chips left in the hole sink later</li>
+      <li>Want grass? We haul the chips and backfill</li>
+      <li>We don't sell the seed and we don't lay the sod</li>
+      <li>A stump in the street or the alley needs a city permit the counter will not file</li>
+      <li>If a rental machine can make this one, we'll say so</li>
+      <li>The yards' rates are on the <a href="blog-rent-or-hire.html">rent-or-hire guide</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">City rules</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Cheney is a city. The street is theirs.</h2>
+    <p class="lead">A backyard and a city street are different jobs. These are the city's own pages.</p>
+    <div class="rule">
+      <h3>Digging a street or an alley needs a permit first</h3>
+      <p>Cheney public works says any construction in the city right-of-way needs a permit, and no one may dig or excavate a city roadway or alley without a <a href="https://www.cityofcheney.org/203/Public-Works-Permits" target="_blank" rel="noopener">right-of-way excavation permit</a>. That is Washington Street, 2nd, the alleys behind the older blocks, and the planting strip. It is not the middle of a fenced yard. The rental counter does not pull that permit.</p>
+    </div>
+    <div class="rule">
+      <h3>Don't leave the chips in the street</h3>
+      <p>The city code treats tree trimmings, dirt, and yard debris dropped in a street, alley, or park as an obstruction. Chips stay in the hole, or we haul them. They do not go in the gutter.</p>
+    </div>
+    <div class="rule">
+      <h3>We file the 811 locate</h3>
+      <p>Utilities get marked before the wheel turns. Spokane Stump Grinder submits the 811 request as part of scheduling. 811 does not mark private lines such as sprinklers, and Cheney's own light department has a say when a tree is close to their lines. When either one is in the way, we flag it. Read the <a href="blog-811-locates.html">811 post</a> and the <a href="blog-private-locates.html">private-locate post</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">The work</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Grind it, or haul the chips</h2>
+    <p class="lead">Two services. No price on this page. A stump behind a rental on College Street is not the same job as one in an open yard off 904.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Stump grinding</h3>
+        <p>The stump and the surface roots come down below grade. Chips go back in the hole and get tamped level. You can mow it. Most single stumps are a same-visit job. <a href="services.html">What's included</a>.</p>
+      </div>
+      <div class="card">
+        <h3>Removal and cleanup</h3>
+        <p>Everything in grinding, plus we haul the chips off and backfill with clean topsoil so the spot is level with the yard. This is the one when something is going back in that spot, including grass. We don't sell the seed and we don't lay the sod.</p>
+      </div>
+    </div>
+    <p class="src" style="margin-top:18px">What moves the number is on the <a href="services.html">services page</a>: diameter, roots, depth, access, obstacles, what's in the wood, how many stumps, and whether the chips stay. A photo on the <a href="service-request.html">service request</a> helps.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Questions</p>
+    <h2 style="margin:0 0 18px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Cheney stump questions</h2>
+    <details class="q">
+      <summary>Do you take stump jobs in Cheney?</summary>
+      <p>Yes. Cheney is on the service-area list. Call or text 509-434-9554, or send the details through the request form.</p>
+    </details>
+    <details class="q">
+      <summary>Does my backyard stump need a city permit?</summary>
+      <p>Usually the permit is about the street or the alley, not the middle of the yard. Excavating a city roadway or alley needs a right-of-way excavation permit from Cheney public works. We will tell you if the stump looks like it sits in that strip.</p>
+    </details>
+    <details class="q">
+      <summary>The house is by campus. Does that change the job?</summary>
+      <p>Tell us the street and the access. Washington Street, an alley, a tight gate, and a driveway off 904 are different days. If the stump is on the way to Roos Field, say so.</p>
+    </details>
+    <details class="q">
+      <summary>Can you leave the spot ready to seed or sod?</summary>
+      <p>Yes, if you choose removal and cleanup. Grinding leaves the chips in the hole, raked and tamped. Cleanup hauls the chips and backfills with topsoil, finished level with the yard. That is the setup for repairing the lawn. We don't install the seed or the sod.</p>
+    </details>
+    <details class="q">
+      <summary>Who calls 811?</summary>
+      <p>We do. The locate request is part of scheduling. You don't have to file it yourself. Private lines, including irrigation, are not part of an 811 locate.</p>
+    </details>
+    <details class="q">
+      <summary>Why won't you list a price for a Cheney stump?</summary>
+      <p>Two stumps the same width can be an hour apart once you add the roots, the gate, the alley, and whether the machine can reach the backyard. You get a written estimate for your stump before we schedule. Nothing on this page is a rate.</p>
+    </details>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Got a stump in Cheney?</h2>
+    <p>Send a photo, a rough diameter, and a note about the street. We'll answer with a written estimate.</p>
+    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
+      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request Service</a>
+      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+    </div>
+  </div>
+</section>
+</Base>

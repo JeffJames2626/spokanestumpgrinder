@@ -1,0 +1,13 @@
+---
+// Sticky call / estimate bar on phones (the two conversions that matter). Hidden on desktop.
+import { business } from '../../data/site';
+import Icon from './Icon.astro';
+---
+<div class="mobile-cta" role="region" aria-label="Call or request an estimate">
+  <a class="btn btn-outline" href={`tel:${business.phoneHref}`}><Icon name="phone" size={18} /> Call</a>
+  <a class="btn btn-primary" href="service-request.html"><Icon name="file-text" size={18} /> Free Estimate</a>
+</div>
+<style>
+  .mobile-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--space-2); padding: 0.625rem var(--gutter) calc(0.625rem + env(safe-area-inset-bottom)); background: color-mix(in oklch, var(--background) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--border); box-shadow: 0 -8px 24px -12px oklch(0 0 0 / 0.25); }
+  @media (min-width: 64rem) { .mobile-cta { display: none; } }
+</style>

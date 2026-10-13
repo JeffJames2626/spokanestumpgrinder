@@ -1,0 +1,168 @@
+---
+import '../styles/shared.css';
+import '../styles/pages/community-chattaroy.css';
+import Base from '../layouts/Base.astro';
+import ld1 from '../data/jsonld/community-chattaroy-1.json?raw';
+
+const meta = {
+  title: "Stump Grinding &amp; Yard Cleanup in Chattaroy, WA | Spokane Stump Grinder",
+  description: "Stump grinding and yard cleanup in Chattaroy, WA. County yards along Highway 2 and the Little Spokane. Chips hauled and the hole backfilled when you want the lawn back. Written estimates.",
+  jsonld: [ld1],
+  active: null,
+};
+---
+<Base {...meta}>
+<!--
+  COMMUNITY PAGE — Chattaroy
+  Written differently from the first community page on purpose.
+  Homeowner page, not a census page. No income, no hiring directory.
+  Things to do only where a real county park exists.
+  County rules, linked, no invented threshold.
+-->
+
+<div class="local-hero">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--chip)">Chattaroy, WA</p>
+    <h1>Stump grinding and yard cleanup in Chattaroy.</h1>
+    <p class="lead">This is county, not a city, and the lots are rural. We grind the stump below grade. If you want the lawn back where the tree was, we haul the chips and backfill the hole. Scope and price go in writing before anything is scheduled, or you can book a free on-site consultation (OSC).</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
+      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">The valley</p>
+        <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Highway 2 north, and the river in the yard</h2>
+        <p class="lead">Born and raised in Spokane, Jeff brings more than 14 years of hands-on and management experience in home services, including four years as a business owner. Chattaroy sits just up Highway 2, with Deer Creek and the Little Spokane River running through the valley&mdash;a familiar part of the region he calls home.</p>
+        <p>The crossroads is small. <a href="https://ces.riversidesd.org/" target="_blank" rel="noopener">Chattaroy Elementary</a> is on Yale Road. The <a href="https://www.riversidesd.org/" target="_blank" rel="noopener">Riverside district office</a> is on Newport Highway, and the other Riverside schools sit out Deer Park-Milan Road. Past that, the county keeps the land rural.</p>
+        <p>Tell us the road, the gate, and whether the stump is near the water. A driveway off Yale and a stump on the bank of Deer Creek are not the same day, and you shouldn't have to explain the valley to get a straight answer.</p>
+      </div>
+      <div>
+        <p class="eyebrow">Instead</p>
+        <h2 style="margin:0 0 8px;font-size:clamp(22px,3vw,28px);color:var(--bark)">Bear Lake is up the highway</h2>
+        <p>Spokane County's park, at 29109 N Newport Highway, still Chattaroy, 99003. A spring-fed lake, woods around it, 166 acres.</p>
+        <ul class="do">
+          <li>Swim. There is no lifeguard.</li>
+          <li>Walk the trails through the woods</li>
+          <li>Cook at a shelter</li>
+          <li>Put a kayak or canoe in on the east side. Gas motors stay on the trailer.</li>
+          <li>Fish the piers if you're under 15, a senior, or fishing on a disability card</li>
+          <li>Turn the kids loose on the playground</li>
+        </ul>
+        <p class="src" style="margin-top:12px"><a href="https://www.spokanecounty.gov/facilities/facility/details/bear-lake-regional-park-27" target="_blank" rel="noopener">Bear Lake Regional Park</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">Skip the tow</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">A rental grinder is a long way from Yale Road</h2>
+    <p class="lead">The grinders we found for rent are in Spokane, or over in Hayden and Coeur d'Alene. You'd tow one up Highway 2, get it down the driveway, grind, hose it off, and beat the lock on the rental gate. That's the day Bear Lake was for.</p>
+    <ul class="reasons">
+      <li>A tracked rental is about 35 inches wide</li>
+      <li>A 36-inch gate is the whole plan</li>
+      <li>Tighter than that, it sits in the driveway</li>
+      <li>Tracks print the yard on the way in</li>
+      <li>A tooth rounded to about 1/16 inch just polishes the wood</li>
+      <li>The trailer leaves and the chips stay</li>
+      <li>Chips left in the hole sink later</li>
+      <li>Want grass? We haul the chips and backfill</li>
+      <li>We don't sell the seed and we don't lay the sod</li>
+      <li>A stump in the county right-of-way needs a permit the counter will not file</li>
+      <li>If a rental machine can make this one, we'll say so</li>
+      <li>The yards' rates are on the <a href="blog-rent-or-hire.html">rent-or-hire guide</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">County rules</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">What actually applies out here</h2>
+    <p class="lead">Chattaroy has no city code. These are Spokane County's own pages, not our house policy.</p>
+    <div class="rule">
+      <h3>A county road is not your backyard</h3>
+      <p>Work in a county right-of-way needs a permit before anyone starts. The county's <a href="https://www.spokanecounty.org/DocumentCenter/View/48723/SCPW-ROW-Permit-Application" target="_blank" rel="noopener">right-of-way application</a> lists tree removal, and it says the fine for working in the right-of-way without a permit is $500. That is the shoulder and the strip along Newport Highway, Yale, and the other county roads. It is not the middle of a fenced yard.</p>
+    </div>
+    <div class="rule">
+      <h3>Two feet deep, and anything near the water</h3>
+      <p>The county's <a href="https://www.spokanecounty.gov/DocumentCenter/View/665/BP-46-Grading-and-Parking-Lot-Permits-PDF" target="_blank" rel="noopener">grading brochure</a> says an excavation more than 2 feet deep, outside a building permit, needs a grading permit. A normal grind stays shallower than that. The same brochure says fill and digging within 250 feet of a river, creek, or wetland get checked even when the hole is small, and a floodplain or shoreline permit can apply. If the stump is near Deer Creek or the Little Spokane, say so. We will not guess that line from the road.</p>
+    </div>
+    <div class="rule">
+      <h3>We file the 811 locate</h3>
+      <p>The county form says to call two business days before you dig. Spokane Stump Grinder submits that request as part of scheduling. 811 does not mark private lines such as sprinklers. When those are in the way, we flag it. Read the <a href="blog-811-locates.html">811 post</a> and the <a href="blog-private-locates.html">private-locate post</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">The work</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Grind it, or haul the chips</h2>
+    <p class="lead">Two services. No price on this page, because a stump at the end of a Yale Road driveway is not the same job as one in an open yard.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Stump grinding</h3>
+        <p>The stump and the surface roots come down below grade. Chips go back in the hole and get tamped level. You can mow it. Most single stumps are a same-visit job. <a href="services.html">What's included</a>.</p>
+      </div>
+      <div class="card">
+        <h3>Removal and cleanup</h3>
+        <p>Everything in grinding, plus we haul the chips off and backfill with clean topsoil so the spot is level with the yard. This is the one when something is going back in that spot, including grass. We don't sell the seed and we don't lay the sod.</p>
+      </div>
+    </div>
+    <p class="src" style="margin-top:18px">What moves the number is on the <a href="services.html">services page</a>: diameter, roots, depth, access, obstacles, what's in the wood, how many stumps, and whether the chips stay. A photo on the <a href="service-request.html">service request</a> helps.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Questions</p>
+    <h2 style="margin:0 0 18px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Chattaroy stump questions</h2>
+    <details class="q">
+      <summary>Do you take stump jobs in Chattaroy?</summary>
+      <p>Yes. Chattaroy is on the service-area list with the rest of north Spokane County. Call or text 509-434-9554, or send the details through the request form.</p>
+    </details>
+    <details class="q">
+      <summary>Does my backyard stump need a county permit?</summary>
+      <p>Usually the permit question is the right-of-way, not the middle of the yard. Work in a county road needs the public works permit, and the county lists a $500 fine for skipping it. An excavation deeper than 2 feet, outside a building permit, is the grading brochure. We will tell you if the stump looks like it sits in the strip along the road.</p>
+    </details>
+    <details class="q">
+      <summary>The stump is near Deer Creek. Now what?</summary>
+      <p>Tell us. The county wants fill and digging within 250 feet of water checked even when the hole is small. That can mean a floodplain or shoreline permit on top of anything else. We look at the spot before we schedule, and we don't guess the setback from the highway.</p>
+    </details>
+    <details class="q">
+      <summary>Can you leave the spot ready to seed or sod?</summary>
+      <p>Yes, if you choose removal and cleanup. Grinding leaves the chips in the hole, raked and tamped. Cleanup hauls the chips and backfills with topsoil, finished level with the yard. That is the setup for repairing the lawn. We don't install the seed or the sod.</p>
+    </details>
+    <details class="q">
+      <summary>Who calls 811?</summary>
+      <p>We do. The locate request is part of scheduling. You don't have to file it yourself. Private lines, including irrigation, are not part of an 811 locate.</p>
+    </details>
+    <details class="q">
+      <summary>Why won't you list a price for a Chattaroy stump?</summary>
+      <p>Two stumps the same width can be an hour apart once you add the roots, the gate, the driveway, and whether the machine can reach the backyard. You get a written estimate for your stump before we schedule. Nothing on this page is a rate.</p>
+    </details>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Got a stump in Chattaroy?</h2>
+    <p>Send a photo, a rough diameter, and a note about the driveway and the water. We'll answer with a written estimate.</p>
+    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
+      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request Service</a>
+      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+    </div>
+  </div>
+</section>
+</Base>

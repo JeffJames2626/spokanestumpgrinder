@@ -1,0 +1,112 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The Bid We Didn't Get: Pricing a Stump on a Busy North Spokane Street",
+    "description": "We quoted $1,000 to grind a big old stump on a busy north Spokane arterial and didn't get the job. What the stump and the street each added to the work, how we priced it, and what to ask when one bid comes in high.",
+    "image": [
+      "https://spokanestumpgrinder.com/images/north-spokane-arterial-stump.jpg"
+    ],
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "mainEntityOfPage": "https://spokanestumpgrinder.com/blog-north-spokane-bid-we-didnt-get.html",
+    "author": {
+      "@type": "Organization",
+      "name": "Spokane Stump Grinder",
+      "url": "https://spokanestumpgrinder.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Spokane Stump Grinder",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://spokanestumpgrinder.com/images/logo-full.png"
+      }
+    },
+    "about": [
+      "Stump grinding",
+      "Stump grinding cost",
+      "Roadside stump removal"
+    ],
+    "contentLocation": {
+      "@type": "Place",
+      "name": "North Spokane, Washington",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Spokane",
+        "addressRegion": "WA",
+        "addressCountry": "US"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why does a stump next to a busy street cost more to grind?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because the street adds work that has nothing to do with the stump. The truck and trailer need a safe place to unload, chips have to be kept out of traffic and off the sidewalk, someone has to watch the road while the machine runs, and the ground along a street is more likely to hold buried utility lines. All of that slows the job down and raises the risk, and both show up in the price."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you need a permit to grind a stump next to the road?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sometimes. If the work has to block a traffic lane or close a sidewalk, the city may require a right-of-way permit. It depends on where the stump sits and how the machine has to be positioned. It's part of what we look at before the estimate goes in writing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the strip between the sidewalk and the street mine?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Often it isn't. In many neighborhoods that planting strip is public right-of-way, even though the homeowner mows it. Stumps there can have different rules than stumps in your yard, and utility lines are more likely to run through them. Ask before anyone starts grinding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I check if one stump grinding bid is a lot cheaper?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Make sure both bids are for the same job. Ask whether traffic control, utility locates, shielding, and cleanup are included, how deep the grinding goes, and who is responsible if a chip damages a car or a window. A low bid that leaves those out isn't really lower, it just moves the cost somewhere else."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you do stump grinding in north Spokane?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. North Spokane is part of our regular service area, along with Hillyard, Mead, Colbert, Green Bluff, and the rest of north Spokane County. Request service online or call 509-434-9554."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://spokanestumpgrinder.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://spokanestumpgrinder.com/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "The Bid We Didn't Get",
+        "item": "https://spokanestumpgrinder.com/blog-north-spokane-bid-we-didnt-get.html"
+      }
+    ]
+  }
+]

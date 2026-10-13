@@ -1,0 +1,15 @@
+---
+import '../styles/shared.css';
+import '../styles/pages/case-studies.css';
+import Base from '../layouts/Base.astro';
+import main from '../fragments/case-studies-main.html?raw';
+
+const meta = {
+  title: "Case Studies | Spokane Stump Grinder",
+  description: "Stump grinding and removal jobs from around Spokane and Coeur d'Alene — the tricky ones, with video and before/after photos.",
+  active: "case-studies.html",
+};
+---
+<Base {...meta}>
+  <Fragment set:html={main} />
+</Base>
