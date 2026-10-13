@@ -1,15 +1,109 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/case-studies.css';
-import Base from '../layouts/Base.astro';
-import main from '../fragments/case-studies-main.html?raw';
+import Site from '../layouts/Site.astro';
+import '../styles/pages/case-studies-v2.css';
+import Icon from '../components/v2/Icon.astro';
+import Img from '../components/v2/Img.astro';
+import Wistia from '../components/v2/Wistia.astro';
+import { hero, cases, storyLabels, closing } from '../data/case-studies';
+import { business } from '../data/site';
+
+const SITE = 'https://spokanestumpgrinder.com/';
+const listLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': SITE + 'case-studies.html',
+  url: SITE + 'case-studies.html',
+  name: 'Case Studies | Spokane Stump Grinder',
+  about: { '@type': 'LocalBusiness', '@id': SITE + '#business', name: business.name },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: cases.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.title, url: SITE + 'case-studies.html#' + c.id })),
+  },
+};
 
 const meta = {
-  title: "Case Studies | Spokane Stump Grinder",
+  title: 'Case Studies | Spokane Stump Grinder',
   description: "Stump grinding and removal jobs from around Spokane and Coeur d'Alene — the tricky ones, with video and before/after photos.",
-  active: "case-studies.html",
+  canonical: SITE + 'case-studies.html',
+  og: { type: 'website', title: 'Case Studies | Spokane Stump Grinder', description: "Stump grinding and removal jobs from around Spokane and Coeur d'Alene — the tricky ones, with video and before/after photos.", url: SITE + 'case-studies.html', image: SITE + 'images/case-study-3-after.jpg', site_name: business.name },
+  twitterCard: 'summary_large_image',
+  jsonld: [JSON.stringify(listLd, null, 2)],
+  active: 'case-studies.html',
 };
 ---
-<Base {...meta}>
-  <Fragment set:html={main} />
-</Base>
+<Site {...meta}>
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="container">
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>{hero.h1}</h1>
+      <p class="lede">{hero.lede}</p>
+      <div class="btn-row">
+        <a class="btn btn-primary btn-lg" href={hero.primary.href}>{hero.primary.label} <Icon name="arrow-right" size={18} /></a>
+        <a class="btn btn-outline btn-lg" href={hero.secondary.href}>{hero.secondary.label}</a>
+      </div>
+      <nav class="jump" aria-label="Jobs on this page">
+        {cases.map((c) => (<a class="badge" href={`#${c.id}`}><span class="num">{c.num}</span> {c.title}</a>))}
+      </nav>
+    </div>
+  </section>
+
+  <!-- JOBS -->
+  {cases.map((c, i) => (
+    <section class={`section case${i % 2 ? ' section-muted' : ''}`} id={c.id}>
+      <div class="container">
+        <div class="case-head">
+          <span class="case-num" aria-label={`Job ${c.num}`}>{c.num}</span>
+          <div>
+            <h2>{c.title}</h2>
+            <p class="case-meta">
+              <span class="badge"><Icon name="map-pin" size={14} /> {c.place}</span>
+              <span class="badge"><Icon name="calendar" size={14} /> {c.date}</span>
+              <span class="badge"><Icon name="tag" size={14} /> {c.service}</span>
+            </p>
+          </div>
+        </div>
+        <div class="case-grid">
+          <div class="case-video">
+            <p class="case-sub">The video</p>
+            <Wistia mediaId={c.video.mediaId} aspect={c.video.aspect} class="video-wrap" />
+          </div>
+          <div>
+            <p class="case-sub">Before &amp; after</p>
+            <div class="ba-pair">
+              <figure class="ba-shot"><Img file={c.before.file} alt={c.before.alt} widths={[480, 800, 1200]} sizes="(max-width: 56rem) 50vw, 380px" /><span>Before</span></figure>
+              <figure class="ba-shot after"><Img file={c.after.file} alt={c.after.alt} widths={[480, 800, 1200]} sizes="(max-width: 56rem) 50vw, 380px" /><span>After</span></figure>
+            </div>
+            <p class="case-sub">The story</p>
+            <div class="story">
+              {storyLabels.map((s) => (
+                <article class="card story-part">
+                  <span class="icon-chip"><Icon name={s.icon} size={18} /></span>
+                  <h3>{s.title}</h3>
+                  <p>{c.story[s.key]}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- CLOSING CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="card closing">
+        <h2>{closing.h2}</h2>
+        <p class="lede">{closing.text}</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href="service-request.html">Request an estimate</a>
+          <a class="btn btn-outline btn-lg" href={`tel:${business.phoneHref}`}><Icon name="phone" size={18} /> Call or text {business.phoneDisplay}</a>
+          <a class="btn btn-outline btn-lg" href="about.html">About us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Site>
