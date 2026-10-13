@@ -75,24 +75,39 @@ const meta = {
   <!-- LOCATION -->
   <section class="section" id="location">
     <div class="container loc-grid">
-      <div class="loc-card">
+      <div class="loc-text">
         <div class="section-head">
           <p class="eyebrow">{location.eyebrow}</p>
           <h2>{location.h2}</h2>
-          <p class="lede">{location.lede} See the full <a href="about.html#service-area">list of towns we serve</a> on our About page.</p>
+          <p class="lede">{location.lede}</p>
         </div>
-        <div class="addr">
-          <div><span class="icon-chip"><Icon name="map-pin" size={16} /></span><div><strong>Address</strong><address>{business.street}<br />{business.cityStateZip}</address></div></div>
-          <div><span class="icon-chip"><Icon name="phone" size={16} /></span><div><strong>Call or text</strong><a href={`tel:${business.phoneHref}`}>{business.phoneDisplay}</a></div></div>
-          <div><span class="icon-chip"><Icon name="mail" size={16} /></span><div><strong>Email</strong><a href={`mailto:${business.email}`}>{business.email}</a></div></div>
+        <div class="card addr-card">
+          <dl class="addr">
+            <div class="addr-row">
+              <span class="icon-chip"><Icon name="map-pin" size={18} /></span>
+              <dt>Address</dt>
+              <dd><address>{business.street}<br />{business.cityStateZip}</address></dd>
+            </div>
+            <div class="addr-row">
+              <span class="icon-chip"><Icon name="phone" size={18} /></span>
+              <dt>Call or text</dt>
+              <dd><a href={`tel:${business.phoneHref}`}>{business.phoneDisplay}</a></dd>
+            </div>
+            <div class="addr-row">
+              <span class="icon-chip"><Icon name="mail" size={18} /></span>
+              <dt>Email</dt>
+              <dd><a href={`mailto:${business.email}`}>info@<wbr />spokanestumpgrinder.com</a></dd>
+            </div>
+          </dl>
+          <div class="addr-actions">
+            <a class="btn btn-primary" href={map.directions} target="_blank" rel="noopener"><Icon name="navigation" size={16} /> Get directions</a>
+            <a class="btn btn-outline" href={location.townsLink.href}>{location.townsLink.label} <Icon name="arrow-right" size={16} /></a>
+          </div>
         </div>
       </div>
       <div class="card map-card">
         <iframe src={map.embedSrc} loading="lazy" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin" title="Spokane Stump Grinder on Google Maps"></iframe>
-        <div class="map-foot">
-          <p>1908 E Mallon Ave, Spokane, WA 99202</p>
-          <a class="btn btn-outline btn-sm" href={map.directions} target="_blank" rel="noopener"><Icon name="navigation" size={16} /> Get directions on Google Maps</a>
-        </div>
+        <p class="map-foot"><Icon name="map-pin" size={16} /> {business.street}, {business.cityStateZip} &middot; <a href={map.directions} target="_blank" rel="noopener">Open in Google Maps</a></p>
       </div>
     </div>
   </section>

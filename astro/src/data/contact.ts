@@ -28,7 +28,8 @@ export const reach = {
 export const location = {
   eyebrow: "Where we're based",
   h2: "Serving Spokane & the Coeur d'Alene region",
-  lede: 'Based at 1908 E Mallon Ave, Spokane, WA 99202, covering communities across Eastern Washington and North Idaho.',
+  lede: 'Based in Spokane and covering communities across Eastern Washington and North Idaho.',
+  townsLink: { label: 'See the full list of towns we serve', href: 'about.html#service-area' },
 };
 
 export const closing = {
