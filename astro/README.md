@@ -1,8 +1,9 @@
-# Spokane Stump Grinder — Astro project (redesign/v2, LOCAL ONLY)
+# Spokane Stump Grinder — Astro project (this builds the live site)
 
-Static-output Astro build of the site. Emits the **same `.html` URLs** as the hand-written
-pages (`build.format: 'file'`), inlines all CSS, ships no client framework. Nothing here is
-deployed; the live site is still the root-level `*.html` files on `main`.
+Static-output Astro build of the site. Emits the **same `.html` URLs** as the old hand-written
+pages (`build.format: 'file'`), inlines all CSS, ships no client framework. Vercel builds this
+on every push to `main` (see `/vercel.json`) and serves `dist/`. The root-level `*.html` files
+are frozen legacy copies and are not served.
 
 ```
 npm install          # once (Node >= 22.12)

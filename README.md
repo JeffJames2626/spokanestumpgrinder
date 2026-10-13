@@ -1,7 +1,8 @@
 # Spokane Stump Grinder — Website
 
-Static 9-page marketing site, plus a growing set of blog post pages. No build
-step, no dependencies.
+Marketing site for Spokane Stump Grinder. **The live site is built from `astro/`**
+(Astro, static output) — see `astro/README.md`. The root-level `*.html` files are
+frozen legacy copies kept until every page is migrated; they are not served.
 
 ## Preview
 
@@ -17,9 +18,9 @@ python -m http.server 8000
 
 ## Deploy
 
-Upload all nine `.html` files into the same folder on the web host.
-`index.html` must be at the top level. **Do not rename any file** — the nav on
-every page links to the others by exact filename.
+Push to `main`. Vercel runs the build defined in `vercel.json`
+(`cd astro && npm ci && npm run build`) and serves `astro/dist`. URLs stay
+`name.html`; **do not rename pages** — links use exact filenames.
 
 ## Files
 

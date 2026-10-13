@@ -3,16 +3,25 @@
 Static marketing site for **Spokane Stump Grinder** — stump grinding and stump
 removal/cleanup in Spokane, WA and the Coeur d'Alene region.
 
-## Redesign branch (redesign/v2) — LOCAL ONLY
+## Build & deploy (Astro) — the current state
 
-This branch carries the Astro rebuild in `astro/` (see `astro/README.md`). It is not
-deployed and must not be pushed until Jeff explicitly approves deployment; a local
-pre-push hook refuses it (`.redesign-local-only`). The root-level `*.html` files are
-still the live site and the source of truth for the 16 pages not yet redesigned;
-`astro/src/pages/*.astro` reproduce them pixel-identically via `layouts/Base.astro`.
-The homepage (`astro/src/pages/index.astro`) is the first page on the new design
-system (`layouts/Site.astro`, `styles/tokens.css`). Cutover (deploy from `astro/dist`)
-is a separate, later decision.
+The live site is built from `astro/` (see `astro/README.md`). `vercel.json` at the
+repo root tells Vercel to run `cd astro && npm ci && npm run build` and serve
+`astro/dist`. Every push to `main` still auto-deploys; the build takes about
+1–2 minutes instead of seconds. A failed build does **not** replace production —
+the previous deployment stays live until a build succeeds.
+
+**Editing pages — read this first.** The root-level `*.html` files are **no longer
+served**. They are frozen legacy copies kept only until every page has been
+migrated; editing them changes nothing live. Edit `astro/src/pages/<page>.astro`
+instead. The 16 not-yet-redesigned pages reproduce the old pages exactly
+(`layouts/Base.astro`); `index.astro` is the first page on the new design system
+(`layouts/Site.astro`, `styles/tokens.css`). Blog posts: add one entry to
+`astro/src/data/posts.ts` plus the page file — the blog index, homepage feature
+and sitemap update themselves.
+
+**Local preview:** `cd astro && npm install && npm run dev` (Node ≥ 22.12), or
+`npm run build` and serve `astro/dist`.
 
 ## Deployment
 
@@ -24,8 +33,8 @@ local files → git push → GitHub → Vercel (auto-deploy) → live site
 
 - **Repo**: https://github.com/JeffJames2626/spokanestumpgrinder, branch `main`.
   Every push to `main` auto-deploys to production. No staging branch, no CI checks.
-- **Host**: Vercel, zero-config static deploy (no framework, no build command —
-  it just serves the HTML files as-is).
+- **Host**: Vercel. Build/output are set in `vercel.json` (Astro static build
+  from `astro/`, served from `astro/dist`) — no dashboard build settings.
 - **Permanent fallback URL**: spokanestumpgrinder.vercel.app — always resolves
   even if the custom domain's DNS ever breaks.
 - **Domain DNS**: managed in Squarespace (domain was registered there; the
@@ -43,11 +52,13 @@ folder. Live within ~1 minute.
 
 ## Architecture
 
-Nine core standalone HTML files, plus one blog post so far (more will be added
-over time — see the Blog section below). **Every page carries its own inline
-`<style>` block.** No shared stylesheet, no JS bundle, no build step, no
-dependencies. Pages link to each other by bare filename and work opened
-directly from disk (`file://`).
+**Legacy description — applies to the frozen root-level files only.** The site is
+now built by the Astro project in `astro/` (see "Build & deploy" above); the
+notes below still describe the content and conventions those pages carry.
+
+Nine core standalone HTML files, plus blog posts (see the Blog section below).
+**Every legacy page carries its own inline `<style>` block.** No shared stylesheet,
+no JS bundle, no dependencies. Pages link to each other by bare filename.
 
 ```
 index.html                  Homepage — hero, 2 service tiles, why-us, process, pricing band, CTA

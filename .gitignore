@@ -25,7 +25,7 @@ node_modules/
 *.ai
 images/logo/
 
-# --- redesign/v2 (local only) ---
+# --- Astro build (astro/) ---
 node_modules/
 astro/dist/
 astro/.astro/

@@ -1,4 +1,0 @@
-This branch (redesign/v2) is LOCAL ONLY until Jeff explicitly authorizes deployment.
-The presence of this file makes the local pre-push hook (.git/hooks/pre-push) refuse
-any push containing these commits, e.g. `git push origin HEAD:main` from this worktree.
-Backups: ~/ssg-redesign-backups (bundle + zip) and tag pre-redesign-2026-10-12.
