@@ -1,56 +1,122 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/blog.css';
-import Base from '../layouts/Base.astro';
-import PostCard from '../components/PostCard.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages/blog-v2.css';
+import Icon from '../components/v2/Icon.astro';
+import Img from '../components/v2/Img.astro';
 import { posts } from '../data/posts';
+import { business } from '../data/site';
+
+// Reading time is derived at build time from each post page's own text (220 wpm), never hand-typed.
+const sources = import.meta.glob<string>('./blog-*.astro', { query: '?raw', import: 'default', eager: true });
+const readMinutes = (file: string) => {
+  const key = Object.keys(sources).find((k) => k.endsWith('/' + file.replace(/\.html$/, '.astro')));
+  if (!key) return null;
+  const text = sources[key].replace(/^---[\s\S]*?---/, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
+  return Math.max(1, Math.round(text.split(/\s+/).filter(Boolean).length / 220));
+};
+const [featured, ...rest] = posts;
+
+const SITE = 'https://spokanestumpgrinder.com/';
+const blogLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  '@id': SITE + 'blog.html',
+  url: SITE + 'blog.html',
+  name: 'Spokane Stump Grinder Blog',
+  publisher: { '@type': 'LocalBusiness', '@id': SITE + '#business', name: business.name },
+  blogPost: posts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: SITE + p.file, dateModified: p.lastmod, description: p.summary })),
+};
 
 const meta = {
-  title: "Blog | Spokane Stump Grinder",
+  title: 'Blog | Spokane Stump Grinder',
   description: "Stump grinding and yard-cleanup guides from Spokane Stump Grinder — serving Spokane, WA and the Coeur d'Alene region.",
-  active: "blog.html",
+  canonical: SITE + 'blog.html',
+  og: { type: 'website', title: 'Blog | Spokane Stump Grinder', description: "Stump grinding and yard-cleanup guides from Spokane Stump Grinder — serving Spokane, WA and the Coeur d'Alene region.", url: SITE + 'blog.html', image: SITE + 'images/deer-park-stump-grinder.jpg', site_name: business.name },
+  twitterCard: 'summary_large_image',
+  jsonld: [JSON.stringify(blogLd, null, 2)],
+  active: 'blog.html',
 };
 ---
-<Base {...meta}>
-<div class="hero">
-  <div class="wrap">
-    <p class="eyebrow">Blog</p>
-    <h1>Stump grinding guides &amp; updates</h1>
-    <p>Notes on stump removal, yard prep, and what to expect from a grinding job. Posts go up here as we write them.</p>
-  </div>
-</div>
+<Site {...meta}>
 
-<!-- ============ POST LIST ============
-     Add a card for each published post inside the .grid below, using this
-     structure, then remove the .empty-state block once at least one post
-     exists:
-
-     <div class="card">
-       <p class="post-date">Month Year</p>
-       <a class="big" href="blog-post-file-name.html">Post Title</a>
-       <p>One or two sentence summary of the post.</p>
-     </div>
--->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Latest Posts</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">From the field</h2>
-    <p class="lead">Links to individual posts will show up here as they're published.</p>
-
-    <div class="grid">
-            {posts.map((post) => <PostCard post={post} />)}
+  <!-- HERO -->
+  <section class="blog-hero">
+    <div class="container">
+      <p class="eyebrow">Blog</p>
+      <h1>Stump grinding guides &amp; updates</h1>
+      <p class="lede">Notes on stump removal, yard prep, and what to expect from a grinding job. Posts go up here as we write them.</p>
+      <p class="count"><Icon name="pencil-line" size={18} /> {posts.length} posts, newest first</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="cta">
-  <div class="wrap">
-    <h2>Have a question about your stump?</h2>
-    <p>No need to wait for a post — call, text, or send us the details and we'll get you a straight answer.</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="contact.html">Contact Us</a>
+  <!-- FEATURED (newest) -->
+  <section class="section" style="padding-top: 0">
+    <div class="container">
+      <a class="card card-link featured" href={featured.file}>
+        {featured.image && (
+          <div class="featured-media">
+            <Img file={featured.image} alt={featured.imageAlt ?? ''} widths={[480, 800, 1200]} sizes="(max-width: 56rem) 100vw, 620px" loading="eager" fetchpriority="high" />
+            <span class="badge badge-red">Latest</span>
+          </div>
+        )}
+        <div class="featured-body">
+          <p class="post-meta">
+            {featured.kind && <span class="badge">{featured.kind}</span>}
+            <time datetime={featured.lastmod}><Icon name="calendar" size={14} /> {featured.date}</time>
+            {readMinutes(featured.file) && <span class="read"><Icon name="clock" size={14} /> {readMinutes(featured.file)} min read</span>}
+          </p>
+          <h2>{featured.title}</h2>
+          <p class="summary">{featured.summary}</p>
+          <span class="featured-cta">Read the post <Icon name="arrow-right" size={18} /></span>
+        </div>
+      </a>
     </div>
-  </div>
-</section>
-</Base>
+  </section>
+
+  <!-- ALL OTHER POSTS -->
+  <section class="section section-muted" id="posts">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">From the field</p>
+        <h2>More posts</h2>
+      </div>
+      <div class="posts">
+        {rest.map((p) => (
+          <a class="card card-link post" href={p.file}>
+            {p.image ? (
+              <div class="post-media"><Img file={p.image} alt={p.imageAlt ?? ''} widths={[480, 800, 1200]} sizes="(max-width: 48rem) 100vw, 560px" /></div>
+            ) : (
+              <div class="post-media text"><span class="icon-chip"><Icon name={p.kind === 'Case study' ? 'map-pin' : 'book-open'} size={22} /></span></div>
+            )}
+            <div class="post-body">
+              <p class="post-meta">
+                {p.kind && <span class="badge">{p.kind}</span>}
+                <time datetime={p.lastmod}><Icon name="calendar" size={14} /> {p.date}</time>
+                {readMinutes(p.file) && <span class="read"><Icon name="clock" size={14} /> {readMinutes(p.file)} min read</span>}
+              </p>
+              <h3>{p.title}</h3>
+              <p class="summary">{p.summary}</p>
+              <span class="post-cta">Read the post <Icon name="arrow-right" size={16} /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="card closing">
+        <h2>Have a question about your stump?</h2>
+        <p class="lede">No need to wait for a post &mdash; call, text, or send us the details and we'll get you a straight answer.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href="service-request.html">Request service</a>
+          <a class="btn btn-outline btn-lg" href={`tel:${business.phoneHref}`}><Icon name="phone" size={18} /> Call or text {business.phoneDisplay}</a>
+          <a class="btn btn-outline btn-lg" href="contact.html">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Site>

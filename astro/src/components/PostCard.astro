@@ -1,9 +1,0 @@
----
-import type { Post } from '../data/posts';
-const { post } = Astro.props as { post: Post };
----
-<div class="card">
-  <p class="post-date">{post.date}</p>
-  <a class="big" href={post.file}>{post.title}</a>
-  <p>{post.summary}</p>
-</div>
