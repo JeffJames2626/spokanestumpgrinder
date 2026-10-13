@@ -1,26 +1,31 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/blog-811-locates.css';
-import Base from '../layouts/Base.astro';
+import '../styles/pages/post.css';
+import Img from '../components/v2/Img.astro';
+import Site from '../layouts/Site.astro';
 
 const meta = {
   title: "Call 811 Before You Dig | Spokane Stump Grinder Blog",
   description: "Why calling 811 before a stump grinding or removal job matters, what's typically buried in a yard, and how the locate process works.",
+  canonical: "https://spokanestumpgrinder.com/blog-811-locates.html",
+  og: { type: "article", title: "Call 811 before you dig: what it means for your stump job", description: "Why calling 811 before a stump grinding or removal job matters, what's typically buried in a yard, and how the locate process works.", url: "https://spokanestumpgrinder.com/blog-811-locates.html", image: "https://spokanestumpgrinder.com/images/about-stump-profile.jpg", site_name: "Spokane Stump Grinder" },
+  twitterCard: "summary_large_image",
+  jsonld: [JSON.stringify({"@context": "https://schema.org", "@type": "BlogPosting", "@id": "https://spokanestumpgrinder.com/blog-811-locates.html", "mainEntityOfPage": "https://spokanestumpgrinder.com/blog-811-locates.html", "headline": "Call 811 before you dig: what it means for your stump job", "description": "Why calling 811 before a stump grinding or removal job matters, what's typically buried in a yard, and how the locate process works.", "datePublished": "2026-08-16", "dateModified": "2026-08-16", "author": {"@type": "Organization", "name": "Spokane Stump Grinder"}, "publisher": {"@type": "Organization", "@id": "https://spokanestumpgrinder.com/#business", "name": "Spokane Stump Grinder"}})],
   active: "blog.html",
 };
 ---
-<Base {...meta}>
-<div class="hero">
-  <div class="wrap">
+<Site {...meta}>
+<section class="post-hero">
+  <div class="container">
     <p class="eyebrow">Blog</p>
     <h1>Call 811 before you dig: what it means for your stump job</h1>
     <p>Grinding a stump — and especially pulling the root ball for a full removal — goes deeper into the yard than almost any other project. Here's what 811 actually covers, and what it doesn't.</p>
     <p class="post-meta">August 2026</p>
   </div>
-</div>
+</section>
 
-<section>
-  <div class="wrap article">
+<section class="section">
+  <div class="container post-single">
+  <article class="article">
 
     <h2>What 811 actually is</h2>
     <p>811 is the national "call before you dig" number. Dialing it (or filing a request online) connects you to your state's one-call center — Washington 811 or Idaho 811, depending on where the job is — which notifies the utility companies with lines near your address. It's a free service; there's no charge to request a locate.</p>
@@ -80,17 +85,20 @@ const meta = {
     </ul>
 
     <a class="back-link" href="blog.html">&larr; Back to all posts</a>
+  </article>
   </div>
 </section>
 
-<section class="cta">
-  <div class="wrap">
+<section class="section" style="padding-top: 0">
+  <div class="container">
+  <div class="card closing">
     <h2>Getting a stump ground or removed?</h2>
     <p>Tell us about the job and anything you know is buried nearby — we'll take it from there.</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+      <a class="btn btn-primary btn-lg" href="service-request.html#request" data-open-form>Request Service</a>
+      <a class="btn btn-outline btn-lg" href="booking.html">Book an OSC</a>
     </div>
   </div>
+  </div>
 </section>
-</Base>
+</Site>

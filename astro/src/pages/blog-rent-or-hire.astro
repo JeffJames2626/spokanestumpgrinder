@@ -1,7 +1,7 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/blog-rent-or-hire.css';
-import Base from '../layouts/Base.astro';
+import '../styles/pages/post.css';
+import Img from '../components/v2/Img.astro';
+import Site from '../layouts/Site.astro';
 import ld1 from '../data/jsonld/blog-rent-or-hire-1.json?raw';
 
 const meta = {
@@ -14,9 +14,9 @@ const meta = {
   active: "blog.html",
 };
 ---
-<Base {...meta}>
-<div class="hero">
-  <div class="wrap">
+<Site {...meta}>
+<section class="post-hero">
+  <div class="container">
     <p class="crumbs"><a href="index.html">Home</a> / <a href="blog.html">Blog</a> / Rent or hire</p>
     <p class="eyebrow">Guide &middot; Spokane &amp; Coeur d'Alene</p>
     <h1>Rent a stump grinder, or hire it out?</h1>
@@ -32,10 +32,10 @@ const meta = {
       <div class="stat"><b>2 days</b><span>Minimum 811 notice, either state</span></div>
     </div>
   </div>
-</div>
+</section>
 
-<section>
-  <div class="wrap case-layout">
+<section class="section">
+  <div class="container case-layout">
 
     <article class="article">
 
@@ -220,14 +220,16 @@ const meta = {
   </div>
 </section>
 
-<section class="cta">
-  <div class="wrap">
+<section class="section" style="padding-top: 0">
+  <div class="container">
+  <div class="card closing">
     <h2>Want our number next to the rental quote?</h2>
     <p>Send us a photo of the stump and tell us what's around it. You'll get the scope and the price in writing, and if it's a stump a rental machine can handle, we'll say so.</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+      <a class="btn btn-primary btn-lg" href="service-request.html#request" data-open-form>Request Service</a>
+      <a class="btn btn-outline btn-lg" href="booking.html">Book an OSC</a>
     </div>
   </div>
+  </div>
 </section>
-</Base>
+</Site>

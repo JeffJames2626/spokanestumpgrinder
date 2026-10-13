@@ -1,7 +1,7 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/blog-one-stump-or-three.css';
-import Base from '../layouts/Base.astro';
+import '../styles/pages/post.css';
+import Img from '../components/v2/Img.astro';
+import Site from '../layouts/Site.astro';
 import ld1 from '../data/jsonld/blog-one-stump-or-three-1.json?raw';
 
 const meta = {
@@ -14,9 +14,9 @@ const meta = {
   active: "blog.html",
 };
 ---
-<Base {...meta}>
-<div class="hero">
-  <div class="wrap">
+<Site {...meta}>
+<section class="post-hero">
+  <div class="container">
     <p class="crumbs"><a href="index.html">Home</a> / <a href="blog.html">Blog</a> / Case study</p>
     <p class="eyebrow">Case Study &middot; Deer Park, WA</p>
     <h1>Is this one stump or three?</h1>
@@ -32,15 +32,15 @@ const meta = {
       <div class="stat"><b>Honored</b><span>The original quote</span></div>
     </div>
   </div>
-</div>
+</section>
 
-<section>
-  <div class="wrap case-layout">
+<section class="section">
+  <div class="container case-layout">
 
     <article class="article">
 
       <figure class="post-figure narrow">
-        <img src="images/deer-park-multi-trunk-stump.jpg" width="683" height="911" alt="Multi-trunk tree stump with several cut faces sharing one root mass in a lawn, Deer Park, WA">
+        <Img file="deer-park-multi-trunk-stump.jpg" alt="Multi-trunk tree stump with several cut faces sharing one root mass in a lawn, Deer Park, WA" widths={[480, 683]} sizes="(max-width: 48rem) 100vw, 448px" loading="eager" />
         <figcaption>Several cut faces, one shared root mass. Is that one stump or three?</figcaption>
       </figure>
 
@@ -51,11 +51,11 @@ const meta = {
 
       <div class="photo-pair">
         <figure class="post-figure">
-          <img src="images/deer-park-roadside-stumps.jpg" width="683" height="911" loading="lazy" alt="Row of cut tree stumps along a roadside lawn strip in Deer Park, Washington, before stump grinding">
+          <Img file="deer-park-roadside-stumps.jpg" alt="Row of cut tree stumps along a roadside lawn strip in Deer Park, Washington, before stump grinding" widths={[480, 683]} sizes="(max-width: 48rem) 100vw, 448px" />
           <figcaption>The site: a row of stumps along a lawn strip.</figcaption>
         </figure>
         <figure class="post-figure">
-          <img src="images/deer-park-stump-row.jpg" width="683" height="911" loading="lazy" alt="Several freshly cut tree stumps with exposed soil and roots in a lawn, Deer Park, WA">
+          <Img file="deer-park-stump-row.jpg" alt="Several freshly cut tree stumps with exposed soil and roots in a lawn, Deer Park, WA" widths={[480, 683]} sizes="(max-width: 48rem) 100vw, 448px" />
           <figcaption>Count the cut faces, not the trees. Every one is grinding work.</figcaption>
         </figure>
       </div>
@@ -102,7 +102,7 @@ const meta = {
       <p>None of that is a reason not to chase roots. Sometimes it's the whole point &mdash; you want to mow flat, plant a bed, or set pavers. It's just a decision worth making up front: which roots, how far out, and how deep, written on the estimate before the grinder starts.</p>
 
       <figure class="post-figure narrow">
-        <img src="images/deer-park-stump-grinder.jpg" width="683" height="911" loading="lazy" alt="Stump grinder cutting wheel grinding a tree stump below grade in a lawn">
+        <Img file="deer-park-stump-grinder.jpg" alt="Stump grinder cutting wheel grinding a tree stump below grade in a lawn" widths={[480, 683]} sizes="(max-width: 48rem) 100vw, 448px" />
         <figcaption>Every pass widens the hole. Decide where the root chasing stops before the machine starts.</figcaption>
       </figure>
 
@@ -176,14 +176,16 @@ const meta = {
   </div>
 </section>
 
-<section class="cta">
-  <div class="wrap">
+<section class="section" style="padding-top: 0">
+  <div class="container">
+  <div class="card closing">
     <h2>Not sure how many stumps you've got?</h2>
     <p>Send us photos, or have us come out and count. Either way, you'll get the number in writing before we start.</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+      <a class="btn btn-primary btn-lg" href="service-request.html#request" data-open-form>Request Service</a>
+      <a class="btn btn-outline btn-lg" href="booking.html">Book an OSC</a>
     </div>
   </div>
+  </div>
 </section>
-</Base>
+</Site>

@@ -1,26 +1,31 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/blog-private-locates.css';
-import Base from '../layouts/Base.astro';
+import '../styles/pages/post.css';
+import Img from '../components/v2/Img.astro';
+import Site from '../layouts/Site.astro';
 
 const meta = {
   title: "Private Utility Locates: What They Cost | Spokane Stump Grinder Blog",
   description: "811 only covers utility-owned lines. Here's what a private locate covers, when you actually need one, and what it typically costs.",
+  canonical: "https://spokanestumpgrinder.com/blog-private-locates.html",
+  og: { type: "article", title: "Private utility locates: what they cost and when you need one", description: "811 only covers utility-owned lines. Here's what a private locate covers, when you actually need one, and what it typically costs.", url: "https://spokanestumpgrinder.com/blog-private-locates.html", image: "https://spokanestumpgrinder.com/images/about-stump-profile.jpg", site_name: "Spokane Stump Grinder" },
+  twitterCard: "summary_large_image",
+  jsonld: [JSON.stringify({"@context": "https://schema.org", "@type": "BlogPosting", "@id": "https://spokanestumpgrinder.com/blog-private-locates.html", "mainEntityOfPage": "https://spokanestumpgrinder.com/blog-private-locates.html", "headline": "Private utility locates: what they cost and when you need one", "description": "811 only covers utility-owned lines. Here's what a private locate covers, when you actually need one, and what it typically costs.", "datePublished": "2026-08-16", "dateModified": "2026-08-16", "author": {"@type": "Organization", "name": "Spokane Stump Grinder"}, "publisher": {"@type": "Organization", "@id": "https://spokanestumpgrinder.com/#business", "name": "Spokane Stump Grinder"}})],
   active: "blog.html",
 };
 ---
-<Base {...meta}>
-<div class="hero">
-  <div class="wrap">
+<Site {...meta}>
+<section class="post-hero">
+  <div class="container">
     <p class="eyebrow">Blog</p>
     <h1>Private utility locates: what they cost and when you need one</h1>
     <p>811 covers utility-owned lines up to your meter, and stops there. Here's what a private locate covers instead, when it's actually worth calling one, and what drives the cost.</p>
     <p class="post-meta">August 2026</p>
   </div>
-</div>
+</section>
 
-<section>
-  <div class="wrap article">
+<section class="section">
+  <div class="container post-single">
+  <article class="article">
 
     <h2>Where 811 stops</h2>
     <p>We covered the basics of <a href="blog-811-locates.html">calling 811 before you dig</a> in an earlier post — it's free, and it covers the utility-owned lines running to your property: gas, electric, water, sewer, cable, internet. What it doesn't cover is anything on the private side of the meter: your own sprinkler system, low-voltage landscape lighting, invisible pet fence, or septic lines. That's where a private locate comes in.</p>
@@ -75,17 +80,20 @@ const meta = {
     <p>If your yard has irrigation, landscape lighting, an invisible fence, or a septic system and you don't have solid documentation of where the lines run, a private locate before a big removal job is cheap insurance against hitting something expensive to fix.</p>
 
     <a class="back-link" href="blog.html">&larr; Back to all posts</a>
+  </article>
   </div>
 </section>
 
-<section class="cta">
-  <div class="wrap">
+<section class="section" style="padding-top: 0">
+  <div class="container">
+  <div class="card closing">
     <h2>Getting a stump ground or removed?</h2>
     <p>Tell us about the job and anything you know is buried nearby — we'll take it from there.</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+      <a class="btn btn-primary btn-lg" href="service-request.html#request" data-open-form>Request Service</a>
+      <a class="btn btn-outline btn-lg" href="booking.html">Book an OSC</a>
     </div>
   </div>
+  </div>
 </section>
-</Base>
+</Site>

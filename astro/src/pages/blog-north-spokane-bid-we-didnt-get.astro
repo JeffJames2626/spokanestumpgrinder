@@ -1,7 +1,7 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/blog-north-spokane-bid-we-didnt-get.css';
-import Base from '../layouts/Base.astro';
+import '../styles/pages/post.css';
+import Img from '../components/v2/Img.astro';
+import Site from '../layouts/Site.astro';
 import ld1 from '../data/jsonld/blog-north-spokane-bid-we-didnt-get-1.json?raw';
 
 const meta = {
@@ -14,9 +14,9 @@ const meta = {
   active: "blog.html",
 };
 ---
-<Base {...meta}>
-<div class="hero">
-  <div class="wrap">
+<Site {...meta}>
+<section class="post-hero">
+  <div class="container">
     <p class="crumbs"><a href="index.html">Home</a> / <a href="blog.html">Blog</a> / Case study</p>
     <p class="eyebrow">Case Study &middot; North Spokane, WA</p>
     <h1>We quoted $1,000. We didn't get the job.</h1>
@@ -32,15 +32,15 @@ const meta = {
       <div class="stat"><b>Arterial</b><span>The street out front</span></div>
     </div>
   </div>
-</div>
+</section>
 
-<section>
-  <div class="wrap case-layout">
+<section class="section">
+  <div class="container case-layout">
 
     <article class="article">
 
       <figure class="post-figure narrow">
-        <img src="images/north-spokane-arterial-stump.jpg" width="683" height="911" alt="Large old weathered tree stump with a wide exposed root flare, surrounded by a dug-out pit and piles of sand and soil, between two houses in north Spokane, WA">
+        <Img file="north-spokane-arterial-stump.jpg" alt="Large old weathered tree stump with a wide exposed root flare, surrounded by a dug-out pit and piles of sand and soil, between two houses in north Spokane, WA" widths={[480, 683]} sizes="(max-width: 48rem) 100vw, 448px" loading="eager" />
         <figcaption>The stump we bid on. Old, dry, wide at the base, and somebody had already started digging around it.</figcaption>
       </figure>
 
@@ -158,14 +158,16 @@ const meta = {
   </div>
 </section>
 
-<section class="cta">
-  <div class="wrap">
+<section class="section" style="padding-top: 0">
+  <div class="container">
+  <div class="card closing">
     <h2>Got a stump near a busy street?</h2>
     <p>Send us a photo and tell us what's out front. You'll get the price in writing, and this time the reasoning comes with it.</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+      <a class="btn btn-primary btn-lg" href="service-request.html#request" data-open-form>Request Service</a>
+      <a class="btn btn-outline btn-lg" href="booking.html">Book an OSC</a>
     </div>
   </div>
+  </div>
 </section>
-</Base>
+</Site>

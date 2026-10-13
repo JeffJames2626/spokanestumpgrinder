@@ -11,6 +11,8 @@ const sources = import.meta.glob<string>('./blog-*.astro', { query: '?raw', impo
 const readMinutes = (file: string) => {
   const key = Object.keys(sources).find((k) => k.endsWith('/' + file.replace(/\.html$/, '.astro')));
   if (!key) return null;
+  const stated = /(\d+) min read/.exec(sources[key]); // a post that states its own reading time wins
+  if (stated) return Number(stated[1]);
   const text = sources[key].replace(/^---[\s\S]*?---/, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
   return Math.max(1, Math.round(text.split(/\s+/).filter(Boolean).length / 220));
 };
