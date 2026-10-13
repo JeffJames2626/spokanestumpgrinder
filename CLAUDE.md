@@ -256,20 +256,24 @@ the delivery config in `astro/src/data/service-request.ts`; form primitives
 `.form-section`) in `astro/src/styles/base.css`.
 
 How it works: the browser POSTs `multipart/form-data` straight to
-`https://formsubmit.co/info@spokanestumpgrinder.com`; FormSubmit emails the
-submission (photos attached, customer email as reply-to) and 302s back to
-`_next` = `service-request.html?sent=1`, which the page's inline script turns
-into the "Got it — thanks" card. Hidden fields: `_subject`, `_template=table`,
-`_captcha=false`, `_autoresponse` (thank-you reply to the customer), `_honey`
-(honeypot). No JS is required to submit; the script only rewrites `_next` to
+`https://formsubmit.co/<alias>` (the alias stands in for
+info@spokanestumpgrinder.com so the address isn't in the page source);
+FormSubmit emails the submission (photos attached, customer email as reply-to)
+and 302s back to `_next` = `service-request.html?sent=1`, which the page's
+inline script turns into the "Got it — thanks" card. Hidden fields:
+`_subject`, `_template=table`, `_captcha=false`, `_honey` (honeypot). No
+`_autoresponse`: FormSubmit only sends auto-replies when its captcha is on. No JS is required to submit; the script only rewrites `_next` to
 the current origin (so localhost previews redirect back to localhost), shows
 the success card, and disables double-submits.
 
 Things to know:
-- **Activation:** the first real submission makes FormSubmit send a one-time
-  activation email to info@. Nothing is delivered until that link is clicked.
-- After activation FormSubmit shows a random alias string — swap it into
-  `form.action` so the raw address isn't in the page source.
+- **Activation is per website address.** The first submission from a given
+  origin makes FormSubmit email info@ a one-time "Activate FormSubmit on
+  <origin>" link; nothing from that origin is delivered until it's clicked.
+  `https://spokanestumpgrinder.com` is the one that matters; a localhost
+  preview or `www.` would each get their own email (ignore or click, harmless).
+- The alias in `form.action` was issued with the first activation email
+  (2026-10-12). It is tied to info@; changing the address means a new alias.
 - If `form.action` is emptied the page renders a "delivery not set up" notice
   and disables Submit rather than failing silently.
 - `ssg-redesign-tools/intake-runtime.mjs` tests the submit flow against a

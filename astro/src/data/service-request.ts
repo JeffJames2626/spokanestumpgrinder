@@ -2,21 +2,22 @@
 // The form itself is ours (replaces the Service Autopilot embed on this branch).
 //
 // DELIVERY: FormSubmit (chosen by Jeff 2026-10-12). The browser POSTs the form straight to formsubmit.co,
-// which emails it to the address in `action`, then redirects back to `_next` (?sent=1 = success card).
-// No account or API key. The FIRST submission triggers a one-time activation email to info@ — nothing is
-// delivered until that link is clicked. After activation FormSubmit offers a random alias string that can
-// replace the address in `action` so it isn't readable in the page source. If `action` is ever emptied the
-// page shows a "delivery not set up" notice and disables the submit button, so nothing is silently lost.
-// Docs: https://formsubmit.co/documentation
+// which emails it to info@spokanestumpgrinder.com (via the alias in `action`), then redirects back to
+// `_next` (?sent=1 = success card). No account or API key.
+// ACTIVATION IS PER WEBSITE ADDRESS: the first submission from a given origin (https://spokanestumpgrinder.com,
+// a localhost preview, www., …) makes FormSubmit email a one-time "Activate FormSubmit on <origin>" link to
+// info@; nothing from that origin is delivered until it's clicked. The alias was issued with the first such
+// email (2026-10-12). If `action` is ever emptied the page shows a "delivery not set up" notice and disables
+// the submit button, so nothing is silently lost. Docs: https://formsubmit.co/documentation
 
 export const form = {
-  action: 'https://formsubmit.co/info@spokanestumpgrinder.com',
+  action: 'https://formsubmit.co/779a635b69e3b6c853c44bea7f0760f9', // FormSubmit alias for info@spokanestumpgrinder.com (keeps the address out of the page source)
   method: 'POST',
   hidden: {
     _subject: 'New estimate request — spokanestumpgrinder.com',
     _template: 'table',      // one row per field in the email
     _captcha: 'false',       // skip FormSubmit's interstitial captcha page; the honeypot below still filters bots
-    _autoresponse: "Thanks — we got your request. We'll look it over and follow up with a written estimate. If it's urgent, call or text 509-434-9554.",
+    // (no _autoresponse: FormSubmit only sends auto-replies when its captcha is ON, so it would never fire here)
   } as Record<string, string>,
   honeypot: '_honey',        // FormSubmit drops any submission where this hidden field is filled in
   nextDefault: 'https://spokanestumpgrinder.com/service-request.html?sent=1',
