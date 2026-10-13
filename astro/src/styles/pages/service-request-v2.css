@@ -14,31 +14,57 @@
 @media (max-width: 64rem) { .tips { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 36rem) { .tips { grid-template-columns: 1fr; } }
 
-/* form + side column */
-#form { scroll-margin-top: 5rem; }
-.sr-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 20rem); gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
-.form-card { padding: clamp(1.25rem, 3vw, 2.5rem); }
-.form-card .section-head { margin-bottom: var(--space-6); }
-.notice { display: flex; gap: var(--space-3); align-items: flex-start; padding: 0.875rem 1rem; margin-bottom: var(--space-6); border: 1px solid color-mix(in oklch, var(--brand-red) 35%, var(--border)); border-radius: var(--radius-lg); background: var(--brand-red-soft); font-size: 0.9375rem; }
-.notice svg { color: var(--brand-red-text); flex: none; margin-top: 0.15em; }
-.form-foot { display: grid; gap: var(--space-4); padding-top: var(--space-6); border-top: 1px solid var(--border); }
-.form-foot .btn { justify-self: start; }
-.form-foot .fine { font-size: 0.875rem; color: var(--muted-foreground); }
-.sending .btn-submit { opacity: 0.7; pointer-events: none; }
-.sent-card { display: grid; gap: var(--space-4); padding: clamp(1.5rem, 4vw, 2.5rem); text-align: left; }
+.sr-hero .hero-note { display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-5); font-size: 0.9375rem; color: var(--muted-foreground); }
+.sr-hero .hero-note svg { color: var(--brand-red-text); }
+.tips-cta { margin-top: var(--space-8); }
+
+/* ways in: talk card + what you get */
+.ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+.talk { display: grid; gap: var(--space-4); padding: var(--space-8); align-content: start; }
+.talk h2 { font-size: clamp(1.375rem, 1rem + 1.2vw, 1.75rem); }
+.talk .callline { display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--foreground); }
+.talk .callline svg { color: var(--brand-red-text); flex: none; }
+.talk .callline:hover { color: var(--brand-red-text); text-decoration: none; }
+.talk .note { font-size: 0.875rem; color: var(--muted-foreground); }
+.ways .card-title { font-size: 1.125rem; margin-bottom: var(--space-4); }
+.ways .checks { font-size: 1rem; gap: var(--space-3); }
+.ways > .card:not(.talk) { padding: var(--space-8); }
+@media (max-width: 56rem) { .ways { grid-template-columns: 1fr; } }
+
+/* success card */
+.sent-card { display: grid; gap: var(--space-4); padding: clamp(1.5rem, 4vw, 2.5rem); border-color: color-mix(in oklch, var(--brand-red) 35%, var(--border)); }
 .sent-card .icon-chip { width: 3.25rem; height: 3.25rem; }
 .sent-card h2 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem); }
 .sent-card .btn-row { margin-top: var(--space-2); }
 [hidden] { display: none !important; }
 
-.side { display: grid; gap: var(--space-5); position: sticky; top: 6rem; }
-.talk { display: grid; gap: var(--space-4); padding: var(--space-6); }
-.talk .callline { display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--foreground); }
-.talk .callline svg { color: var(--brand-red-text); flex: none; }
-.talk .callline:hover { color: var(--brand-red-text); text-decoration: none; }
-.talk .note { font-size: 0.875rem; color: var(--muted-foreground); }
-.side .checks { font-size: 0.9375rem; }
-@media (max-width: 64rem) { .sr-grid { grid-template-columns: 1fr; } .side { position: static; } }
+/* the form's modal window — shadcn Dialog on the native <dialog> */
+.dialog { width: min(100% - 2rem, 52rem); max-height: calc(100dvh - 2rem); margin: auto; padding: 0; border: 1px solid var(--border); border-radius: var(--radius-2xl); background: var(--card); color: var(--card-foreground); box-shadow: var(--shadow-xl); overflow: hidden; display: none; }
+.dialog[open] { display: grid; grid-template-rows: auto minmax(0, 1fr); }
+.dialog::backdrop { background: oklch(0.147 0.004 49.25 / 0.6); backdrop-filter: blur(4px); }
+body:has(.dialog[open]) { overflow: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  .dialog[open] { animation: dialog-in .18s ease-out; }
+  @keyframes dialog-in { from { opacity: 0; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: none; } }
+}
+.dialog-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-4); align-items: start; padding: var(--space-6) var(--space-6) var(--space-5); border-bottom: 1px solid var(--border); }
+.dialog-head h2 { font-size: clamp(1.375rem, 1.1rem + 1.2vw, 1.75rem); }
+.dialog-head .eyebrow { margin-bottom: var(--space-2); }
+.dialog-sub { margin-top: var(--space-2); color: var(--muted-foreground); font-size: 0.9375rem; }
+.dialog-close { color: var(--muted-foreground); }
+.dialog-close:hover { color: var(--foreground); }
+.dialog-body { overflow-y: auto; overscroll-behavior: contain; padding: var(--space-2) var(--space-6) var(--space-6); }
+.notice { display: flex; gap: var(--space-3); align-items: flex-start; padding: 0.875rem 1rem; margin: var(--space-4) 0 var(--space-2); border: 1px solid color-mix(in oklch, var(--brand-red) 35%, var(--border)); border-radius: var(--radius-lg); background: var(--brand-red-soft); font-size: 0.9375rem; }
+.notice svg { color: var(--brand-red-text); flex: none; margin-top: 0.15em; }
+.dialog .form-section:first-of-type { padding-top: var(--space-4); }
+.form-foot { display: grid; gap: var(--space-4); padding-top: var(--space-6); border-top: 1px solid var(--border); }
+.form-foot .fine { font-size: 0.875rem; color: var(--muted-foreground); }
+.sending .btn-submit { opacity: 0.7; pointer-events: none; }
+@media (max-width: 40rem) {
+  .dialog { width: 100%; max-width: none; max-height: 100dvh; height: 100dvh; margin: 0; border-radius: 0; border: 0; }
+  .dialog-head, .dialog-body { padding-inline: var(--space-4); }
+  .form-foot .btn-row .btn { flex: 1; }
+}
 
 /* after */
 .steps { list-style: none; counter-reset: step; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-5); }

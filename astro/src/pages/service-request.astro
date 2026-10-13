@@ -12,7 +12,7 @@ const pageLd = {
   '@id': SITE + 'service-request.html',
   url: SITE + 'service-request.html',
   name: 'Request Service | Spokane Stump Grinder',
-  potentialAction: { '@type': 'QuoteAction', name: 'Request a written estimate', target: SITE + 'service-request.html#form' },
+  potentialAction: { '@type': 'QuoteAction', name: 'Request a written estimate', target: SITE + 'service-request.html' },
   about: { '@type': 'LocalBusiness', '@id': SITE + '#business', name: business.name, telephone: '+1-509-434-9554' },
 };
 
@@ -36,8 +36,24 @@ const configured = Boolean(form.action);
       <h1>{hero.h1}</h1>
       <p class="lede">{hero.lede}</p>
       <div class="btn-row">
-        <a class="btn btn-primary btn-lg" href="#form"><Icon name="send" size={18} /> Go to the form</a>
+        <button class="btn btn-primary btn-lg" type="button" data-open-form><Icon name="send" size={18} /> Open the request form</button>
         <a class="btn btn-outline btn-lg" href="booking.html"><Icon name="calendar-check" size={18} /> Book an OSC instead</a>
+      </div>
+      <p class="hero-note"><Icon name="clock" size={16} /> Takes about two minutes. Photos optional, but they save a trip.</p>
+    </div>
+  </section>
+
+  <!-- SUCCESS (shown only when FormSubmit redirects back with ?sent=1) -->
+  <section class="section" id="sent-wrap" hidden style="padding-top: 0">
+    <div class="container">
+      <div class="card sent-card" id="sent" tabindex="-1">
+        <span class="icon-chip"><Icon name="circle-check-big" size={28} /></span>
+        <h2>Got it — thanks.</h2>
+        <p class="lede">Your request is in. We'll look it over and follow up with a written estimate. If anything's urgent in the meantime, call or text {business.phoneDisplay}.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="booking.html"><Icon name="calendar-check" size={18} /> Book an on-site visit</a>
+          <a class="btn btn-outline" href="index.html">Back to the homepage</a>
+        </div>
       </div>
     </div>
   </section>
@@ -53,187 +69,28 @@ const configured = Boolean(form.action);
       <div class="tips">
         {tips.items.map((t) => (<article class="card tip"><span class="icon-chip"><Icon name={t.icon} size={20} /></span><h3>{t.title}</h3><p>{t.text}</p></article>))}
       </div>
+      <div class="btn-row tips-cta"><button class="btn btn-primary" type="button" data-open-form><Icon name="send" size={18} /> Open the request form</button></div>
     </div>
   </section>
 
-  <!-- FORM -->
-  <section class="section" id="form">
-    <div class="container sr-grid">
-      <div>
-        <!-- success state (shown when the page is reloaded with ?sent=1) -->
-        <div class="card sent-card" id="sent" hidden tabindex="-1">
-          <span class="icon-chip"><Icon name="circle-check-big" size={28} /></span>
-          <h2>Got it — thanks.</h2>
-          <p class="lede">Your request is in. We'll look it over and follow up with a written estimate. If anything's urgent in the meantime, call or text {business.phoneDisplay}.</p>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="booking.html"><Icon name="calendar-check" size={18} /> Book an on-site visit</a>
-            <a class="btn btn-outline" href="index.html">Back to the homepage</a>
-          </div>
-        </div>
-
-        <div class="card form-card" id="form-card">
-          <div class="section-head">
-            <p class="eyebrow">Service request</p>
-            <h2>Send us the details</h2>
-            <p class="lede">We'll follow up with a written scope and price. No obligation.</p>
-          </div>
-
-          {!configured && (
-            <p class="notice" role="status">
-              <Icon name="triangle-alert" size={18} /><span><strong>Delivery not set up yet.</strong> The form is built, but where submissions get emailed from hasn't been chosen — the button stays off until it is.</span>
-            </p>
-          )}
-
-          <form id="intake" action={form.action || undefined} method={form.method} enctype="multipart/form-data">
-            {Object.entries(form.hidden).map(([k, v]) => <input type="hidden" name={k} value={v} />)}
-            <input type="hidden" name="_next" id="next" value={form.nextDefault} />
-            <p class="honey" aria-hidden="true"><label>Leave this field empty <input type="text" name={form.honeypot} tabindex="-1" autocomplete="off" /></label></p>
-
-            <div class="form-section">
-              <h3><span class="step-no">1</span> How to reach you</h3>
-              <div class="form-grid">
-                <div class="field">
-                  <label for="name">Name<span class="req" aria-hidden="true">*</span></label>
-                  <input class="input" id="name" name="Name" type="text" autocomplete="name" required />
-                  <span class="error">Please enter your name.</span>
-                </div>
-                <div class="field">
-                  <label for="phone">Phone<span class="req" aria-hidden="true">*</span></label>
-                  <input class="input" id="phone" name="Phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="509-555-0123" required minlength="7" />
-                  <span class="error">Please enter a phone number we can reach you at.</span>
-                </div>
-                <div class="field">
-                  <label for="email">Email<span class="req" aria-hidden="true">*</span></label>
-                  <input class="input" id="email" name="Email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required />
-                  <span class="error">That doesn't look like a valid email.</span>
-                </div>
-                <fieldset class="field">
-                  <legend>Best way to contact you</legend>
-                  <div class="choices inline">
-                    {options.contact.map((c, i) => (<label class="choice"><input type="radio" name="Preferred contact" value={c} checked={i === 0} /><strong>{c}</strong></label>))}
-                  </div>
-                </fieldset>
-              </div>
-            </div>
-
-            <div class="form-section">
-              <h3><span class="step-no">2</span> Where the stump is</h3>
-              <div class="form-grid">
-                <div class="field span-2">
-                  <label for="street">Street address<span class="req" aria-hidden="true">*</span></label>
-                  <input class="input" id="street" name="Street address" type="text" autocomplete="street-address" required />
-                  <span class="error">We need the address to price access and travel.</span>
-                </div>
-                <div class="field">
-                  <label for="city">City<span class="req" aria-hidden="true">*</span></label>
-                  <input class="input" id="city" name="City" type="text" autocomplete="address-level2" required />
-                  <span class="error">Please enter the city.</span>
-                </div>
-                <div class="form-grid">
-                  <div class="field">
-                    <label for="state">State</label>
-                    <select class="select" id="state" name="State" autocomplete="address-level1">
-                      {options.states.map((s) => <option value={s}>{s}</option>)}
-                    </select>
-                  </div>
-                  <div class="field">
-                    <label for="zip">ZIP</label>
-                    <input class="input" id="zip" name="ZIP" type="text" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" placeholder="99202" />
-                    <span class="error">Five digits.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-section">
-              <h3><span class="step-no">3</span> About the stump</h3>
-              <fieldset class="field">
-                <legend>What do you need?<span class="req" aria-hidden="true">*</span></legend>
-                <div class="choices">
-                  {options.service.map((s, i) => (<label class="choice"><input type="radio" name="Service" value={s.value} required checked={i === 0} /><span><strong>{s.label}</strong>{s.help}</span></label>))}
-                </div>
-              </fieldset>
-              <div class="form-grid">
-                <div class="field">
-                  <label for="count">How many stumps?</label>
-                  <input class="input" id="count" name="Number of stumps" type="number" inputmode="numeric" min="1" max="99" value="1" />
-                  <span class="hint">Several on one visit cost less each.</span>
-                </div>
-                <div class="field">
-                  <label for="diameter">Largest stump, across at ground level</label>
-                  <select class="select" id="diameter" name="Largest stump diameter">
-                    {options.diameter.map((d) => <option value={d}>{d}</option>)}
-                  </select>
-                  <span class="hint">Widest point at grade, not the old trunk.</span>
-                </div>
-                <div class="field">
-                  <label for="access">How do we get to it?</label>
-                  <select class="select" id="access" name="Access">
-                    {options.access.map((a) => <option value={a}>{a}</option>)}
-                  </select>
-                  <span class="hint">The gate opening decides which machine we bring.</span>
-                </div>
-                <div class="field">
-                  <label for="after">What's going in that spot afterward?</label>
-                  <select class="select" id="after" name="After the stump is gone">
-                    {options.after.map((a) => <option value={a}>{a}</option>)}
-                  </select>
-                  <span class="hint">Changes how deep we need to go.</span>
-                </div>
-              </div>
-              <fieldset class="field">
-                <legend>Anything nearby we should know about?</legend>
-                <div class="choices inline">
-                  {options.nearby.map((n) => (<label class="choice"><input type="checkbox" name="Nearby" value={n} /><strong>{n}</strong></label>))}
-                </div>
-              </fieldset>
-            </div>
-
-            <div class="form-section">
-              <h3><span class="step-no">4</span> Photos and notes</h3>
-              <div class="field">
-                <label for="photos">Photos of the stump <span class="hint">(optional, but they save a trip)</span></label>
-                <input class="input" id="photos" name="Photos" type="file" accept="image/*" multiple />
-                <span class="hint">One from a few feet back showing the path in, and one close-up with something for scale.</span>
-              </div>
-              <div class="field">
-                <label for="notes">Anything else?</label>
-                <textarea class="textarea" id="notes" name="Notes" rows="5" placeholder="Timing, questions, what's been tried already…"></textarea>
-              </div>
-              <div class="field">
-                <label for="heard">How did you hear about us? <span class="hint">(optional)</span></label>
-                <select class="select" id="heard" name="How did you hear about us">
-                  <option value="">Choose one</option>
-                  {options.heard.map((h) => <option value={h}>{h}</option>)}
-                </select>
-              </div>
-            </div>
-
-            <div class="form-foot">
-              <button class="btn btn-primary btn-lg btn-submit" type="submit" disabled={!configured}><Icon name="send" size={18} /> <span class="label">Send my request</span></button>
-              <p class="fine">We'll only use this to put together your estimate and get back to you. No spam, no sharing.</p>
-            </div>
-          </form>
-        </div>
+  <!-- WAYS IN -->
+  <section class="section">
+    <div class="container ways">
+      <div class="card talk">
+        <p class="eyebrow">{talk.eyebrow}</p>
+        <h2>{talk.h2}</h2>
+        <p>{talk.text}</p>
+        <a class="callline" href={`tel:${business.phoneHref}`}><Icon name="phone" size={22} /> {business.phoneDisplay}</a>
+        <p class="note">{talk.note}</p>
       </div>
-
-      <aside class="side">
-        <div class="card talk">
-          <p class="eyebrow">{talk.eyebrow}</p>
-          <h2 style="font-size:1.375rem">{talk.h2}</h2>
-          <p>{talk.text}</p>
-          <a class="callline" href={`tel:${business.phoneHref}`}><Icon name="phone" size={22} /> {business.phoneDisplay}</a>
-          <p class="note">{talk.note}</p>
-        </div>
-        <div class="card">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-3)">What you'll get back</h3>
-          <ul class="checks">
-            <li><Icon name="check" size={18} />A written scope and price, before anything is scheduled</li>
-            <li><Icon name="check" size={18} />A straight answer if a rental machine could handle it</li>
-            <li><Icon name="check" size={18} />No obligation, no pressure</li>
-          </ul>
-        </div>
-      </aside>
+      <div class="card">
+        <h3 class="card-title">What you'll get back</h3>
+        <ul class="checks">
+          <li><Icon name="check" size={18} />A written scope and price, before anything is scheduled</li>
+          <li><Icon name="check" size={18} />A straight answer if a rental machine could handle it</li>
+          <li><Icon name="check" size={18} />No obligation, no pressure</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -247,21 +104,184 @@ const configured = Boolean(form.action);
       <ol class="steps">
         {after.steps.map((s) => (<li class="card step"><h3>{s.title}</h3><p>{s.text}</p></li>))}
       </ol>
-      <div class="btn-row after-cta"><a class="btn btn-outline" href="services.html">Review what's included <Icon name="arrow-right" size={16} /></a></div>
+      <div class="btn-row after-cta">
+        <button class="btn btn-primary btn-lg" type="button" data-open-form><Icon name="send" size={18} /> Open the request form</button>
+        <a class="btn btn-outline btn-lg" href="services.html">Review what's included <Icon name="arrow-right" size={16} /></a>
+      </div>
     </div>
   </section>
 
+  <!-- THE FORM — a modal window over the page (shadcn Dialog pattern on the native <dialog>) -->
+  <dialog class="dialog" id="request" aria-labelledby="dialog-title">
+    <div class="dialog-head">
+      <div>
+        <p class="eyebrow">Service request</p>
+        <h2 id="dialog-title">Send us the details</h2>
+        <p class="dialog-sub">We'll follow up with a written scope and price. No obligation.</p>
+      </div>
+      <button class="btn btn-ghost btn-icon dialog-close" type="button" data-close-form aria-label="Close the form"><Icon name="x" size={20} /></button>
+    </div>
+    <div class="dialog-body">
+      {!configured && (
+        <p class="notice" role="status">
+          <Icon name="triangle-alert" size={18} /><span><strong>Delivery not set up yet.</strong> The form is built, but where submissions get emailed from hasn't been chosen — the button stays off until it is.</span>
+        </p>
+      )}
+
+      <form id="intake" action={form.action || undefined} method={form.method} enctype="multipart/form-data">
+        {Object.entries(form.hidden).map(([k, v]) => <input type="hidden" name={k} value={v} />)}
+        <input type="hidden" name="_next" id="next" value={form.nextDefault} />
+        <p class="honey" aria-hidden="true"><label>Leave this field empty <input type="text" name={form.honeypot} tabindex="-1" autocomplete="off" /></label></p>
+
+        <div class="form-section">
+          <h3><span class="step-no">1</span> How to reach you</h3>
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Name<span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="name" name="Name" type="text" autocomplete="name" required />
+              <span class="error">Please enter your name.</span>
+            </div>
+            <div class="field">
+              <label for="phone">Phone<span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="phone" name="Phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="509-555-0123" required minlength="7" />
+              <span class="error">Please enter a phone number we can reach you at.</span>
+            </div>
+            <div class="field">
+              <label for="email">Email<span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="email" name="Email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required />
+              <span class="error">That doesn't look like a valid email.</span>
+            </div>
+            <fieldset class="field">
+              <legend>Best way to contact you</legend>
+              <div class="choices inline">
+                {options.contact.map((c, i) => (<label class="choice"><input type="radio" name="Preferred contact" value={c} checked={i === 0} /><strong>{c}</strong></label>))}
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3><span class="step-no">2</span> Where the stump is</h3>
+          <div class="form-grid">
+            <div class="field span-2">
+              <label for="street">Street address<span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="street" name="Street address" type="text" autocomplete="street-address" required />
+              <span class="error">We need the address to price access and travel.</span>
+            </div>
+            <div class="field">
+              <label for="city">City<span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="city" name="City" type="text" autocomplete="address-level2" required />
+              <span class="error">Please enter the city.</span>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="state">State</label>
+                <select class="select" id="state" name="State" autocomplete="address-level1">
+                  {options.states.map((s) => <option value={s}>{s}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="zip">ZIP</label>
+                <input class="input" id="zip" name="ZIP" type="text" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" placeholder="99202" />
+                <span class="error">Five digits.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3><span class="step-no">3</span> About the stump</h3>
+          <fieldset class="field">
+            <legend>What do you need?<span class="req" aria-hidden="true">*</span></legend>
+            <div class="choices">
+              {options.service.map((s, i) => (<label class="choice"><input type="radio" name="Service" value={s.value} required checked={i === 0} /><span><strong>{s.label}</strong>{s.help}</span></label>))}
+            </div>
+          </fieldset>
+          <div class="form-grid">
+            <div class="field">
+              <label for="count">How many stumps?</label>
+              <input class="input" id="count" name="Number of stumps" type="number" inputmode="numeric" min="1" max="99" value="1" />
+              <span class="hint">Several on one visit cost less each.</span>
+            </div>
+            <div class="field">
+              <label for="diameter">Largest stump, across at ground level</label>
+              <select class="select" id="diameter" name="Largest stump diameter">
+                {options.diameter.map((d) => <option value={d}>{d}</option>)}
+              </select>
+              <span class="hint">Widest point at grade, not the old trunk.</span>
+            </div>
+            <div class="field">
+              <label for="access">How do we get to it?</label>
+              <select class="select" id="access" name="Access">
+                {options.access.map((a) => <option value={a}>{a}</option>)}
+              </select>
+              <span class="hint">The gate opening decides which machine we bring.</span>
+            </div>
+            <div class="field">
+              <label for="after">What's going in that spot afterward?</label>
+              <select class="select" id="after" name="After the stump is gone">
+                {options.after.map((a) => <option value={a}>{a}</option>)}
+              </select>
+              <span class="hint">Changes how deep we need to go.</span>
+            </div>
+          </div>
+          <fieldset class="field">
+            <legend>Anything nearby we should know about?</legend>
+            <div class="choices inline">
+              {options.nearby.map((n) => (<label class="choice"><input type="checkbox" name="Nearby" value={n} /><strong>{n}</strong></label>))}
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-section">
+          <h3><span class="step-no">4</span> Photos and notes</h3>
+          <div class="field">
+            <label for="photos">Photos of the stump <span class="hint">(optional, but they save a trip)</span></label>
+            <input class="input" id="photos" name="Photos" type="file" accept="image/*" multiple />
+            <span class="hint">One from a few feet back showing the path in, and one close-up with something for scale.</span>
+          </div>
+          <div class="field">
+            <label for="notes">Anything else?</label>
+            <textarea class="textarea" id="notes" name="Notes" rows="5" placeholder="Timing, questions, what's been tried already…"></textarea>
+          </div>
+          <div class="field">
+            <label for="heard">How did you hear about us? <span class="hint">(optional)</span></label>
+            <select class="select" id="heard" name="How did you hear about us">
+              <option value="">Choose one</option>
+              {options.heard.map((h) => <option value={h}>{h}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-foot">
+          <div class="btn-row">
+            <button class="btn btn-primary btn-lg btn-submit" type="submit" disabled={!configured}><Icon name="send" size={18} /> <span class="label">Send my request</span></button>
+            <button class="btn btn-outline btn-lg" type="button" data-close-form>Cancel</button>
+          </div>
+          <p class="fine">We'll only use this to put together your estimate and get back to you. No spam, no sharing.</p>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
   <script is:inline>
   (function () {
-    var form = document.getElementById('intake'), sent = document.getElementById('sent'), card = document.getElementById('form-card');
-    // success state after the provider redirects back with ?sent=1
+    var dlg = document.getElementById('request'), form = document.getElementById('intake');
+    // success state after FormSubmit redirects back with ?sent=1
     if (new URLSearchParams(location.search).get('sent') === '1') {
-      card.hidden = true; sent.hidden = false; sent.focus();
-      try { history.replaceState(null, '', location.pathname + '#form'); } catch (e) {}
-      return;
+      var wrap = document.getElementById('sent-wrap'); wrap.hidden = false;
+      try { history.replaceState(null, '', location.pathname); } catch (e) {}
+      var card = document.getElementById('sent'); card.scrollIntoView({ block: 'center' }); card.focus();
     }
     // redirect back to THIS origin (localhost preview or production) rather than the hard-coded default
     var next = document.getElementById('next'); if (next) next.value = location.origin + location.pathname + '?sent=1';
+    // open / close the modal
+    var open = function () { if (typeof dlg.showModal === 'function') { dlg.showModal(); dlg.querySelector('.dialog-body').scrollTop = 0; } else dlg.setAttribute('open', ''); };
+    var close = function () { dlg.close ? dlg.close() : dlg.removeAttribute('open'); };
+    document.querySelectorAll('[data-open-form]').forEach(function (b) { b.addEventListener('click', open); });
+    document.querySelectorAll('[data-close-form]').forEach(function (b) { b.addEventListener('click', close); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); }); // click on the backdrop
+    if (location.hash === '#request') open();
     form.addEventListener('submit', function () {
       if (!form.checkValidity()) return;
       form.classList.add('sending');
