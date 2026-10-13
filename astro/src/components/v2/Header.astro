@@ -1,0 +1,92 @@
+---
+import { business } from '../../data/site';
+import Icon from './Icon.astro';
+import ThemeSwitch from './ThemeSwitch.astro';
+import { Image } from 'astro:assets';
+import logo from '../../../../images/logo-full.png';
+const { active } = Astro.props;
+// Visible, keyboard-reachable nav on desktop (the live site hides it behind a hover hamburger).
+const links = [
+  { href: 'services.html', label: 'Services' },
+  { href: 'case-studies.html', label: 'Our Work' },
+  { href: 'about.html', label: 'About' },
+  { href: 'faq.html', label: 'FAQ' },
+  { href: 'blog.html', label: 'Blog' },
+  { href: 'contact.html', label: 'Contact' },
+];
+---
+<header class="site-header" id="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html" aria-label="Spokane Stump Grinder — home">
+      <Image src={logo} width={139} height={88} densities={[1, 2]} format="webp" alt="Spokane Stump Grinder" class="brand-mark" loading="eager" />
+    </a>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        {links.map((l) => (<li><a href={l.href} aria-current={active === l.href ? 'page' : undefined}>{l.label}</a></li>))}
+        <li class="nav-mobile-only"><a href="booking.html">Book an on-site look</a></li>
+        <li class="nav-mobile-only"><a href="service-request.html">Request service</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-ghost header-phone" href={`tel:${business.phoneHref}`} aria-label={`Call ${business.phoneDisplay}`}><Icon name="phone" size={18} /><span>{business.phoneDisplay}</span></a>
+      <a class="btn btn-primary header-cta" href="service-request.html">Free Estimate</a>
+      <ThemeSwitch />
+      <button type="button" class="btn btn-outline btn-icon menu-btn" id="menu-btn" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="mb-open"><Icon name="menu" size={20} /></span>
+        <span class="mb-close"><Icon name="x" size={20} /></span>
+      </button>
+    </div>
+  </div>
+</header>
+<script is:inline>
+(function(){
+  var h=document.getElementById('site-header'), b=document.getElementById('menu-btn');
+  if(!h||!b) return;
+  function set(open){h.classList.toggle('menu-open',open);b.setAttribute('aria-expanded',open?'true':'false');b.setAttribute('aria-label',open?'Close menu':'Open menu');}
+  b.addEventListener('click',function(){set(!h.classList.contains('menu-open'));});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h.classList.contains('menu-open')){set(false);b.focus();}});
+  window.matchMedia('(min-width: 64rem)').addEventListener('change',function(e){if(e.matches)set(false);});
+})();
+</script>
+<style>
+  .site-header { position: sticky; top: 0; z-index: 50; background: var(--ink); color: var(--ink-foreground); border-bottom: 1px solid var(--ink-border); box-shadow: 0 1px 0 oklch(0 0 0 / 0.3); }
+  .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 3px; background: linear-gradient(90deg, var(--brand-red-deep), var(--brand-red-bright) 55%, var(--brand-red-deep)); }
+  .header-bar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--space-6); min-height: 4.5rem; }
+  .brand { display: inline-flex; align-items: center; padding: 0.375rem 0.75rem; border-radius: var(--radius-lg); background: linear-gradient(135deg, oklch(0.3 0.004 49) 0%, var(--ink) 55%, oklch(0.1 0 0) 100%); box-shadow: inset 0 0 0 1px var(--ink-border); }
+  .brand-mark { height: 2.75rem; width: auto; }
+  .site-nav ul { list-style: none; display: flex; gap: var(--space-1); justify-content: center; }
+  .site-nav a { display: inline-flex; align-items: center; min-height: 2.5rem; padding: 0 0.875rem; border-radius: var(--radius-full); color: var(--ink-foreground); font-family: var(--font-heading); font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.01em; transition: background-color .15s ease, color .15s ease; }
+  .site-nav a:hover { background: oklch(1 0 0 / 0.08); text-decoration: none; }
+  .site-nav a[aria-current="page"] { background: var(--brand-red-soft); color: oklch(0.82 0.16 29); box-shadow: inset 0 0 0 1px oklch(0.7 0.2 29.23 / 0.35); }
+  .site-nav a:focus-visible { outline: none; box-shadow: 0 0 0 3px oklch(0.7 0.2 29.23 / 0.55); }
+  .nav-mobile-only { display: none; }
+  .header-actions { display: flex; align-items: center; gap: var(--space-2); }
+  .header-phone { color: var(--ink-foreground); font-weight: 600; }
+  .header-phone:hover { background: oklch(1 0 0 / 0.08); }
+  .header-actions :global(.theme-switch) { background: transparent; color: var(--ink-foreground); border-color: var(--ink-border); box-shadow: none; }
+  .header-actions :global(.theme-switch:hover) { background: oklch(1 0 0 / 0.08); color: var(--ink-foreground); }
+  .menu-btn { display: none; background: transparent; color: var(--ink-foreground); border-color: var(--ink-border); box-shadow: none; }
+  .menu-btn:hover { background: oklch(1 0 0 / 0.08); color: var(--ink-foreground); }
+  .menu-btn span { display: none; line-height: 0; } .menu-btn .mb-open { display: block; }
+  .menu-open .menu-btn .mb-open { display: none; } .menu-open .menu-btn .mb-close { display: block; }
+
+  @media (max-width: 63.999rem) {
+    .header-bar { grid-template-columns: auto 1fr; min-height: 4rem; gap: var(--space-3); }
+    .brand-mark { height: 2.375rem; }
+    .header-actions { justify-self: end; grid-row: 1; grid-column: 2; }
+    .site-nav { grid-row: 2; }
+    .header-phone span { display: none; }
+    .header-phone { width: 2.5rem; min-height: 2.5rem; padding: 0; border: 1px solid var(--ink-border); }
+    .header-cta { display: none; }
+    .menu-btn { display: inline-flex; }
+    .site-nav { grid-column: 1 / -1; display: none; padding: var(--space-2) 0 var(--space-4); border-top: 1px solid var(--ink-border); }
+    .menu-open .site-nav { display: block; }
+    .site-nav ul { flex-direction: column; gap: 0.125rem; }
+    .site-nav a { min-height: 3rem; font-size: 1.0625rem; padding-inline: 1rem; }
+    .nav-mobile-only { display: block; }
+    .nav-mobile-only a { color: oklch(0.82 0.16 29); }
+  }
+  @media (min-width: 64rem) and (max-width: 76rem) { .header-phone span { display: none; } .header-phone { width: 2.5rem; padding: 0; } }
+</style>

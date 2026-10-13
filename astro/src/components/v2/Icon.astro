@@ -1,0 +1,20 @@
+---
+// Lucide icon (the preset's icon library), inlined at build time from lucide-static.
+// Zero client JS. Usage: <Icon name="phone" size={18} /> — name = lucide-static/icons/<name>.svg
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+
+interface Props { name: string; size?: number; class?: string; strokeWidth?: number; label?: string }
+const { name, size = 20, class: cls, strokeWidth = 2, label } = Astro.props;
+
+const require = createRequire(import.meta.url);
+const file = require.resolve(`lucide-static/icons/${name}.svg`);
+let svg = readFileSync(file, 'utf8');
+svg = svg
+  .replace(/<!--[\s\S]*?-->\s*/g, '')
+  .replace(/\swidth="[^"]*"/, ` width="${size}"`)
+  .replace(/\sheight="[^"]*"/, ` height="${size}"`)
+  .replace(/\sstroke-width="[^"]*"/, ` stroke-width="${strokeWidth}"`)
+  .replace(/<svg\b/, `<svg${cls ? ` class="${cls}"` : ''}${label ? ` role="img" aria-label="${label}"` : ' aria-hidden="true" focusable="false"'}`);
+---
+<Fragment set:html={svg} />

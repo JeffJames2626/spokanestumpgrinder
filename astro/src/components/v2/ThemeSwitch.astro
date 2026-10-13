@@ -1,0 +1,37 @@
+---
+// Same behaviour and storage key ('ssg-theme': system → light → dark) as the legacy toggle,
+// so a visitor's choice carries across old and new pages during the migration.
+import Icon from './Icon.astro';
+---
+<button type="button" class="theme-switch btn btn-outline btn-icon" id="theme-switch" data-mode="system" aria-label="Theme: System. Click for Light" title="Theme">
+  <span class="ts-sun"><Icon name="sun" size={18} /></span>
+  <span class="ts-moon"><Icon name="moon" size={18} /></span>
+  <span class="ts-system"><Icon name="monitor" size={18} /></span>
+</button>
+<script is:inline>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme-switch');
+  if(!btn) return;
+  var mq=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
+  var labels={system:'System',light:'Light',dark:'Dark'};
+  function stored(){try{return localStorage.getItem('ssg-theme');}catch(e){return null;}}
+  function mode(){var t=stored();return (t==='light'||t==='dark')?t:'system';}
+  function sync(){
+    var m=mode(), next=m==='system'?'light':(m==='light'?'dark':'system');
+    btn.setAttribute('data-mode',m);
+    btn.setAttribute('aria-label','Theme: '+labels[m]+'. Click for '+labels[next]);
+  }
+  btn.addEventListener('click',function(){
+    var m=mode(), next=m==='system'?'light':(m==='light'?'dark':'system');
+    if(next==='system'){root.removeAttribute('data-theme');try{localStorage.setItem('ssg-theme','system');}catch(e){}}
+    else{root.setAttribute('data-theme',next);try{localStorage.setItem('ssg-theme',next);}catch(e){}}
+    sync();
+  });
+  if(mq&&mq.addEventListener){mq.addEventListener('change',sync);}
+  sync();
+})();
+</script>
+<style>
+  .theme-switch span { display: none; line-height: 0; }
+  .theme-switch[data-mode="system"] .ts-system, .theme-switch[data-mode="light"] .ts-sun, .theme-switch[data-mode="dark"] .ts-moon { display: block; }
+</style>

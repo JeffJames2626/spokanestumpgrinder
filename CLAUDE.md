@@ -3,6 +3,17 @@
 Static marketing site for **Spokane Stump Grinder** — stump grinding and stump
 removal/cleanup in Spokane, WA and the Coeur d'Alene region.
 
+## Redesign branch (redesign/v2) — LOCAL ONLY
+
+This branch carries the Astro rebuild in `astro/` (see `astro/README.md`). It is not
+deployed and must not be pushed until Jeff explicitly approves deployment; a local
+pre-push hook refuses it (`.redesign-local-only`). The root-level `*.html` files are
+still the live site and the source of truth for the 16 pages not yet redesigned;
+`astro/src/pages/*.astro` reproduce them pixel-identically via `layouts/Base.astro`.
+The homepage (`astro/src/pages/index.astro`) is the first page on the new design
+system (`layouts/Site.astro`, `styles/tokens.css`). Cutover (deploy from `astro/dist`)
+is a separate, later decision.
+
 ## Deployment
 
 Live at **spokanestumpgrinder.com** (and `www.` — both valid). Pipeline:
