@@ -1,6 +1,8 @@
 ---
 import '../styles/pages/post.css';
 import Img from '../components/v2/Img.astro';
+import { posts } from '../data/posts';
+const others = posts.filter((x) => x.file !== 'blog-811-locates.html').slice(0, 4);
 import Site from '../layouts/Site.astro';
 
 const meta = {
@@ -24,16 +26,16 @@ const meta = {
 </section>
 
 <section class="section">
-  <div class="container post-single">
+  <div class="container case-layout">
   <article class="article">
 
-    <h2>What 811 actually is</h2>
+    <h2 id="what-811-actually-is">What 811 actually is</h2>
     <p>811 is the national "call before you dig" number. Dialing it (or filing a request online) connects you to your state's one-call center — Washington 811 or Idaho 811, depending on where the job is — which notifies the utility companies with lines near your address. It's a free service; there's no charge to request a locate.</p>
 
-    <h2>Why it matters more for stump work than most yard projects</h2>
+    <h2 id="why-it-matters-more-for-stump-work-than-">Why it matters more for stump work than most yard projects</h2>
     <p>A mower or an edger never leaves the top inch or two of soil. Grinding a stump goes well below that, and digging out a root ball for a full removal goes deeper still — right into the zone where sprinkler lines, low-voltage lighting, invisible fence wire, and utility lines often sit. Most of that is invisible until someone hits it.</p>
 
-    <h2>What's usually down there</h2>
+    <h2 id="what-s-usually-down-there">What's usually down there</h2>
     <div class="grid">
       <div class="chip-card">
         <strong>Gas, electric, water &amp; sewer</strong>
@@ -65,7 +67,7 @@ const meta = {
       <p><strong>The important nuance:</strong> 811 locates mark utility-owned lines up to the meter or connection point. Anything on your side of that — your own sprinkler system, landscape lighting, or invisible fence — is usually not covered by the free locate. That part relies on what you know about your own yard.</p>
     </div>
 
-    <h2>How the process works</h2>
+    <h2 id="how-the-process-works">How the process works</h2>
     <p>In broad strokes:</p>
     <ul>
       <li>A locate request goes in with the address and a description of the work area.</li>
@@ -74,10 +76,10 @@ const meta = {
     </ul>
     <p class="muted-note">Exact wait times and ticket validity windows are set by each state's one-call center, not by us — if timing matters for your project, confirm current numbers with Washington 811 or Idaho 811 directly.</p>
 
-    <h2>Who requests the locate</h2>
+    <h2 id="who-requests-the-locate">Who requests the locate</h2>
     <p>We do. When you book a job with us, we submit the 811 request as part of scheduling — you don't need to call it in yourself.</p>
 
-    <h2>What you can do to help</h2>
+    <h2 id="what-you-can-do-to-help">What you can do to help</h2>
     <ul>
       <li>Flag or mark anything you know is private — sprinkler heads, low-voltage wire, invisible fence — since the utility locate won't catch those.</li>
       <li>Keep the marked area accessible until the work is done: no parking over flags, no fresh mulch or mowing over paint marks.</li>
@@ -86,6 +88,31 @@ const meta = {
 
     <a class="back-link" href="blog.html">&larr; Back to all posts</a>
   </article>
+
+    <aside class="case-side">
+      <div class="toc">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#what-811-actually-is">What 811 actually is</a></li>
+          <li><a href="#why-it-matters-more-for-stump-work-than-">Why it matters more for stump work than most yard projects</a></li>
+          <li><a href="#what-s-usually-down-there">What's usually down there</a></li>
+          <li><a href="#how-the-process-works">How the process works</a></li>
+          <li><a href="#who-requests-the-locate">Who requests the locate</a></li>
+          <li><a href="#what-you-can-do-to-help">What you can do to help</a></li>
+        </ol>
+      </div>
+      <div class="glance more">
+        <h2>More from the blog</h2>
+        <ul>
+          {others.map((o) => (<li><a href={o.file}>{o.title}</a><span>{o.date}</span></li>))}
+        </ul>
+      </div>
+      <div class="glance ask">
+        <h2>Got a stump?</h2>
+        <p>Send photos and the details and we'll put a number on it in writing.</p>
+        <a class="btn btn-primary" href="service-request.html#request" data-open-form>Request an estimate</a>
+      </div>
+    </aside>
   </div>
 </section>
 
