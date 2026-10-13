@@ -1,15 +1,202 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/services.css';
-import Base from '../layouts/Base.astro';
-import main from '../fragments/services-main.html?raw';
+import Site from '../layouts/Site.astro';
+import '../styles/pages/services-v2.css';
+import Icon from '../components/v2/Icon.astro';
+import Img from '../components/v2/Img.astro';
+import Wistia from '../components/v2/Wistia.astro';
+import { hero, services, compare, factors, steps, videos } from '../data/services';
+import { towns } from '../data/home';
+import { business } from '../data/site';
+
+const SITE = 'https://spokanestumpgrinder.com/';
+const provider = {
+  '@type': 'LocalBusiness',
+  '@id': SITE + '#business',
+  name: business.name,
+  telephone: '+1-509-434-9554',
+  email: business.email,
+  address: { '@type': 'PostalAddress', streetAddress: business.street, addressLocality: 'Spokane', addressRegion: 'WA', postalCode: '99202', addressCountry: 'US' },
+};
+const serviceLd = services.map((s) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': SITE + 'services.html#' + s.id,
+  name: s.name,
+  serviceType: s.name,
+  description: s.lede,
+  url: SITE + 'services.html#' + s.id,
+  provider,
+  areaServed: towns.map((t) => ({ '@type': 'City', name: t.name })),
+}));
 
 const meta = {
-  title: "Services | Spokane Stump Grinder",
-  description: "Stump grinding and full stump removal and cleanup in Spokane, WA. Clean work, hauled debris, and a yard you can actually use again.",
-  active: "services.html",
+  title: 'Services | Spokane Stump Grinder',
+  description: 'Stump grinding and full stump removal and cleanup in Spokane, WA. Clean work, hauled debris, and a yard you can actually use again.',
+  canonical: SITE + 'services.html',
+  og: { type: 'website', title: 'Stump Grinding & Stump Removal | Spokane Stump Grinder', description: 'Stump grinding and full stump removal and cleanup in Spokane, WA. Clean work, hauled debris, and a yard you can actually use again.', url: SITE + 'services.html', image: SITE + 'images/services-wide-shot-crew.jpg', site_name: business.name },
+  twitterCard: 'summary_large_image',
+  jsonld: [JSON.stringify(serviceLd, null, 2)],
+  active: 'services.html',
 };
+const yes = (v: boolean) => v;
 ---
-<Base {...meta}>
-  <Fragment set:html={main} />
-</Base>
+<Site {...meta}>
+
+  <!-- HERO -->
+  <section class="svc-hero">
+    <div class="container">
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>{hero.h1}</h1>
+      <p class="lede">{hero.lede}</p>
+      <div class="btn-row">
+        <a class="btn btn-primary btn-lg" href={hero.primary.href}>{hero.primary.label} <Icon name="arrow-right" size={18} /></a>
+        <a class="btn btn-outline btn-lg" href={hero.secondary.href}><Icon name="calendar-check" size={18} /> {hero.secondary.label}</a>
+      </div>
+      <nav class="jump" aria-label="On this page">
+        <a class="badge" href="#grinding"><Icon name="drill" size={14} /> Stump grinding</a>
+        <a class="badge" href="#removal-cleanup"><Icon name="truck" size={14} /> Removal &amp; cleanup</a>
+        <a class="badge" href="#pricing"><Icon name="ruler" size={14} /> What drives the price</a>
+        <a class="badge" href="#process"><Icon name="clipboard-check" size={14} /> How it works</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  {services.map((s, i) => (
+    <section class={`section svc${i % 2 ? ' section-muted' : ''}`} id={s.id}>
+      <div class="container">
+        <div class="svc-head">
+          <span class="icon-chip"><Icon name={s.icon} size={26} /></span>
+          <div>
+            <h2>{s.name}</h2>
+            <p class="tagline">{s.tagline}</p>
+            <p class="lede">{s.lede}</p>
+          </div>
+        </div>
+        <div class="svc-grid">
+          <div>
+            <h3 class="visually-hidden">What's included</h3>
+            <ul class="incl" aria-label="What's included">
+              {s.included.map((it) => (<li><Icon name="circle-check" size={20} /><div><strong>{it.title}</strong><span>{it.text}</span></div></li>))}
+            </ul>
+            <div class="svc-cta btn-row"><a class="btn btn-primary" href={s.cta.href}>{s.cta.label} <Icon name="arrow-right" size={18} /></a></div>
+          </div>
+          <aside class="svc-side">
+            <div class="card fit">
+              <h3>Good fit when</h3>
+              <ul>{s.goodFit.map((g) => (<li><strong>{g.title}</strong><span>{g.text}</span></li>))}</ul>
+            </div>
+            <div class="svc-photos">
+              {s.photos.map((p, j) => (
+                <figure class={`svc-photo${p.caption === 'After' || j === 1 ? ' hl' : ''}`}>
+                  <Img file={p.file} alt={p.alt} widths={[320, 480, 640, 900]} sizes="(max-width: 64rem) 50vw, 220px" />
+                  <figcaption><span>{p.caption}</span></figcaption>
+                </figure>
+              ))}
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- VIDEO -->
+  <section class="section section-muted">
+    <div class="container video-grid">
+      <div class="section-head" style="margin-bottom:0">
+        <p class="eyebrow">{videos.big.eyebrow}</p>
+        <h2>{videos.big.h2}</h2>
+        <p class="lede">{videos.big.text}</p>
+      </div>
+      <Wistia mediaId={videos.big.mediaId} aspect={videos.big.aspect} class="video-wrap" />
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">At a glance</p>
+        <h2>Grinding vs. removal &amp; cleanup</h2>
+        <p class="lede">Removal builds on grinding — it's the same work on the stump, plus taking the material away and putting real soil back.</p>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead><tr><th scope="col">What you get</th><th scope="col">Grinding</th><th scope="col">Removal &amp; cleanup</th></tr></thead>
+          <tbody>
+            {compare.rows.map((r) => (
+              <tr>
+                <td>{r.item}</td>
+                <td>{yes(r.grinding) ? <span class="yes"><Icon name="circle-check" size={20} label="Included" /></span> : <span class="no"><Icon name="x" size={18} label="Not included" /></span>}</td>
+                <td>{yes(r.removal) ? <span class="yes"><Icon name="circle-check" size={20} label="Included" /></span> : <span class="no"><Icon name="x" size={18} label="Not included" /></span>}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING FACTORS -->
+  <section class="section section-ink" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{factors.eyebrow}</p>
+        <h2>{factors.h2}</h2>
+        <p class="lede">{factors.lede}</p>
+      </div>
+      <div class="factors-grid">
+        {factors.items.map((f) => (<article class="factor"><span class="icon-chip on-ink"><Icon name={f.icon} size={20} /></span><h3>{f.title}</h3><p>{f.text}</p></article>))}
+      </div>
+      <div class="btn-row factors-cta"><a class="btn btn-primary" href={factors.cta.href}>{factors.cta.label} <Icon name="arrow-right" size={18} /></a></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Four steps, no surprises</h2>
+      </div>
+      <ol class="steps">
+        {steps.map((s) => (<li class="card step"><h3>{s.title}</h3><p>{s.text}</p></li>))}
+      </ol>
+      <div class="crew-photo video-grid">
+        <Img file="services-wide-shot-crew.jpg" alt="Crew running the stump grinder on a job site" widths={[640, 1000, 1400, 2000]} sizes="(max-width: 56rem) 100vw, 700px" />
+        <Wistia mediaId={videos.grinder.mediaId} aspect={videos.grinder.aspect} class="video-wrap" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="section section-muted" id="service-area">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Where we work</p>
+        <h2>Serving the Spokane &amp; Coeur d'Alene region</h2>
+        <p class="lede">Based in Spokane and covering communities across Eastern Washington and North Idaho.</p>
+      </div>
+      <div class="towns">
+        {towns.map((t) => t.href ? (<a class="badge has-page" href={t.href}><Icon name="map-pin" size={14} />{t.name}</a>) : (<span class="badge">{t.name}</span>))}
+      </div>
+      <p class="area-note">Don't see your town? Give us a call &mdash; if you're near the edge of the map we'll let you know straight.</p>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="section" style="padding-top: 0">
+    <div class="container">
+      <div class="card closing">
+        <h2>Ready to get that stump out of your yard?</h2>
+        <p class="lede">Send us the details and we'll get you a written estimate. No obligation, no pressure.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href="service-request.html">Request service</a>
+          <a class="btn btn-outline btn-lg" href={`tel:${business.phoneHref}`}><Icon name="phone" size={18} /> Call or text {business.phoneDisplay}</a>
+          <a class="btn btn-outline btn-lg" href="booking.html"><Icon name="calendar-check" size={18} /> Book a time</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Site>

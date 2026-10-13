@@ -1,0 +1,33 @@
+---
+// Wistia web-component embed with the same <wistia-player> markup and official placeholder style as the
+// legacy pages, but the two Wistia scripts (player.js + the per-media module) are injected only when the
+// player comes within 300px of the viewport (or is hovered/focused). Legacy pages loaded ~2.9 MB of
+// Wistia JS/assets eagerly on every visit. Each video needs its own media id AND aspect (vertical = 0.5625).
+interface Props { mediaId: string; aspect: string; class?: string }
+const { mediaId, aspect, class: cls } = Astro.props;
+const paddingTop = `${(100 / Number(aspect)).toFixed(2)}%`;
+---
+<div class={cls} data-wistia-lazy data-media={mediaId}>
+  <style is:inline set:html={`wistia-player[media-id='${mediaId}']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/${mediaId}/swatch'); display: block; filter: blur(5px); padding-top:${paddingTop}; }`}></style>
+  <wistia-player media-id={mediaId} aspect={aspect}></wistia-player>
+</div>
+<script is:inline>
+(function(){
+  if (window.__ssgWistiaLazy) return; window.__ssgWistiaLazy = true;
+  var loaded = {};
+  function load(el){
+    var id = el.getAttribute('data-media'); if (!id || loaded[id]) return; loaded[id] = true;
+    if (!document.querySelector('script[src="https://fast.wistia.com/player.js"]')) {
+      var p = document.createElement('script'); p.src = 'https://fast.wistia.com/player.js'; p.async = true; document.head.appendChild(p);
+    }
+    var s = document.createElement('script'); s.src = 'https://fast.wistia.com/embed/' + id + '.js'; s.async = true; s.type = 'module'; document.head.appendChild(s);
+  }
+  function init(){
+    var els = [].slice.call(document.querySelectorAll('[data-wistia-lazy]'));
+    if (!('IntersectionObserver' in window)) { els.forEach(load); return; }
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } }); }, { rootMargin: '300px 0px' });
+    els.forEach(function(el){ io.observe(el); ['pointerenter','touchstart','focusin'].forEach(function(ev){ el.addEventListener(ev, function(){ load(el); }, { once: true, passive: true }); }); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
