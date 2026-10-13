@@ -1,81 +1,115 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/contact.css';
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages/contact-v2.css';
+import Icon from '../components/v2/Icon.astro';
+import { map, hero, reach, location, closing } from '../data/contact';
+import { business } from '../data/site';
+
+const SITE = 'https://spokanestumpgrinder.com/';
+const contactLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': SITE + 'contact.html',
+  url: SITE + 'contact.html',
+  name: 'Contact Spokane Stump Grinder',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    '@id': SITE + '#business',
+    name: business.name,
+    telephone: '+1-509-434-9554',
+    email: business.email,
+    address: { '@type': 'PostalAddress', streetAddress: business.street, addressLocality: 'Spokane', addressRegion: 'WA', postalCode: '99202', addressCountry: 'US' },
+    hasMap: map.directions,
+    contactPoint: [{ '@type': 'ContactPoint', telephone: '+1-509-434-9554', email: business.email, contactType: 'customer service', areaServed: 'US' }],
+  },
+};
 
 const meta = {
-  title: "Contact Us | Spokane Stump Grinder",
+  title: 'Contact Us | Spokane Stump Grinder',
   description: "Call, text, or email Spokane Stump Grinder — stump grinding and removal in Spokane, WA and the Coeur d'Alene region. 1908 E Mallon Ave, Spokane, WA 99202.",
-  active: "contact.html",
+  canonical: SITE + 'contact.html',
+  og: { type: 'website', title: 'Contact Us | Spokane Stump Grinder', description: "Call, text, or email Spokane Stump Grinder — stump grinding and removal in Spokane, WA and the Coeur d'Alene region. 1908 E Mallon Ave, Spokane, WA 99202.", url: SITE + 'contact.html', image: SITE + 'images/about-stump-profile.jpg', site_name: business.name },
+  twitterCard: 'summary_large_image',
+  jsonld: [JSON.stringify(contactLd, null, 2)],
+  active: 'contact.html',
 };
 ---
-<Base {...meta}>
-<div class="hero">
-  <div class="wrap">
-    <p class="eyebrow">Contact</p>
-    <h1>Get in touch</h1>
-    <p>Call, text, email, or send us the details through the form &mdash; whatever's easiest. We're straightforward to reach and quick to respond.</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request an Estimate</a>
-      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
-    </div>
-  </div>
-</div>
+<Site {...meta}>
 
-<!-- ============ REACH US ============ -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Reach Us Directly</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Three ways to get ahold of us</h2>
-    <p class="lead">Pick whichever's easiest &mdash; we watch all three.</p>
-    <div class="grid">
-      <div class="card">
-        <div class="icon">&#9742;</div>
-        <h3>Call or Text</h3>
-        <a class="big" href="tel:+15094349554">509-434-9554</a>
-        <p>Fastest way to reach us for a quick question or a straight answer.</p>
-      </div>
-      <div class="card">
-        <div class="icon">&#9993;</div>
-        <h3>Email</h3>
-        <a class="big" href="mailto:info@spokanestumpgrinder.com">info@<wbr>spokanestumpgrinder.com</a>
-        <p>Good for sending photos, details, or anything easier to explain in writing.</p>
-      </div>
-      <div class="card">
-        <div class="icon">&#9998;</div>
-        <h3>Request Form</h3>
-        <a class="big" href="service-request.html">Send Details &rarr;</a>
-        <p>Give us the specifics up front and we'll follow up with a written estimate.</p>
+  <!-- HERO -->
+  <section class="ct-hero">
+    <div class="container">
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>{hero.h1}</h1>
+      <p class="lede">{hero.lede}</p>
+      <div class="btn-row">
+        <a class="btn btn-primary btn-lg" href={hero.primary.href}>{hero.primary.label} <Icon name="arrow-right" size={18} /></a>
+        <a class="btn btn-outline btn-lg" href={hero.secondary.href}><Icon name="calendar-check" size={18} /> {hero.secondary.label}</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ LOCATION ============ -->
-<section class="band">
-  <div class="wrap">
-    <p class="eyebrow">Where We're Based</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Serving Spokane &amp; the Coeur d'Alene region</h2>
-    <p class="lead" style="margin-bottom:0">Based at 1908 E Mallon Ave, Spokane, WA 99202, covering communities across Eastern Washington and North Idaho. See the full <a href="about.html#service-area">list of towns we serve</a> on our About page.</p>
-
-    <div class="map-embed">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21494.43968369514!2d-117.3950103810845!3d47.66878523117889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549e190660699b21%3A0x6eaa9fed67721e4a!2sSpokane%20Stump%20Grinder!5e0!3m2!1sen!2sus!4v1786907828703!5m2!1sen!2sus" loading="lazy" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin" title="Spokane Stump Grinder on Google Maps"></iframe>
+  <!-- REACH US -->
+  <section class="section section-muted" id="reach">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{reach.eyebrow}</p>
+        <h2>{reach.h2}</h2>
+        <p class="lede">{reach.lede}</p>
+      </div>
+      <div class="ways">
+        {reach.ways.map((w) => (
+          <article class="card way">
+            <span class="icon-chip"><Icon name={w.icon} size={22} /></span>
+            <h3>{w.title}</h3>
+            {w.kind === 'phone' && <a class="big" href={`tel:${business.phoneHref}`}>{business.phoneDisplay}</a>}
+            {w.kind === 'email' && <a class="big" href={`mailto:${business.email}`}>info@<wbr />spokanestumpgrinder.com</a>}
+            {w.kind === 'form' && <a class="big" href={w.href}>{w.label} <Icon name="arrow-right" size={20} /></a>}
+            <p>{w.text}</p>
+          </article>
+        ))}
+      </div>
     </div>
-    <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">Get Directions on Google Maps &rarr;</a>
-  </div>
-</section>
+  </section>
 
-<section class="cta">
-  <div class="wrap">
-    <h2>Ready to talk about your stump?</h2>
-    <p>Send us the details and we'll get you a written estimate. No obligation, no pressure.</p>
-    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
-      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
-    </p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="service-request.html">Request Service</a>
-      <a class="btn btn-outline" href="booking.html">Book an OSC</a>
+  <!-- LOCATION -->
+  <section class="section" id="location">
+    <div class="container loc-grid">
+      <div class="loc-card">
+        <div class="section-head">
+          <p class="eyebrow">{location.eyebrow}</p>
+          <h2>{location.h2}</h2>
+          <p class="lede">{location.lede} See the full <a href="about.html#service-area">list of towns we serve</a> on our About page.</p>
+        </div>
+        <div class="addr">
+          <div><span class="icon-chip"><Icon name="map-pin" size={16} /></span><div><strong>Address</strong><address>{business.street}<br />{business.cityStateZip}</address></div></div>
+          <div><span class="icon-chip"><Icon name="phone" size={16} /></span><div><strong>Call or text</strong><a href={`tel:${business.phoneHref}`}>{business.phoneDisplay}</a></div></div>
+          <div><span class="icon-chip"><Icon name="mail" size={16} /></span><div><strong>Email</strong><a href={`mailto:${business.email}`}>{business.email}</a></div></div>
+        </div>
+      </div>
+      <div class="card map-card">
+        <iframe src={map.embedSrc} loading="lazy" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin" title="Spokane Stump Grinder on Google Maps"></iframe>
+        <div class="map-foot">
+          <p>1908 E Mallon Ave, Spokane, WA 99202</p>
+          <a class="btn btn-outline btn-sm" href={map.directions} target="_blank" rel="noopener"><Icon name="navigation" size={16} /> Get directions on Google Maps</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
-</Base>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="section" style="padding-top: 0">
+    <div class="container">
+      <div class="card closing">
+        <h2>{closing.h2}</h2>
+        <p class="lede">{closing.text}</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href="service-request.html">Request service</a>
+          <a class="btn btn-outline btn-lg" href={`tel:${business.phoneHref}`}><Icon name="phone" size={18} /> Call or text {business.phoneDisplay}</a>
+          <a class="btn btn-outline btn-lg" href="booking.html"><Icon name="calendar-check" size={18} /> Book an OSC</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Site>
