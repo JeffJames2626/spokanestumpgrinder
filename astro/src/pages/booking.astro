@@ -1,129 +1,127 @@
 ---
-import '../styles/shared.css';
-import '../styles/pages/booking.css';
-import Base from '../layouts/Base.astro';
+import Site from '../layouts/Site.astro';
+import '../styles/pages/booking-v2.css';
+import Icon from '../components/v2/Icon.astro';
+import { calendar, hero, steps, prep, closing } from '../data/booking';
+import { business } from '../data/site';
+
+const SITE = 'https://spokanestumpgrinder.com/';
+const pageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': SITE + 'booking.html',
+  url: SITE + 'booking.html',
+  name: 'Book an On-Site Consultation (OSC)',
+  potentialAction: { '@type': 'ReserveAction', target: calendar.directLink, name: 'Book a free on-site consultation' },
+  about: { '@type': 'LocalBusiness', '@id': SITE + '#business', name: business.name, telephone: '+1-509-434-9554' },
+};
 
 const meta = {
-  title: "Book an On-Site Consultation (OSC) | Spokane Stump Grinder",
-  description: "Book a free on-site consultation (OSC) for stump grinding in Spokane, WA. Pick a time from our live calendar and see how to prep for the visit.",
-  active: "booking.html",
+  title: 'Book an On-Site Consultation (OSC) | Spokane Stump Grinder',
+  description: 'Book a free on-site consultation (OSC) for stump grinding in Spokane, WA. Pick a time from our live calendar and see how to prep for the visit.',
+  canonical: SITE + 'booking.html',
+  og: { type: 'website', title: 'Book an On-Site Consultation (OSC) | Spokane Stump Grinder', description: 'Book a free on-site consultation (OSC) for stump grinding in Spokane, WA. Pick a time from our live calendar and see how to prep for the visit.', url: SITE + 'booking.html', image: SITE + 'images/about-stump-profile.jpg', site_name: business.name },
+  twitterCard: 'summary_large_image',
+  jsonld: [JSON.stringify(pageLd, null, 2)],
+  active: 'booking.html',
 };
 ---
-<Base {...meta}>
-<div class="hero">
-  <div class="wrap">
-    <p class="eyebrow">On-Site Consultation</p>
-    <h1>Book an On-Site Consultation</h1>
-    <p>Grab a spot on the calendar for a free, no-obligation on-site consultation &mdash; we call it an OSC for short. We'll take a look at your stump, talk through access and scope, and follow up with a written estimate &mdash; nothing gets scheduled or charged before that.</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="https://calendar.app.google/aTdtZTwUYeFVpjR17" target="_blank" rel="noopener">Book an OSC</a>
-      <a class="btn btn-outline" href="service-request.html">Send Details Instead</a>
-    </div>
-  </div>
-</div>
+<Site {...meta}>
 
-<!-- ============ SEQUENCE ============ -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">The Order of Things</p>
-    <h2 style="margin:0 0 26px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Your OSC first, then a plan</h2>
-    <div class="steps">
-      <div class="step">
-        <h3>Book your free OSC</h3>
-        <p>Grab a slot on the calendar. No cost, no obligation &mdash; just a look at the job.</p>
+  <!-- HERO -->
+  <section class="book-hero">
+    <div class="container">
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>Book an <span style="white-space: nowrap">On-Site</span> Consultation</h1>
+      <p class="lede">{hero.lede}</p>
+      <div class="btn-row">
+        <a class="btn btn-primary btn-lg" href="#book"><Icon name="calendar-check" size={18} /> Pick a time below</a>
+        <a class="btn btn-outline btn-lg" href={hero.secondary.href}>{hero.secondary.label}</a>
       </div>
-      <div class="step">
-        <h3>We walk the property</h3>
-        <p>We look at the stump, check access, and talk through what it'll actually take.</p>
+      <ul class="hero-proof" aria-label="What to expect">
+        <li class="badge"><Icon name="badge-check" size={14} /> Free, no obligation</li>
+        <li class="badge"><Icon name="clock" size={14} /> Written estimate after the visit</li>
+        <li class="badge"><Icon name="phone" size={14} /> You don't have to be home</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SEQUENCE -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">The order of things</p>
+        <h2>Your OSC first, then a plan</h2>
       </div>
-      <div class="step">
-        <h3>Get your written estimate</h3>
-        <p>Scope and price in writing, usually right after the visit.</p>
+      <ol class="steps">
+        {steps.map((s) => (<li class="card step"><h3>{s.title}</h3><p>{s.text}</p></li>))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="section" id="book">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Check availability</p>
+        <h2>Pick a time that works</h2>
+        <p class="lede">Our live calendar shows what's open for a free OSC. Grab the slot you want and it's yours.</p>
       </div>
-      <div class="step">
-        <h3>Schedule the work</h3>
-        <p>Approve the estimate and we'll find you a date that fits the job and the equipment it needs.</p>
+      <div class="book-grid">
+        <div class="card cal-card">
+          <!-- Google Calendar Appointment Scheduling begin -->
+          <iframe src={calendar.embedSrc} style="border: 0" width="100%" height="600" frameborder="0" title="Book an on-site consultation — Google Calendar appointment schedule"></iframe>
+          <!-- end Google Calendar Appointment Scheduling -->
+        </div>
+        <aside class="card fallback">
+          <h3>Calendar not loading?</h3>
+          <p>Open the booking page directly, or just call us.</p>
+          <a class="btn btn-primary" href={calendar.directLink} target="_blank" rel="noopener">Open booking calendar <Icon name="external-link" size={16} /></a>
+          <div class="or">or call / text</div>
+          <a class="callline" href={`tel:${business.phoneHref}`}><Icon name="phone" size={22} /> {business.phoneDisplay}</a>
+          <ul class="checks">
+            <li><Icon name="check" size={18} />Reschedule from the link in your Google Calendar confirmation</li>
+            <li><Icon name="check" size={18} /><span>Prefer photos first? <a href="service-request.html">Send the details</a> instead</span></li>
+          </ul>
+        </aside>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ BOOK ============ -->
-<section class="band">
-  <div class="wrap">
-    <p class="eyebrow">Check Availability</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Pick a time that works</h2>
-    <p class="lead">Our live calendar shows what's open for a free OSC. Grab the slot you want and it's yours.</p>
-
-    <div class="cal-embed">
-      <!-- Google Calendar Appointment Scheduling begin -->
-<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Dl20bg0qX3ENa4D2aKHVtvONpk9ahrO8jLHmNbmJBLBapFZIsRN2nm2jLoZY693mm19jywzWl?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
-<!-- end Google Calendar Appointment Scheduling -->
+  <!-- PREP -->
+  <section class="section section-muted" id="prep">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{prep.eyebrow}</p>
+        <h2>{prep.h2}</h2>
+        <p class="lede">{prep.lede}</p>
+      </div>
+      <div class="prep-grid">
+        {prep.items.map((p) => (
+          <article class="card prep">
+            <span class="icon-chip"><Icon name={p.icon} size={20} /></span>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </article>
+        ))}
+      </div>
     </div>
+  </section>
 
-    <div class="bookcard">
-      <p style="margin:0 auto 4px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;font-weight:700">Calendar not loading?</p>
-      <p style="margin:0 auto 18px">Open the booking page directly, or just call us.</p>
-      <a class="btn btn-primary" href="https://calendar.app.google/aTdtZTwUYeFVpjR17" target="_blank" rel="noopener">Open Booking Calendar</a>
-      <div class="or">or</div>
-      <p style="margin:14px auto 0;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;font-weight:700">Call or Text</p>
-      <a class="callline" href="tel:+15094349554">509-434-9554</a>
+  <!-- CLOSING CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="card closing">
+        <h2>{closing.h2}</h2>
+        <p class="lede">{closing.text}</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href={calendar.directLink} target="_blank" rel="noopener"><Icon name="calendar-check" size={18} /> Book an OSC</a>
+          <a class="btn btn-outline btn-lg" href={`tel:${business.phoneHref}`}><Icon name="phone" size={18} /> Call or text {business.phoneDisplay}</a>
+          <a class="btn btn-outline btn-lg" href="service-request.html">Request an estimate</a>
+        </div>
+        <p class="faq-link">Got more questions first? Check the <a href="faq.html#scheduling">FAQ page</a>.</p>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- ============ PREP ============ -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Before We Arrive</p>
-    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">How to prep for your OSC</h2>
-    <p class="lead">A few minutes of prep on your end helps us look at the whole job and give you an accurate estimate.</p>
-    <table class="tbl">
-      <thead>
-        <tr><th>What we need</th><th>Why it matters</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Clear path to the stump</strong></td>
-          <td>Move vehicles, trailers, toys, hoses, and patio furniture off the route from the street to the work area.</td>
-        </tr>
-        <tr>
-          <td><strong>Gate unlocked</strong></td>
-          <td>If the stump is in a fenced yard, we need in. Let us know if a gate panel has to come off.</td>
-        </tr>
-        <tr>
-          <td><strong>Pets inside</strong></td>
-          <td>We'll be walking the property and don't want to startle or spook an animal that isn't expecting a stranger in the yard.</td>
-        </tr>
-        <tr>
-          <td><strong>Sprinkler heads flagged</strong></td>
-          <td>If you know where your irrigation runs near the stump, mark it. We probe, but you know your yard better.</td>
-        </tr>
-        <tr>
-          <td><strong>Utility locates</strong></td>
-          <td>We confirm public locates are in place. Private lines &mdash; gas to a fire pit, low-voltage lighting, invisible fence &mdash; only you know about, so tell us.</td>
-        </tr>
-        <tr>
-          <td><strong>Someone reachable</strong></td>
-          <td>You don't have to be home for the OSC, but we'll need to reach you by phone with questions or your written estimate.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="wrap">
-    <h2>Ready to book your OSC?</h2>
-    <p>Grab a slot from the calendar, or send us the details first if you'd rather start there. Got more questions first? Check the <a href="faq.html" style="color:var(--moss-dark)">FAQ page</a>.</p>
-    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
-      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
-    </p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="https://calendar.app.google/aTdtZTwUYeFVpjR17" target="_blank" rel="noopener">Book an OSC</a>
-      <a class="btn btn-outline" href="service-request.html">Request an Estimate</a>
-    </div>
-  </div>
-</section>
-</Base>
+</Site>

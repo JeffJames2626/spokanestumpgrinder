@@ -1,0 +1,48 @@
+/* Booking page layout (v2). Primitives in base.css, tokens in tokens.css. */
+
+/* hero */
+.book-hero { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem); }
+.book-hero h1 { margin: var(--space-2) 0 var(--space-5); max-width: 24ch; }
+.book-hero .lede { font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem); max-width: 64ch; }
+.book-hero .btn-row { margin-top: var(--space-8); }
+.hero-proof { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6); }
+
+/* steps (shared look with homepage) */
+.steps { list-style: none; counter-reset: step; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-5); }
+.step { counter-increment: step; padding: var(--space-6); }
+.step::before { content: counter(step); display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: var(--radius-full); background: var(--primary); color: var(--primary-foreground); font-family: var(--font-heading); font-weight: 700; font-size: 1.125rem; margin-bottom: var(--space-4); }
+.step h3 { font-size: 1.1875rem; margin-bottom: var(--space-2); }
+@media (max-width: 64rem) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 36rem) { .steps { grid-template-columns: 1fr; } }
+
+/* calendar */
+#book { scroll-margin-top: 5rem; }
+.book-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 20rem); gap: var(--space-6); align-items: start; }
+.cal-card { padding: var(--space-3); overflow: hidden; }
+.cal-card iframe { display: block; width: 100%; height: 600px; border: 0; border-radius: var(--radius-xl); background: var(--card); }
+.fallback { position: sticky; top: 6rem; display: grid; gap: var(--space-4); padding: var(--space-6); }
+.fallback h3 { font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-foreground); margin: 0; }
+.fallback .btn { width: 100%; }
+.fallback .or { display: flex; align-items: center; gap: var(--space-3); color: var(--muted-foreground); font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.fallback .or::before, .fallback .or::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.fallback .callline { display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--foreground); }
+.fallback .callline svg { color: var(--brand-red-text); flex: none; }
+.fallback .callline:hover { color: var(--brand-red-text); text-decoration: none; }
+.fallback .checks { margin-top: var(--space-2); font-size: 0.9375rem; }
+@media (max-width: 56rem) { .book-grid { grid-template-columns: 1fr; } .fallback { position: static; } }
+@media (max-width: 36rem) { .cal-card { padding: var(--space-2); } }
+
+/* prep */
+.prep-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+.prep { display: flex; flex-direction: column; gap: var(--space-3); }
+.prep h3 { font-size: 1.125rem; margin: var(--space-1) 0 0; }
+.prep p { font-size: 0.9375rem; }
+@media (max-width: 64rem) { .prep-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 36rem) { .prep-grid { grid-template-columns: 1fr; } }
+
+/* closing */
+.closing { padding: clamp(2.5rem, 6vw, 4.5rem); text-align: center; background: linear-gradient(180deg, var(--card), var(--muted)); }
+.closing h2 { margin-bottom: var(--space-3); }
+.closing .lede { margin-inline: auto; }
+.closing .btn-row { justify-content: center; margin-top: var(--space-8); }
+.closing .faq-link { margin-top: var(--space-5); font-size: 0.9375rem; color: var(--muted-foreground); }
