@@ -7,6 +7,7 @@ import Seo from '../components/Seo.astro';
 import Header from '../components/v2/Header.astro';
 import Footer from '../components/v2/Footer.astro';
 import MobileCtaBar from '../components/v2/MobileCtaBar.astro';
+import RequestDialog from '../components/v2/RequestDialog.astro';
 
 const { title, description, canonical, og, twitterCard, jsonld, active } = Astro.props;
 ---
@@ -32,5 +33,6 @@ const { title, description, canonical, og, twitterCard, jsonld, active } = Astro
 </main>
 <Footer />
 <MobileCtaBar />
+<RequestDialog />
 </body>
 </html>
