@@ -1,0 +1,129 @@
+---
+import '../styles/shared.css';
+import '../styles/pages/booking.css';
+import Base from '../layouts/Base.astro';
+
+const meta = {
+  title: "Book an On-Site Consultation (OSC) | Spokane Stump Grinder",
+  description: "Book a free on-site consultation (OSC) for stump grinding in Spokane, WA. Pick a time from our live calendar and see how to prep for the visit.",
+  active: "booking.html",
+};
+---
+<Base {...meta}>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">On-Site Consultation</p>
+    <h1>Book an On-Site Consultation</h1>
+    <p>Grab a spot on the calendar for a free, no-obligation on-site consultation &mdash; we call it an OSC for short. We'll take a look at your stump, talk through access and scope, and follow up with a written estimate &mdash; nothing gets scheduled or charged before that.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://calendar.app.google/aTdtZTwUYeFVpjR17" target="_blank" rel="noopener">Book an OSC</a>
+      <a class="btn btn-outline" href="service-request.html">Send Details Instead</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SEQUENCE ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The Order of Things</p>
+    <h2 style="margin:0 0 26px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Your OSC first, then a plan</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Book your free OSC</h3>
+        <p>Grab a slot on the calendar. No cost, no obligation &mdash; just a look at the job.</p>
+      </div>
+      <div class="step">
+        <h3>We walk the property</h3>
+        <p>We look at the stump, check access, and talk through what it'll actually take.</p>
+      </div>
+      <div class="step">
+        <h3>Get your written estimate</h3>
+        <p>Scope and price in writing, usually right after the visit.</p>
+      </div>
+      <div class="step">
+        <h3>Schedule the work</h3>
+        <p>Approve the estimate and we'll find you a date that fits the job and the equipment it needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOK ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">Check Availability</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Pick a time that works</h2>
+    <p class="lead">Our live calendar shows what's open for a free OSC. Grab the slot you want and it's yours.</p>
+
+    <div class="cal-embed">
+      <!-- Google Calendar Appointment Scheduling begin -->
+<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Dl20bg0qX3ENa4D2aKHVtvONpk9ahrO8jLHmNbmJBLBapFZIsRN2nm2jLoZY693mm19jywzWl?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+<!-- end Google Calendar Appointment Scheduling -->
+    </div>
+
+    <div class="bookcard">
+      <p style="margin:0 auto 4px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;font-weight:700">Calendar not loading?</p>
+      <p style="margin:0 auto 18px">Open the booking page directly, or just call us.</p>
+      <a class="btn btn-primary" href="https://calendar.app.google/aTdtZTwUYeFVpjR17" target="_blank" rel="noopener">Open Booking Calendar</a>
+      <div class="or">or</div>
+      <p style="margin:14px auto 0;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;font-weight:700">Call or Text</p>
+      <a class="callline" href="tel:+15094349554">509-434-9554</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PREP ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Before We Arrive</p>
+    <h2 style="margin:0 0 8px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">How to prep for your OSC</h2>
+    <p class="lead">A few minutes of prep on your end helps us look at the whole job and give you an accurate estimate.</p>
+    <table class="tbl">
+      <thead>
+        <tr><th>What we need</th><th>Why it matters</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Clear path to the stump</strong></td>
+          <td>Move vehicles, trailers, toys, hoses, and patio furniture off the route from the street to the work area.</td>
+        </tr>
+        <tr>
+          <td><strong>Gate unlocked</strong></td>
+          <td>If the stump is in a fenced yard, we need in. Let us know if a gate panel has to come off.</td>
+        </tr>
+        <tr>
+          <td><strong>Pets inside</strong></td>
+          <td>We'll be walking the property and don't want to startle or spook an animal that isn't expecting a stranger in the yard.</td>
+        </tr>
+        <tr>
+          <td><strong>Sprinkler heads flagged</strong></td>
+          <td>If you know where your irrigation runs near the stump, mark it. We probe, but you know your yard better.</td>
+        </tr>
+        <tr>
+          <td><strong>Utility locates</strong></td>
+          <td>We confirm public locates are in place. Private lines &mdash; gas to a fire pit, low-voltage lighting, invisible fence &mdash; only you know about, so tell us.</td>
+        </tr>
+        <tr>
+          <td><strong>Someone reachable</strong></td>
+          <td>You don't have to be home for the OSC, but we'll need to reach you by phone with questions or your written estimate.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Ready to book your OSC?</h2>
+    <p>Grab a slot from the calendar, or send us the details first if you'd rather start there. Got more questions first? Check the <a href="faq.html" style="color:var(--moss-dark)">FAQ page</a>.</p>
+    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
+      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://calendar.app.google/aTdtZTwUYeFVpjR17" target="_blank" rel="noopener">Book an OSC</a>
+      <a class="btn btn-outline" href="service-request.html">Request an Estimate</a>
+    </div>
+  </div>
+</section>
+</Base>

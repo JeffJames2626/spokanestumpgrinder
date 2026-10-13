@@ -1,0 +1,42 @@
+---
+import { footerServices, footerCompany, business } from '../data/site';
+---
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <strong style="color:#f0f0f0;display:block;margin-bottom:8px;font-size:19px">{business.name}</strong>
+        Stump grinding and stump removal<br>
+        Spokane, WA &mdash; serving the Spokane<br>&amp; Coeur d'Alene region<br>
+        <a href={`tel:${business.phoneHref}`} style="display:inline-block;margin-top:10px;font-size:17px;font-weight:700;color:var(--chip)"><span class="ficon" set:html="&#9742;"></span>{business.phoneDisplay}</a><br>
+        <a class="footer-addr" href={`mailto:${business.email}`}><span class="ficon" set:html="&#9993;"></span>{business.email}</a><br>
+        <a class="footer-addr footer-addr-map" href="https://www.google.com/maps/dir/?api=1&destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener"><span class="ficon" set:html="&#8982;"></span><span>{business.street}<br>{business.cityStateZip}</span></a>
+      </div>
+      <div>
+        <strong style="color:#f0f0f0;display:block;margin-bottom:8px;font-size:19px">Services</strong>
+        <ul>
+          {footerServices.map((i) => (<li><a href={i.href}><span class="ficon" set:html={i.icon}></span><Fragment set:html={i.label} /></a></li>))}
+        </ul>
+      </div>
+      <div>
+        <strong style="color:#f0f0f0;display:block;margin-bottom:8px;font-size:19px">Company</strong>
+        <ul>
+          {footerCompany.map((i) => (<li><a href={i.href}><span class="ficon" set:html={i.icon}></span>{i.label}</a></li>))}
+        </ul>
+      </div>
+      <div class="footer-col-map">
+        <strong style="color:#f0f0f0;display:block;margin-bottom:8px;font-size:19px">Find Us</strong>
+        <div class="footer-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21494.43968369514!2d-117.3950103810845!3d47.66878523117889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549e190660699b21%3A0x6eaa9fed67721e4a!2sSpokane%20Stump%20Grinder!5e0!3m2!1sen!2sus!4v1786907828703!5m2!1sen!2sus" loading="lazy" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin" title="Spokane Stump Grinder on Google Maps"></iframe>
+        </div>
+        <a class="footer-map-link" href="https://www.google.com/maps/dir/?api=1&destination=1908+E+Mallon+Ave%2C+Spokane%2C+WA+99202" target="_blank" rel="noopener">Get Directions on Google Maps &rarr;</a>
+      </div>
+    </div>
+
+    <div class="footer-logo">
+      <img src="images/logo-words.png" alt="Spokane Stump Grinder">
+    </div>
+
+    <div class="fine">&copy; 2026 Spokane Stump Grinder. All rights reserved.<br>An Automated Company &#9881;&#65039;</div>
+  </div>
+</footer>

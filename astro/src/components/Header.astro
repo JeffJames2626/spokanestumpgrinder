@@ -1,0 +1,21 @@
+---
+import { nav } from '../data/site';
+const { active } = Astro.props;
+---
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html">
+      <img class="mark" src="images/logo-full.png" alt="Spokane Stump Grinder">
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+    <label for="nav-toggle" class="nav-toggle-btn" aria-label="Menu"><span class="hbar hbar-top"></span><span class="hbar hbar-mid"></span><span class="hbar hbar-bottom"></span></label>
+    <nav>
+      <ul>
+        {nav.map((item) => (
+          <li class={item.className}><a class={active === item.href ? 'active' : undefined} href={item.href}><span class="ficon" set:html={item.icon}></span>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <a class="schedule-btn" href="booking.html"><span class="sched-full">Schedule Consultation</span><span class="sched-short">Schedule</span></a>
+  </div>
+</header>

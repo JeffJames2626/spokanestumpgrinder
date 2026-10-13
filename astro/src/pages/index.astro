@@ -1,0 +1,175 @@
+---
+import '../styles/shared.css';
+import '../styles/pages/index.css';
+import Base from '../layouts/Base.astro';
+import NewsPill from '../components/NewsPill.astro';
+import FeaturePost from '../components/FeaturePost.astro';
+
+const meta = {
+  title: "Stump Grinding &amp; Removal in Spokane, WA | Spokane Stump Grinder",
+  description: "Stump grinding and stump removal in Spokane, WA and the Coeur d'Alene region. Ground below grade, chips hauled, written estimates before we start.",
+  active: "index.html",
+};
+---
+<Base {...meta}>
+<div class="hero-home">
+  <div class="wrap">
+    <NewsPill />
+    <p class="eyebrow">Spokane &amp; Coeur d'Alene Region</p>
+    <h1>That stump has been there long enough.</h1>
+    <p>We grind stumps down below grade and haul the mess out, so you get back a yard you can mow, plant, build on, or just stop tripping over. Written estimates before any work starts.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Get a Free Estimate</a>
+      <a class="btn btn-outline" href="services.html">See What We Do</a>
+    </div>
+    <div class="stats">
+      <a class="stat" href="services.html#removal-cleanup"><strong>Two specialties</strong><span>Stump grinding and full removal &mdash; that's all we do</span></a>
+      <a class="stat" href="service-request.html"><strong>Written estimates</strong><span>Scope and price in writing before we schedule</span></a>
+      <a class="stat" href="case-studies.html#job-3"><strong>Clean job sites</strong><span>Blown down and walked with you before we leave</span></a>
+      <a class="stat" href="about.html#service-area"><strong>28 communities</strong><span>Across Eastern WA and North Idaho</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="home-logo">
+    <img src="images/logo-banner.jpg" alt="Spokane Stump Grinder">
+  </div>
+</div>
+
+<!-- ============ SERVICES SUMMARY ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What We Do</p>
+    <h2 style="margin:0 0 10px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Two services, done properly</h2>
+    <p class="lead">Some jobs just need the stump gone. Others need the ground ready for concrete, a fence post, or a new tree. Here's the difference.</p>
+
+    <div class="svc-tiles">
+      <div class="tile">
+        <div class="tile-top"><h3>Stump Grinding</h3></div>
+        <div class="tile-body">
+          <p>The stump and its surface roots ground down below ground level, chips raked back into the hole and tamped level. Most single stumps are a same-visit job.</p>
+          <ul class="checks">
+            <li>Ground below grade so you can mow and seed over it</li>
+            <li>Surface root flare taken down, not just the trunk</li>
+            <li>Grindings backfilled and leveled</li>
+            <li>Walks and drives blown clean before we pull out</li>
+          </ul>
+          <a class="btn btn-outline" href="services.html">Grinding Details</a>
+        </div>
+      </div>
+
+      <div class="tile">
+        <div class="tile-top"><h3>Stump Removal &amp; Cleanup</h3></div>
+        <div class="tile-body">
+          <p>Everything in grinding, plus we haul the chips off and backfill with clean topsoil. This is the one to pick when something is going in that spot.</p>
+          <ul class="checks">
+            <li>Chips and wood debris hauled away, not left curbside</li>
+            <li>Larger roots and trunk chunks pulled out</li>
+            <li>Topsoil backfill, tamped so it won't sink</li>
+            <li>Finished level with the surrounding yard</li>
+          </ul>
+          <a class="btn btn-outline" href="services.html">Removal Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">Why Homeowners Call Us</p>
+    <h2 style="margin:0 0 26px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">No guesswork, no mess left behind</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>You know the price before we start</h3>
+        <p>Every job gets a written estimate with the scope spelled out. What's included and what isn't, in plain language, before anything is scheduled.</p>
+      </div>
+      <div class="card">
+        <h3>We protect the yard we're working in</h3>
+        <p>Plywood tracking over soft turf, shielding around siding, fences, and windows. The machine is heavy and we treat your lawn like it matters.</p>
+      </div>
+      <div class="card">
+        <h3>Utilities get checked first</h3>
+        <p>We confirm locates are in place and probe the work area before the wheel turns. Grinding blind next to a gas or irrigation line is how yards get wrecked.</p>
+      </div>
+      <div class="card">
+        <h3>The site gets cleaned</h3>
+        <p>Hard surfaces blown down, debris handled per your scope, and a walkthrough with you at the end if you're home.</p>
+      </div>
+      <div class="card">
+        <h3>Straight answers on tricky stumps</h3>
+        <p>Tight backyard access, stumps against a foundation, rock in the roots &mdash; we'll tell you what it actually takes instead of quoting low and renegotiating on site.</p>
+      </div>
+      <div class="card">
+        <h3>Multiple stumps cost less each</h3>
+        <p>Setup and travel get shared across the visit. If you've got three or four, get them all done at once.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">How It Works</p>
+    <h2 style="margin:0 0 26px;font-size:clamp(26px,3.6vw,34px);color:var(--bark)">Four steps, no surprises</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Send us the details</h3>
+        <p>Fill out the service request with a photo, a rough diameter, and a note about access. Photos save everyone a trip.</p>
+      </div>
+      <div class="step">
+        <h3>Get a written estimate</h3>
+        <p>We put the scope and price in writing before anything is scheduled, so you know exactly what's included.</p>
+      </div>
+      <div class="step">
+        <h3>Pick your date</h3>
+        <p>Approve the estimate and book a slot that works for you. We confirm before we roll out.</p>
+      </div>
+      <div class="step">
+        <h3>We grind and clean up</h3>
+        <p>Work gets done, the site gets cleaned, and we walk the finished spot with you if you're home.</p>
+      </div>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Start With a Free Estimate</a>
+      <a class="btn btn-outline" href="booking.html">Check Availability</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING TEASER ============ -->
+<section class="factors">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--chip)">Straight Talk on Pricing</p>
+    <h2>Why we don't post a flat rate</h2>
+    <p class="lead">Two stumps the same width across can be an hour apart in real work. Diameter at grade, root spread, how deep it needs to go, and whether the machine can even reach the backyard all move the number. We look at your actual stump and put a real price in writing.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="services.html">See What Drives the Price</a>
+    </div>
+  </div>
+</section>
+<!-- ============ LATEST FROM THE BLOG ============  (data: src/data/posts.ts -> feature) -->
+<section>
+  <div class="wrap">
+    <FeaturePost />
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="wrap">
+    <h2>Ready to get that stump out of your yard?</h2>
+    <p>Send us the details and we'll get you a written estimate. No obligation, no pressure.</p>
+    <p style="font-size:20px;font-weight:700;color:var(--bark);margin-top:18px">
+      Call or text <a href="tel:+15094349554" style="color:var(--moss-dark)">509-434-9554</a>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="service-request.html">Request Service</a>
+      <a class="btn btn-outline" href="case-studies.html">See Our Work</a>
+    </div>
+  </div>
+</section>
+</Base>

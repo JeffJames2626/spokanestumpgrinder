@@ -1,0 +1,104 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Is This One Stump or Three? A Deer Park, WA Stump Grinding Case Study",
+    "description": "A Deer Park, WA job where the stump count was wrong: how stumps are really counted and measured, why chasing roots adds up, and how to get an accurate quote.",
+    "image": [
+      "https://spokanestumpgrinder.com/images/deer-park-multi-trunk-stump.jpg"
+    ],
+    "datePublished": "2026-10-02",
+    "dateModified": "2026-10-02",
+    "mainEntityOfPage": "https://spokanestumpgrinder.com/blog-one-stump-or-three.html",
+    "author": {
+      "@type": "Organization",
+      "name": "Spokane Stump Grinder",
+      "url": "https://spokanestumpgrinder.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Spokane Stump Grinder",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://spokanestumpgrinder.com/images/logo-full.png"
+      }
+    },
+    "about": [
+      "Stump grinding",
+      "Stump grinding cost",
+      "Tree root removal"
+    ],
+    "contentLocation": {
+      "@type": "Place",
+      "name": "Deer Park, Washington",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Deer Park",
+        "addressRegion": "WA",
+        "addressCountry": "US"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is a multi-trunk stump priced as one stump or several?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on the grinder and on the stump. Some measure the whole cluster across its widest point as one stump; others measure each trunk separately. Either way, the work is driven by how much wood is in the ground, so what matters most is that the quote reflects the stump's real size and shape. Send a photo and we'll tell you how we'd measure it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does stump grinding include the surface roots?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not automatically. Grinding the stump and chasing surface roots out into the lawn are usually treated as separate pieces of work. Tell us which roots you want ground and how far out they run, and we'll put it on the written estimate before any work starts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is a stump measured at the ground instead of at the cut?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because the cut on top isn't the widest part. Trees flare out where the trunk meets the roots, so a stump is usually wider at ground level than the flat cut suggests. That root flare is wood the grinder has to take out, so it's part of the measurement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you do stump grinding in Deer Park, WA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Deer Park is part of our regular service area, along with Chattaroy, Colbert, Mead, Elk, Nine Mile Falls, and the rest of the Spokane and Coeur d'Alene region. Request service online or call 509-434-9554."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://spokanestumpgrinder.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://spokanestumpgrinder.com/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "One Stump or Three?",
+        "item": "https://spokanestumpgrinder.com/blog-one-stump-or-three.html"
+      }
+    ]
+  }
+]

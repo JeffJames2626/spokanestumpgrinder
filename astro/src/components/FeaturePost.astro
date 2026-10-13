@@ -1,0 +1,12 @@
+---
+import { feature } from '../data/posts';
+---
+<a class="feature-post" href={feature.file}>
+  <img src={feature.image} width={feature.imageWidth} height={feature.imageHeight} loading="lazy" alt={feature.imageAlt}>
+  <div class="feature-body">
+    <p class="eyebrow">{feature.eyebrow}</p>
+    <h2>{feature.headline}</h2>
+    <p>{feature.summary}</p>
+    <span class="read-more">{feature.cta} <span aria-hidden="true">&rarr;</span></span>
+  </div>
+</a>

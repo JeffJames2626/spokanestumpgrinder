@@ -24,3 +24,13 @@ node_modules/
 *.eps
 *.ai
 images/logo/
+
+# --- redesign/v2 (local only) ---
+node_modules/
+astro/dist/
+astro/.astro/
+astro/public/images/
+astro/public/favicon.*
+astro/public/robots.txt
+astro/tools/chunks.json
+astro/tools/convert-report.json
