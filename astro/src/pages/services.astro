@@ -86,15 +86,15 @@ const yes = (v: boolean) => v;
               <h3>Good fit when</h3>
               <ul>{s.goodFit.map((g) => (<li><strong>{g.title}</strong><span>{g.text}</span></li>))}</ul>
             </div>
-            <div class="svc-photos">
-              {s.photos.map((p, j) => (
-                <figure class={`svc-photo${p.caption === 'After' || j === 1 ? ' hl' : ''}`}>
-                  <Img file={p.file} alt={p.alt} widths={[320, 480, 640, 900]} sizes="(max-width: 64rem) 50vw, 220px" />
-                  <figcaption><span>{p.caption}</span></figcaption>
-                </figure>
-              ))}
-            </div>
           </aside>
+        </div>
+        <div class="svc-photos">
+          {s.photos.map((p, j) => (
+            <figure class={`svc-photo${p.caption === 'After' || j === 1 ? ' hl' : ''}`}>
+              <Img file={p.file} alt={p.alt} widths={[480, 800, 1200, 1600]} sizes="(max-width: 48rem) 100vw, (max-width: 72rem) 50vw, 570px" />
+              <figcaption><span>{p.caption}</span></figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>
