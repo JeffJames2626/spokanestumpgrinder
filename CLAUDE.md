@@ -247,9 +247,45 @@ placeholder), `.todo` (yellow unfinished marker), `.footer-map` +
 
 ## Integrations
 
-### Intake form (FormSubmit) — service-request.html
+### Intake form → Homeworks (with FormSubmit email fallback) — service-request.html
 
-**Current (redesign branch, 2026-10-12): our own form, delivered by FormSubmit.**
+**Current (2026-10-20): the form creates the lead in Homeworks; email is the fallback.**
+The popup form (`astro/src/components/v2/RequestDialog.astro`, copy/options/config in
+`astro/src/data/service-request.ts`) posts JSON to **`/api/lead`**, a Vercel Node
+function at `api/lead.js` (repo root; `package.json` at the root exists only to make
+it an ES module — the install/build commands still run in `astro/`). The function:
+
+1. validates + honeypot (filled honeypot → fake 200, nothing sent);
+2. logs in to Homeworks (`POST https://api.home.works/auth/login` with
+   `HOMEWORKS_USERNAME` / `HOMEWORKS_PASSWORD` from Vercel env vars — ideally a
+   dedicated Homeworks user; token cached per warm instance);
+3. looks the customer up by email, then cell, and reuses it if found;
+4. otherwise `createCustomer` as type **Lead** (id 2356) with source
+   **Spokane Stump Grinder Website** (id 14953), tags `Spokane Stump Grinder` +
+   `Website lead`, the stump details in `description`;
+5. `createProperty` at the service address with the details as `notes`, photos
+   attached via `createUpload` → PUT → `mediaFileKeys` (browser shrinks photos to
+   ≤1600px JPEG first; ≤6 photos, ≤1.5 MB each after shrink).
+
+The Homeworks account is **Automated Lawn and Pest, LLC** (company 13676) — same
+owners; stump leads are distinguished by the type/source/tags above. IDs can be
+overridden with `HOMEWORKS_LEAD_TYPE_ID` / `HOMEWORKS_SOURCE_ID`; `HOMEWORKS_API_URL`
+defaults to `https://api.home.works`. Function logs one JSON line per lead
+(`{"lead":"ok",customerId,…}`) — visible in Vercel → Logs.
+
+**Fallback:** if `/api/lead` returns anything but 200 (Homeworks down, env vars
+missing, JS error) the browser re-submits the same form natively to FormSubmit
+(below), so the lead arrives by email instead. With JS off the form goes straight
+to FormSubmit.
+
+Tests (`ssg-redesign-tools/`): `api-lead-test.mjs` runs `api/lead.js` against a
+fake Homeworks on 127.0.0.1 (login, lookup, createCustomer, upload, createProperty,
+honeypot, 422, 502); `intake-runtime.mjs` drives the real page in Chrome through
+both the API path and the fallback. Neither touches home.works or FormSubmit.
+
+### Email fallback (FormSubmit) — service-request.html
+
+**Used only when `/api/lead` fails (or JS is off). Set up 2026-10-12.**
 Markup lives in `astro/src/pages/service-request.astro`; copy, field options and
 the delivery config in `astro/src/data/service-request.ts`; form primitives
 (`.field`, `.input`, `.select`, `.textarea`, `.choice`, `.form-grid`,

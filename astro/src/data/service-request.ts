@@ -11,6 +11,9 @@
 // the submit button, so nothing is silently lost. Docs: https://formsubmit.co/documentation
 
 export const form = {
+  // Primary delivery: our Vercel function creates the lead in Homeworks (api/lead.js). The form's JS posts
+  // JSON here; if it fails (or JS is off) the form falls back to the FormSubmit email below.
+  api: '/api/lead',
   action: 'https://formsubmit.co/779a635b69e3b6c853c44bea7f0760f9', // FormSubmit alias for info@spokanestumpgrinder.com (keeps the address out of the page source)
   method: 'POST',
   hidden: {

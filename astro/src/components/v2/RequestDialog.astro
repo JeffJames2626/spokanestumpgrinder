@@ -23,7 +23,7 @@ const configured = Boolean(form.action);
       </p>
     )}
 
-    <form id="intake" action={form.action || undefined} method={form.method} enctype="multipart/form-data">
+    <form id="intake" action={form.action || undefined} method={form.method} enctype="multipart/form-data" data-api={form.api}>
       {Object.entries(form.hidden).map(([k, v]) => <input type="hidden" name={k} value={v} />)}
       <input type="hidden" name="_next" id="next" value={form.nextDefault} />
       <p class="honey" aria-hidden="true"><label>Leave this field empty <input type="text" name={form.honeypot} tabindex="-1" autocomplete="off" /></label></p>
@@ -177,10 +177,56 @@ const configured = Boolean(form.action);
   dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); }); // click on the backdrop
   var fromHash = function () { if (location.hash === '#request') { open(); try { history.replaceState(null, '', location.pathname + location.search); } catch (err) {} } };
   fromHash(); window.addEventListener('hashchange', fromHash);
-  form.addEventListener('submit', function () {
+  var sending = function (on) {
+    form.classList.toggle('sending', on);
+    var b = form.querySelector('.btn-submit'); if (b) { b.setAttribute('aria-busy', on ? 'true' : 'false'); b.querySelector('.label').textContent = on ? 'Sending…' : 'Send my request'; }
+  };
+  // Shrink a photo in the browser (max 1600px, JPEG) so the whole request stays small. Returns base64 or null.
+  var shrink = function (file) {
+    return new Promise(function (resolve) {
+      if (!/^image\//.test(file.type)) return resolve(null);
+      var img = new Image(), url = URL.createObjectURL(file);
+      img.onload = function () {
+        try {
+          var max = 1600, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, max / Math.max(w, h));
+          var c = document.createElement('canvas'); c.width = Math.round(w * k); c.height = Math.round(h * k);
+          c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+          var dataUrl = c.toDataURL('image/jpeg', 0.82);
+          resolve({ name: file.name, type: 'image/jpeg', data: dataUrl.split(',')[1] });
+        } catch (e) { resolve(null); } finally { URL.revokeObjectURL(url); }
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); resolve(null); };
+      img.src = url;
+    });
+  };
+  var api = form.getAttribute('data-api');
+  form.addEventListener('submit', function (e) {
     if (!form.checkValidity()) return;
-    form.classList.add('sending');
-    var b = form.querySelector('.btn-submit'); if (b) { b.setAttribute('aria-busy', 'true'); b.querySelector('.label').textContent = 'Sending…'; }
+    sending(true);
+    if (!api || !window.fetch || form.dataset.fallback === '1') return; // native POST to FormSubmit
+    e.preventDefault();
+    var fd = new FormData(form), body = {
+      name: fd.get('Name'), phone: fd.get('Phone'), email: fd.get('Email'), contact: fd.get('Preferred contact'),
+      street: fd.get('Street address'), city: fd.get('City'), state: fd.get('State'), zip: fd.get('ZIP'),
+      service: fd.get('Service'), count: fd.get('Number of stumps'), diameter: fd.get('Largest stump diameter'),
+      access: fd.get('Access'), after: fd.get('After the stump is gone'), nearby: fd.getAll('Nearby'),
+      notes: fd.get('Notes'), heard: fd.get('How did you hear about us'), website: fd.get('_honey') || ''
+    };
+    var files = [].slice.call((form.querySelector('input[type=file]') || { files: [] }).files).slice(0, 6);
+    Promise.all(files.map(shrink)).then(function (photos) {
+      body.photos = photos.filter(Boolean);
+      var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+      var timer = ctrl && setTimeout(function () { ctrl.abort(); }, 25000);
+      return fetch(api, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctrl ? ctrl.signal : undefined })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j && j.ok }; }); })
+        .finally(function () { if (timer) clearTimeout(timer); });
+    }).then(function (r) {
+      if (r.ok) { location.href = next ? next.value : 'service-request.html?sent=1'; return; }
+      throw new Error('api');
+    }).catch(function () {
+      // Homeworks unreachable (or JS hiccup): send the same submission by email instead
+      form.dataset.fallback = '1'; sending(false); form.requestSubmit ? form.requestSubmit() : form.submit();
+    });
   });
 })();
 </script>
