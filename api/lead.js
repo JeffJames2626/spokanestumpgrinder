@@ -15,7 +15,7 @@ const API = (process.env.HOMEWORKS_API_URL || 'https://api.home.works').replace(
 const LEAD_TYPE_ID = Number(process.env.HOMEWORKS_LEAD_TYPE_ID || 2356);
 const SOURCE_ID = Number(process.env.HOMEWORKS_SOURCE_ID || 14953);
 const TAGS = ['Spokane Stump Grinder', 'Website lead'];
-const MAX_PHOTOS = 6, MAX_PHOTO_BYTES = 1_500_000;
+const MAX_PHOTOS = 6, MAX_PHOTO_BYTES = 2_500_000;
 
 // ---- auth: log in once per warm instance, re-login a minute before expiry ----
 let session = null; // { token, exp }
@@ -74,17 +74,22 @@ function notesFor(b, origin) {
   return lines.join('\n');
 }
 
-async function uploadPhotos(photos) {
+async function uploadPhotos(photos, report) {
   const keys = [];
   for (const p of (photos || []).slice(0, MAX_PHOTOS)) {
-    if (!p || typeof p.data !== 'string') continue;
+    const r = { name: s(p && p.name, 80), srcType: s(p && p.srcType, 40), srcSize: Number(p && p.srcSize) || 0, browser: s(p && p.reason, 120) };
+    report.push(r);
+    if (!p || typeof p.data !== 'string' || !p.data) { r.result = 'no data from browser'; continue; }
     const type = /^image\/(jpeg|png|webp)$/.test(p.type || '') ? p.type : 'image/jpeg';
     const buf = Buffer.from(p.data, 'base64');
-    if (!buf.length || buf.length > MAX_PHOTO_BYTES) continue;
-    const { createUpload } = await gql('mutation($t: String!, $n: SafeInt!) { createUpload(contentType: $t, size: $n) { key uploadUrl } }', { t: type, n: buf.length });
-    const put = await fetch(createUpload.uploadUrl, { method: 'PUT', headers: { 'content-type': type }, body: buf });
-    if (!put.ok) throw new Error('photo upload failed: HTTP ' + put.status);
-    keys.push(createUpload.key);
+    if (!buf.length) { r.result = 'empty'; continue; }
+    if (buf.length > MAX_PHOTO_BYTES) { r.result = 'too large after shrink: ' + buf.length; continue; }
+    try {
+      const { createUpload } = await gql('mutation($t: String!, $n: SafeInt!) { createUpload(contentType: $t, size: $n) { key uploadUrl } }', { t: type, n: buf.length });
+      const put = await fetch(createUpload.uploadUrl, { method: 'PUT', headers: { 'content-type': type }, body: buf });
+      if (!put.ok) { r.result = 'S3 PUT failed: HTTP ' + put.status; continue; }
+      keys.push(createUpload.key); r.result = 'uploaded ' + buf.length + ' B';
+    } catch (e) { r.result = 'upload error: ' + e.message; }
   }
   return keys;
 }
@@ -127,12 +132,13 @@ export default async function handler(req, res) {
     }
 
     // 2. the property at the service address, with the stump details + photos
-    const mediaFileKeys = await uploadPhotos(b.photos).catch((e) => { console.error('photos skipped:', e.message); return []; });
+    const photoReport = [];
+    const mediaFileKeys = await uploadPhotos(b.photos, photoReport).catch((e) => { console.error('photos skipped:', e.message); return []; });
     const p = await gql('mutation($in: PropertyInput!) { createProperty(input: $in) { id } }', {
       in: { customerId: customer.id, name: `${street}, ${city}`, address: { street1: street, city, state, zip: zip || undefined, country: 'US' }, notes, tags: TAGS, mediaFileKeys: mediaFileKeys.length ? mediaFileKeys : undefined },
     });
 
-    console.log(JSON.stringify({ lead: 'ok', customerId: customer.id, created, propertyId: p.createProperty.id, photos: mediaFileKeys.length }));
+    console.log(JSON.stringify({ lead: 'ok', customerId: customer.id, created, propertyId: p.createProperty.id, photos: mediaFileKeys.length, photosIn: (b.photos || []).length, photoReport }));
     res.statusCode = 200;
     return res.end(JSON.stringify({ ok: true, customerId: customer.id, propertyId: p.createProperty.id, created, photos: mediaFileKeys.length }));
   } catch (e) {
