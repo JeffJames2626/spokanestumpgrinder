@@ -153,7 +153,7 @@ const configured = Boolean(form.action);
     session = session || new google.maps.places.AutocompleteSessionToken();
     google.maps.places.AutocompleteSuggestion.fetchAutocompleteSuggestions({
       input: q, sessionToken: session, includedRegionCodes: ['us'], includedPrimaryTypes: ['street_address', 'premise', 'subpremise', 'route'],
-      locationBias: { center: { lat: 47.6588, lng: -117.426 }, radius: 90000 }, // Spokane + Coeur d'Alene region
+      locationBias: { west: -118.1, south: 47.2, east: -116.5, north: 48.4 }, // Spokane through Coeur d'Alene / Sandpoint (a circle is capped at 50 km)
     }).then(function (r) {
       items = (r.suggestions || []).map(function (s) {
         var p = s.placePrediction; return { main: p.mainText ? p.mainText.text : p.text.text, secondary: p.secondaryText ? p.secondaryText.text : '', pred: p };
