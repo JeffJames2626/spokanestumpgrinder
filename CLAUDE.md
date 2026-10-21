@@ -267,10 +267,20 @@ it an ES module — the install/build commands still run in `astro/`). The funct
    attached via `createUpload` → PUT → `mediaFileKeys` (browser shrinks photos to
    ≤1600px JPEG first; ≤6 photos, ≤1.5 MB each after shrink).
 
-**Form fields (simplified 2026-10-20):** name, phone, email · street, city, ZIP (optional;
-state is derived — 838xx → ID, else WA) · service (3 cards) · photos · notes. The old
-count/diameter/access/after/hazards/contact/heard fields are gone; the notes placeholder
-and the page's "Four things that speed this up" cover them.
+**Form fields (simplified 2026-10-20):** name · phone / email (**one of the two is
+required**, enforced quietly — no asterisk; the function enforces it too) · one address
+box · service (3 cards) · photos · notes. The old count/diameter/access/after/hazards/
+contact/heard fields are gone; the notes placeholder and the page's "Four things that
+speed this up" cover them.
+
+**Address box:** Google Places (Autocomplete Data API, `AutocompleteSuggestion`) with our
+own dropdown, US only, biased 90 km around Spokane. Picking a suggestion fills hidden
+`Street address`/`City`/`State`/`ZIP` inputs that go to Homeworks and the emails. The
+Maps JS loads only when the dialog opens, and only if `PUBLIC_GOOGLE_MAPS_KEY` is set at
+build time (Vercel env var; a browser key with Places API (New) enabled, HTTP-referrer
+restricted to spokanestumpgrinder.com / www. / *.vercel.app). Without the key, or if
+Google doesn't load, the box is a plain field and `api/lead.js` splits
+"street, city, state zip" itself (`838xx` or an Idaho city → ID, else WA).
 
 **Emails (2026-10-20):** after the Homeworks write the function sends two emails through
 Resend (`https://api.resend.com/emails`, plain fetch): an alert to `LEAD_NOTIFY_TO`

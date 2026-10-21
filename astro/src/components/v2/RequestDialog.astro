@@ -23,49 +23,43 @@ const configured = Boolean(form.action);
       </p>
     )}
 
-    <form id="intake" action={form.action || undefined} method={form.method} enctype="multipart/form-data" data-api={form.api}>
+    <form id="intake" action={form.action || undefined} method={form.method} enctype="multipart/form-data" data-api={form.api} data-maps-key={form.mapsKey || undefined}>
       {Object.entries(form.hidden).map(([k, v]) => <input type="hidden" name={k} value={v} />)}
       <input type="hidden" name="_next" id="next" value={form.nextDefault} />
       <p class="honey" aria-hidden="true"><label>Leave this field empty <input type="text" name={form.honeypot} tabindex="-1" autocomplete="off" /></label></p>
 
       <div class="form-section">
         <div class="form-grid">
-          <div class="field">
+          <div class="field span-2">
             <label for="name">Name<span class="req" aria-hidden="true">*</span></label>
             <input class="input" id="name" name="Name" type="text" autocomplete="name" required />
             <span class="error">Please enter your name.</span>
           </div>
           <div class="field">
-            <label for="phone">Phone<span class="req" aria-hidden="true">*</span></label>
-            <input class="input" id="phone" name="Phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="509-555-0123" required minlength="7" />
-            <span class="error">Please enter a phone number we can reach you at.</span>
+            <label for="phone">Phone</label>
+            <input class="input" id="phone" name="Phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="509-555-0123" />
+            <span class="error">Give us a phone number or an email so we can get back to you.</span>
           </div>
-          <div class="field span-2">
-            <label for="email">Email<span class="req" aria-hidden="true">*</span></label>
-            <input class="input" id="email" name="Email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required />
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" id="email" name="Email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" />
             <span class="error">That doesn't look like a valid email.</span>
           </div>
+          <p class="hint span-2 contact-hint">Phone or email — whichever you'd rather we use.</p>
         </div>
       </div>
 
       <div class="form-section">
-        <h3>Where's the stump?</h3>
-        <div class="form-grid">
-          <div class="field span-2">
-            <label for="street">Street address<span class="req" aria-hidden="true">*</span></label>
-            <input class="input" id="street" name="Street address" type="text" autocomplete="street-address" required />
-            <span class="error">We need the address to price access and travel.</span>
-          </div>
-          <div class="field">
-            <label for="city">City<span class="req" aria-hidden="true">*</span></label>
-            <input class="input" id="city" name="City" type="text" autocomplete="address-level2" required />
-            <span class="error">Please enter the city.</span>
-          </div>
-          <div class="field">
-            <label for="zip">ZIP <span class="hint">(optional)</span></label>
-            <input class="input" id="zip" name="ZIP" type="text" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" placeholder="99202" />
-            <span class="error">Five digits.</span>
-          </div>
+        <div class="field ac-wrap">
+          <label for="address">Where's the stump?<span class="req" aria-hidden="true">*</span></label>
+          <input class="input" id="address" name="Address" type="text" autocomplete="off" placeholder="Start typing the address…" required aria-autocomplete="list" aria-controls="ac-list" aria-expanded="false" />
+          <ul class="ac-list" id="ac-list" role="listbox" hidden></ul>
+          <span class="error">We need the address to price access and travel.</span>
+          <span class="hint ac-hint">Pick the address from the list, or type it in full — street, city, state.</span>
+          <input type="hidden" name="Street address" id="street" />
+          <input type="hidden" name="City" id="city" />
+          <input type="hidden" name="State" id="state" />
+          <input type="hidden" name="ZIP" id="zip" />
         </div>
       </div>
 
@@ -101,13 +95,15 @@ const configured = Boolean(form.action);
 (function () {
   var dlg = document.getElementById('request'), form = document.getElementById('intake');
   if (!dlg || !form) return;
+  var $ = function (id) { return document.getElementById(id); };
   // after FormSubmit's redirect (fallback path) the customer lands on thank-you.html — send them there from any page
-  var next = document.getElementById('next');
+  var next = $('next');
   if (next) next.value = location.origin + location.pathname.replace(/[^/]*$/, '') + 'thank-you.html';
   var open = function (e) {
     if (e) e.preventDefault();
     if (typeof dlg.showModal === 'function') { if (!dlg.open) dlg.showModal(); dlg.querySelector('.dialog-body').scrollTop = 0; }
     else dlg.setAttribute('open', '');
+    loadMaps();
   };
   var close = function () { dlg.close ? dlg.close() : dlg.removeAttribute('open'); };
   document.querySelectorAll('[data-open-form]').forEach(function (b) { b.addEventListener('click', open); });
@@ -115,6 +111,80 @@ const configured = Boolean(form.action);
   dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); }); // click on the backdrop
   var fromHash = function () { if (location.hash === '#request') { open(); try { history.replaceState(null, '', location.pathname + location.search); } catch (err) {} } };
   fromHash(); window.addEventListener('hashchange', fromHash);
+
+  // ---- phone OR email: one of them is required, enforced quietly ----
+  var phone = $('phone'), email = $('email');
+  var checkContact = function () {
+    var ok = phone.value.replace(/\D/g, '').length >= 7 || (email.value.trim() && email.checkValidity());
+    phone.setCustomValidity(ok ? '' : 'Give us a phone number or an email so we can get back to you.');
+    email.setCustomValidity('');
+  };
+  phone.addEventListener('input', checkContact); email.addEventListener('input', checkContact);
+  checkContact(); // so the browser's own validation knows from the start that one of them is needed
+
+  // ---- one address box: Google Places suggestions fill street/city/state/zip quietly ----
+  var addr = $('address'), list = $('ac-list'), parts = { street: $('street'), city: $('city'), state: $('state'), zip: $('zip') };
+  var mapsKey = form.getAttribute('data-maps-key'), mapsLoading = false, session = null, active = -1, items = [];
+  var placesReady = function () { return !!(window.google && google.maps && google.maps.places && google.maps.places.AutocompleteSuggestion); };
+  function loadMaps() {
+    if (placesReady() || mapsLoading || !mapsKey) return;
+    mapsLoading = true;
+    // Google's official bootstrap (loads only the Places library, only once the form is opened)
+    (function (g) { var h, a, k, p = 'The Google Maps JavaScript API', c = 'google', l = 'importLibrary', q = '__ib__', m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set(), e = new URLSearchParams(), u = function () { return h || (h = new Promise(function (f, n) { a = m.createElement('script'); e.set('libraries', [].concat(r).join(',')); for (k in g) e.set(k.replace(/[A-Z]/g, function (t) { return '_' + t[0].toLowerCase(); }), g[k]); e.set('callback', c + '.maps.' + q); a.src = 'https://maps.' + c + 'apis.com/maps/api/js?' + e; d[q] = f; a.onerror = function () { h = n(Error(p + ' could not load.')); }; a.nonce = m.querySelector('script[nonce]') ? m.querySelector('script[nonce]').nonce : ''; m.head.append(a); })); }; d[l] ? console.warn(p + ' only loads once. Ignoring:', g) : d[l] = function (f) { for (var n = arguments.length, t = new Array(n > 1 ? n - 1 : 0), i = 1; i < n; i++) t[i - 1] = arguments[i]; return r.add(f) && u().then(function () { return d[l].apply(d, [f].concat(t)); }); }; })({ key: mapsKey, v: 'weekly' });
+    google.maps.importLibrary('places').catch(function () { mapsLoading = false; });
+  }
+  var clearParts = function () { for (var k in parts) parts[k].value = ''; };
+  var hide = function () { list.hidden = true; list.innerHTML = ''; items = []; active = -1; addr.setAttribute('aria-expanded', 'false'); };
+  var render = function () {
+    list.innerHTML = '';
+    items.forEach(function (it, i) {
+      var li = document.createElement('li'); li.setAttribute('role', 'option'); li.id = 'ac-' + i; li.className = i === active ? 'active' : '';
+      var main = document.createElement('strong'); main.textContent = it.main; var sub = document.createElement('span'); sub.textContent = it.secondary;
+      li.appendChild(main); li.appendChild(sub);
+      li.addEventListener('mousedown', function (e) { e.preventDefault(); choose(i); });
+      list.appendChild(li);
+    });
+    list.hidden = items.length === 0; addr.setAttribute('aria-expanded', list.hidden ? 'false' : 'true');
+  };
+  var timer = null;
+  var suggest = function () {
+    var q = addr.value.trim(); clearParts();
+    if (!placesReady() || q.length < 3) { hide(); return; }
+    session = session || new google.maps.places.AutocompleteSessionToken();
+    google.maps.places.AutocompleteSuggestion.fetchAutocompleteSuggestions({
+      input: q, sessionToken: session, includedRegionCodes: ['us'], includedPrimaryTypes: ['street_address', 'premise', 'subpremise', 'route'],
+      locationBias: { center: { lat: 47.6588, lng: -117.426 }, radius: 90000 }, // Spokane + Coeur d'Alene region
+    }).then(function (r) {
+      items = (r.suggestions || []).map(function (s) {
+        var p = s.placePrediction; return { main: p.mainText ? p.mainText.text : p.text.text, secondary: p.secondaryText ? p.secondaryText.text : '', pred: p };
+      }).slice(0, 5);
+      active = -1; render();
+    }).catch(hide);
+  };
+  var choose = function (i) {
+    var it = items[i]; if (!it) return;
+    hide(); addr.value = it.main + (it.secondary ? ', ' + it.secondary : '');
+    var place = it.pred.toPlace();
+    place.fetchFields({ fields: ['addressComponents', 'formattedAddress'] }).then(function () {
+      var c = {}; (place.addressComponents || []).forEach(function (x) { (x.types || []).forEach(function (t) { c[t] = x.shortText || x.longText; }); });
+      parts.street.value = [c.street_number, c.route].filter(Boolean).join(' ');
+      parts.city.value = c.locality || c.sublocality || c.postal_town || c.administrative_area_level_3 || '';
+      parts.state.value = c.administrative_area_level_1 || '';
+      parts.zip.value = c.postal_code || '';
+      if (place.formattedAddress) addr.value = place.formattedAddress.replace(/, USA$/, '');
+      session = null; // a pick ends the billing session
+    }).catch(function () {});
+  };
+  addr.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(suggest, 180); });
+  addr.addEventListener('focus', function () { loadMaps(); });
+  addr.addEventListener('blur', function () { setTimeout(hide, 120); });
+  addr.addEventListener('keydown', function (e) {
+    if (list.hidden) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); active = (active + 1) % items.length; render(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); active = (active - 1 + items.length) % items.length; render(); }
+    else if (e.key === 'Enter') { if (active >= 0) { e.preventDefault(); choose(active); } }
+    else if (e.key === 'Escape') { hide(); }
+  });
 
   var sending = function (on) {
     form.classList.toggle('sending', on);
@@ -154,23 +224,24 @@ const configured = Boolean(form.action);
   };
   var api = form.getAttribute('data-api');
   form.addEventListener('submit', function (e) {
-    if (!form.checkValidity()) return;
+    checkContact();
+    if (!form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; }
     sending(true);
     if (!api || !window.fetch || form.dataset.fallback === '1') return; // native POST to FormSubmit
     e.preventDefault();
     var fd = new FormData(form), body = {
       name: fd.get('Name'), phone: fd.get('Phone'), email: fd.get('Email'),
-      street: fd.get('Street address'), city: fd.get('City'), zip: fd.get('ZIP'),
+      address: fd.get('Address'), street: fd.get('Street address'), city: fd.get('City'), state: fd.get('State'), zip: fd.get('ZIP'),
       service: fd.get('Service'), notes: fd.get('Notes'), website: fd.get('_honey') || ''
     };
     var files = [].slice.call((form.querySelector('input[type=file]') || { files: [] }).files).slice(0, 6);
     Promise.all(files.map(shrink)).then(function (photos) {
       body.photos = photos; // every selected file, with data or a reason
       var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
-      var timer = ctrl && setTimeout(function () { ctrl.abort(); }, 25000);
+      var t = ctrl && setTimeout(function () { ctrl.abort(); }, 25000);
       return fetch(api, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctrl ? ctrl.signal : undefined })
         .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j && j.ok }; }); })
-        .finally(function () { if (timer) clearTimeout(timer); });
+        .finally(function () { if (t) clearTimeout(t); });
     }).then(function (r) {
       if (r.ok) { location.href = next ? next.value : 'thank-you.html'; return; }
       throw new Error('api');

@@ -75,7 +75,7 @@ function notesFor(L, origin) {
   return [
     `Website request — ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC (${origin || 'spokanestumpgrinder.com'})`,
     `Service: ${L.service}`,
-    `Phone: ${L.phone} · Email: ${L.email}`,
+    `Phone: ${L.phone || '(not given)'} · Email: ${L.email || '(not given)'}`,
     L.notes ? `Notes: ${L.notes}` : 'Notes: (none)',
   ].join('\n');
 }
@@ -111,15 +111,15 @@ async function sendEmail(msg) {
 }
 
 function alertEmail(L, hw, photoUrls) {
-  const rows = [['Name', L.name], ['Phone', L.phone], ['Email', L.email], ['Address', `${L.street}, ${L.city}, ${L.state} ${L.zip}`.trim()], ['Service', L.service], ['Notes', L.notes || '(none)'], ['Homeworks', hw ? `customer ${hw.customerId}${hw.created ? ' (new)' : ' (existing)'}, property ${hw.propertyId}` : 'not created — see Vercel log'], ['Photos', photoUrls.length ? `${photoUrls.length} attached in Homeworks` : 'none']];
+  const rows = [['Name', L.name], ['Phone', L.phone || '(not given)'], ['Email', L.email || '(not given)'], ['Address', L.address || `${L.street}, ${L.city}, ${L.state} ${L.zip}`.trim()], ['Service', L.service], ['Notes', L.notes || '(none)'], ['Homeworks', hw ? `customer ${hw.customerId}${hw.created ? ' (new)' : ' (existing)'}, property ${hw.propertyId}` : 'not created — see Vercel log'], ['Photos', photoUrls.length ? `${photoUrls.length} attached in Homeworks` : 'none']];
   const text = [`New stump request from the website`, '', ...rows.map(([k, v]) => `${k}: ${v}`), ...(photoUrls.length ? ['', 'Photos:', ...photoUrls] : []), '', `Reply to this email to answer ${L.name} directly, or call/text ${L.phone}.`].join('\n');
-  const html = `<div style="font-family:ui-sans-serif,system-ui,sans-serif;font-size:15px;line-height:1.5;color:#161616"><h2 style="margin:0 0 12px">New stump request — ${esc(L.name)}, ${esc(L.city)}</h2><table cellpadding="6" style="border-collapse:collapse">${rows.map(([k, v]) => `<tr><td style="color:#666;vertical-align:top;white-space:nowrap">${esc(k)}</td><td style="white-space:pre-wrap">${esc(v)}</td></tr>`).join('')}</table>${photoUrls.length ? `<p style="margin:16px 0 8px"><strong>Photos</strong></p><div>${photoUrls.map((u) => `<a href="${esc(u)}" style="display:inline-block;margin:0 8px 8px 0"><img src="${esc(u)}?width=320&amp;height=320&amp;format=auto" alt="" style="width:160px;height:160px;object-fit:cover;border-radius:8px"></a>`).join('')}</div>` : ''}<p style="margin-top:16px;color:#666">Reply to this email to answer ${esc(L.name)} directly, or call/text <a href="tel:${esc(L.phone)}">${esc(L.phone)}</a>.</p></div>`;
-  return { to: [NOTIFY_TO], reply_to: L.email, subject: `New stump request — ${L.name}, ${L.city}`, text, html };
+  const html = `<div style="font-family:ui-sans-serif,system-ui,sans-serif;font-size:15px;line-height:1.5;color:#161616"><h2 style="margin:0 0 12px">New stump request — ${esc(L.name)}, ${esc(L.city)}</h2><table cellpadding="6" style="border-collapse:collapse">${rows.map(([k, v]) => `<tr><td style="color:#666;vertical-align:top;white-space:nowrap">${esc(k)}</td><td style="white-space:pre-wrap">${esc(v)}</td></tr>`).join('')}</table>${photoUrls.length ? `<p style="margin:16px 0 8px"><strong>Photos</strong></p><div>${photoUrls.map((u) => `<a href="${esc(u)}" style="display:inline-block;margin:0 8px 8px 0"><img src="${esc(u)}?width=320&amp;height=320&amp;format=auto" alt="" style="width:160px;height:160px;object-fit:cover;border-radius:8px"></a>`).join('')}</div>` : ''}<p style="margin-top:16px;color:#666">${L.email ? `Reply to this email to answer ${esc(L.name)} directly` : 'No email given'}${L.phone ? ` — call/text <a href="tel:${esc(L.phone)}">${esc(L.phone)}</a>` : ''}.</p></div>`;
+  return { to: [NOTIFY_TO], reply_to: L.email || undefined, subject: `New stump request — ${L.name}, ${L.city}`, text, html };
 }
 
 function thankYouEmail(L) {
   const first = L.name.split(/\s+/)[0];
-  const summary = [['Service', L.service], ['Address', `${L.street}, ${L.city}`], ['Phone', L.phone], ['Notes', L.notes || '(none)']];
+  const summary = [['Service', L.service], ['Address', L.address || `${L.street}, ${L.city}`], ['Phone', L.phone || '(not given)'], ['Notes', L.notes || '(none)']];
   const steps = ['We review the details. If your notes cover the size and access, we can often price the job without coming out.', "You get it in writing. Scope and price, spelled out — what's included and what isn't — before anything is scheduled.", "You pick a date. Approve the estimate and we'll find a slot that fits the job and the equipment it needs.", "We grind and clean up, and walk the finished spot with you if you're home."];
   const text = [`Hi ${first},`, '', "Thanks for reaching out — your request is in. We'll look over the details and any photos, and follow up with a written estimate. No obligation, no pressure.", '', 'What you sent us:', ...summary.map(([k, v]) => `  ${k}: ${v}`), '', 'What happens next:', ...steps.map((t, i) => `  ${i + 1}. ${t}`), '', `Need it sooner, or want to add photos? Call or text ${PHONE}. You can also book a free on-site visit: ${SITE}booking.html`, '', '— Jeff, Spokane Stump Grinder', `${SITE.replace(/\/$/, '')} · ${PHONE}`].join('\n');
   const html = `<div style="font-family:ui-sans-serif,system-ui,sans-serif;font-size:15px;line-height:1.55;color:#161616;max-width:600px"><p style="margin:0 0 12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#ba0000;font-weight:700">Request received</p><h2 style="margin:0 0 12px">Thanks, ${esc(first)} — we've got it.</h2><p>We'll look over the details and any photos, and follow up with a written estimate. No obligation, no pressure.</p><p style="margin:18px 0 6px"><strong>What you sent us</strong></p><table cellpadding="5" style="border-collapse:collapse;background:#f6f3ed;border-radius:8px">${summary.map(([k, v]) => `<tr><td style="color:#666;vertical-align:top;white-space:nowrap">${esc(k)}</td><td style="white-space:pre-wrap">${esc(v)}</td></tr>`).join('')}</table><p style="margin:18px 0 6px"><strong>What happens next</strong></p><ol style="padding-left:20px;margin:0">${steps.map((t) => `<li style="margin:0 0 6px">${esc(t)}</li>`).join('')}</ol><p style="margin:18px 0 0">Need it sooner, or want to add photos? Call or text <a href="tel:${TEL}" style="color:#ba0000;font-weight:600">${PHONE}</a>. You can also <a href="${SITE}booking.html" style="color:#ba0000">book a free on-site visit</a>.</p><p style="margin:18px 0 0;color:#666">— Jeff, Spokane Stump Grinder<br><a href="${SITE}" style="color:#666">${SITE.replace(/^https:\/\//, '').replace(/\/$/, '')}</a> · ${PHONE}</p></div>`;
@@ -137,11 +137,23 @@ export default async function handler(req, res) {
   if (b.website || b._honey) { res.statusCode = 200; return res.end(JSON.stringify({ ok: true })); } // honeypot: pretend success
   const L = {
     name: s(b.name, 120), email: s(b.email, 200).toLowerCase(), phone: s(b.phone, 40),
-    street: s(b.street, 200), city: s(b.city, 100), zip: digits(b.zip).slice(0, 5),
+    address: s(b.address, 250), street: s(b.street, 200), city: s(b.city, 100), state: s(b.state, 2).toUpperCase(), zip: digits(b.zip).slice(0, 5),
     service: s(b.service, 120) || 'Not sure — help me decide', notes: s(b.notes, 2000),
   };
-  L.state = stateFor(L.zip, L.city);
-  if (!L.name || !isEmail(L.email) || digits(L.phone).length < 7 || !L.street || !L.city) { res.statusCode = 422; return res.end(JSON.stringify({ ok: false, error: 'missing required fields' })); }
+  if (L.email && !isEmail(L.email)) L.email = '';
+  if (digits(L.phone).length < 7) L.phone = '';
+  // the address box is one field; Google Places fills street/city/state/zip behind it — if it didn't
+  // (no key, no pick, typed in full) split "street, city, state zip" ourselves as best we can
+  if (!L.street && L.address) {
+    const bits = L.address.replace(/,?\s*(USA|United States)$/i, '').split(',').map((x) => x.trim()).filter(Boolean);
+    L.street = bits[0] || L.address;
+    L.city = L.city || (bits[1] || '').replace(/\s+[A-Z]{2}(\s+\d{5})?$/, '').trim();
+    const tail = bits.slice(1).join(' ');
+    const st = /\b(WA|ID)\b/i.exec(tail); if (st && !L.state) L.state = st[1].toUpperCase();
+    const z = /\b(\d{5})\b/.exec(tail); if (z && !L.zip) L.zip = z[1];
+  }
+  if (!L.state) L.state = stateFor(L.zip, L.city);
+  if (!L.name || (!L.email && !L.phone) || !L.street) { res.statusCode = 422; return res.end(JSON.stringify({ ok: false, error: 'missing required fields' })); }
   const origin = s(req.headers.origin || req.headers.referer, 120);
   const notes = notesFor(L, origin);
 
@@ -150,7 +162,7 @@ export default async function handler(req, res) {
     // 1. existing customer? (by email, then by cell) — reuse rather than duplicate
     const found = await gql(
       'query($e: String!, $c: String!) { byEmail: customers(where: { email: { equals: $e }, isDeleted: false }, take: 1) { id fullName } byCell: customers(where: { cell: { contains: $c }, isDeleted: false }, take: 1) { id fullName } }',
-      { e: L.email, c: digits(L.phone).slice(-10) || '0000000000' }
+      { e: L.email || 'no-email@none.invalid', c: digits(L.phone).slice(-10) || '0000000000' }
     );
     let customer = (found.byEmail && found.byEmail[0]) || (found.byCell && found.byCell[0]) || null;
     let created = false;
@@ -158,7 +170,7 @@ export default async function handler(req, res) {
       const parts = L.name.split(/\s+/); const firstName = parts.shift(); const lastName = parts.join(' ');
       const r = await gql('mutation($in: CustomerInput!) { createCustomer(input: $in) { id fullName } }', {
         in: {
-          fullName: L.name, firstName, lastName: lastName || undefined, email: L.email, cell: L.phone,
+          fullName: L.name, firstName, lastName: lastName || undefined, email: L.email || undefined, cell: L.phone || undefined,
           address: { street1: L.street, city: L.city, state: L.state, zip: L.zip || undefined, country: 'US' },
           customerTypeId: LEAD_TYPE_ID, sourceId: SOURCE_ID, tags: TAGS, description: notes,
           isReceiveEmail: true, isReceiveText: true, isReceivePhone: true,
@@ -169,7 +181,7 @@ export default async function handler(req, res) {
     // 2. the property at the service address, with the details + photos
     const mediaFileKeys = await uploadPhotos(b.photos, photoReport).catch((e) => { console.error('photos skipped:', e.message); return []; });
     const p = await gql('mutation($in: PropertyInput!) { createProperty(input: $in) { id media { url } } }', {
-      in: { customerId: customer.id, name: `${L.street}, ${L.city}`, address: { street1: L.street, city: L.city, state: L.state, zip: L.zip || undefined, country: 'US' }, notes, tags: TAGS, mediaFileKeys: mediaFileKeys.length ? mediaFileKeys : undefined },
+      in: { customerId: customer.id, name: L.city ? `${L.street}, ${L.city}` : L.street, address: { street1: L.street, city: L.city, state: L.state, zip: L.zip || undefined, country: 'US' }, notes, tags: TAGS, mediaFileKeys: mediaFileKeys.length ? mediaFileKeys : undefined },
     });
     photoUrls = (p.createProperty.media || []).map((m) => m.url).filter(Boolean);
     hw = { customerId: customer.id, created, propertyId: p.createProperty.id, photos: mediaFileKeys.length };
@@ -183,7 +195,7 @@ export default async function handler(req, res) {
   const mail = {};
   await Promise.all([
     sendEmail(alertEmail(L, hw, photoUrls)).then((r) => { mail.alert = r; }, (e) => { mail.alert = { error: e.message }; }),
-    sendEmail(thankYouEmail(L)).then((r) => { mail.thanks = r; }, (e) => { mail.thanks = { error: e.message }; }),
+    L.email ? sendEmail(thankYouEmail(L)).then((r) => { mail.thanks = r; }, (e) => { mail.thanks = { error: e.message }; }) : Promise.resolve(mail.thanks = { skipped: 'no email given' }),
   ]);
 
   console.log(JSON.stringify({ lead: 'ok', ...hw, photosIn: (b.photos || []).length, photoReport, mail }));

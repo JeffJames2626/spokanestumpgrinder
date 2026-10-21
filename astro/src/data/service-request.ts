@@ -17,6 +17,9 @@ export const form = {
   } as Record<string, string>,
   honeypot: '_honey',
   nextDefault: 'https://www.spokanestumpgrinder.com/thank-you.html',
+  // Google Maps Platform browser key (Places API (New) enabled, restricted to the site's domains). Baked into the
+  // page at build time from the PUBLIC_GOOGLE_MAPS_KEY env var; empty = plain address box, no suggestions.
+  mapsKey: import.meta.env.PUBLIC_GOOGLE_MAPS_KEY || '',
 };
 
 export const hero = {
