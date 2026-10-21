@@ -15,6 +15,7 @@ export interface Post {
 }
 
 export const posts: Post[] = [
+  { file: "blog-dull-stump-grinder-teeth.html", date: "October 2026", title: "This Is What a Dull Stump Grinder Tooth Looks Like", summary: "Two photos of the teeth on a stump grinder at a Spokane-area rental counter, what a worn carbide tooth does to a rental day, and the 60-second check to do before you tow one home to Cheney, Airway Heights or anywhere in Spokane County.", lastmod: "2026-10-20", changefreq: "monthly", priority: "0.5", kind: "Guide", image: "rental-grinder-tooth-worn-edge.jpg", imageAlt: "Close-up of a worn stump grinder tooth on a rental machine, carbide tip rounded over and polished" },
   { file: "blog-rent-or-hire.html", date: "October 2026", title: "Rent a Stump Grinder, or Hire It Out?", summary: "Which Spokane-area yards actually rent one, what the day really costs once you add the truck, the trailer, the waiver, and the teeth, what a rental machine can handle, and an honest take on when renting wins.", lastmod: "2026-10-04", changefreq: "monthly", priority: "0.5", kind: "Guide", image: "deer-park-stump-grinder.jpg", imageAlt: "Stump grinder cutting wheel grinding a tree stump below grade in a lawn" },
   { file: "blog-north-spokane-bid-we-didnt-get.html", date: "October 2026", title: "The Bid We Didn't Get: A Stump on a Busy North Spokane Street", summary: "We quoted $1,000 for a big old stump on a busy arterial and the homeowner went another way. What the stump and the street each added to the work, how we priced it, and what to ask when one bid comes in high.", lastmod: "2026-10-04", changefreq: "monthly", priority: "0.5", kind: "Case study", image: "north-spokane-arterial-stump.jpg", imageAlt: "Large old weathered tree stump with a wide exposed root flare, surrounded by a dug-out pit and piles of sand and soil, between two houses in north Spokane, WA" },
   { file: "blog-one-stump-or-three.html", date: "September 2026", title: "Is This One Stump or Three? A Deer Park Stump Grinding Case Study", summary: "We took a tree crew's stump count at face value and got burned. How stumps really get counted and measured, why chasing roots adds up, and how to get an accurate quote.", lastmod: "2026-10-02", changefreq: "monthly", priority: "0.5", kind: "Case study", image: "deer-park-multi-trunk-stump.jpg", imageAlt: "Multi-trunk tree stump with several cut faces sharing one root mass in a lawn, Deer Park, WA" },
@@ -26,13 +27,13 @@ export const posts: Post[] = [
 export const feature = {
   file: posts[0].file,
   pillTag: "New",
-  pillText: "Rent a stump grinder or hire it out? The real math in Spokane",
-  image: "images/deer-park-stump-grinder.jpg",
-  imageWidth: 683,
-  imageHeight: 911,
-  imageAlt: "Stump grinder cutting wheel grinding a tree stump below grade in a lawn",
-  eyebrow: "Guide · Spokane & Coeur d'Alene",
-  headline: "Rent a stump grinder, or hire it out?",
-  summary: "Which Spokane-area yards actually rent one, what the day really costs once you add the truck, the trailer, the waiver, and the teeth, what a rental machine can handle — and an honest take on when renting wins.",
-  cta: "Read the guide",
-};
+  pillText: "What a dull stump grinder tooth looks like, up close",
+  image: "images/rental-grinder-tooth-worn-edge.jpg",
+  imageWidth: 682,
+  imageHeight: 910,
+  imageAlt: "Close-up of a worn stump grinder tooth on a rental machine, carbide tip rounded over and polished",
+  eyebrow: "Guide · Spokane, Cheney & Airway Heights",
+  headline: "This is what a dull stump grinder tooth looks like.",
+  summary: "Two photos from a Spokane-area rental yard, what a worn carbide tooth does to a rental day, and the 60-second check to do before you tow one home.",
+  cta: "See the photos",
+}
