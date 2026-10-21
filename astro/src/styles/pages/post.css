@@ -33,6 +33,7 @@
 
 /* article typography */
 .article { max-width: 46rem; }
+.article.solo { margin-inline: auto; } /* posts without a sidebar: centered reading column */
 .article h2 { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2rem); margin: var(--space-10) 0 var(--space-4); scroll-margin-top: 6rem; }
 .article > h2:first-child, .article > .post-figure:first-child + h2 { margin-top: 0; }
 .article h3 { font-size: 1.25rem; margin: var(--space-8) 0 var(--space-3); }

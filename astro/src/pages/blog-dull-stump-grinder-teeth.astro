@@ -2,13 +2,11 @@
 import Site from '../layouts/Site.astro';
 import '../styles/pages/post.css';
 import Img from '../components/v2/Img.astro';
-import { posts } from '../data/posts';
-const others = posts.filter((x) => x.file !== 'blog-dull-stump-grinder-teeth.html').slice(0, 4);
 
 const SITE = 'https://spokanestumpgrinder.com/';
 const URL = SITE + 'blog-dull-stump-grinder-teeth.html';
 const headline = 'This Is What a Dull Stump Grinder Tooth Looks Like';
-const description = 'Two photos of the teeth on a stump grinder at a Spokane-area rental counter, what a worn carbide tooth does to your day, and a 60-second check to do before you tow one home to Cheney, Airway Heights or anywhere in Spokane County.';
+const description = 'One tooth, two angles, on a stump grinder sitting out front at a Spokane-area rental yard. What a worn carbide tooth means for your rental day, and the quick look to take before you tow one home to Cheney, Airway Heights or anywhere in Spokane County.';
 const ld = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -27,15 +25,14 @@ const faqLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'How can I tell if a stump grinder tooth is dull?', acceptedAnswer: { '@type': 'Answer', text: "Look at the carbide tip. A sharp tooth comes to a defined edge; a dull one is rounded over and polished, like a worn-down pebble. Once the tip is rounded to about a 1/16-inch radius it is done cutting, even though it still looks like a tooth and still spins." } },
+    { '@type': 'Question', name: 'How can I tell if a stump grinder tooth is dull?', acceptedAnswer: { '@type': 'Answer', text: "Look at the carbide tip. A sharp tooth ends in a defined edge. A dull one is rounded over and polished, like a worn pebble. Once the tip is rounded to about a 1/16-inch radius it is done cutting, even though it still looks like a tooth and still spins." } },
     { '@type': 'Question', name: 'Do rental yards sharpen stump grinder teeth?', acceptedAnswer: { '@type': 'Answer', text: "Not routinely. Rental counters check that the machine starts and the wheel turns. Teeth are a wear item, often billed per tooth outside the damage waiver, so whether the set on the machine is sharp is yours to check before you sign." } },
-    { '@type': 'Question', name: 'Can I rent a stump grinder in Cheney or Airway Heights?', acceptedAnswer: { '@type': 'Answer', text: "The grinders we found for rent are in Spokane, or over in Hayden and Coeur d'Alene, so renting from Cheney or Airway Heights means towing one out Highway 904 or Highway 2 and back the same day. Check the teeth at the counter, not in your driveway." } },
-    { '@type': 'Question', name: 'What if the teeth are dull when I pick up the rental?', acceptedAnswer: { '@type': 'Answer', text: "Ask the counter to swap or sharpen them before you leave, or ask for a different machine. If they can't, a small-engine grinder with dull teeth will polish a hardwood stump instead of cutting it, and the day can end with the stump still in the ground." } },
+    { '@type': 'Question', name: 'What if the teeth are dull when I pick up the rental?', acceptedAnswer: { '@type': 'Answer', text: "Ask the counter to swap or sharpen them before you leave, or ask for a different machine. A small-engine grinder with dull teeth polishes a hardwood stump instead of cutting it, and the day can end with the stump still in the ground. If you are renting from Cheney or Airway Heights, that conversation is a lot easier at the counter than after the tow home." } },
   ],
 };
 
 const meta = {
-  title: 'Dull Stump Grinder Teeth: Rental Yard Photos | Spokane Stump Grinder',
+  title: 'Dull Stump Grinder Tooth, Up Close | Spokane Stump Grinder',
   description,
   canonical: URL,
   og: { type: 'article', title: headline, description, url: URL, image: SITE + 'images/rental-grinder-tooth-worn-edge.jpg', site_name: 'Spokane Stump Grinder' },
@@ -47,136 +44,88 @@ const meta = {
 <Site {...meta}>
 <section class="post-hero">
   <div class="container">
-    <p class="crumbs"><a href="index.html">Home</a> / <a href="blog.html">Blog</a> / Dull teeth</p>
-    <p class="eyebrow">Guide &middot; Spokane, Cheney &amp; Airway Heights</p>
+    <p class="crumbs"><a href="index.html">Home</a> / <a href="blog.html">Blog</a> / Dull tooth</p>
+    <p class="eyebrow">From the field &middot; Spokane, Cheney &amp; Airway Heights</p>
     <h1>This is what a dull stump grinder tooth looks like.</h1>
-    <p class="lede">We stopped at a local hardware store's rental yard this week and took two photos of the teeth on the stump grinder out front. If you're thinking about renting one anywhere in Spokane County, these two pictures are the whole post. The rest is what they mean and what to do about it.</p>
+    <p class="lede">Stopped by a local hardware store's rental yard this week and the stump grinder out front caught my eye. One tooth, two angles, straight off the phone. If you're thinking about renting a grinder anywhere in Spokane County, the pictures are the whole post. The rest is what they mean.</p>
     <ul class="meta-row">
       <li>Spokane County, WA</li>
       <li>October 2026</li>
-      <li>5 min read</li>
+      <li>3 min read</li>
     </ul>
-    <div class="stats">
-      <div class="stat"><b>1/16 in</b><span>Tip radius where a tooth is done</span></div>
-      <div class="stat"><b>12 hp</b><span>The small rental machine that can't bully a dull tooth</span></div>
-      <div class="stat"><b>60 sec</b><span>How long the check takes at the counter</span></div>
-    </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="container case-layout">
+  <div class="container">
+    <article class="article solo">
 
-    <article class="article">
-
-      <h2 id="photos">The two photos</h2>
-      <p>Same machine, two teeth, taken standing in the lot. We've left them uncropped.</p>
       <div class="photo-pair">
         <figure class="post-figure">
-          <Img file="rental-grinder-tooth-worn-edge.jpg" alt="Close-up of a stump grinder tooth on a rental machine: the carbide tip is rounded over and polished smooth instead of coming to an edge" widths={[480, 683]} sizes="(max-width: 48rem) 100vw, 448px" loading="eager" />
-          <figcaption>The business end. Where there should be an edge, there's a polished dome.</figcaption>
+          <Img file="rental-grinder-tooth-worn-edge.jpg" alt="Close-up of a stump grinder tooth on a rental machine: the carbide tip is rounded over and polished smooth instead of ending in an edge" widths={[480, 683]} sizes="(max-width: 48rem) 100vw, 360px" loading="eager" />
+          <figcaption>Straight on. The tip should end in an edge. It ends in a dome.</figcaption>
         </figure>
         <figure class="post-figure">
-          <Img file="rental-grinder-tooth-worn-pocket.jpg" alt="Side view of a worn stump grinder tooth seated in its pocket on the cutting wheel of a rental machine, tip flattened and rounded" widths={[480, 683]} sizes="(max-width: 48rem) 100vw, 448px" />
-          <figcaption>Side view in the pocket. The flat on top is wood that rubbed, not steel that cut.</figcaption>
+          <Img file="rental-grinder-tooth-worn-pocket.jpg" alt="Side view of the same worn stump grinder tooth in its pocket on the cutting wheel, with a flat rubbed into the top of the tip" widths={[480, 683]} sizes="(max-width: 48rem) 100vw, 360px" />
+          <figcaption>Same tooth from the side. That flat on top is where wood has been rubbing, not getting cut.</figcaption>
         </figure>
       </div>
 
+      <p>That's one carbide tooth on the cutting wheel, photographed from the front and then from the side. The machine was parked out front with the rental tag on it, ready to go. It would have started. The wheel would have spun. Somebody was going to tow it home.</p>
+
       <h2 id="what-you-see">What you're looking at</h2>
-      <p>A stump grinder doesn't chew wood the way a chainsaw does. It carries a row of carbide-tipped teeth on a spinning wheel and swings them through the stump; each tooth takes a small bite on each pass. A fresh carbide tooth comes to a defined edge. As it wears, that edge rounds over, and the bite gets smaller every hour it runs.</p>
-      <p>Look at the first photo. The tip has no edge left at all. It's a dome, polished bright from rubbing. That bright, smooth look is the tell: cutting leaves a tooth dull grey and sharp-cornered; rubbing leaves it shiny and round. The second photo shows the same thing from the side, seated in its pocket, with a flat worn into the top of the tip.</p>
+      <p>A stump grinder doesn't chew wood the way a chainsaw does. It carries a row of carbide-tipped teeth around a spinning wheel and swings them through the stump, and each tooth takes a small bite on each pass. A fresh tooth ends in a defined edge. As it wears, that edge rounds over and the bite gets smaller every hour it runs.</p>
+      <p>Look at the first photo. There's no edge left. The tip is a dome, polished bright from rubbing. That's the tell: cutting leaves a tooth dull grey with sharp corners, rubbing leaves it shiny and round. The side view shows the same thing from a different angle, with a flat worn into the top where it's been riding on the wood instead of biting into it.</p>
       <div class="callout">
-        <p><strong>Our rule of thumb:</strong> once the tip is rounded to about a 1/16-inch radius, the tooth is done. It'll still look like a tooth and it'll still spin, but it isn't cutting anymore. Both teeth in these photos are well past that.</p>
+        <p><strong>Our rule of thumb:</strong> once the tip is rounded to about a 1/16-inch radius, the tooth is done. It still looks like a tooth and it still spins, but it isn't cutting anymore. This one is well past that.</p>
       </div>
 
-      <h2 id="why-it-matters">Why it ruins a rental day</h2>
-      <p>On a big commercial grinder, dull teeth cost you time. On a small rental grinder, they can cost you the whole stump. The towable units most yards rent run a 12-horsepower engine. Sharp, that engine bites and throws chips. Dull, it polishes the stump, bogs down, heats up, and turns a two-hour job into a six-hour one that may not finish. There's no power in reserve to force a rounded tooth through hardwood the way a 25-horsepower tracked machine can.</p>
-      <p>We wrote the long version of this in our <a href="blog-rent-or-hire.html#teeth">rent-or-hire guide</a>. The short version: <strong>on a low-horsepower machine, sharp teeth make or break your day</strong>, and nobody at the yard is going to check them for you.</p>
+      <h2 id="one-tooth">It's one tooth. So what?</h2>
+      <p>Fair question. We photographed one tooth, not the whole wheel, and one worn tooth on its own isn't a crisis. What it tells you is that nobody looked. A tooth this far gone didn't get that way overnight, and it was sitting on a machine marked ready to rent. If this one slipped through, assume the rest of the wheel hasn't been checked either, and go look.</p>
+      <p>Why it matters more on a rental than on our machines: the towable units most yards rent run a 12-horsepower engine. Sharp, that engine bites and throws chips. Dull, it polishes the stump, bogs down, heats up, and turns a two-hour job into a six-hour one that may not finish. There's no power in reserve to force rounded teeth through hardwood the way a 25-horsepower tracked machine can. We wrote the long version in our <a href="blog-rent-or-hire.html#teeth">rent-or-hire guide</a>. The short version: <strong>on a small machine, sharp teeth make or break your day.</strong></p>
+      <p>This isn't a knock on the yard, either. A rental counter checks what a rental counter can check: it starts, the wheel spins, the trailer lights work. Teeth are a wear item, usually billed per tooth when they come back broken and usually sitting outside the damage waiver. Whether they're sharp when the machine goes out is, in practice, your problem the moment you sign.</p>
 
-      <h2 id="why-yards-miss-it">Why the rental counter doesn't catch it</h2>
-      <p>This isn't a knock on the yard. A rental counter checks what a rental counter can check: the engine starts, the wheel spins, the trailer lights work. Teeth are a wear item. Most yards bill them per tooth when they come back broken, and they usually sit outside the damage waiver. Whether the set on the machine is sharp when it goes out is, in practice, your problem the moment you sign.</p>
-      <p>The machine in these photos was sitting out front ready to rent. It would have started. The wheel would have spun. And somebody was going to tow it home.</p>
-
-      <h2 id="the-check">The 60-second check before you tow it</h2>
+      <h2 id="the-check">Before you tow it: a one-minute look</h2>
       <ul class="checklist">
-        <li><strong>Get down and look at the wheel.</strong> You want to see the tips of the teeth, not the side of the machine. Phone flashlight helps.</li>
+        <li><strong>Get down and look at the wheel.</strong> You want the tips of the teeth, not the side of the machine. Phone flashlight helps.</li>
         <li><strong>Look for an edge.</strong> A good tooth has a visible corner where the top meets the face. A done tooth looks like a worn pebble.</li>
         <li><strong>Look for shine.</strong> Bright, polished tips mean rubbing. Dull grey with sharp corners means cutting.</li>
-        <li><strong>Check more than one.</strong> One worn tooth is normal. If most of the wheel looks like our photos, the set is done.</li>
-        <li><strong>Count them.</strong> Missing teeth or empty pockets mean the wheel is out of balance and somebody's going to be billed. Make sure it's not you.</li>
-        <li><strong>Say something at the counter.</strong> Ask them to swap or sharpen the set, or give you a different machine. That conversation is a lot easier in the yard than from your driveway at noon.</li>
+        <li><strong>Check a few, not just one.</strong> If most of the wheel looks like our photos, the set is done.</li>
+        <li><strong>Count the pockets.</strong> Missing teeth mean the wheel is out of balance and somebody's getting billed. Make sure it's not you.</li>
+        <li><strong>Say something at the counter.</strong> Ask them to swap or sharpen the set, or give you a different machine. That's a much easier conversation in the yard than from your driveway at noon.</li>
       </ul>
 
-      <h2 id="local">Renting near Spokane, Cheney or Airway Heights? Check before you tow</h2>
-      <p>The grinders we found for rent are in Spokane, or over in Hayden and Coeur d'Alene. For most of our customers that's a tow: out Highway 2 to <a href="community-airway-heights.html">Airway Heights</a>, down Highway 904 to <a href="community-cheney.html">Cheney</a>, up to Deer Park or Chattaroy, and back before the counter closes. A set of dull teeth discovered at home means towing it back, arguing about it, and losing the day you rented it for.</p>
-      <p>That's the real cost of the photos above. Not the teeth themselves, but the hours on each side of them. If you do rent, make the check at the counter part of the pickup, the same way you'd check the trailer lights.</p>
+      <h2 id="local">Renting from Cheney or Airway Heights? Look before the tow</h2>
+      <p>The grinders we found for rent are in Spokane, or over in Hayden and Coeur d'Alene. For a lot of our customers that's a real tow: out Highway 2 to <a href="community-airway-heights.html">Airway Heights</a>, down Highway 904 to <a href="community-cheney.html">Cheney</a>, up to Deer Park or Chattaroy, and back before the counter closes. Dull teeth found at home mean towing it back, arguing about it, and losing the day you rented it for. That's the real cost in the photos above: not the tooth, the hours on either side of it. If you rent, make the look at the wheel part of the pickup, same as checking the trailer lights.</p>
 
-      <h2 id="hire">Or skip the wheel entirely</h2>
-      <p>Sharp teeth are our problem, not yours, when you hire it out. We bring the machine that fits the gate, we file the 811 locate as part of scheduling, and the chips either go back in the hole or leave on our trailer. Every stump gets a written estimate before anything is scheduled, and if the photo you send us shows a stump a rental machine could handle, we'll say so. We cover Spokane, Cheney, Airway Heights and the rest of the <a href="about.html#service-area">Spokane and Coeur d'Alene region</a>.</p>
+      <h2 id="hire">Or let us bring the sharp ones</h2>
+      <p>When you hire it out, sharp teeth are our problem. We bring the machine that fits the gate, file the 811 locate as part of scheduling, and the chips either go back in the hole or leave on our trailer. Every stump gets a written estimate before anything is scheduled, and if the photo you send us shows a stump a rental machine could handle, we'll say so. We cover Spokane, Cheney, Airway Heights and the rest of the <a href="about.html#service-area">Spokane and Coeur d'Alene region</a>.</p>
 
       <div class="faq">
-        <h2 id="faq">Common questions</h2>
+        <h2 id="faq">Quick answers</h2>
         <details>
           <summary><h3>How can I tell if a stump grinder tooth is dull?</h3></summary>
-          <p>Look at the carbide tip. A sharp tooth comes to a defined edge; a dull one is rounded over and polished, like a worn-down pebble. Once the tip is rounded to about a 1/16-inch radius it's done cutting, even though it still looks like a tooth and still spins.</p>
+          <p>Look at the carbide tip. A sharp tooth ends in a defined edge. A dull one is rounded over and polished, like a worn pebble. Once the tip is rounded to about a 1/16-inch radius it's done cutting, even though it still looks like a tooth and still spins.</p>
         </details>
         <details>
           <summary><h3>Do rental yards sharpen stump grinder teeth?</h3></summary>
           <p>Not routinely. Rental counters check that the machine starts and the wheel turns. Teeth are a wear item, often billed per tooth outside the damage waiver, so whether the set on the machine is sharp is yours to check before you sign.</p>
         </details>
         <details>
-          <summary><h3>Can I rent a stump grinder in Cheney or Airway Heights?</h3></summary>
-          <p>The grinders we found for rent are in Spokane, or over in Hayden and Coeur d'Alene, so renting from Cheney or Airway Heights means towing one out Highway 904 or Highway 2 and back the same day. Check the teeth at the counter, not in your driveway.</p>
-        </details>
-        <details>
           <summary><h3>What if the teeth are dull when I pick up the rental?</h3></summary>
-          <p>Ask the counter to swap or sharpen them before you leave, or ask for a different machine. If they can't, a small-engine grinder with dull teeth will polish a hardwood stump instead of cutting it, and the day can end with the stump still in the ground.</p>
+          <p>Ask the counter to swap or sharpen them before you leave, or ask for a different machine. A small-engine grinder with dull teeth polishes a hardwood stump instead of cutting it, and the day can end with the stump still in the ground. If you're renting from Cheney or Airway Heights, that conversation is a lot easier at the counter than after the tow home.</p>
         </details>
       </div>
 
       <a class="back-link" href="blog.html">&larr; Back to all posts</a>
     </article>
-
-    <aside class="case-side">
-      <div class="glance">
-        <h2>At a glance</h2>
-        <dl>
-          <dt>What</dt><dd>Teeth on a rental grinder, photographed</dd>
-          <dt>Where</dt><dd>A Spokane-area rental yard</dd>
-          <dt>Verdict</dt><dd class="ok">Both teeth past done</dd>
-          <dt>The tell</dt><dd>Rounded, polished tips</dd>
-          <dt>The limit</dt><dd>About a 1/16-inch radius</dd>
-          <dt>The fix</dt><dd>Check at the counter, ask for a swap</dd>
-        </dl>
-      </div>
-      <div class="toc">
-        <h2>On this page</h2>
-        <ol>
-          <li><a href="#photos">The two photos</a></li>
-          <li><a href="#what-you-see">What you're looking at</a></li>
-          <li><a href="#why-it-matters">Why it ruins a rental day</a></li>
-          <li><a href="#why-yards-miss-it">Why the counter misses it</a></li>
-          <li><a href="#the-check">The 60-second check</a></li>
-          <li><a href="#local">Spokane, Cheney, Airway Heights</a></li>
-          <li><a href="#hire">Or skip the wheel</a></li>
-          <li><a href="#faq">Common questions</a></li>
-        </ol>
-      </div>
-      <div class="glance more">
-        <h2>More from the blog</h2>
-        <ul>
-          {others.map((o) => (<li><a href={o.file}>{o.title}</a><span>{o.date}</span></li>))}
-        </ul>
-      </div>
-    </aside>
-
   </div>
 </section>
 
 <section class="section" style="padding-top: 0">
   <div class="container">
   <div class="card closing">
-    <h2>Not sure the stump is a rental-sized stump?</h2>
+    <h2>Not sure it's a rental-sized stump?</h2>
     <p>Send us a photo of it. You'll get a written estimate, and if a rental machine with sharp teeth could do it, we'll tell you that too.</p>
     <div class="btn-row">
       <a class="btn btn-primary btn-lg" href="service-request.html#request" data-open-form>Request Service</a>
