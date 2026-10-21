@@ -23,7 +23,7 @@ const configured = Boolean(form.action);
       </p>
     )}
 
-    <form id="intake" action={form.action || undefined} method={form.method} enctype="multipart/form-data" data-api={form.api} data-maps-key={form.mapsKey || undefined}>
+    <form id="intake" action={form.action || undefined} method={form.method} enctype="multipart/form-data" data-api={form.api} data-api-origin={form.apiOrigin} data-maps-key={form.mapsKey || undefined}>
       {Object.entries(form.hidden).map(([k, v]) => <input type="hidden" name={k} value={v} />)}
       <input type="hidden" name="_next" id="next" value={form.nextDefault} />
       <p class="honey" aria-hidden="true"><label>Leave this field empty <input type="text" name={form.honeypot} tabindex="-1" autocomplete="off" /></label></p>
@@ -222,7 +222,9 @@ const configured = Boolean(form.action);
       img.src = url;
     });
   };
-  var api = form.getAttribute('data-api');
+  var api = form.getAttribute('data-api'), apiOrigin = form.getAttribute('data-api-origin') || '';
+  // on the live site but not on the canonical host (e.g. the bare domain) → call the function on the canonical host
+  if (api && apiOrigin && /spokanestumpgrinder\.com$/.test(location.hostname) && location.origin !== apiOrigin) api = apiOrigin + api;
   form.addEventListener('submit', function (e) {
     checkContact();
     if (!form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; }
@@ -239,7 +241,7 @@ const configured = Boolean(form.action);
       body.photos = photos; // every selected file, with data or a reason
       var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
       var t = ctrl && setTimeout(function () { ctrl.abort(); }, 25000);
-      return fetch(api, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctrl ? ctrl.signal : undefined })
+      return fetch(api, { method: 'POST', headers: { 'content-type': 'text/plain;charset=UTF-8' }, body: JSON.stringify(body), signal: ctrl ? ctrl.signal : undefined }) // text/plain = no CORS preflight; the function parses JSON either way
         .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j && j.ok }; }); })
         .finally(function () { if (t) clearTimeout(t); });
     }).then(function (r) {

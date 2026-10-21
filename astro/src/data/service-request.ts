@@ -7,6 +7,9 @@
 
 export const form = {
   api: '/api/lead',
+  // The site serves from www.; the apex 308s everything (including /api/lead) to www., which a browser treats as a
+  // cross-site call. On any other host than this one the form posts straight to the www. function instead.
+  apiOrigin: 'https://www.spokanestumpgrinder.com',
   action: 'https://formsubmit.co/779a635b69e3b6c853c44bea7f0760f9', // FormSubmit alias for info@spokanestumpgrinder.com
   method: 'POST',
   hidden: {

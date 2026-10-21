@@ -63,6 +63,7 @@ const stateFor = (zip, city) => (/^838/.test(zip) ? 'ID' : /coeur|hayden|post fa
 function readBody(req) {
   return new Promise((resolve, reject) => {
     if (req.body && typeof req.body === 'object') return resolve(req.body);
+    if (typeof req.body === 'string') { try { return resolve(req.body ? JSON.parse(req.body) : {}); } catch (e) { return reject(new Error('invalid JSON')); } }
     let data = ''; req.setEncoding('utf8');
     req.on('data', (c) => { data += c; if (data.length > 6_000_000) { reject(new Error('body too large')); req.destroy(); } });
     req.on('end', () => { try { resolve(data ? JSON.parse(data) : {}); } catch (e) { reject(new Error('invalid JSON')); } });
@@ -126,9 +127,18 @@ function thankYouEmail(L) {
   return { to: [L.email], reply_to: NOTIFY_TO, subject: "We got your request — Spokane Stump Grinder", text, html };
 }
 
+// Browsers on the bare domain (which 308s to www.) call the www. function cross-site; allow the site's own origins.
+const ORIGIN_OK = /^https:\/\/(www\.)?spokanestumpgrinder\.com$|^https:\/\/spokanestumpgrinder[a-z0-9-]*\.vercel\.app$|^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
+function cors(req, res) {
+  const o = req.headers.origin || '';
+  if (ORIGIN_OK.test(o)) { res.setHeader('access-control-allow-origin', o); res.setHeader('vary', 'origin'); res.setHeader('access-control-allow-methods', 'POST, OPTIONS'); res.setHeader('access-control-allow-headers', 'content-type'); res.setHeader('access-control-max-age', '86400'); }
+}
+
 export default async function handler(req, res) {
   res.setHeader('cache-control', 'no-store');
   res.setHeader('content-type', 'application/json');
+  cors(req, res);
+  if (req.method === 'OPTIONS') { res.statusCode = 204; return res.end(); }
   if (req.method !== 'POST') { res.statusCode = 405; return res.end(JSON.stringify({ ok: false, error: 'POST only' })); }
   let b;
   try { b = await readBody(req); } catch (e) { res.statusCode = 400; return res.end(JSON.stringify({ ok: false, error: e.message })); }
