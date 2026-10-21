@@ -267,6 +267,23 @@ it an ES module — the install/build commands still run in `astro/`). The funct
    attached via `createUpload` → PUT → `mediaFileKeys` (browser shrinks photos to
    ≤1600px JPEG first; ≤6 photos, ≤1.5 MB each after shrink).
 
+**Form fields (simplified 2026-10-20):** name, phone, email · street, city, ZIP (optional;
+state is derived — 838xx → ID, else WA) · service (3 cards) · photos · notes. The old
+count/diameter/access/after/hazards/contact/heard fields are gone; the notes placeholder
+and the page's "Four things that speed this up" cover them.
+
+**Emails (2026-10-20):** after the Homeworks write the function sends two emails through
+Resend (`https://api.resend.com/emails`, plain fetch): an alert to `LEAD_NOTIFY_TO`
+(default jeff@spokanestumpgrinder.com, reply-to = the customer, photo thumbnails linked)
+and a thank-you to the customer (reply-to jeff@). Needs `RESEND_API_KEY` in Vercel and the
+sending domain verified in Resend (`MAIL_FROM`, default
+`Spokane Stump Grinder <requests@spokanestumpgrinder.com>`). Without the key the lead is
+still created and the log says `mail: {skipped}`. Email failure never blocks the lead.
+
+**Landing page:** success → `thank-you.html` (`astro/src/pages/thank-you.astro`, copy in
+`data/service-request.ts` → `thankYou`; `robots: noindex, follow`; not in the sitemap). The
+FormSubmit fallback also `_next`s there and cc's jeff@.
+
 The Homeworks account is **Automated Lawn and Pest, LLC** (company 13676) — same
 owners; stump leads are distinguished by the type/source/tags above. IDs can be
 overridden with `HOMEWORKS_LEAD_TYPE_ID` / `HOMEWORKS_SOURCE_ID`; `HOMEWORKS_API_URL`

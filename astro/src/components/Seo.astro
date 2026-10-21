@@ -1,10 +1,11 @@
 ---
 // All <head> SEO tags in ONE place. Per-page values come from each page's frontmatter.
 // jsonld = raw JSON strings (kept verbatim so schema output is byte-for-byte what it is today).
-const { title, description, canonical, og, twitterCard, jsonld = [] } = Astro.props;
+const { title, description, canonical, og, twitterCard, jsonld = [], robots } = Astro.props;
 ---
 <title set:html={title}></title>
 <meta name="description" content={description}>
+{robots && <meta name="robots" content={robots} />}
 {canonical && <link rel="canonical" href={canonical}>}
 {og && Object.entries(og).map(([k, v]) => <meta property={`og:${k}`} content={v as string}>)}
 {twitterCard && <meta name="twitter:card" content={twitterCard}>}

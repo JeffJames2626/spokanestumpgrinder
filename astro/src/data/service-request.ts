@@ -1,29 +1,22 @@
 // Service request page content + the intake form's options. Page copy is the live service-request.html copy.
-// The form itself is ours (replaces the Service Autopilot embed on this branch).
 //
-// DELIVERY: FormSubmit (chosen by Jeff 2026-10-12). The browser POSTs the form straight to formsubmit.co,
-// which emails it to info@spokanestumpgrinder.com (via the alias in `action`), then redirects back to
-// `_next` (?sent=1 = success card). No account or API key.
-// ACTIVATION IS PER WEBSITE ADDRESS: the first submission from a given origin (https://spokanestumpgrinder.com,
-// a localhost preview, www., …) makes FormSubmit email a one-time "Activate FormSubmit on <origin>" link to
-// info@; nothing from that origin is delivered until it's clicked. The alias was issued with the first such
-// email (2026-10-12). If `action` is ever emptied the page shows a "delivery not set up" notice and disables
-// the submit button, so nothing is silently lost. Docs: https://formsubmit.co/documentation
+// DELIVERY (see CLAUDE.md "Intake form"): the form's JS posts JSON to `api` (api/lead.js on Vercel), which
+// creates the lead in Homeworks and sends two emails (alert to Jeff, thank-you to the customer), then the
+// browser lands on thank-you.html. If the API fails — or JS is off — the form posts natively to FormSubmit
+// (`action`), which emails info@ (cc jeff@) and redirects to `_next`. Nothing is lost either way.
 
 export const form = {
-  // Primary delivery: our Vercel function creates the lead in Homeworks (api/lead.js). The form's JS posts
-  // JSON here; if it fails (or JS is off) the form falls back to the FormSubmit email below.
   api: '/api/lead',
-  action: 'https://formsubmit.co/779a635b69e3b6c853c44bea7f0760f9', // FormSubmit alias for info@spokanestumpgrinder.com (keeps the address out of the page source)
+  action: 'https://formsubmit.co/779a635b69e3b6c853c44bea7f0760f9', // FormSubmit alias for info@spokanestumpgrinder.com
   method: 'POST',
   hidden: {
     _subject: 'New estimate request — spokanestumpgrinder.com',
-    _template: 'table',      // one row per field in the email
-    _captcha: 'false',       // skip FormSubmit's interstitial captcha page; the honeypot below still filters bots
-    // (no _autoresponse: FormSubmit only sends auto-replies when its captcha is ON, so it would never fire here)
+    _template: 'table',
+    _captcha: 'false',
+    _cc: 'jeff@spokanestumpgrinder.com',
   } as Record<string, string>,
-  honeypot: '_honey',        // FormSubmit drops any submission where this hidden field is filled in
-  nextDefault: 'https://spokanestumpgrinder.com/service-request.html?sent=1',
+  honeypot: '_honey',
+  nextDefault: 'https://www.spokanestumpgrinder.com/thank-you.html',
 };
 
 export const hero = {
@@ -35,7 +28,7 @@ export const hero = {
 export const tips = {
   eyebrow: 'Before you start',
   h2: 'Four things that speed this up',
-  lede: 'The form asks for each of these — every one saves a round of back-and-forth.',
+  lede: 'Drop these in the notes box — every one saves a round of back-and-forth.',
   items: [
     { icon: 'ruler', title: 'Diameter at ground level', text: 'Rough inches across the widest point at grade — not the old trunk size. An estimate is fine.' },
     { icon: 'door-open', title: 'How we get to it', text: "Front yard, through a gate, or down a slope. If it's a gate, measure the opening — that decides which machine we bring." },
@@ -50,13 +43,7 @@ export const options = {
     { value: 'Stump removal & cleanup (haul-off + topsoil)', label: 'Removal & cleanup', help: 'Grinding plus chips hauled off and clean topsoil backfilled.' },
     { value: 'Not sure — help me decide', label: 'Not sure yet', help: "Tell us what's going in the spot and we'll recommend one." },
   ],
-  diameter: ['Under 12 in', '12–24 in', '24–36 in', 'Over 36 in', 'Not sure'],
-  access: ['Open front yard, no gate', 'Gate under 36 in wide', 'Gate 36–48 in wide', 'Gate over 48 in wide', 'Slope, stairs or tight backyard', 'Not sure'],
-  after: ['Grass or lawn', 'A new tree or planting bed', 'Concrete, patio, fence post or structure', 'Nothing in particular'],
-  nearby: ['Sprinkler heads or irrigation', 'Low-voltage lighting or invisible fence', 'Septic, gas or other buried lines', 'Fence, wall or building within a few feet'],
-  contact: ['Text', 'Call', 'Email'],
-  heard: ['Google', 'Facebook / Instagram', 'Referral', 'Saw truck / team', 'Other'],
-  states: ['WA', 'ID'],
+  notesPlaceholder: 'Roughly how many stumps and how wide at the ground, how we get to it (gate? slope?), and anything buried nearby.',
 };
 
 export const talk = {
@@ -74,5 +61,32 @@ export const after = {
     { title: 'You get it in writing', text: "Scope and price, spelled out. What's included and what isn't, before anything is scheduled." },
     { title: 'You pick a date', text: "Approve the estimate and we'll find you a slot that fits the job and the equipment it needs." },
     { title: 'We grind and clean up', text: "Work gets done, the site gets cleaned, and we walk the finished spot with you if you're home." },
+  ],
+};
+
+// thank-you.html — where the customer lands after sending, and what the thank-you email links to.
+export const thankYou = {
+  eyebrow: 'Request received',
+  h1: "Thanks — we've got it.",
+  lede: "Your request is in. We'll look over the details and any photos, and follow up with a written estimate. No obligation, no pressure.",
+  emailNote: "We've also sent a copy of what you submitted to the email address you gave us.",
+  whileYouWait: {
+    eyebrow: 'While you wait',
+    h2: 'A few things that help',
+    items: [
+      { icon: 'camera', title: 'More photos always help', text: 'One from a few feet back showing the path in, one close-up with something for scale. Text them to us any time.' },
+      { icon: 'ruler', title: 'Measure at the ground', text: 'Across the widest point at grade, root flare included — not the cut on top.' },
+      { icon: 'door-open', title: 'Check the gate', text: 'A tracked machine is about 35 inches wide. If your gate is tighter than 36, tell us.' },
+      { icon: 'zap', title: '811 is on us', text: 'We file the utility locate as part of scheduling. Private lines — sprinklers, lighting, invisible fence — are the ones to tell us about.' },
+    ],
+  },
+  faster: {
+    h2: 'Need it sooner?',
+    text: "Call or text and we'll pick it up from there.",
+  },
+  links: [
+    { href: 'booking.html', label: 'Book a free on-site visit', icon: 'calendar-check' },
+    { href: 'services.html#pricing', label: 'What moves the price', icon: 'ruler' },
+    { href: 'faq.html', label: 'Common questions', icon: 'message-circle' },
   ],
 };

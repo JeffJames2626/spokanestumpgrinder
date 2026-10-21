@@ -1,0 +1,82 @@
+---
+// Where a customer lands after sending the request form (and what the thank-you email links to).
+// Not indexed and not in the sitemap: it only makes sense right after a submission.
+import Site from '../layouts/Site.astro';
+import '../styles/pages/thank-you.css';
+import Icon from '../components/v2/Icon.astro';
+import { thankYou as t, after } from '../data/service-request';
+import { business } from '../data/site';
+
+const SITE = 'https://www.spokanestumpgrinder.com/';
+const meta = {
+  title: 'Thanks — request received | Spokane Stump Grinder',
+  description: "Your stump grinding request is in. Here's what happens next and how to reach us sooner.",
+  canonical: SITE + 'thank-you.html',
+  robots: 'noindex, follow',
+  active: null,
+};
+---
+<Site {...meta}>
+
+  <!-- CONFIRMATION -->
+  <section class="ty-hero">
+    <div class="container">
+      <div class="ty-card">
+        <span class="icon-chip"><Icon name="circle-check-big" size={30} /></span>
+        <p class="eyebrow">{t.eyebrow}</p>
+        <h1>{t.h1}</h1>
+        <p class="lede">{t.lede}</p>
+        <p class="ty-note"><Icon name="mail" size={16} /> {t.emailNote}</p>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" href={`tel:${business.phoneHref}`}><Icon name="phone" size={18} /> Call or text {business.phoneDisplay}</a>
+          <a class="btn btn-outline btn-lg" href="index.html">Back to the homepage</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{after.eyebrow}</p>
+        <h2>What happens from here</h2>
+      </div>
+      <ol class="steps">
+        {after.steps.map((s) => (<li class="card step"><h3>{s.title}</h3><p>{s.text}</p></li>))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- WHILE YOU WAIT -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{t.whileYouWait.eyebrow}</p>
+        <h2>{t.whileYouWait.h2}</h2>
+      </div>
+      <div class="tips">
+        {t.whileYouWait.items.map((i) => (<article class="card tip"><span class="icon-chip"><Icon name={i.icon} size={20} /></span><h3>{i.title}</h3><p>{i.text}</p></article>))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SOONER + LINKS -->
+  <section class="section section-muted">
+    <div class="container ty-grid">
+      <div class="card talk">
+        <h2>{t.faster.h2}</h2>
+        <p>{t.faster.text}</p>
+        <a class="callline" href={`tel:${business.phoneHref}`}><Icon name="phone" size={22} /> {business.phoneDisplay}</a>
+        <p class="note">Serving Spokane, WA and the Coeur d'Alene region</p>
+      </div>
+      <div class="card">
+        <h3 class="card-title">In the meantime</h3>
+        <ul class="ty-links">
+          {t.links.map((l) => (<li><a href={l.href}><span class="icon-chip"><Icon name={l.icon} size={18} /></span>{l.label}<Icon name="arrow-right" size={16} class="arrow" /></a></li>))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</Site>

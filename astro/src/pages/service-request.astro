@@ -39,22 +39,7 @@ const configured = Boolean(form.action);
         <button class="btn btn-primary btn-lg" type="button" data-open-form><Icon name="send" size={18} /> Open the request form</button>
         <a class="btn btn-outline btn-lg" href="booking.html"><Icon name="calendar-check" size={18} /> Book an OSC instead</a>
       </div>
-      <p class="hero-note"><Icon name="clock" size={16} /> Takes about two minutes. Photos optional, but they save a trip.</p>
-    </div>
-  </section>
-
-  <!-- SUCCESS (shown only when FormSubmit redirects back with ?sent=1) -->
-  <section class="section" id="sent-wrap" hidden style="padding-top: 0">
-    <div class="container">
-      <div class="card sent-card" id="sent" tabindex="-1">
-        <span class="icon-chip"><Icon name="circle-check-big" size={28} /></span>
-        <h2>Got it — thanks.</h2>
-        <p class="lede">Your request is in. We'll look it over and follow up with a written estimate. If anything's urgent in the meantime, call or text {business.phoneDisplay}.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="booking.html"><Icon name="calendar-check" size={18} /> Book an on-site visit</a>
-          <a class="btn btn-outline" href="index.html">Back to the homepage</a>
-        </div>
-      </div>
+      <p class="hero-note"><Icon name="clock" size={16} /> Takes about a minute. Photos optional, but they save a trip.</p>
     </div>
   </section>
 
@@ -110,15 +95,5 @@ const configured = Boolean(form.action);
       </div>
     </div>
   </section>
-
-  <script is:inline>
-  (function () {
-    // success state after FormSubmit redirects back with ?sent=1 (the form itself is the site-wide RequestDialog)
-    if (new URLSearchParams(location.search).get('sent') !== '1') return;
-    var wrap = document.getElementById('sent-wrap'); wrap.hidden = false;
-    try { history.replaceState(null, '', location.pathname); } catch (e) {}
-    var card = document.getElementById('sent'); card.scrollIntoView({ block: 'center' }); card.focus();
-  })();
-  </script>
 
 </Site>
